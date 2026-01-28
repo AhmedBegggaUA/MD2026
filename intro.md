@@ -1,5 +1,5 @@
 (label_instroduccion)=
-MD2025
+MD2026
 ============================
 
 En consonancia con la [Guía docente de la Asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wcodest=C213&wcodasi=33658&wlengua=es&scaca=2025-25), en este apartado describimos los aspectos básicos de temporización y calificación
@@ -10,19 +10,19 @@ En la medida de lo posible, nos ajustaremos a la siguiente temporización.
 
 | Semana | Fecha | Tema | Páctica |
 |--------|-------|------|-----------|
-| 1 | 30/01/2025 | Introducción y Combinatoria | Práctica 1: Jupyter |
-| 2 | 06/02/2025 | Combinatoria | Práctica 1: Numpy|
-| 3 | 13/02/2025 | Combinatoria, Probabilidad | Práctica 1: Numpy |
-| 4 | 20/02/2025 | Probabilidad | Práctica 2: Tools |
-| 5 | 06/03/2025 | Probabilidad | Práctica 2: Tools | 
-| 6 | 13/03/2025 | Probabilidad | Práctica 2: Tools |
-| 7 | 20/03/2025 | Test\#1 y Grafos | Práctica 2: Tools |
-| 8 | 27/03/2025 | Grafos: Random Walks | Práctica 3: Generación y exploración |
-| 9 | 03/04/2025 | Grafos: Caminos y flujo óptimo | Práctica 3: Generación y exploración |
-| 10| 10/04/2025| Grafos: Euler y Hamilton | Práctica 3: Generación y exploración |
-| 11| 08/05/2025 | Grafos: Coloreado y Matching | Práctica 3: Generación y exploración  |
-| 12 | 15/05/2025 | Test\#2, Teoría Espectral  | Práctica 4: Casos reales |
-| 13 | 22/05/2025 | Teoría Espectral: Clustering | Práctica 4: Casos reales |
+| 1 | 29/01/2026 | Introducción y Combinatoria | Práctica 1: Jupyter |
+| 2 | 05/02/2026 | Combinatoria | Práctica 1: Numpy|
+| 3 | 12/02/2026 | Combinatoria, Probabilidad | Práctica 1: Numpy |
+| 4 | 19/02/2026 | Probabilidad | Práctica 2: Tools |
+| 5 | 26/02/2026 | Probabilidad | Práctica 2: Tools | 
+| 6 | 05/03/2026 | Probabilidad | Práctica 2: Tools |
+| 7 | 12/03/2026 | Test\#1 y Grafos | Práctica 2: Tools |
+| 8 | 26/03/2026 | Grafos: Random Walks | Práctica 3: Generación y exploración |
+| 9 | 23/04/2026 | Grafos: Caminos y flujo óptimo | Práctica 3: Generación y exploración |
+| 10| 30/04/2026| Grafos: Euler y Hamilton | Práctica 3: Generación y exploración |
+| 11| 07/05/2026 | Grafos: Coloreado y Matching | Práctica 3: Generación y exploración  |
+| 12 | 14/05/2026 | Test\#2, Teoría Espectral  | Práctica 4: Casos reales |
+| 13 | 21/05/2026 | Teoría Espectral: Clustering | Práctica 4: Casos reales |
 <!-- ~~| 14 | 16/05/2025 | Teoría Espectral: Distancias | Práctica 4: Casos reales |~~
 ~~| 15 | 23/05/2025 | Test\#3, Repaso | Práctica 4: Casos reales |~~ -->
 
