@@ -1,7 +1,7 @@
 Materiales de Matemáticas Discretas
 ===============================
 
-Universitat d'Alacant, curso 2024–2025
+Universitat d'Alacant, curso 2025–2026
 --------------------------------------
 
 ## Guía de como usar Jupyter Book
