@@ -1,0 +1,1342 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Combinatorics as counting &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/documentation_options.js"></script>
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/copybutton_funcs.js"></script>
+    <script src="../_static/jquery-3.6.0.js"></script>
+    <script src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore-1.13.1.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/scripts/bootstrap.js"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_sources/Topic1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="../_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_practice.html">5. Numpy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_sources/Topic1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Combinatorics as counting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-tree">Using a tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-combinations">Permutations and Combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-permutations-and-combinations">Linking Permutations and Combinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-repetitions">Allowing repetitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indistinguisable-elements">Indistinguisable elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-with-repetition">Permutations with repetition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multisets">Multisets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinations-with-repetition">Combinations with repetition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-exclusion-inclusion">The Principle of Exclusion-Inclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discounting-over-counts">Discounting over-counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-exclusion-inclusion">Principle of Exclusion-Inclusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-in-grids">Counting paths in grids</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stirling-s-formula">The Stirling’s formula</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="combinatorics-as-counting">
+<h1>Combinatorics as counting<a class="headerlink" href="#combinatorics-as-counting" title="Permalink to this heading">#</a></h1>
+<p>Our Discrete Brain must be able of <strong>counting objects</strong>, i.e. it must be answer questions such as:</p>
+<ul class="simple">
+<li><p>How many subsets are in a set of size <span class="math notranslate nohighlight">\(n\)</span>?</p></li>
+<li><p>How many subsets of <span class="math notranslate nohighlight">\(k\)</span> elements are in a set of size <span class="math notranslate nohighlight">\(n\)</span>?</p></li>
+<li><p>How many injective functions can map two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> with sizes <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>?</p></li>
+</ul>
+<p><span style="color:#469ff8">The above questions are referred to as <strong>counting tasks</strong>,
+</span>
+insofar they can be decomposed into simpler tasks. Consider for instance the last task. We have two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> with sizes <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, where <span class="math notranslate nohighlight">\(m\le n\)</span>. Then:</p>
+<ul class="simple">
+<li><p>We are considering injective (one-to-one) functions <span class="math notranslate nohighlight">\(f:X\rightarrow Y\)</span>, i.e. the reference is <span class="math notranslate nohighlight">\(X\)</span> (we reason from left to right).</p></li>
+<li><p>In each function <span class="math notranslate nohighlight">\(f\)</span>, each element <span class="math notranslate nohighlight">\(x_i\in X\)</span> must mapped either <em>to one and only only one element <span class="math notranslate nohighlight">\(y_j\in Y\)</span></em> or <em>to none of them</em>.</p></li>
+</ul>
+<p>For instance, in <code class="xref std std-numref docutils literal notranslate"><span class="pre">setfunction</span></code> we have <span class="math notranslate nohighlight">\(X=\{a,b,c\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{1,2,3,4\}\)</span>, i.e <span class="math notranslate nohighlight">\(m=3\)</span> and <span class="math notranslate nohighlight">\(n=4\)</span>. The mapping, say <span class="math notranslate nohighlight">\(f\)</span>, is injective since: (a) every element in <span class="math notranslate nohighlight">\(X\)</span> has an <strong>image</strong> and only one image in <span class="math notranslate nohighlight">\(Y\)</span>, (b) no elements in <span class="math notranslate nohighlight">\(Y\)</span> is the image of more than one element in <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<figure class="align-center" id="setfunction">
+<a class="reference internal image-reference" href="_sources/images/Topic1/setfun.png"><img alt="_sources/images/Topic1/setfun.png" src="_sources/images/Topic1/setfun.png" style="width: 300px; height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-text">One-to-one function between two sets.</span><a class="headerlink" href="#setfunction" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="using-a-tree">
+<h2>Using a tree<a class="headerlink" href="#using-a-tree" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#469ff8">Any counting task can be represented by a <strong>tree</strong></span>. Trees are key structures in our Discrete Brain, because they encode a hierarchy. In particular, the <strong>rooted tree</strong> (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">rtree</span></code>) can be seen as <em>the recursive top-down expansion of a root through several levels until the leaves are reached</em>:</p>
+<figure class="align-center" id="rtree">
+<a class="reference internal image-reference" href="_sources/images/Topic1/rootedtree.png"><img alt="_sources/images/Topic1/rootedtree.png" src="_sources/images/Topic1/rootedtree.png" style="width: 600px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Rooted tree where the leaves are the solutions to a counting problem.</span><a class="headerlink" href="#rtree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In particular, we have:</p>
+<ul class="simple">
+<li><p>The <strong>root</strong> is the top parent <strong>node</strong> of the tree and it spans several <strong>children</strong>, thus forming the first level of <strong>siblings</strong>.</p></li>
+<li><p>Each children is either a <strong>leaf</strong> (a node without children) or the parent of several <strong>children</strong>, thus forming the second level of <strong>siblings</strong>.</p></li>
+<li><p>The process goes on until all the new siblings are leaves.</p></li>
+</ul>
+<p>In our counting problem, we use a rooted tree to decompose the original counting task: <span style="color:#469ff8"><em>how many one-to-one functions do we have between two sets of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> elements, <span class="math notranslate nohighlight">\(m\le n\)</span>?</em></span></p>
+<ul class="simple">
+<li><p>Each <strong>level</strong> in the tree (root not included) encodes a possible choice for each of the <span class="math notranslate nohighlight">\(m\)</span> variables. In the figure, <span class="math notranslate nohighlight">\(m=3\)</span> and we denote <span class="math notranslate nohighlight">\(x_1\)</span> by <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> by <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span> by <span class="math notranslate nohighlight">\(c\)</span>. Therefore, in the first level we have <span class="math notranslate nohighlight">\(n=4\)</span> choices for <span class="math notranslate nohighlight">\(a\)</span>: <span class="math notranslate nohighlight">\(\{1,2,3,4\}\)</span> (the children of the root).</p></li>
+<li><p>In this problem does not matter neither the order of selection of the variables <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> nor that of the assignments. We simply follow a <strong>sistematic order</strong>: an increasing order both for variables (<span class="math notranslate nohighlight">\(a,b,c\)</span>) and assignments (<span class="math notranslate nohighlight">\(1,2,3,4\)</span>). However, the tree can be built/visited/traversed in three different ways. To better understand these ways, consider that a tree is a <strong>recursive</strong> structure, i.e. it is composed of <strong>subtrees</strong>. For instance, the root is composed of four subtrees <span class="math notranslate nohighlight">\(T_1, T_2, T_3, T_4\)</span> whose roots are the four possible asignments for variable <span class="math notranslate nohighlight">\(a\)</span>.
+Then the <strong>traversals</strong> are:</p>
+<ul>
+<li><p><em>Preorder</em>. First visit the root. Then visit first (left) subtree <span class="math notranslate nohighlight">\(T_1\)</span> of the root in preorder before visiting the second subtree <span class="math notranslate nohighlight">\(T_2\)</span>.</p></li>
+<li><p><em>Inorder</em>. First visit the first (left) sub-tree <span class="math notranslate nohighlight">\(T_1\)</span> of the root in inorder  before visiting the root itself. After visiting the root, proceed to visit <span class="math notranslate nohighlight">\(T_2\)</span> in inorder, etc.</p></li>
+<li><p><em>Postorder</em>.  First visit the first (left) subtree <span class="math notranslate nohighlight">\(T_1\)</span> of the root in postorder. Then, proceed to visit <span class="math notranslate nohighlight">\(T_2\)</span> in postorder, etc. Finally, visit the root.</p></li>
+</ul>
+</li>
+<li><p>However, there are two main traversals for solving in AI problems:</p>
+<ul>
+<li><p><span style="color:#469ff8"><em>Depth-First-First</em></span> (DFS). This is basically <em>any of the above</em> traversals. Following preorder, for instance, we build <strong>paths</strong>(sequences of nodes) such as <span class="math notranslate nohighlight">\(\mathbf{123}\)</span>. Actually this is the first explored path in preorder. Then follow <span class="math notranslate nohighlight">\(\mathbf{124}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{132}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{134}\ldots\)</span> until <span class="math notranslate nohighlight">\(\mathbf{431}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{432}\)</span>. See the paths (not including the root) at the bottom of <code class="xref std std-numref docutils literal notranslate"><span class="pre">perm</span></code>.</p></li>
+<li><p><span style="color:#469ff8"><em>Breath-First-First</em></span> (BFS). Given the root of the tree, visit the root of each of its subtrees (e.g. <span class="math notranslate nohighlight">\(T_1, T_2, T_3, T_4\)</span>). Then visit the roots of all the subtrees of <span class="math notranslate nohighlight">\(T_1\)</span> etc. All we do is to visit level <span class="math notranslate nohighlight">\(l\)</span> before visiting level <span class="math notranslate nohighlight">\(l+1\)</span>. In BFS, <em>all paths are expanded incrementally</em> until we reach the leaves. For instance at level <span class="math notranslate nohighlight">\(1\)</span> (without counting the root) we have <span class="math notranslate nohighlight">\(4\)</span> incomplete paths: <span class="math notranslate nohighlight">\(\mathbf{1}\ast\ast\)</span>, <span class="math notranslate nohighlight">\(\mathbf{2}\ast\ast\)</span>, <span class="math notranslate nohighlight">\(\mathbf{3}\ast\ast\)</span> and <span class="math notranslate nohighlight">\(\mathbf{4}\ast\ast\)</span>. Then we expand the subtrees from left to right and for the first subree we have: <span class="math notranslate nohighlight">\(\mathbf{12}\ast\)</span>, <span class="math notranslate nohighlight">\(\mathbf{13}\ast\)</span> and <span class="math notranslate nohighlight">\(\mathbf{14}\ast\ast\)</span>.  Finally, at the leaves we have <span class="math notranslate nohighlight">\(\mathbf{123}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{124}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{132}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{134}\ldots\)</span> until <span class="math notranslate nohighlight">\(\mathbf{431}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{432}\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="permutations-and-combinations">
+<h2>Permutations and Combinations<a class="headerlink" href="#permutations-and-combinations" title="Permalink to this heading">#</a></h2>
+<section id="linking-permutations-and-combinations">
+<h3>Linking Permutations and Combinations<a class="headerlink" href="#linking-permutations-and-combinations" title="Permalink to this heading">#</a></h3>
+<p>The aforementioned paths have no repeated nodes values, and thus are solutions to the counting problem. For instance the
+path <span class="math notranslate nohighlight">\(\pi=\mathbf{124}\)</span> means a function <span class="math notranslate nohighlight">\(f_{\pi}\)</span> where <span class="math notranslate nohighlight">\(a=1,b=2,c=4\)</span> and we left <span class="math notranslate nohighlight">\(d\)</span> unassigned. Therefore, the counting task is decomposed in <span class="math notranslate nohighlight">\(m=3\)</span> counting tasks (one per level): in the first level we can choose <span class="math notranslate nohighlight">\(n\)</span> values for <span class="math notranslate nohighlight">\(a\)</span>; given that values, we can only choose <span class="math notranslate nohighlight">\(n-1\)</span> values for <span class="math notranslate nohighlight">\(b\)</span> and consequently <span class="math notranslate nohighlight">\(n-2\)</span> values for <span class="math notranslate nohighlight">\(c\)</span>. As a result, the total number of one-to-one functions between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is given by the <strong>the product rule</strong> <span class="math notranslate nohighlight">\(n(n-1)(n-2)\)</span> and this number is given by the <span class="math notranslate nohighlight">\(P(n,r)\)</span> <strong>r-permutation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[P(n,r)=n(n-1)\cdots (n-r+1)\;,\]</div>
+<p>where in this case <span class="math notranslate nohighlight">\(r=m\)</span> (in general <span class="math notranslate nohighlight">\(m\le n\)</span>). Interestingly, for <span class="math notranslate nohighlight">\(m=n\)</span> (<span class="math notranslate nohighlight">\(n\)</span> levels in the tree) we have the classical <strong>permutation</strong> <span class="math notranslate nohighlight">\(P(n,n)\)</span> or simply <span class="math notranslate nohighlight">\(P(n)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[P(n) = n! = n(n-1)(n-2)\cdots 1!\;\]</div>
+<p>where <span class="math notranslate nohighlight">\(!\)</span> is the factorial and <span class="math notranslate nohighlight">\(0!=1\)</span>. <span style="color:#469ff8">In combinatorics, permutations encode all the possible orders of <span class="math notranslate nohighlight">\(n\)</span> distinct elements</span>. Actually, it is straightforward to prove that</p>
+<div class="math notranslate nohighlight">
+\[P(n,r) =\frac{n!}{(n-r)!}\;.\]</div>
+<p>In other words, <span style="color:#469ff8">r-permutations remove <span class="math notranslate nohighlight">\((n-r)\)</span> products (levels in the tree) from the full <span class="math notranslate nohighlight">\(n!\)</span> permutations</span>. For instance, in the example in <code class="xref std std-numref docutils literal notranslate"><span class="pre">setfunction</span></code> we only need to add <span class="math notranslate nohighlight">\(1\)</span> element (<span class="math notranslate nohighlight">\(n-m =1\)</span>) to <span class="math notranslate nohighlight">\(X\)</span> to make <span class="math notranslate nohighlight">\(m=n\)</span>. This will result in <span class="math notranslate nohighlight">\(1\)</span> more level in the tree in <code class="xref std std-numref docutils literal notranslate"><span class="pre">rtree</span></code>.</p>
+<p><strong>Combinations</strong>. <span style="color:#469ff8">What if in the above example, order does not matter?</span> For instance, paths <span class="math notranslate nohighlight">\(\mathbf{124}\)</span>,<span class="math notranslate nohighlight">\(\mathbf{142}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{214}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{241}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{412}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{421}\)</span> are considered <em>the same</em> because they basically contain the same nodes <span class="math notranslate nohighlight">\({1,2,4}\)</span> in <em>any possible</em> order. This means that many groups of paths are in the tree of <code class="xref std std-numref docutils literal notranslate"><span class="pre">rtree</span></code>.</p>
+<p>An <strong>r-combination</strong> <span style="color:#469ff8"> counts how many groups of <span class="math notranslate nohighlight">\(r\)</span> elements can be obtained from <span class="math notranslate nohighlight">\(n\ge r\)</span></span>. It is defined as the number <span class="math notranslate nohighlight">\(C(n,r)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[C(n,r)={n\choose r}=\frac{n!}{r!(n-r)!}\;.\]</div>
+<p>Thus, looking at the definition of <span class="math notranslate nohighlight">\(P(n,r)\)</span>  it becomes clear that <span style="color:#469ff8"><span class="math notranslate nohighlight">\(C(n,r)\)</span> remove <span class="math notranslate nohighlight">\(r!(n-r)!\)</span> from the numerator <span class="math notranslate nohighlight">\(n!\)</span></span>. This is a good example of the so-called <strong>division rule</strong>: there are <span class="math notranslate nohighlight">\(k/d\)</span> ways of doing a task if it can be done in <span class="math notranslate nohighlight">\(k\)</span> ways and for each of these ways exacly <span class="math notranslate nohighlight">\(d\)</span> of the <span class="math notranslate nohighlight">\(k\)</span> ways are considered the same. In <span class="math notranslate nohighlight">\(C(n,r)\)</span>, we have that <span class="math notranslate nohighlight">\(k=n!/(n-r)!=P(n,r)\)</span> and <span class="math notranslate nohighlight">\(d=r!=P(r)\)</span> since any of the <span class="math notranslate nohighlight">\(P(n,r)\)</span> paths in the tree  can be done in <span class="math notranslate nohighlight">\(r!\)</span> ways if the order of the nodes does not matter. As a result:</p>
+<div class="math notranslate nohighlight">
+\[C(n,r)=\frac{P(n,r)}{P(r)}=\frac{\frac{n!}{(n-r)!}}{r!}=\frac{n!}{r!(n-r)!}\;.\]</div>
+</section>
+<section id="allowing-repetitions">
+<h3>Allowing repetitions<a class="headerlink" href="#allowing-repetitions" title="Permalink to this heading">#</a></h3>
+<p>In the our motivating example (finding injections <span class="math notranslate nohighlight">\(f:X\rightarrow Y\)</span>), each element of the <span class="math notranslate nohighlight">\(Y\)</span> set can be selected <em>once</em> in each different one-to-one function.  Let us consider allowing repetition of any or some of the elements. This leads to more realistic counting problems (e.g. repeating letters to form codes, objects of the same variety, etc).</p>
+<p>Suppose, for instance, that instead of enumerating the injective (one-to-one) functions between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, we ask <span style="color:#469ff8">how many functions <span class="math notranslate nohighlight">\(f:X\rightarrow Y\)</span> (one-to-one or not) do exist.</span> The answer is simple once we realize that any element in <span class="math notranslate nohighlight">\(X\)</span> can be mapped (only once, given the definition of a <em>function</em>) to <span class="math notranslate nohighlight">\(any\)</span> of the elements of <span class="math notranslate nohighlight">\(Y\)</span>. This consideration allows us to decompose the counting task as follows:</p>
+<ul class="simple">
+<li><p>Consider first the element <span class="math notranslate nohighlight">\(a\in X\)</span> in <code class="xref std std-numref docutils literal notranslate"><span class="pre">setfunction</span></code>. It may be assigned to any element <span class="math notranslate nohighlight">\(1,2,3,4\)</span> of <span class="math notranslate nohighlight">\(Y\)</span>. That is, for <span class="math notranslate nohighlight">\(a\)</span> we have <span class="math notranslate nohighlight">\(n\)</span> possible assignments.</p></li>
+<li><p>Similarly, for <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> we have the same number of assignments: <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>As we have <span class="math notranslate nohighlight">\(m\)</span> elements in <span class="math notranslate nohighlight">\(X\)</span>, the total number of assignments (functions) is <span class="math notranslate nohighlight">\(n\cdot n\cdots n\)</span> (<span class="math notranslate nohighlight">\(m\)</span> times), i.e. <span class="math notranslate nohighlight">\(n^{m}\)</span>.</p></li>
+<li><p>In terms of a tree-based representation, we will have an <span class="math notranslate nohighlight">\(n-\)</span>ary tree (<span class="math notranslate nohighlight">\(n\)</span> branches per level) with <span class="math notranslate nohighlight">\(m\)</span> levels (without counting the root). This tree has <span class="math notranslate nohighlight">\(n^{m}\)</span> leaves.</p></li>
+</ul>
+<p>Therefore, a <strong>r-permutation with repetition</strong> is <span class="math notranslate nohighlight">\(P_\sigma(n,r) = n^{r}\)</span>.</p>
+<p>Sometimes, finding a <span class="math notranslate nohighlight">\(P_\sigma(n,r)\)</span> is not so straight and it needs a <em>previous mapping</em> or <strong>encoding scheme</strong> (this will be useful later to prove that a problem is NP-hard).</p>
+<p>For instance, <span style="color:#469ff8">for finding all the possible subsets of a finite set</span> <span class="math notranslate nohighlight">\(S=\{1,2,\ldots,n\}\)</span> (the size of the <strong>power set</strong> <span class="math notranslate nohighlight">\({\cal P}^{S}\)</span>), we start listing the elements:</p>
+<ul class="simple">
+<li><p>Obviously <span class="math notranslate nohighlight">\(\emptyset\)</span> and <span class="math notranslate nohighlight">\(S\)</span> itself belong to <span class="math notranslate nohighlight">\({\cal P}^{S}\)</span>. These sets are respectively the subset with <span class="math notranslate nohighlight">\(O\)</span> elements and that with all the <span class="math notranslate nohighlight">\(n\)</span> elements.</p></li>
+<li><p>Next, we consider the subsets with <span class="math notranslate nohighlight">\(1\)</span> element: they are <span class="math notranslate nohighlight">\(\{1\}, \{2\},\dots \{n\}\)</span>, i.e. <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Then, we consider the subsets with <span class="math notranslate nohighlight">\(2\)</span> elements. Since obviously order does not matter, i.e. <span class="math notranslate nohighlight">\(\{i,j\}=\{j,i\}\)</span>, we have an <strong>r-combination</strong>: <span class="math notranslate nohighlight">\({n\choose 2}\)</span>.</p></li>
+<li><p>Similarly for counting the subsets with <span class="math notranslate nohighlight">\(3,4,\dots, n-1\)</span> elements we have <span class="math notranslate nohighlight">\({n\choose 3}, {n\choose 4}\dots {n\choose n-1}\)</span>.</p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(1={n\choose 0}={n\choose n}\)</span> and <span class="math notranslate nohighlight">\(n={n\choose 1}\)</span>, the size of the powerset is  (we use the notation <span class="math notranslate nohighlight">\(|.|\)</span> to denote the size of something):</p>
+<div class="math notranslate nohighlight">
+\[
+|{\cal P}^{S}|={n\choose 0} + {n\choose 1} + \ldots {n\choose n} = 2^n\;.
+\]</div>
+<p>Herein we apply the <strong>sum rule</strong>: if there are <span class="math notranslate nohighlight">\(n\)</span> <em>independent</em> counting tasks, with <span class="math notranslate nohighlight">\(s_i\)</span> number of ways each, the total number of ways is <span class="math notranslate nohighlight">\(\sum_{i=1}^ns_i\)</span>.</p>
+<p>However, it is not so obvious that the sum of r-combinations is <span class="math notranslate nohighlight">\(2^n\)</span>. We will clarify this point later on, when studying the <strong>Binomial theorem</strong>.</p>
+<p>A much simpler (and clever) alternative, comes from <span style="color:#469ff8">encoding each subset as a <em>binary string</em> of <span class="math notranslate nohighlight">\(n\)</span> bits</span>. For instance, <span class="math notranslate nohighlight">\(\emptyset = 000\ldots 0\)</span>, whereas <span class="math notranslate nohighlight">\(S = 111\ldots 1\)</span>. In between, we have that all the sets with <span class="math notranslate nohighlight">\(2\)</span> elements are encoded by the binary strings of length <span class="math notranslate nohighlight">\(n\)</span> with only <span class="math notranslate nohighlight">\(2\)</span> bits “on” (set to<span class="math notranslate nohighlight">\(1\)</span>s). Similarly for the sets of lengths <span class="math notranslate nohighlight">\(3\ldots n-1\)</span>. As a result, there is a <em>bijection</em> between <span class="math notranslate nohighlight">\({\cal P}^{S}\)</span> and the binary numbers of <span class="math notranslate nohighlight">\(n\)</span> bits.</p>
+<p>Obviously, the number of different strings with <span class="math notranslate nohighlight">\(n\)</span> bits is <span class="math notranslate nohighlight">\(2^n\)</span>. In other words, we have two elements <span class="math notranslate nohighlight">\(\{0,1\}\)</span> which can be repeated insofar the number of total elements is <span class="math notranslate nohighlight">\(n\)</span>. More formally, we have to find all the functions <span class="math notranslate nohighlight">\(S:\rightarrow B\)</span> between <span class="math notranslate nohighlight">\(S=\{1,2,\ldots, n\}\)</span> and the base set <span class="math notranslate nohighlight">\(B=\{0,1\}\)</span>, i.e. <span class="math notranslate nohighlight">\(P_\sigma(2,n) = 2^n\)</span>.</p>
+<p>The above result can be generalized to any other base such as <span class="math notranslate nohighlight">\(a\)</span>: <span class="math notranslate nohighlight">\(a^n\)</span>. For instance the number of <a class="reference external" href="https://navilens.com">Navilens</a> codes is <span class="math notranslate nohighlight">\(4^n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of cells, since these codes have four colors: cyan, magenta, yellow and black (the white border facilitates only the automatic localization of the enclosing frame). Actually, <span class="math notranslate nohighlight">\(4^n=(2\cdot 2)^n\gg 2^n\)</span> and this is why Navilens codes are much denser than QR codes (even after discounting the checksum bits), i.e. we can represent much more codes with less bits.</p>
+</section>
+<section id="indistinguisable-elements">
+<h3>Indistinguisable elements<a class="headerlink" href="#indistinguisable-elements" title="Permalink to this heading">#</a></h3>
+<p>So far, the elements in the counting problem can be repeated. However, some counting problems rely on considering <strong>types of elements</strong>, instead of elements themselves. In other words, <span style="color:#469ff8">in some counting problems it does not matter the number of elements satisfying this or that property</span>, it is more important to consider <span class="math notranslate nohighlight">\(p\)</span> elements of type <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(q\)</span> elements of type <span class="math notranslate nohighlight">\(b\)</span> etc, and then accounting for the total number of ways. This is like impossing <span class="math notranslate nohighlight">\(p\)</span> zeros and <span class="math notranslate nohighlight">\(q\)</span> ones in in a string with <span class="math notranslate nohighlight">\(n\)</span> bytes, where <span class="math notranslate nohighlight">\(p + q = n\)</span>.</p>
+<p><strong>Source problems</strong>. Consider the case where we have <span class="math notranslate nohighlight">\(n\)</span> sources (types), and we have <span class="math notranslate nohighlight">\(r\le n\)</span> ways of selecing them, where repeats are allowed. For instance, given <span class="math notranslate nohighlight">\(n\)</span> (elementwise unlimited) colors, we only have <span class="math notranslate nohighlight">\(r\)</span> ways of selecting them (maybe because our pallete of colors is blind to more than <span class="math notranslate nohighlight">\(r\)</span> colors).</p>
+<section id="permutations-with-repetition">
+<h4>Permutations with repetition<a class="headerlink" href="#permutations-with-repetition" title="Permalink to this heading">#</a></h4>
+<p>If order matters, we have to clarify now many ways are allowable for each type. For instance, consider than there are <span class="math notranslate nohighlight">\(n\)</span> types of indistinguishable elements <span class="math notranslate nohighlight">\(n_1 + n_2 +\ldots +  n_p = n\)</span>.</p>
+<p>Consider the following simple example. We are asked to find the ways of reordering the letters in the word “Tomorrow”. The length of the word is <span class="math notranslate nohighlight">\(n=8\)</span>, but computing a permutation <span class="math notranslate nohighlight">\(P(n)= n!\)</span> is incorrect, since in permutations or r-permutations we assume that all the elements are different <span style="color:#469ff8">(to avoid over-counting)</span>. In other words, <span class="math notranslate nohighlight">\(n!\)</span> counts the word “Tomorrow” several times: <span class="math notranslate nohighlight">\({n\choose 3}\)</span> for the “o”s and <span class="math notranslate nohighlight">\({n\choose 2}\)</span> for the “r”s, since we have <span class="math notranslate nohighlight">\(n_2=3\)</span> “r”s and <span class="math notranslate nohighlight">\(n_4=2\)</span> “o”s (the rest of the letters “T”, “m” and “w”) appears only one: <span class="math notranslate nohighlight">\(n_1 = n_3 = n_5 = 1\)</span>.</p>
+<p>Summarizing, we have <span class="math notranslate nohighlight">\(5\)</span> types of letters in the word “Tomorrow” and <span class="math notranslate nohighlight">\(n_1 + n_2 + n_3 + n_4 + n_5 = n\)</span>, i.e. <span class="math notranslate nohighlight">\(1 + 3 + 1 + 2 + 1 = 8 = n\)</span>. Then, if we apply the product rule and decompose our problem in <span class="math notranslate nohighlight">\(5\)</span> counting tasks (as many as different types of letters), each of these tasks is a <span class="math notranslate nohighlight">\(r-\)</span>combination as follows:</p>
+<ul class="simple">
+<li><p>We have <span class="math notranslate nohighlight">\(n=8\)</span> <em>positions</em> to fill.</p></li>
+<li><p>Fill <span class="math notranslate nohighlight">\(n_2=3\)</span> positions with <span class="math notranslate nohighlight">\({n \choose n_2=3}={8 \choose 3}\)</span> combinations. We use combinations since once we select any of the groups of <span class="math notranslate nohighlight">\(3\)</span> positions, order does not matter inside the group.</p></li>
+<li><p>Now we have <span class="math notranslate nohighlight">\(n - n_2 = 8 - 3 = 5\)</span> remaning positions to fill. Fill <span class="math notranslate nohighlight">\(n_4=2\)</span> of them with <span class="math notranslate nohighlight">\({n - n_2\choose n_4}={5\choose 2}\)</span> combinations.</p></li>
+<li><p>Now there are <span class="math notranslate nohighlight">\(n - n_2 - n_4 = 3\)</span> positions left. As <span class="math notranslate nohighlight">\(n_1 = n_3 = n_5 = 1\)</span>, take any order of them to make <span class="math notranslate nohighlight">\({3\choose 1}\cdot {2\choose 1}\cdot {1\choose 1}\)</span> combinations.</p></li>
+</ul>
+<p>Finally, the product of all the above <span class="math notranslate nohighlight">\(r-\)</span>combinations leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+{8 \choose 3}\cdot {5 \choose 2}\cdot {3 \choose 1}\cdot {2 \choose 1}\cdot {1 \choose 1} &amp;= \frac{8!}{3!5!}\cdot \frac{5!}{2!3!}\cdot \frac{3!}{1!2!}\cdot \frac{2!}{1!1!}\cdot \frac{1!}{1!0!}\\
+&amp;= \frac{8!}{3!\cancel{5!}}\cdot \frac{\cancel{5!}}{2!\cancel{3!}}\cdot \frac{\cancel{3!}}{1!\cancel{2!}}\cdot \frac{\cancel{2!}}{1!\cancel{1!}}\cdot \frac{\cancel{1!}}{1!0!}
+\\
+&amp;= \frac{8!}{3!2!1!1!1!}
+\;. 
+\end{align}   
+\end{split}\]</div>
+<p>Then, <strong>permutations with repetition</strong> <span class="math notranslate nohighlight">\(P_{\sigma}(n)\)</span> are defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\sigma}(n) = \frac{n!}{n_1!n_2!\cdots n_p!}
+\]</div>
+<p>where we have <span class="math notranslate nohighlight">\(p\)</span> types of indistinguishable objects and <span class="math notranslate nohighlight">\(n_1 + n_2  + \ldots n_p = n\)</span>.</p>
+<p>The above definition can be also interpreted as follows. In the numerator we have <em>all</em> the permutations. However <span style="color:#469ff8">in the denominator we cancel some of them to avoid over-counting</span>.</p>
+<p>This is consistent with the definition of <span class="math notranslate nohighlight">\(C(n,r)\)</span> as <span class="math notranslate nohighlight">\(P(n,r)/P(r)\)</span>. For instance, suppose that <span class="math notranslate nohighlight">\(n_1\ge n_2\ge\ldots \ge n_p\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\sigma}(n) = \frac{P(n,n_1)}{P(n_1)}\cdot \frac{P(n-n_1,n_2)}{P(n_2)}\cdots \frac{P(n-(n_1 + n_2 + \dots + n_{p-1}), n_p)}{P(n_1 + n_2 + \dots + n_{p-1})}\;.
+\]</div>
+</section>
+<section id="multisets">
+<h4>Multisets<a class="headerlink" href="#multisets" title="Permalink to this heading">#</a></h4>
+<p>Counting problems with repetitions, whatever there are indistinguishable elements or not, can be viewed from the angle of <strong>multisets</strong>. Why? Because <span style="color:#469ff8"> a multiset is a generalization of a set where the elements are allowed to be repeated (we may even have infinite, i.e. <span class="math notranslate nohighlight">\(\infty\)</span>, copies)</span>.</p>
+<p>For instance, the letters in the word “Tomorrow” are encoded by the following multiset:</p>
+<div class="math notranslate nohighlight">
+\[
+S = \{1\cdot\text{T},\; 3\cdot\text{o},\; 1\cdot\text{m},\; 2\cdot\text{r},\; 1\cdot\text{w} \}\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_1 = 1, n_2 = 3, n_3 = 1, n_4 = 2, n_5= 1\)</span> and <span class="math notranslate nohighlight">\(n_1 + n_2 + n_3 + n_4 + n_5 = n = 8\)</span>.</p>
+<p>This allows us to better explain the number of <strong>permutations with repetitions</strong> (in the indistinguishable setting) as a product of combinations as we did in the previous section.</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\sigma}(n) = {n \choose n_1}\cdot {n - n_1 \choose n_2}\cdot {n - n_1 - n_2 \choose n_3}\cdots {n - n_1 - \ldots n_{p-1} \choose n_p}
+\;,
+\]</div>
+<p>since we take first <span class="math notranslate nohighlight">\(n_1\)</span> positions with the first element of the multiset, then we take <span class="math notranslate nohighlight">\(n_2\)</span> of the remaining <span class="math notranslate nohighlight">\(n - n_1\)</span> positions with the second element of the multiset, etc.</p>
+<p>In particular, when no repetitions are allowed all the elements in the (multi)set have just <em>one</em> copy: <span class="math notranslate nohighlight">\(n_1 = n_2 =\ldots n_p = 1\)</span>. Then we have the definition of  <strong>r-permutations</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+P(n,r) &amp;= n\cdot(n - n_1)\cdot(n - n_1 - n_2)\cdots \cdot(n - n_1 - n_2 -\ldots - n_{r})\\ 
+&amp;= n\cdot(n - 1)\cdot(n - 2)\cdots \cdot(n - r)\;.
+\end{align}
+\end{split}\]</div>
+<p>Then, using now</p>
+<div class="math notranslate nohighlight">
+\[
+S = \{1\cdot\text{T},\; 1\cdot\text{o},\; 1\cdot\text{m},\; 1\cdot\text{r},\; 1\cdot\text{w} \}\;,
+\]</div>
+<p><span class="math notranslate nohighlight">\(P(n=5,r)\)</span> gives the number of words of length <span class="math notranslate nohighlight">\(r\le n\)</span> that can be generated by using (once) the letters in <span class="math notranslate nohighlight">\(S\)</span>. Of course, “Tomorrow” never appears!</p>
+<p>In addition, we can use multisets to count <strong>r-permutations with repetition</strong> <span class="math notranslate nohighlight">\(P_\sigma(n,r) = n^{r}\)</span> in the distinguishable setting, simply by assuming that all the elements in the multiset <strong>have infinite copies</strong>, For instance let redefine <span class="math notranslate nohighlight">\(S\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+S = \{\infty\cdot\text{T},\; \infty\cdot\text{o},\; \infty\cdot\text{m},\; \infty\cdot\text{r},\; \infty\cdot\text{w} \}\;.
+\]</div>
+<p>Then, we have <span class="math notranslate nohighlight">\(n = 5\)</span> elements with infinite copies each and <span class="math notranslate nohighlight">\(r\)</span> positions they can occupy, <span style="color:#469ff8">we now call these positions as boxes with infinity capacity</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\underbrace{\square\;\square\;\square\ldots\square\;}_{r\;\text{times}}
+\]</div>
+<p>Since we have infinite copies of “T”, “o”, “m”, “r” and “w”, we have</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> choices to fill the first of the <span class="math notranslate nohighlight">\(n\)</span> positions.</p></li>
+<li><p>Again, we have <span class="math notranslate nohighlight">\(n\)</span> choices to fill the second of the <span class="math notranslate nohighlight">\(n\)</span> positions, etc.</p></li>
+</ul>
+<p>Then we have</p>
+<div class="math notranslate nohighlight">
+\[
+P_\sigma(n,r) = \underbrace{n\cdot n\cdot n\cdots n}_{r\;\text{times}} = n^r\;.
+\]</div>
+<p>In this latter case, “Tomorrow” appears if <span class="math notranslate nohighlight">\(r=8\)</span>.</p>
+<p>Summarizing so far, <span style="color:#469ff8">the permutations with repetition of a set are the permutations of a properly defined multiset!</span></p>
+</section>
+<section id="combinations-with-repetition">
+<h4>Combinations with repetition<a class="headerlink" href="#combinations-with-repetition" title="Permalink to this heading">#</a></h4>
+<p>Multisets are specially useful for defining <strong>combinations with repetition</strong> as <strong>combinations in a multiset</strong>.</p>
+<p>First of all, remember than the meaning of the combinatorial number <span style="color:#469ff8"><span class="math notranslate nohighlight">\({n\choose r}\)</span> is the number of subsets of <span class="math notranslate nohighlight">\(r-\)</span>elements of <em>any</em> set of <span class="math notranslate nohighlight">\(n\)</span> (different) elements</span>.</p>
+<p>Consider, for instance the set <span class="math notranslate nohighlight">\([n] = \{1,2,\ldots n\}\)</span> (a very useful notation to use from now on). Then, <span class="math notranslate nohighlight">\({n\choose 2}\)</span> is the number of <span class="math notranslate nohighlight">\(S_2\subseteq [n]\)</span> with <span class="math notranslate nohighlight">\(|S_2| = 2\)</span>, namely <span class="math notranslate nohighlight">\(S_2=\{(1,2),(1,3),\ldots (1,n)\}\)</span>. In general, for <span class="math notranslate nohighlight">\(S_r\subseteq [n]\)</span>, <span class="math notranslate nohighlight">\(|S_r| = {n\choose r}\)</span>. Actually, we know that <span class="math notranslate nohighlight">\(|S_0| + |S_1| + \ldots + |S_n| = 2^n\)</span> due to the bijection between the power set and <span class="math notranslate nohighlight">\(\{0,1\}^n\)</span>.</p>
+<p>Therefore, in terms of binary coding, a set <span class="math notranslate nohighlight">\(S_r\)</span> is given by the bynary numbers of <span class="math notranslate nohighlight">\(n\)</span> bits with <em>exactly</em> <span class="math notranslate nohighlight">\(r\)</span> ones (and <span class="math notranslate nohighlight">\(n-r\)</span> zeros). Then, we can distribute the <span class="math notranslate nohighlight">\(r\)</span> among the <span class="math notranslate nohighlight">\(n\)</span> positions. Consequently, we will have <span class="math notranslate nohighlight">\(n-r\)</span> zeros  distributed in <em>blocks</em> of <span class="math notranslate nohighlight">\(x_i\)</span> zeros each, that will be placed “before” and “after” every <span class="math notranslate nohighlight">\(i\)</span> position (denoted by <span class="math notranslate nohighlight">\(1^i\)</span>) of a <span class="math notranslate nohighlight">\(1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\underbrace{\square\square\ldots\square}_{x_1\; 0\text{s}}
+1^{1}
+\underbrace{\square\square\ldots\square}_{x_2\; 0\text{s}}
+1^{2}
+\underbrace{\square\square\ldots\square}_{x_3\; 0\text{s}}
+1^{3}
+\ldots
+\underbrace{\square\square\ldots\square}_{x_r\; 0\text{s}}
+1^{r}
+\underbrace{\square\square\ldots\square}_{x_{r+1}\; 0\text{s}}
+\;
+\]</div>
+<p>Note that choosing the <span class="math notranslate nohighlight">\(r\)</span> positions for the ones among the <span class="math notranslate nohighlight">\(n\)</span> available slots determines the placement of the zeros. In other words, the positions of the ones indicates what elements of <span class="math notranslate nohighlight">\([n]\)</span> belongs to a given subset. This is simply the definition of the combinatorial number</p>
+<div class="math notranslate nohighlight">
+\[
+{n \choose r} = \frac{n!}{r!(n-r)!} = P_{\sigma}(n) = \frac{n!}{n_1!n_2!}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_1 = r\)</span>, <span class="math notranslate nohighlight">\(n_2 = (n-r)\)</span> and <span class="math notranslate nohighlight">\(n_1 + n_2 = n\)</span>. In other words, <span class="math notranslate nohighlight">\({n\choose r}\)</span> is the number of <strong>permutations of the multiset</strong></p>
+<div class="math notranslate nohighlight">
+\[
+S_r = \{r\cdot 1, (n-r)\cdot 0\}
+\]</div>
+<p>Then, consider now the following multiset</p>
+<div class="math notranslate nohighlight">
+\[
+T = \{\infty\cdot x_1,\infty\cdot x_2,\ldots, \infty\cdot x_{m}\}\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(m = r + 1\)</span>. Then, <span style="color:#469ff8">the problem of finding all the sub-multisets of <span class="math notranslate nohighlight">\(T\)</span> of size say <span class="math notranslate nohighlight">\(k = n - r\)</span> can be posed in terms of finding the number of non-negative integer solutions to the equation</span></p>
+<div class="math notranslate nohighlight">
+\[
+x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,
+\]</div>
+<p>since we can solve this equation by taking <span class="math notranslate nohighlight">\(x_i\ge 0\)</span> of any of the <span class="math notranslate nohighlight">\(m\)</span> types, with the constraint that the sum of elements of all types in <em>exactly</em> <span class="math notranslate nohighlight">\(m\)</span>. We quantify this as follows:</p>
+<ul class="simple">
+<li><p>Therefore, in practice we only need <span class="math notranslate nohighlight">\(x_i\le k\)</span> (despite the number of copies in formally <span class="math notranslate nohighlight">\(\infty\)</span>). Indeed, finding a sub-multiset consist of mixing elements of some types <span class="math notranslate nohighlight">\(x_i\)</span> provided that the sum of all choices is <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p>In order to better visualize each sub-multiset, we consider <span class="math notranslate nohighlight">\(x_i\)</span> as a <strong>box of infinite capacity</strong> (in practice its maximum capacity is <span class="math notranslate nohighlight">\(k\)</span>). All the boxes are different and separated by a “<span class="math notranslate nohighlight">\(+\)</span>” which marks the change from box <span class="math notranslate nohighlight">\(x_{i-1}\)</span> to box <span class="math notranslate nohighlight">\(x_{i}\)</span> for <span class="math notranslate nohighlight">\(i=2,\ldots,m\)</span>, i.e. we have <span class="math notranslate nohighlight">\(m - 1\)</span> <strong>separators</strong>.</p></li>
+<li><p>This means that the <span class="math notranslate nohighlight">\(m - 1\)</span> separators must be taken into account although we cannot include
+them in the multiset <span class="math notranslate nohighlight">\(T\)</span> since they cannot be sequenced arbitrarily but appearing between two blocks/boxes <span class="math notranslate nohighlight">\(x_{i-1}\)</span> and <span class="math notranslate nohighlight">\(x_{i}\)</span>.</p></li>
+<li><p>To sum up, we have to count the number of <span class="math notranslate nohighlight">\(k\)</span>-<strong>combination</strong> of <span class="math notranslate nohighlight">\(k + (m - 1)\)</span> symbols (choosing exactly <span class="math notranslate nohighlight">\(k\)</span> elements). This number is defined as</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k } = {k + m - 1\choose n - 1}\;.
+\]</div>
+<p>and it is readed as “<span class="math notranslate nohighlight">\(m\)</span> <strong>multi-choose</strong> k”.</p>
+<p>Interstingly, since <span class="math notranslate nohighlight">\(m = r + 1\)</span> and <span class="math notranslate nohighlight">\(k = n - r\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k } = {(n - r) + (r + 1) - 1\choose n - r } = {n\choose n - r } = {n\choose r }\;,
+\]</div>
+<p>i.e. the number of <span class="math notranslate nohighlight">\(n-\)</span>bits numbers with exactly <span class="math notranslate nohighlight">\(r\)</span> bits set to one! (where <span class="math notranslate nohighlight">\(n = m - 1\)</span> and <span class="math notranslate nohighlight">\(r = n - k\)</span>).</p>
+<p>The, the <strong>combinations with repetition</strong> <span class="math notranslate nohighlight">\(C_{\sigma}(m,k)\)</span> of <span class="math notranslate nohighlight">\(k\)</span> elements of <span class="math notranslate nohighlight">\(m\)</span> types are:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{\sigma}(m,k) = {k + m - 1\choose k}\;,
+\]</div>
+<p>from the point of view of placing <span class="math notranslate nohighlight">\(k\)</span> elements of the multiset (with repetition), and</p>
+<div class="math notranslate nohighlight">
+\[
+C_{\sigma}(m,k) = {k + m - 1\choose m - 1}\;,
+\]</div>
+<p>from the point of view of placing the <span class="math notranslate nohighlight">\(m - 1\)</span> markers (also with repetition but constrained to separate elements of different types).</p>
+<p><strong>Minimal Capacities</strong>. So far, the <span class="math notranslate nohighlight">\(m\)</span> elements of the multiset have infinite capacity but these capacities <strong>are not lower-bounded</strong>. However, what happens if all the elements of the multiset must satisfy <span class="math notranslate nohighlight">\(x_i\ge a_i\)</span>?</p>
+<p>We want to find the non-negative integer solutions for the equation</p>
+<div class="math notranslate nohighlight">
+\[
+x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,\text{subject to}\; x_i\ge a_i\ge 0\; \forall i.
+\]</div>
+<p>Obviously, this problem also has a solution if <span class="math notranslate nohighlight">\(a_i\le k\)</span> for any <span class="math notranslate nohighlight">\(a_i\)</span>. Then, the strategy to follow is to:</p>
+<ul class="simple">
+<li><p><em>Give away</em> <span class="math notranslate nohighlight">\(a_i\)</span> elements to <span class="math notranslate nohighlight">\(x_i\)</span> box.</p></li>
+<li><p>Define new variables <span class="math notranslate nohighlight">\(y_i = x_i - a_i\)</span></p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A = a_1 + a_2 + a_3 + \ldots a_m\)</span>. Then, the <em>new</em> problem to solve becomes finding the non-negative integer solutions of</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+y_1 + y_2 + y_3 + \ldots + y_{m} = k - A\; 
+\]</div>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. Find the number of ways of giving <span class="math notranslate nohighlight">\(6\)</span> oranges to <span class="math notranslate nohighlight">\(3\)</span> kids so that no kid has more than one orange.</span></p>
+<ul class="simple">
+<li><p><span style="color:#347fc9">We commence by <em>identifying</em> what are the boxes and what the elements. In this case, the <span class="math notranslate nohighlight">\(3\)</span> kids are the boxes and the <span class="math notranslate nohighlight">\(6\)</span> oranges are the elements to fill the boxes (one box per kid).</span></p></li>
+<li><p><span style="color:#347fc9">Then, the (basic) problem to solve is to find the non-negative integer solutions of</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_1 + x_2 + x_3 = 6\;.
+\)</span>
+</span>
+<span style="color:#347fc9">The solution is <span class="math notranslate nohighlight">\(C_{\sigma}(m=3,k=6) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} = {6 + 3 - 1\choose 6} = {8\choose 6}= 8!/(6!\cdot 2!) = 28 \;.\)</span></p></li>
+</ul>
+<p><span style="color:#347fc9">The second part of the exercise consist of <em>discarding</em> from the <span class="math notranslate nohighlight">\(\left(\!\!{m\choose k}\!\!\right)=28\)</span> solutions those where no kid has more than <span class="math notranslate nohighlight">\(1\)</span> orange.</span></p>
+<p><span style="color:#347fc9">Then, let us count these solutions where <span class="math notranslate nohighlight">\(x_i\ge 2\)</span>. This implies defining <span class="math notranslate nohighlight">\(y_i = x_i - 3\)</span> and solving <span class="math notranslate nohighlight">\(y_1 + y_2 + y_3 = 6 - 2\cdot 3 = 0\)</span>, wich means that all <span class="math notranslate nohighlight">\(y_i = 0\)</span> (one solution), i.e. <span class="math notranslate nohighlight">\(x_i = 2\)</span>.</span></p>
+<p><span style="color:#347fc9">The <strong>solution</strong> is <span class="math notranslate nohighlight">\(28 - 1 = 27\)</span> ways of giving <span class="math notranslate nohighlight">\(6\)</span> oranges to <span class="math notranslate nohighlight">\(3\)</span> kids where none of them has one orange.</span></p>
+<p>Note that the second part of the above exercise could not be solved if no kid can have more than <span class="math notranslate nohighlight">\(2\)</span> oranges. For this case, we need another strategy.</p>
+<p><strong>Maximal Capacities</strong>.  If all boxes satify <span class="math notranslate nohighlight">\(0\le x_i\le a_i\)</span> (their capacity is <strong>upper bounded</strong>) we have multisets such as</p>
+<div class="math notranslate nohighlight">
+\[
+T = \{a_1\cdot x_1,a_2\cdot x_2,\ldots, a_m\cdot x_{m}\}\;,
+\]</div>
+<p>i.e. we want to find the non-negative integer solutions for the equation</p>
+<div class="math notranslate nohighlight">
+\[
+x_1 + x_2 + x_3 + \ldots + x_{m} = k\;,\text{s.t.}\; 0\le x_i\le a_i\;\forall i.
+\]</div>
+<p>Instead of counting first the combinations with infinite capacities and then subtract the <em>undeseriable combinations</em>, we focus on these latter ones as follows.</p>
+<p>The undesirable combinations where <span class="math notranslate nohighlight">\(x_i\)</span> is involved satisfy <span class="math notranslate nohighlight">\(x_i&gt; a_i\)</span>, that is <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span>.</p>
+<ul class="simple">
+<li><p>Let us define <span class="math notranslate nohighlight">\(A_i\)</span> corresponding to <span class="math notranslate nohighlight">\(x_i\)</span> as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A_i = \text{Sub-multiset of size}\; k\; \text{with}\; x_i\ge a_i + 1\; 
+\]</div>
+<ul class="simple">
+<li><p>We have <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_m\)</span> multisets, each one corresponding to a <em>constraint</em> <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span> and <span style="color:#469ff8">we want to count the number of combinations that  DO NOT SATISFY any of the constraints</span>. In other words, this is equivalent to find the size of the set:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m  = \overline{A_1\cup A_2\cup\ldots \cup A_m}\;.
+\]</div>
+<ul class="simple">
+<li><p>Computing <span class="math notranslate nohighlight">\(|\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m|\)</span> requires to use the <strong>inclusion-exclusion principle</strong>. Herein, we define it and later on we will explain it in detail. This principle simply comes from the generalizing the equation <span class="math notranslate nohighlight">\(|A\cup B| = |A| + |B| - |A\cap B|\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+|A_1\cup A_2\cup\ldots \cup A_m| &amp;= \sum_{i=1}^m|A_i| - \sum_{1\le i&lt; j\le m}|A_i\cap A_j|+ \sum_{1\le i&lt; j &lt; k\le m}|A_i\cap A_j\cap A_k|\\
+&amp;+\ldots + (-1)^m|A_1\cap A_2\cap\ldots \cap A_m|\;.
+\end{align}
+\end{split}\]</div>
+<p>The above equation states that for counting the elements of a union of sets:</p>
+<ul class="simple">
+<li><p>First count the elements of each set: <span class="math notranslate nohighlight">\(|A_1| + |A_2| + \ldots\)</span></p></li>
+<li><p>When doing so, if any pair of sets <span class="math notranslate nohighlight">\(|A_i\cap A_j|&gt;0\)</span> this means that some element are <em>over-counted</em> when doing <span class="math notranslate nohighlight">\(|A_j| + |A_j|\)</span>. Then, <span class="math notranslate nohighlight">\(|A_i\cap A_j|\)</span> should be discounted from the sum <span class="math notranslate nohighlight">\(\sum_{i=1}^m|A_i|\)</span>.</p></li>
+<li><p>Next, if any triplet of sets satisfies <span class="math notranslate nohighlight">\(|A_i\cap A_j\cap A_k|&gt;0\)</span>, where
+<span class="math notranslate nohighlight">\(|A_i\cap A_j|&gt;0\)</span>, this means that discounting that intersection must be compensated by adding <span class="math notranslate nohighlight">\(|A_i\cap A_j\cap A_k|\)</span>.</p></li>
+<li><p>Then, the progression continues by adding odd terms and subtracting even ones.</p></li>
+</ul>
+<p>As a result, let <span class="math notranslate nohighlight">\(S\)</span> a given set (in our case, the set of all the combinations of the multiset with infinite capacity) and <span class="math notranslate nohighlight">\(A_i\subseteq S\)</span>. Then, inclusion-exclusion principle is formulated as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+|S| = |A_1\cup A_2\cup\ldots \cup A_m| - 
+|\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m|\;
+\]</div>
+<p>In other words, the number of combinations which DO NOT SATISFY any restriction <span class="math notranslate nohighlight">\(x_i\ge a_i + 1\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+|\bar{A}_1\cap \bar{A}_2\cap\ldots  \cap\bar{A}_m| = |S| - |A_1\cup A_2\cup\ldots \cup A_m|\;.
+\]</div>
+<p>Them for counting these combinations we need to:</p>
+<ul class="simple">
+<li><p>Compute all the <span class="math notranslate nohighlight">\(|A_i|\)</span>
+and sum them. In particular, we have</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ |A_i| = \left(\!\!{m\choose k - (a_i + 1)}\!\!\right)\;.
+\]</div>
+<ul class="simple">
+<li><p>Compute all the <span class="math notranslate nohighlight">\(|A_i\cap A_j|\)</span> and discount them from the sum of <span class="math notranslate nohighlight">\(|A_i|\)</span></p></li>
+<li><p>And so on with <span class="math notranslate nohighlight">\(|A_i\cap A_j\cap A_k|\)</span>, etc.</p></li>
+</ul>
+<p>Lets do that in the following exercise.</p>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. We have several types of balls: <span class="math notranslate nohighlight">\(4\)</span> of them are red (R), <span class="math notranslate nohighlight">\(3\)</span> are green (G) and <span class="math notranslate nohighlight">\(2\)</span> are blue (R). Find the number of ways of getting <span class="math notranslate nohighlight">\(8\)</span> balls.
+</span>
+<span style="color:#347fc9">
+We have the multiset <span class="math notranslate nohighlight">\(T = \{4\cdot R, 3\cdot G, 2\cdot B\}\)</span>, i.e. <span class="math notranslate nohighlight">\(m = 3\)</span> (types of balls) and <span class="math notranslate nohighlight">\(k = 8\)</span> balls to take in total.<br />
+</span></p>
+<p><span style="color:#347fc9">We have to find all the non-negative integer solutions of: </span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_1 + x_2 + x_3 = 8\;\text{s.t.}\; 0\le x_1\le 4, 0\le x_2\le 3,0\le x_3\le 2\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us define the sub-multisets of the multiset with infinite capacity <span class="math notranslate nohighlight">\(T^{\ast}=\{\infty\cdot R,\infty\cdot G, \infty\cdot B\}\)</span> for the three constraints:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+ &amp; A_1 = \text{Sub-multiset of size}\; 8\; \text{with}\; x_1\ge 5\;\\
+ &amp; A_2 = \text{Sub-multiset of size}\; 8\; \text{with}\; x_2\ge 4\;\\
+ &amp; A_3 = \text{Sub-multiset of size}\; 8\; \text{with}\; x_3\ge 3\;\;.
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let <span class="math notranslate nohighlight">\(S\)</span> be the set of all the sub-multisets of size <span class="math notranslate nohighlight">\(8\)</span> of <span class="math notranslate nohighlight">\(T^{\ast}\)</span>. Its size is the multi-choose
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+|S| = \left(\!\!{m\choose k}\!\!\right) = \left(\!\!{3\choose 8}\!\!\right) = {10\choose 8} = 45\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+What is the size of each <span class="math notranslate nohighlight">\(A_i\)</span>? Well, by definition they are given by
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+|A_1| &amp; = \left(\!\!{m\choose k - (a_1 + 1)}\!\!\right)  = \left(\!\!{3\choose 8 - 5}\!\!\right) = \left(\!\!{3\choose 3}\!\!\right) = {5\choose 3}= 10\;.\\
+|A_2| &amp; = \left(\!\!{m\choose k - (a_2 + 1)}\!\!\right)  = \left(\!\!{3\choose 8 - 4}\!\!\right) = \left(\!\!{3\choose 4}\!\!\right) = {6\choose 4}= 15\;.\\
+|A_3| &amp; = \left(\!\!{m\choose k - (a_3 + 1)}\!\!\right)  = \left(\!\!{3\choose 8 - 3}\!\!\right) = \left(\!\!{3\choose 5}\!\!\right) = {7\choose 5}= 21\;.
+\end{align}
+\)</span><br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+However, finding the sizes of the binary intersections <span class="math notranslate nohighlight">\(|A_i\cap A_j|\)</span> this may be not so straight. For <span class="math notranslate nohighlight">\(A_1\cap A_2\)</span> it is becase we must satisfy both <span class="math notranslate nohighlight">\(x_1\ge 5\)</span> and <span class="math notranslate nohighlight">\(x_2\ge 4\)</span> but this exceeds our <em>budget</em> which is <span class="math notranslate nohighlight">\(k=8\)</span> and then <span class="math notranslate nohighlight">\(A_1\cap A_2 = \emptyset\)</span>. Then <span class="math notranslate nohighlight">\(|A_1\cap A_2|=0\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+However, for <span class="math notranslate nohighlight">\(A_1\cap A_3\)</span> we have that the constraints are <span class="math notranslate nohighlight">\(x_1\ge 5\)</span> and <span class="math notranslate nohighlight">\(x_3\ge 3\)</span> and the sum of the upper bounds <span class="math notranslate nohighlight">\(5 + 3 = 8\)</span> is equal to the budget. Therefore, *giving <span class="math notranslate nohighlight">\(5 + 3\)</span> balls to <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span> forces <span class="math notranslate nohighlight">\(x_2 = 0\)</span> and we have a unique combination <span class="math notranslate nohighlight">\((x_1=5, x_2 = 0, x_3=3)\)</span>. Therefore <span class="math notranslate nohighlight">\(|A_1\cap A_3|=1\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(A_2\cap A_3\)</span> must satisfy <span class="math notranslate nohighlight">\(x_2\ge 4\)</span> and <span class="math notranslate nohighlight">\(x_3\ge 3\)</span> and we have <span class="math notranslate nohighlight">\(4 + 3 = 7\)</span>. After setting <span class="math notranslate nohighlight">\(x_2 = 4\)</span> and <span class="math notranslate nohighlight">\(x_3 = 3\)</span>, we have solutions of the type <span class="math notranslate nohighlight">\((r_1, 4 + r_2, 3 + r_3)\)</span> that we can find by setting <span class="math notranslate nohighlight">\(y_2 = 4 - x_2\)</span>, <span class="math notranslate nohighlight">\(y_3 = 3 - x_3\)</span> and finding the solutions of <span class="math notranslate nohighlight">\(x_1 + y_2 + y_3 = 1\)</span>. The number of solutions is <span class="math notranslate nohighlight">\(|A_2\cap A_3|=\left(\!\!{m\choose 1}\!\!\right)  = \left(\!\!{3\choose 1}\!\!\right) = {3\choose 1}= 3\;.\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Finally, <span class="math notranslate nohighlight">\(A_1\cap A_2\cap A_3 = \emptyset\)</span>  and <span class="math notranslate nohighlight">\(|A_1\cap A_2\cap A_3|= 0\;.\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Summarizing, we have
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+|\bar{A_1}\cap\bar{A_2}\cap\bar{A_3}| &amp;= |S| - (|A_1| + |A_2| + |A_3|) + (|A_1\cap A_2| + |A_1\cap A_3| + |A_2\cap A_3|) - A_1\cap A_2\cap A_3|\\
+    &amp;= 45 - ( 10 + 15 + 21) + (0 + 1 + 3) - 0\\
+    &amp;= 45 - 46 + 4 - 0 = 3\;.
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+These solutions are: <span class="math notranslate nohighlight">\((4,3,1)\)</span>, <span class="math notranslate nohighlight">\((4,2,2)\)</span> and <span class="math notranslate nohighlight">\((3,3,2)\)</span>. Only these solutions satisfy
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_1 + x_2 + x_3 = 8\;\text{s.t.}\; 0\le x_1\le 4, 0\le x_2\le 3,0\le x_3\le 2\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e., the condition <span class="math notranslate nohighlight">\(x_1 + x_2 + x_3 = 8\)</span> forces us to report assignements close to the upper bounds.
+</span></p>
+</section>
+</section>
+</section>
+<section id="the-principle-of-exclusion-inclusion">
+<h2>The Principle of Exclusion-Inclusion<a class="headerlink" href="#the-principle-of-exclusion-inclusion" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Exclusion-Inclusion Principle (PEI)</strong> is a powerful tool in counting problems with constraints, i.e. when we have to over-count (include) and then remove (exclude) counts. The PIE is very useful for our Discrete Brain (see the aforementioned problem of counting combinations with repetitions under constraints). It is often considered a “naive” way of solving counting problems with constraints because its complexity is <span class="math notranslate nohighlight">\(O(2^n)\)</span> but it is very useful to understand the combinatorial nature of a problem such as <span style="color:#469ff8">counting paths in a grid with forbidden positions</span> as we will discover at the end of this section.</p>
+<figure class="align-center" id="pei1">
+<a class="reference internal image-reference" href="_sources/images/Topic1/PEI1.png"><img alt="_sources/images/Topic1/PEI1.png" src="_sources/images/Topic1/PEI1.png" style="width: 300px; height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">Binary encoding of all subsets.</span><a class="headerlink" href="#pei1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Consider the general setting in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEI1</span></code>, where we have <span class="math notranslate nohighlight">\(m=3\)</span> intersecting sets : <span class="math notranslate nohighlight">\(A_1 = A\)</span>, <span class="math notranslate nohighlight">\(A_2 = B\)</span>, <span class="math notranslate nohighlight">\(A_3 = C\)</span>. We commence by choosing a
+<em>useful coding</em> for each of the distinct subsets. For instance, <span class="math notranslate nohighlight">\(100\)</span> means the subset <span class="math notranslate nohighlight">\(A_1\cap\bar{A}_2\cap\bar{A}_3\)</span> (elements that only belong to <span class="math notranslate nohighlight">\(A_1\)</span>), where <span class="math notranslate nohighlight">\(101\)</span> means <span class="math notranslate nohighlight">\(A_1\cap\bar{A}_2\cap A_3\)</span>.</p>
+<p>Interestingly the aforementioned binary coding tells us how many times the elements in a given subset are <strong>over-counted</strong> (just take the numbers of ones in the code). This will be very useful from now on.</p>
+<section id="discounting-over-counts">
+<h3>Discounting over-counts<a class="headerlink" href="#discounting-over-counts" title="Permalink to this heading">#</a></h3>
+<p>Now let us start by counting the elements of the union <span class="math notranslate nohighlight">\(\bigcup_{i=1}^m A_i\)</span> of <span class="math notranslate nohighlight">\(m\)</span> sets <span class="math notranslate nohighlight">\(A_1,A_2,\ldots,A_m\)</span>
+by simply summing the elements of the individual sets:</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\bigcup_{i=1}^m A_i\right| = \sum_{i=1}^m \left|A_i\right|\;.
+\]</div>
+<p>According to <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEI1</span></code>, the binary codes in each subset indicates how many times are counted the elements in that subset. This results in</p>
+<p><span class="math notranslate nohighlight">\(
+A_1 = A = \{100, 110, 101, 111\}\;, 
+A_2 = B = \{010, 011, 110, 111\}\;,
+A_3 = C = \{001, 101, 111, 011\}
+\)</span></p>
+<p>i.e. so far our union can be see as the following multiset:</p>
+<p><span class="math notranslate nohighlight">\(
+A_1\cup A_2\cup A_3 = \{100, 010, 001, 2\cdot 110, 2\cdot 101, 2\cdot 011, 3\cdot 111\}
+\)</span></p>
+<p>Each <span class="math notranslate nohighlight">\(A_i\)</span> has elements counted once (<span class="math notranslate nohighlight">\(1\)</span> of them), twice (<span class="math notranslate nohighlight">\(2\)</span> of them) and three times (<span class="math notranslate nohighlight">\(1\)</span> of them).</p>
+<ul class="simple">
+<li><p>One of the elements counted twice must be removed.</p></li>
+<li><p>Two of the elements counted three times must be removed.</p></li>
+</ul>
+<p>To remove the elements that are counted twice, we remove the elements in all pairwise intersections: <span class="math notranslate nohighlight">\(A\cap B =\{110, 111\}\)</span>, <span class="math notranslate nohighlight">\(A\cap C = \{101, 111\}\)</span> and <span class="math notranslate nohighlight">\(B\cap C = \{011, 111\}\)</span> as indicated in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEIPairwise</span></code>. Note that the subset <span class="math notranslate nohighlight">\(111\)</span> is removed three times.</p>
+<figure class="align-center" id="peipairwise">
+<a class="reference internal image-reference" href="_sources/images/Topic1/PEIUnions.png"><img alt="_sources/images/Topic1/PEIUnions.png" src="_sources/images/Topic1/PEIUnions.png" style="width: 900px; height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">Pairwise excluding intersections.</span><a class="headerlink" href="#peipairwise" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>More generally, we do</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\bigcup_{i=1}^m A_i\right| = \sum_{i=1}^m \left|A_i\right| - \sum_{1\le i&lt;j\le m}|A_i\cap A_j|\;.
+\]</div>
+<p>After removing the number of elements in the pairwise intersections, the resulting union is</p>
+<p><span class="math notranslate nohighlight">\(
+A_1\cup A_2\cup A_3 = \{100, 010, 001, 110, 101,011\}\;.
+\)</span>
+i.e. the three copies of <span class="math notranslate nohighlight">\(111\)</span> are removed. This is why a correct counting can be include back <span class="math notranslate nohighlight">\(A_1\cap A_2\cap A_3 = \{111\}\)</span>.</p>
+<p>More generally, for <span class="math notranslate nohighlight">\(m=3\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\bigcup_{i=1}^m A_i\right| = \sum_{i=1}^m \left|A_i\right| - \sum_{1\le i&lt;j\le m}|A_i\cap A_j| + \sum_{1\le i&lt;j&lt;k\le m}|A_i\cap A_j\cap A_k|\;.
+\]</div>
+<p>For an arbitrary <span class="math notranslate nohighlight">\(m\)</span> we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+|A_1\cup A_2\cup\ldots \cup A_m| &amp;= \sum_{i=1}^m|A_i| - \sum_{1\le i&lt; j\le m}|A_i\cap A_j|+ \sum_{1\le i&lt; j &lt; k\le m}|A_i\cap A_j\cap A_k|\\
+&amp;+\ldots + (-1)^m|A_1\cap A_2\cap\ldots \cap A_m|\;.
+\end{align}
+\end{split}\]</div>
+<p>We may formulate the above formula more compactly. To do that, note that the size of the intersection increases linearly (<span class="math notranslate nohighlight">\(1,2,3,\ldots, m\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\bigcup_{i=1}^m A_i\right| = \sum_{k=1}^m (-1)^{k+1}\left(\sum_{1\le i_1&lt;i_2&lt;\ldots &lt;i_k\le m}\left|A_{i_1}\cap A_{i_2}\ldots A_{i_k}\right|\right)\;.
+\]</div>
+<p>We can be even more compact by realizing that <span style="color:#469ff8">the <span class="math notranslate nohighlight">\(k-\)</span>th term of the main sum relies on adding <span class="math notranslate nohighlight">\({m\choose k}\)</span> intersections.</span></p>
+<p>This means that computing the size of the union is equivalent of computing all the possible subsets of <span class="math notranslate nohighlight">\([m]=\{1,2,\ldots,m\}\)</span> but the empty set and intersect them as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\bigcup_{i=1}^m A_i\right| = \sum_{\emptyset\not\in J\subseteq [m]}(-1)^{|J|+1}\left|\bigcap_{j\in J}A_j\right|\;.
+\]</div>
+<p>Consequently, since we have to visit all the subsets of <span class="math notranslate nohighlight">\([m]\)</span>, this <em>naive</em> way of computing the size of the union can be done in <span class="math notranslate nohighlight">\(O(2^m)\)</span>.</p>
+</section>
+<section id="principle-of-exclusion-inclusion">
+<h3>Principle of Exclusion-Inclusion<a class="headerlink" href="#principle-of-exclusion-inclusion" title="Permalink to this heading">#</a></h3>
+<p>Once we have counted the size of the union of <span class="math notranslate nohighlight">\(m\)</span> sets, the <strong>PEI</strong> comes naturally: the number of elements which DO NOT BELONG to any of the sets <span class="math notranslate nohighlight">\(A_1,A_2,\ldots, A_m\)</span> (i.e. they belong to <span class="math notranslate nohighlight">\(\bar{A}_1\cap \bar{A}_2\cap\ldots\cap \bar{A}_m\)</span>) is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\bigcap_{i=1}^m \bar{A}_i\right| = |S| - \left|\bigcup_{i=1}^m \bar{A}_i\right|\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is a set including all the <span class="math notranslate nohighlight">\(A_i\)</span> (the <strong>universal set</strong>). In our above example of <code class="xref std std-numref docutils literal notranslate"><span class="pre">PEI1</span></code>, if <span class="math notranslate nohighlight">\(S = \bigcup_{i=1}^m A_i\)</span>, then the intersection of complements <span class="math notranslate nohighlight">\(\bar{A}_1\cap \bar{A}_2\cap\ldots\cap \bar{A}_m\)</span> can be encoded by <span class="math notranslate nohighlight">\(000\)</span> and this means that it has no elements inside any Venn diagram!</p>
+</section>
+<section id="counting-paths-in-grids">
+<h3>Counting paths in grids<a class="headerlink" href="#counting-paths-in-grids" title="Permalink to this heading">#</a></h3>
+<p>One of the most interesting applications of the PEI in AI is <strong>path counting</strong>. Given a <strong>grid</strong> (later on we will define it more formally) we are interested in counting (and also in actually finding) the paths between two <strong>nodes</strong> of this grid, say <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((m,n)\)</span>.</p>
+<figure class="align-center" id="grid1">
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid1.png"><img alt="_sources/images/Topic1/grid1.png" src="_sources/images/Topic1/grid1.png" style="width: 600px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span>.</span><a class="headerlink" href="#grid1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> we show a grid where <span class="math notranslate nohighlight">\(m=n=4\)</span>. A given <strong>node</strong> <span class="math notranslate nohighlight">\((i,j)\)</span> may be conected at most with <span class="math notranslate nohighlight">\(4\)</span> nodes: <span class="math notranslate nohighlight">\((i+1,j)\)</span> <span class="math notranslate nohighlight">\((i,j+1)\)</span>, <span class="math notranslate nohighlight">\((i-1,j)\)</span> and <span class="math notranslate nohighlight">\((i,j-1)\)</span>. This is why it is called a <strong>4-grid</strong> because each node can have at most <span class="math notranslate nohighlight">\(4\)</span> <strong>neighbors</strong>.</p>
+<p>However, <span style="color:#469ff8">for counting paths between the origin <span class="math notranslate nohighlight">\((0,0)\)</span> and the destination <span class="math notranslate nohighlight">\((m=4,n=4)\)</span> we are going to assume that these links are directed, i.e. a node <span class="math notranslate nohighlight">\((i,j)\)</span> can only travel either to <span class="math notranslate nohighlight">\((i+1,j)\)</span> or to <span class="math notranslate nohighlight">\((i,j+1)\)</span></span>.</p>
+<p>A <strong>path</strong> <span class="math notranslate nohighlight">\(\Gamma\)</span> is just a sequence (list) of nodes between the origin and the destination. For instance the path showed in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma = \{(0,0),(0,1),(1,1),(1,2),(2,2),(2,3),(3,3), (3,4),(4,4)\}
+\]</div>
+<p>Interestingly, for drawing a path in the above grid we can only perform two <strong>types of movements</strong> from a given node <span class="math notranslate nohighlight">\((i,j)\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta i\)</span>: <span class="math notranslate nohighlight">\((i,j)\rightarrow (i+1,j)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta j\)</span>: <span class="math notranslate nohighlight">\((i,j)\rightarrow (i,j+1)\)</span>.</p></li>
+</ul>
+<p>Then: <strong>How many paths</strong> do exist between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((m,n)\)</span>?</p>
+<p>Since we have to arrive to <span class="math notranslate nohighlight">\((m,n)\)</span> from <span class="math notranslate nohighlight">\((0,0)\)</span> <span style="color:#469ff8">we need to make <span class="math notranslate nohighlight">\(m\)</span> movements of type <span class="math notranslate nohighlight">\(\Delta i\)</span> and <span class="math notranslate nohighlight">\(n\)</span> movements of type <span class="math notranslate nohighlight">\(\Delta j\)</span> in a <strong>given order</strong>!</span></p>
+<p>Since order matters, we have to find permutations of <span class="math notranslate nohighlight">\(m+n\)</span> elements, where <span class="math notranslate nohighlight">\(m\)</span> of them are of type <span class="math notranslate nohighlight">\(\Delta i\)</span> and <span class="math notranslate nohighlight">\(n\)</span> of them are of type <span class="math notranslate nohighlight">\(\Delta j\)</span>. We have <strong>permutations with repetition</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\sigma}(m+n) = \frac{(m+n)!}{m!n!} = {m+n\choose n} = {m+n\choose m}\;,
+\]</div>
+<p>i.e., we can interpret the counting in terms of combinations, since we have <span class="math notranslate nohighlight">\({m+n\choose m}\)</span> ways of taking <span class="math notranslate nohighlight">\(m\)</span> elements of type <span class="math notranslate nohighlight">\(\Delta i\)</span> from <span class="math notranslate nohighlight">\(m + n\)</span> mixed elements, which is equivalent to the <span class="math notranslate nohighlight">\({m+n\choose n}\)</span> ways of taking <span class="math notranslate nohighlight">\(n\)</span> elements of type <span class="math notranslate nohighlight">\(\Delta j\)</span>.</p>
+<p>However, <strong>how is it applicable the PEI here?</strong></p>
+<p>Well, let use remove a node from the above grid, for instance the node <span class="math notranslate nohighlight">\((2,2)\)</span>. As a result of removing <span class="math notranslate nohighlight">\((2,2)\)</span>, the paper showed in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> cannot be built. Actually, the <strong>topology</strong> of the grid (the way its elements are connected independently of their <strong>layout</strong>, i.e. way we draw them) changes.</p>
+<figure class="align-center" id="grid2">
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid2.png"><img alt="_sources/images/Topic1/grid2.png" src="_sources/images/Topic1/grid2.png" style="width: 600px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing node <span class="math notranslate nohighlight">\((2,2)\)</span>.</span><a class="headerlink" href="#grid2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For instance, when represeting the grid after removing the node <span class="math notranslate nohighlight">\((2,2)\)</span> we have to circumvent this node, through one of its neighbors as we show in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code>.</p>
+<p>Then, the following question arises: <span style="color:#469ff8">How many paths do we have after removing a given node?</span></p>
+<p>Well, let <span class="math notranslate nohighlight">\(N_{ij}={i+j\choose i}\)</span> be the number of paths that make <span class="math notranslate nohighlight">\(i\)</span> movements of type <span class="math notranslate nohighlight">\(\Delta i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> movements of type <span class="math notranslate nohighlight">\(\Delta j\)</span>.</p>
+<p>Then, to find the number of paths in the grid of <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code>, <span style="color:#469ff8">we should discount all the paths that visit the removed node</span> <span class="math notranslate nohighlight">\((2,2)\)</span> from the <strong>universal set</strong> <span class="math notranslate nohighlight">\(S_{\Gamma}\)</span> of all paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span>, whose size is <span class="math notranslate nohighlight">\(N_{mn}=N_{44}={4 + 4\choose 4}=70\)</span>.</p>
+<p>The number of paths that visit <span class="math notranslate nohighlight">\((2,2)\)</span> is given by the <strong>product</strong> of</p>
+<ul class="simple">
+<li><p>The number of paths that go from <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((2,2)\)</span>: <span class="math notranslate nohighlight">\(N_{22}\)</span>.</p></li>
+<li><p>The number of paths that go from <span class="math notranslate nohighlight">\((2,2)\)</span> to <span class="math notranslate nohighlight">\((2,2)\)</span>: <span class="math notranslate nohighlight">\(N_{(4-2)(4-2)}=N_{22}\)</span>.</p></li>
+</ul>
+<p>Then, we have</p>
+<div class="math notranslate nohighlight">
+\[
+N_{22}\cdot N_{22} = {4\choose 2}\cdot {4\choose 2} = \left(\frac{4!}{2!2!}\right) = 6^2 = 36\;.
+\]</div>
+<p>It is a good exercise to locate in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1</span></code> the <span class="math notranslate nohighlight">\(6\)</span> paths going from <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((2,2)\)</span> using <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(\Delta i\)</span>-moves and <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(\Delta j\)</span>-moves. One of these paths is</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma = \{(0,0), (0,1), (1,1), (1,2), (2,2)\}\;.
+\]</div>
+<p>Therefore we have that the number of paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> in in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code> is</p>
+<div class="math notranslate nohighlight">
+\[
+\# \Gamma = N_{44} - N_{22}^2 = 70 - 36 = 34\;. 
+\]</div>
+<p>This is a naive application of the PEI, where <span class="math notranslate nohighlight">\(|S| = N_{44}\)</span>.</p>
+<p>However, let us remove a second node, say <span class="math notranslate nohighlight">\((0,3)\)</span>. The new grid is in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid2</span></code>:</p>
+<figure class="align-center" id="grid3">
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid3.png"><img alt="_sources/images/Topic1/grid3.png" src="_sources/images/Topic1/grid3.png" style="width: 600px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after removing nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>.</span><a class="headerlink" href="#grid3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As we can see, the highlighted path passing through <span class="math notranslate nohighlight">\((2,3)\)</span> has been redirected and from <span class="math notranslate nohighlight">\((1,3)\)</span> we jump to <span class="math notranslate nohighlight">\((1,4)\)</span>.</p>
+<p>Then, <strong>What is the number of paths after removing both <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>?</strong></p>
+<p>Applying the PEI for <span class="math notranslate nohighlight">\(m=2\)</span> sets we have to consider:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A_1\)</span>: paths visiting node <span class="math notranslate nohighlight">\((2,2)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_2\)</span>: paths visiting node <span class="math notranslate nohighlight">\((2,3)\)</span>.</p></li>
+</ul>
+<p>Therefore, we are interested in the number:</p>
+<div class="math notranslate nohighlight">
+\[
+\# \Gamma = N_{44} - (|A_1| + |A_2| - |A_1\cap A_2|). 
+\]</div>
+<p>We compute <span class="math notranslate nohighlight">\(|A_2|\)</span> as we computed <span class="math notranslate nohighlight">\(|A_1|\)</span>.</p>
+<p>The number of paths that visit <span class="math notranslate nohighlight">\((2,3)\)</span> is given by the <strong>product</strong> of</p>
+<ul class="simple">
+<li><p>The number of paths that go from <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((2,3)\)</span>: <span class="math notranslate nohighlight">\(N_{23}\)</span></p></li>
+<li><p>The number of paths that go from <span class="math notranslate nohighlight">\((2,3)\)</span> to <span class="math notranslate nohighlight">\((4,4)\)</span>: <span class="math notranslate nohighlight">\(N_{(4-2)(3-2)}=N_{21}\)</span>.</p></li>
+</ul>
+<p>Then, we have</p>
+<div class="math notranslate nohighlight">
+\[
+|A_2| = N_{23}\cdot N_{21} = {5\choose 3}\cdot {3\choose 1} = \left(\frac{5!}{3!2!}\right)\left(\frac{3!}{1!2!}\right) = 10\cdot 3 = 30\;.
+\]</div>
+<p>Finally: <strong>How to count the paths in <span class="math notranslate nohighlight">\(|A_1\cap A_2|\)</span>?</strong></p>
+<p>The number of paths passing both through <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> can be calculated by the product of the paths going from <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((2,2)\)</span>, then going from <span class="math notranslate nohighlight">\((2,2)\)</span> to <span class="math notranslate nohighlight">\((2,3)\)</span> and (finally) reaching <span class="math notranslate nohighlight">\((4,4)\)</span> from there. These are:</p>
+<div class="math notranslate nohighlight">
+\[
+|A_1\cap A_2| = N_{22}\cdot N_{(2-2)(3-2)}\cdot N_{(4-2)(3-2)} = N_{22}\cdot N_{01}\cdot N_{21} = 6\cdot 1\cdot 3 = 18\;.
+\]</div>
+<p>Finally, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\# \Gamma &amp;= N_{44} - (|A_1| + |A_2| - |A_1\cap A_2|)\\
+          &amp;= N_{44} - (N_{22} + N_{23}\cdot N_{21} - N_{22}\cdot N_{01}\cdot N_{21})\\
+          &amp;= 70 - (36 + 30 - 18) = 70 - 48 = 22\;.
+\end{align}
+\end{split}\]</div>
+<p>Deleting nodes can be interpreted in terms of marking them as <em>forbidden</em> nodes (or <em>obstacles</em> when planning robot motion) as in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1withobs</span></code></p>
+<figure class="align-center" id="grid1withobs">
+<a class="reference internal image-reference" href="_sources/images/Topic1/grid1withobs.png"><img alt="_sources/images/Topic1/grid1withobs.png" src="_sources/images/Topic1/grid1withobs.png" style="width: 600px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after marking nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> as forbidden or <em>obstacles</em>.</span><a class="headerlink" href="#grid1withobs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In general, as we remove more and more nodes, <span class="math notranslate nohighlight">\(m\)</span> increases and computing the intersections may become more complex. Later on, we will describe simpler ways of actually counting these paths and extracting them.</p>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. What happens in <code class="xref std std-numref docutils literal notranslate"><span class="pre">grid1withobs</span></code> if we declare that node <span class="math notranslate nohighlight">\((3,1)\)</span> is also an <em>obstacle</em>?</span></p>
+<p><span style="color:#347fc9">We only have to discount the paths of <span class="math notranslate nohighlight">\(A_3\)</span> (passing through <span class="math notranslate nohighlight">\((3,1)\)</span>) since <span class="math notranslate nohighlight">\(A_1\cap A_3 = A_2\cap A_3 = A_1\cap A_2\cap A_3 = \emptyset\)</span>.</span>
+<br></br>
+<span style="color:#347fc9"> We have:
+<span class="math notranslate nohighlight">\(
+|A_3| = N_{31}\cdot N_{(4-3)(4-1)} =  N_{31}\cdot N_{13} = {4 \choose 1}\cdot {4 \choose 3} = \frac{4!}{1!3!}\cdot \frac{4!}{3!1!} = 4\cdot 4 = 16\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Therefore, we have
+<br></br>
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\# \Gamma &amp;= N_{44} - (|A_1| + |A_2| + |A_3| - |A_1\cap A_2|)\\
+          &amp;= N_{44} - (N_{22} + N_{23}\cdot N_{21} + N_{31}\cdot N_{13} - N_{22}\cdot N_{01}\cdot N_{21})\\
+          &amp;= 70 - (36 + 30 + 16 - 18) = 70 - 64 = 6\;.
+\end{align}
+\)</span>
+</span></p>
+<p>It is a good additional exercise to identify why making <span class="math notranslate nohighlight">\((3,1)\)</span> an obstacle drops the count of paths from <span class="math notranslate nohighlight">\(22\)</span> to only <span class="math notranslate nohighlight">\(6\)</span>. Basically, <span class="math notranslate nohighlight">\((3,1)\)</span> reduces to <span class="math notranslate nohighlight">\(2\)</span> the number of paths flowing through the right of the figure, since it is in the same <em>row</em> of <span class="math notranslate nohighlight">\((2,2)\)</span>.</p>
+</section>
+</section>
+<section id="the-stirling-s-formula">
+<h2>The Stirling’s formula<a class="headerlink" href="#the-stirling-s-formula" title="Permalink to this heading">#</a></h2>
+<p>Computing <span class="math notranslate nohighlight">\(n!\)</span> can be impossible to do in a computer as <span class="math notranslate nohighlight">\(n\)</span> increases. There are memory constrains because we need to store a product of <span class="math notranslate nohighlight">\(n\)</span> numbers and this may lead to stack overflow.  There are also temporal constrains: even in the case of having infinite memory, computing two numbers of arbitrary length is not <span class="math notranslate nohighlight">\(O(1)\)</span>. If <span class="math notranslate nohighlight">\(n\)</span> has length <span class="math notranslate nohighlight">\(x\)</span>, it takes <span class="math notranslate nohighlight">\(O(x^{\log_2 3})\)</span> i.e. <span class="math notranslate nohighlight">\(O(x^{1.58})\)</span> using the Karatsuba divide-and-conquer algorithm (see Wikipedia article <a class="reference external" href="https://en.wikipedia.org/wiki/Karatsuba_algorithm">Karatsuba_algorithm</a>). Interestingly, <span class="math notranslate nohighlight">\(x=len(n)\)</span> grows with <span class="math notranslate nohighlight">\(O(\log_B n)\)</span>, where <span class="math notranslate nohighlight">\(B\)</span> is the base of <span class="math notranslate nohighlight">\(x\)</span>. As a result, computing the factorial <span class="math notranslate nohighlight">\(n!\)</span> takes <span class="math notranslate nohighlight">\(O(n\log n^{1.58})\)</span>.</p>
+<p>Stirling’s proved that <span class="math notranslate nohighlight">\(\text{as}\; n\rightarrow \infty, n!\approx  \left(\frac{n}{e}\right)^n\sqrt{2\pi n}\;.\)</span></p>
+<p>One may think that the above formula does not reduce the time complexity of the factorial since it involves a <span class="math notranslate nohighlight">\(n^n\)</span> product and obviouly <span class="math notranslate nohighlight">\(n!&lt;n^n\)</span>. However, for computing <span class="math notranslate nohighlight">\(n^n\)</span> (or in general <span class="math notranslate nohighlight">\(a^n\)</span>, i.e. an power with a natural exponent) we exploit the fact that all the factors are equal (the base) and we may play with the exponents. Actually, <span style="color:#469ff8">we only need to perform <span class="math notranslate nohighlight">\(O(\log_2 n)\)</span>, instead of <span class="math notranslate nohighlight">\(n\)</span>, products to calculate <span class="math notranslate nohighlight">\(n^n\)</span></span>.</p>
+<p><em>Proof</em>. An elegant way of proving the above assert is to estimate the minimal number of products needed to compute <span class="math notranslate nohighlight">\(a^n\)</span> for <span class="math notranslate nohighlight">\(n\in\mathbb{N}\)</span>. This method is usually maned <strong>fast exponentiation</strong> or <strong>exponentiation by squaring</strong>. The intuition is as follows. When factorizing <span class="math notranslate nohighlight">\(a^n\)</span> in as few terms as possible: (1) if the term has an even power, <span class="math notranslate nohighlight">\(a^{2k}\)</span>, take increasing values of <span class="math notranslate nohighlight">\(k=2,4,8,\ldots\)</span>, and keep the same <span class="math notranslate nohighlight">\(k\)</span> as far as possible; (2) if eventually you need a term with an odd power take simply <span class="math notranslate nohighlight">\(a\)</span>. For instance, for <span class="math notranslate nohighlight">\(n=9\)</span> make <span class="math notranslate nohighlight">\(a^9 =  a^4\cdot a^4\cdot a\)</span>.</p>
+<p>The above rationale leads naturally to the following recurrence relation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} T(a,n) = 
+\begin{cases}
+     
+     T(a^2,n/2)\;\text{if}\; n\; \text{is even} \\[2ex]
+     a\cdot T(a^2,(n-1)/2)\; \text{if}\; n\; \text{is odd} \\[2ex]
+     1\; \text{if}\; n=0
+\end{cases}
+\end{split}\]</div>
+<p>Consider the basic case where <span class="math notranslate nohighlight">\(n=2^k\)</span> is a power of <span class="math notranslate nohighlight">\(2\)</span>, i.e. <span class="math notranslate nohighlight">\(n_i\)</span> is even at each call <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(T\)</span> but at the last one <span class="math notranslate nohighlight">\(n_i=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+T(a,n) &amp;=  T(a^2, n/2)\\
+       &amp;=  T(a^4, n/4)\\
+       &amp;=  T(a^8, n/8)\\
+       &amp;=  T(a^{2^{k-1}}, n/2^{k-1})\\
+       &amp;=  T(a^{2^k}, 1)\\
+       &amp;=  a^{2^k}T(a^{2^k}\cdot a^{2^k}, 0)\\
+       &amp;=  a^{2^k}\cdot 1\\
+       &amp;=  a^{2^k}\\
+\end{align}
+\end{split}\]</div>
+<p>For instance, for <span class="math notranslate nohighlight">\(n=128=2^7\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+T(a,128) &amp;= T(a^2,64)\\
+         &amp;= T(a^4,32)\\ 
+         &amp;= T(a^8,16)\\ 
+         &amp;= T(a^{16}, 8)\\ 
+         &amp;= T(a^{32}, 4)\\ 
+         &amp;= T(a^{64}, 2)\\ 
+         &amp;= T(a^{128}, 1)\\
+         &amp;= a^{128}T(a^{128}\cdot a^{128},0)\\
+         &amp;= a^{128}\;.
+\end{align}
+\end{split}\]</div>
+<p>Note that for <span class="math notranslate nohighlight">\(n=2^k\)</span> we make <span class="math notranslate nohighlight">\(log_2(n) + 1=k + 1 \)</span> calls. The <span class="math notranslate nohighlight">\(k\)</span> multiplications (discarding the last one) are the following</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+a\cdot a &amp;= a^2\\ 
+a^2\cdot a^2 &amp;= a^4\\ 
+a^4\cdot a^4 &amp;= a^8\\
+a^8\cdot a^8 &amp;= a^{16}\\ 
+a^{16}\cdot a^{16} &amp;= a^{32}\\ 
+a^{32}\cdot a^{32} &amp;= a^{64}\\ 
+a^{64}\cdot a^{64} &amp;= a^{128}\;.
+\end{align}
+\end{split}\]</div>
+<p>What happens if <span class="math notranslate nohighlight">\(n\)</span> is not a power of 2, say <span class="math notranslate nohighlight">\(n=100\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+T(a,100) &amp;= T(a^2,50)\\ 
+         &amp;= T(a^4,25)\\ 
+         &amp;= a^4\cdot T(a^8,12)\\ 
+         &amp;= a^4\cdot T(a^{16},6)\\ 
+         &amp;= a^4\cdot T(a^{32},3)\\ 
+         &amp;= a^4\cdot a^{32} T(a^{64},1)\\
+         &amp;= a^4\cdot a^{32}\cdot a^{64}\cdot T(a^{64}\cdot a^{64},0)\\
+         &amp;= a^4\cdot a^{32}\cdot a^{64} \cdot 1\\
+         &amp;= a^{100}\;.
+\end{align}
+\end{split}\]</div>
+<p>we have <span class="math notranslate nohighlight">\(k=7\)</span> calls and <span class="math notranslate nohighlight">\(\log_2(2^{k-1})\le \log_2(100)\le \log_2(2^{k})\)</span>. The products are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+a\cdot a &amp;= a^2\\
+a^2\cdot a^2 &amp;= a^4\\ 
+a^4\cdot (a^4 \cdot a^4) &amp;= a^{12}\\ 
+a^4\cdot (a^8 \cdot a^8) &amp;= a^{20}\\ 
+a^4\cdot a^{32} \cdot a^{64} &amp;= a^{100}\;.
+\end{align}
+\end{split}\]</div>
+<p>Note that we add an extra product when the recurrence reaches an odd <span class="math notranslate nohighlight">\(n_i\)</span> in the <span class="math notranslate nohighlight">\(i-\)</span>th call. In general we have <span class="math notranslate nohighlight">\(O(\log_2 n)\)</span> products.  <span class="math notranslate nohighlight">\(\square\)</span></p>
+<p><strong>Using the Stirling’s Formula</strong>. Back to the Stirling approximation of the factorial,</p>
+<div class="math notranslate nohighlight">
+\[
+n! \sim \frac{n^n}{e^n}\sqrt{2\pi n}
+\]</div>
+<p>we have that both <span class="math notranslate nohighlight">\(n^n\)</span> (numerator) and <span class="math notranslate nohighlight">\(e^n\)</span> (denominator) can be computed efficiently. Similarly large combinatorial numbers such as <span class="math notranslate nohighlight">\({2n\choose n}\)</span> for large <span class="math notranslate nohighlight">\(n\)</span> can be computed efficiently as well (please try). In general the approximation of <span class="math notranslate nohighlight">\(n!\)</span> is very accurate even for small <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>However the interest of the Stirling’s formula goes beyond efficiency considerations:</p>
+<ul class="simple">
+<li><p><em>Simplicity</em>. The formula is composed of simple functions and this may allow us to design/prove bounds for certain combinatorial numbers. Later on, we will show this in conjunction with Newton’s binomial theorem.</p></li>
+</ul>
+<ul class="simple">
+<li><p><em>Complexity analysis</em>. We now that <span class="math notranslate nohighlight">\(O(n^n) &gt; O(n!)\)</span>, but <span style="color:#469ff8">what does grow faster, <span class="math notranslate nohighlight">\(e^n\)</span> or <span class="math notranslate nohighlight">\(n!\)</span>?.</span> The Stirling formula, or more precisely its logarithm, allows us to answer this question:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+log(n!)\sim \log\left(\frac{n^n}{e^n}\sqrt{2\pi n}\right) &amp;= \log(n^n) - \log(e^n) + \frac{1}{2}\log(n) + \frac{1}{2}log(2\pi)\\
+&amp;= n\log n - n + \frac{1}{2}\log n + \frac{1}{2}log(2\pi)\;.
+\end{align}
+\end{split}\]</div>
+<p>Herein, it is very useful to consider that for <span class="math notranslate nohighlight">\(n\ge 2\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+n\log n - n &lt; \log(n!) &lt; n\log n\;,
+\]</div>
+<p>and this leads to</p>
+<div class="math notranslate nohighlight">
+\[
+\log(n!)\sim n\log n\;.
+\]</div>
+<p>Finally, since the log is a monotonic function of its argument, let us now consider the ratio of the logarithms</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\log(n!)}{log(e^n)} = \frac{n\log n}{n} = \log(n)\;,
+\]</div>
+<p>which is positive for <span class="math notranslate nohighlight">\(n&gt;1\)</span>. Therefore, <span class="math notranslate nohighlight">\(O(n!) &gt; O(e^n)\)</span>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+<ul class="simple">
+<li><p><em>Information bounds</em>. It is well known that <span style="color:#469ff8">the minimal number of comparions to sort <span class="math notranslate nohighlight">\(n\)</span> numbers using a comparison sort alorithm is <span class="math notranslate nohighlight">\(\lceil \log(n!) \rceil\)</span>.</span> The intuition is given by the mergesort algorithm: take recursively <span class="math notranslate nohighlight">\(2\)</span> sublists of <span class="math notranslate nohighlight">\(n_i/2\)</span> elements and when the lists have a single element return the merging of adjacent lists. The number of comparisons to merge two lists are no more than <span class="math notranslate nohighlight">\(n_i\)</span>, and we have <span class="math notranslate nohighlight">\(\log_2 n\)</span> levels. Consequently, we perform at least <span class="math notranslate nohighlight">\(n\log_2 n\)</span> comparisons, i.e. we have <span class="math notranslate nohighlight">\(\Omega(n\log_2 n)\approx \Omega(\log(n!))\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+g &amp;= \int_a^b f(x)dx \label{eq1}\tag{1} \\
+a &amp;= b + c \label{eq2}\tag{2}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><em>Information theory</em>, in particular the combinatorial definition of entropy.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_sources"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-tree">Using a tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-combinations">Permutations and Combinations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-permutations-and-combinations">Linking Permutations and Combinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-repetitions">Allowing repetitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indistinguisable-elements">Indistinguisable elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-with-repetition">Permutations with repetition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multisets">Multisets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinations-with-repetition">Combinations with repetition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-exclusion-inclusion">The Principle of Exclusion-Inclusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discounting-over-counts">Discounting over-counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-exclusion-inclusion">Principle of Exclusion-Inclusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-in-grids">Counting paths in grids</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stirling-s-formula">The Stirling’s formula</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

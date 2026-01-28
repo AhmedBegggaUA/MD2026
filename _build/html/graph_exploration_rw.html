@@ -1,0 +1,789 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>16. Graph Exploration Random Walks &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'graph_exploration_rw';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="17. Graphs on real life" href="real_cases.html" />
+    <link rel="prev" title="15. Graph Exploration DFS" href="graph_exploration_dfs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Graph Exploration Random Walks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">17. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hitting_time.html">18. Hitting time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">19. Real cases dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">20. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">21. Assignment 07/24</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice July</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practica_julio.html">22. Recovery Practice</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/graph_exploration_rw.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Graph Exploration Random Walks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">16.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-random-walks-work">16.2. How Do Random Walks Work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-with-numpy">16.3. Implementation with NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-example">16.4. Visual Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-random-walk-algorithm">16.5. Testing Our Random Walk Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-random-walk-process">16.6. Visualizing the Random Walk Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-applications-of-random-walks">16.7. Practical Applications of Random Walks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">16.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">16.9. Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">16.9.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">16.9.2. Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">16.10. Submission</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="graph-exploration-random-walks">
+<h1><span class="section-number">16. </span>Graph Exploration Random Walks<a class="headerlink" href="#graph-exploration-random-walks" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">16.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>When working with graphs, Random Walks provide an alternative exploration strategy that mimics random movement through a network. In this notebook, we’ll implement Random Walks using NumPy and NetworkX to explore an unweighted, undirected graph and potentially find a path between nodes.</p>
+</section>
+<section id="how-do-random-walks-work">
+<h2><span class="section-number">16.2. </span>How Do Random Walks Work?<a class="headerlink" href="#how-do-random-walks-work" title="Permalink to this heading">#</a></h2>
+<p>Random Walks explore a graph by moving randomly from node to node:</p>
+<ol class="arabic simple">
+<li><p>We start at the source node and mark it as visited</p></li>
+<li><p>At each step, we randomly select one of the current node’s neighbors</p></li>
+<li><p>We move to that neighbor and add it to our path</p></li>
+<li><p>This process continues until we reach the target node or exceed a maximum number of steps</p></li>
+</ol>
+<p>Unlike BFS and DFS, Random Walks don’t guarantee finding the shortest path or even any path at all, but they are useful for sampling graph properties, simulating stochastic processes, and can be effective in very large graphs where systematic exploration is impractical.</p>
+</section>
+<section id="implementation-with-numpy">
+<h2><span class="section-number">16.3. </span>Implementation with NumPy<a class="headerlink" href="#implementation-with-numpy" title="Permalink to this heading">#</a></h2>
+<p>Remember, it is forbidden to use any built-in functions or libraries that implement Random Walks. You need to implement the algorithm from scratch using NumPy and standard Python lists. Any implementation that uses built-in Random Walk functions will be considered invalid.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">random_walk_numpy</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implementation of Random Walk using NumPy and standard Python lists</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    - graph: NetworkX graph (undirected, unweighted)</span>
+<span class="sd">    - source: Source node</span>
+<span class="sd">    - target: Target node</span>
+<span class="sd">    - max_steps: Maximum number of steps before giving up</span>
+<span class="sd">    - seed: Random seed for reproducibility</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - steps: Number of steps needed to find the solution</span>
+<span class="sd">    - path: List of nodes in the path from source to target</span>
+<span class="sd">    - success: Boolean indicating whether the target was found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">steps</span><span class="p">,</span> <span class="n">node_path</span><span class="p">,</span> <span class="n">success</span>
+</pre></div>
+</div>
+</section>
+<section id="visual-example">
+<h2><span class="section-number">16.4. </span>Visual Example<a class="headerlink" href="#visual-example" title="Permalink to this heading">#</a></h2>
+<p>Let’s create a simple undirected graph to visualize how the algorithm works:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_example_graph</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an example undirected graph for testing&quot;&quot;&quot;</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    
+    <span class="c1"># Add nodes (cities)</span>
+    <span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span> <span class="s1">&#39;Valencia&#39;</span><span class="p">,</span> <span class="s1">&#39;Sevilla&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilbao&#39;</span><span class="p">,</span> <span class="s1">&#39;Zaragoza&#39;</span><span class="p">]</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
+    
+    <span class="c1"># Add edges (no weights)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Barcelona&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Valencia&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Sevilla&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilbao&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Zaragoza&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span> <span class="s1">&#39;Valencia&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span> <span class="s1">&#39;Zaragoza&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Valencia&#39;</span><span class="p">,</span> <span class="s1">&#39;Sevilla&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Zaragoza&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilbao&#39;</span><span class="p">)</span>
+    <span class="p">]</span>
+    
+    <span class="c1"># Add the edges</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">G</span>
+
+<span class="c1"># Create and visualize the graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">create_example_graph</span><span class="p">()</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># Node positioning</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Undirected Graph of Spanish cities&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-our-random-walk-algorithm">
+<h2><span class="section-number">16.5. </span>Testing Our Random Walk Algorithm<a class="headerlink" href="#testing-our-random-walk-algorithm" title="Permalink to this heading">#</a></h2>
+<p>Let’s run our algorithm on this graph and see the results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define source and target nodes</span>
+<span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;Bilbao&#39;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Sevilla&#39;</span>
+
+<span class="c1"># Run Random Walk</span>
+<span class="n">rw_steps</span><span class="p">,</span> <span class="n">rw_path</span><span class="p">,</span> <span class="n">success</span> <span class="o">=</span> <span class="n">random_walk_numpy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Walk from </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of steps: </span><span class="si">{</span><span class="n">rw_steps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path found: </span><span class="si">{</span><span class="n">rw_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rw_path</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> edges&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Walk failed to find </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2"> within </span><span class="si">{</span><span class="n">rw_steps</span><span class="si">}</span><span class="s2"> steps.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Partial path: </span><span class="si">{</span><span class="n">rw_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compare with NetworkX (shortest path)</span>
+<span class="n">shortest_path</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">NetworkX result (shortest path):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shortest path: </span><span class="si">{</span><span class="n">shortest_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">shortest_path</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> edges&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check if Random Walk found the shortest path (unlikely)</span>
+<span class="k">if</span> <span class="n">success</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">rw_path</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">shortest_path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Random Walk found the shortest path by chance!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">success</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Random Walk found a valid path, but not the shortest one. Difference: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rw_path</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">shortest_path</span><span class="p">)</span><span class="si">}</span><span class="s2"> edges&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizing-the-random-walk-process">
+<h2><span class="section-number">16.6. </span>Visualizing the Random Walk Process<a class="headerlink" href="#visualizing-the-random-walk-process" title="Permalink to this heading">#</a></h2>
+<p>Let’s visualize the path that the Random Walk finds:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_random_walk_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Visualizes the random walk path with arrows indicating direction&quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    
+    <span class="c1"># Create a copy of the graph for visualization</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    
+    <span class="c1"># Create directed edges for the path to show the walk direction</span>
+    <span class="n">path_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="c1"># Draw all nodes</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    
+    <span class="c1"># Highlight the nodes in the path</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;#ff9999&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    
+    <span class="c1"># Draw all edges in gray</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+    <span class="c1"># Draw the random walk path with arrows</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span>
+        <span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> 
+        <span class="n">edgelist</span><span class="o">=</span><span class="n">path_edges</span><span class="p">,</span> 
+        <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> 
+        <span class="n">width</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> 
+        <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Show arrows for direction</span>
+        <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-|&gt;&#39;</span><span class="p">,</span>  <span class="c1"># Arrow style</span>
+        <span class="n">arrowsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+        <span class="n">connectionstyle</span><span class="o">=</span><span class="s1">&#39;arc3,rad=0.1&#39;</span>  <span class="c1"># Curved edges to show direction better</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Add numbers to show the order of steps</span>
+    <span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">path_edges</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path_edges</span><span class="p">))}</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span>
+        <span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> 
+        <span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">,</span> 
+        <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> 
+        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Draw node labels</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Visualize the Random Walk path with arrows</span>
+<span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+    <span class="n">visualize_random_walk_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">rw_path</span><span class="p">,</span> <span class="s2">&quot;Random Walk Path with Step Numbers&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="practical-applications-of-random-walks">
+<h2><span class="section-number">16.7. </span>Practical Applications of Random Walks<a class="headerlink" href="#practical-applications-of-random-walks" title="Permalink to this heading">#</a></h2>
+<p>Random Walks have many practical applications in various fields:</p>
+<ol class="arabic simple">
+<li><p><strong>PageRank Algorithm</strong>: Google’s original algorithm uses random walks to rank web pages based on the probability of a random surfer visiting them.</p></li>
+<li><p><strong>Recommendation Systems</strong>: Random walks on user-item graphs can be used to generate personalized recommendations.</p></li>
+<li><p><strong>Network Sampling</strong>: Random walks provide a way to sample nodes from large networks when complete exploration is impractical.</p></li>
+<li><p><strong>Community Detection</strong>: Random walk-based metrics can identify densely connected communities in networks.</p></li>
+</ol>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">16.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>In this notebook, we have explored the Random Walk algorithm implemented using NumPy and NetworkX. Random Walks provide a stochastic approach to graph traversal that differs fundamentally from deterministic methods like BFS and DFS. While random walks do not guarantee finding the shortest path or even any path at all, they have several advantages:</p>
+<ol class="arabic simple">
+<li><p>They require minimal memory as they only need to track the current position and path</p></li>
+<li><p>They can be effective for exploring very large graphs where systematic traversal is impractical</p></li>
+<li><p>They model many natural and social processes that involve random movement</p></li>
+<li><p>They form the basis for many important algorithms in recommendation systems, web ranking, and network analysis</p></li>
+</ol>
+<p>Our implementation demonstrates how random walks behave in graphs and highlights the trade-off between deterministic exploration and stochastic sampling. The visualization of the walk paths provides an intuitive understanding of how randomness affects exploration patterns. This algorithm is essential in many applications, including PageRank, recommendation systems, and Markov Chain Monte Carlo methods.</p>
+</section>
+<section id="exercise">
+<h2><span class="section-number">16.9. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1">
+<h3><span class="section-number">16.9.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<p>After implementing the Random Walk algorithm using NumPy, now it’s time to understand the algorithm. What we want you to do is to explain the algorithm in your own words, and try to execute each step of the algorithm, showing print statements for each step. This will help you understand the algorithm better and see how it works in practice.</p>
+</section>
+<section id="exercise-2">
+<h3><span class="section-number">16.9.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<p>Apply the Random Walk algorithm to the synthetic graphs that you generated in the previous notebook, and discuss the results. How does the algorithm perform on these graphs? In what cases might Random Walks be more appropriate than BFS or DFS? Pay attention to the differences in path lengths and the nature of the paths found by each algorithm.</p>
+</section>
+</section>
+<section id="submission">
+<h2><span class="section-number">16.10. </span>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<p>For the delivery of the practice 3, what you will be asked to do is to make a zip (name_name.zip) containing 4 notebooks: a first notebook containing the generation section, a second notebook containing BFS, a third notebook containing the DFS algorithm and a fourth notebook containing the Random Walk algorithm.</p>
+<p>At the end the zip should be like this when you unzip it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>name_surname.zip
+├──<span class="w"> </span>graph_exploration_bfs.ipynb
+├──<span class="w"> </span>graph_exploration_dfs.ipynb
+├──<span class="w"> </span>graph_exploration_rw.ipynb
+└──<span class="w"> </span>graph_exploration_generation.ipynb
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="graph_exploration_dfs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Graph Exploration DFS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="real_cases.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Graphs on real life</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">16.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-random-walks-work">16.2. How Do Random Walks Work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-with-numpy">16.3. Implementation with NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-example">16.4. Visual Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-our-random-walk-algorithm">16.5. Testing Our Random Walk Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-random-walk-process">16.6. Visualizing the Random Walk Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-applications-of-random-walks">16.7. Practical Applications of Random Walks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">16.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">16.9. Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">16.9.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">16.9.2. Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">16.10. Submission</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

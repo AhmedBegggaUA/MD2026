@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>20. Assignment 06/24 &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ExamJune24';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="21. Assignment 07/24" href="ExamJuly24.html" />
+    <link rel="prev" title="19. Real cases dataset" href="real_cases_dataset.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_rw.html">16. Graph Exploration Random Walks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">17. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hitting_time.html">18. Hitting time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">19. Real cases dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">21. Assignment 07/24</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice July</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practica_julio.html">22. Recovery Practice</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ExamJune24.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment 06/24</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-plates">20.1. Number of plates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-commettee">20.2. The multi-Choose Commettee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-independent-trials">20.3. Number of independent trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lollipop-graph">20.4. The Lollipop graph</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="assignment-06-24">
+<h1><span class="section-number">20. </span>Assignment 06/24<a class="headerlink" href="#assignment-06-24" title="Permalink to this heading">#</a></h1>
+<section id="number-of-plates">
+<h2><span class="section-number">20.1. </span>Number of plates<a class="headerlink" href="#number-of-plates" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. In the EU, car plates are composed by concatenating <span class="math notranslate nohighlight">\(4\)</span> digits <span class="math notranslate nohighlight">\(0..6\)</span> and <span class="math notranslate nohighlight">\(3\)</span> letters <span class="math notranslate nohighlight">\(A..Z\)</span>. <strong>How many different plates</strong> can be have? Justify your answer!
+<br></br>
+Let us apply the <strong>product rule</strong> for decomposing the problem into two parts.
+<br></br>
+In the first part, we calculate the number of permutations with repetition of <span class="math notranslate nohighlight">\(10\)</span> digits taken in groups of <span class="math notranslate nohighlight">\(4\)</span> elements each. This is: <span class="math notranslate nohighlight">\(10^4\)</span>.
+<br></br>
+In the second part, se calculate the number of permutations with repetition of <span class="math notranslate nohighlight">\(26\)</span> letters taken in groups of <span class="math notranslate nohighlight">\(3\)</span> elements each. This is <span class="math notranslate nohighlight">\(26^3\)</span>
+<br></br>
+The final result is <span class="math notranslate nohighlight">\(10^4\cdot 26^3 = 175,760\)</span>.
+</span></p>
+</section>
+<section id="the-multi-choose-commettee">
+<h2><span class="section-number">20.2. </span>The multi-Choose Commettee<a class="headerlink" href="#the-multi-choose-commettee" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. We have <span class="math notranslate nohighlight">\(7\)</span> women and <span class="math notranslate nohighlight">\(9\)</span> men on the faculty. How many ways are to create a committee of <span class="math notranslate nohighlight">\(5\)</span> members if: </span></p>
+<p><span style="color:#347fc9"><strong>a)</strong> At least one woman must be on the committee.</span>
+<br></br>
+<span style="color:#347fc9"><strong>b)</strong> At least one woman and at least one man must be on the committee.</span>
+<br></br>
+<span style="color:#347fc9">First of all, we identify the elements of the problem: two variables <span class="math notranslate nohighlight">\(x_1\)</span> (for women) and <span class="math notranslate nohighlight">\(x_2\)</span> (for men) with respective capacities <span class="math notranslate nohighlight">\(7\)</span> and <span class="math notranslate nohighlight">\(8\)</span>. As we need <span class="math notranslate nohighlight">\(5\)</span> members for the commettee, we have<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+ x_1 + x_2 = 5\;.
+ \)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">The <strong>general solution</strong> (without constraints) is
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+C_{\sigma}(m=2,k=5) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} = {5 + 2 - 1\choose 5} = {6\choose 5}= 6!/(5!\cdot 1!) = 6 \;.
+\)</span>
+</span>
+<br></br></p>
+<p><span style="color:#347fc9"><strong>a)</strong> We have a minimal capacity for women <span class="math notranslate nohighlight">\(x_1\ge 1\;\)</span>. Then, we assign one woman and solve the problem <span class="math notranslate nohighlight">\(y_1 + x_2 = 5 - 1= 4\)</span>, where <span class="math notranslate nohighlight">\(y_1 = x_1 - 1\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">The <strong>solutions</strong> is <span class="math notranslate nohighlight">\(C_{\sigma}(m=2,k=4) = \left(\!\!{2\choose 4}\!\!\right) = {2 + 4 - 1\choose 4} = {5\choose 4} = 5!/(4!\cdot 1!) = 5\;\)</span>. The <span class="math notranslate nohighlight">\(5\)</span> possible compositions of the commettee (wrt the <span class="math notranslate nohighlight">\(y_1\)</span>s and mapped to <span class="math notranslate nohighlight">\(x_1=y_1 + 1\)</span> after undoing the change of variable) are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp; (0\;4)\rightarrow (1\;4)\\
+&amp; (1\;3)\rightarrow (2\;3)\\
+&amp; (2\;2)\rightarrow (3\;2)\\
+&amp; (3\;1)\rightarrow (4\;1)\\
+&amp; (4\;0)\rightarrow (5\;0)\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"><strong>b)</strong> We have a minimal capacity for women <span class="math notranslate nohighlight">\(x_1\ge 1\;\)</span> and men <span class="math notranslate nohighlight">\(x_2\ge 1\;\)</span>. Then, we assign one woman and one man and solve the problem <span class="math notranslate nohighlight">\(y_1 + y_2 = 5 - 2= 3\)</span>, where <span class="math notranslate nohighlight">\(y_i = x_i - 1\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">The <strong>solutions</strong> is <span class="math notranslate nohighlight">\(C_{\sigma}(m=2,k=3) = \left(\!\!{2\choose 3}\!\!\right) = {2 + 3 - 1\choose 3} = {4\choose 3} = 4!/(3!\cdot 1!) = 4\;\)</span>. The <span class="math notranslate nohighlight">\(4\)</span> possible compositions of the commettee (wrt the <span class="math notranslate nohighlight">\(y_i\)</span>s and mapped to <span class="math notranslate nohighlight">\(x_i=y_i + 1\)</span> after undoing the changes of variable) are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp; (0\;3)\rightarrow (1\;4)\\
+&amp; (1\;2)\rightarrow (2\;3)\\
+&amp; (2\;1)\rightarrow (3\;2)\\
+&amp; (3\;0)\rightarrow (4\;1)\\
+\end{align}
+\)</span>
+</span>
+<br></br></p>
+</section>
+<section id="number-of-independent-trials">
+<h2><span class="section-number">20.3. </span>Number of independent trials<a class="headerlink" href="#number-of-independent-trials" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. It is well known that the Binomial distribution <span class="math notranslate nohighlight">\(B(n,p)\)</span> converges to the Gaussian distribution for large values of <span class="math notranslate nohighlight">\(n\)</span>.
+<br></br>
+Given <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> and <span class="math notranslate nohighlight">\(p=q\)</span>, <strong>how many indendent trials <span class="math notranslate nohighlight">\(n\)</span> do we need</strong> so that the probability of having not more than <span class="math notranslate nohighlight">\(E(X)+ 1\)</span> successes is <span class="math notranslate nohighlight">\(0.6554\)</span>?
+</span>
+<br></br>
+<span style="color:#347fc9">
+The expectation of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(E(X)=np\)</span>. Therefore we need to find <span class="math notranslate nohighlight">\(n\)</span> so that <span class="math notranslate nohighlight">\(p(X\le np+1)=0.6554\)</span>. This probability is a clue to uncover <span class="math notranslate nohighlight">\(n\)</span> since paying attention to the Normalization:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\phi\left(\frac{np + 1 - np}{\sqrt{npq}}\right) = 0.6554\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+If we look at the table, we know that the point having an area of <span class="math notranslate nohighlight">\(0.6554\)</span> is <span class="math notranslate nohighlight">\(z=0.4\)</span>. As a result, we have
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\frac{np + 1 - np}{\sqrt{npq}} = \frac{1}{\sqrt{npq}} = 0.4 \;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This leads to
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+1 &amp;= 0.4\sqrt{npq}\\
+  &amp;= (0.4)^2\cdot npq\\
+  &amp;= (0.4)^2\cdot np^2\\
+  &amp;= (0.4)^2n\cdot\frac{1}{4}\\
+  &amp;= \frac{0.16}{4}n\\
+  &amp;= 0.04n\Rightarrow\;\; n = 25\;. 
+\end{align}
+\)</span>
+</span>
+<br></br></p>
+</section>
+<section id="the-lollipop-graph">
+<h2><span class="section-number">20.4. </span>The Lollipop graph<a class="headerlink" href="#the-lollipop-graph" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">The <strong>Lollipop Graph</strong> <span class="math notranslate nohighlight">\(L_{m,n}\)</span> results from combining a <strong>complete graph</strong> (without loops)  <span class="math notranslate nohighlight">\(K_m\)</span> of <span class="math notranslate nohighlight">\(m\)</span> nodes and a <strong>path graph</strong> <span class="math notranslate nohighlight">\(P_n\)</span> of <span class="math notranslate nohighlight">\(n\)</span> nodes. For instance, <span class="math notranslate nohighlight">\(L_{3,2}\)</span> results from sticking <span class="math notranslate nohighlight">\(K_3\)</span> to <span class="math notranslate nohighlight">\(P_2\)</span>.
+<br></br>
+In <a class="reference internal" href="#lollipop"><span class="std std-numref">Fig. 20.1</span></a> we show the non-trivial eigevector on the Laplacian, the spectrum <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> and the spectrum <span class="math notranslate nohighlight">\(\lambda_i\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\phi_i\)</span> of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>.
+</span>.</p>
+<figure class="align-center" id="lollipop">
+<a class="reference internal image-reference" href="_images/Lollipop.png"><img alt="_images/Lollipop.png" src="_images/Lollipop.png" style="width: 820px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(L_{3,2}\)</span>. Normalized Laplacian’s spectrum, Laplacian spectrum and and non-trivial eigenvectors.</span><a class="headerlink" href="#lollipop" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#347fc9"><strong>a) How different is the spectrum</strong> <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of its normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> with respect to those of the <strong>Path graph</strong> <span class="math notranslate nohighlight">\(P_5\)</span> and the <strong>complete graph</strong> (without loops) <span class="math notranslate nohighlight">\(K_5\)</span>?. Is its spectrum closer to that of a path or to that of a complete graph? In particular justify if your decision changes if you only compares the <strong>spectral gaps</strong> (Fiedler values). Are the closer graphs optimally <strong>cut similarly</strong>?
+</span><br />
+<br></br>
+<span style="color:#347fc9">
+Considering that for a path we have a spectra <span class="math notranslate nohighlight">\(1 - \cos\frac{\pi k}{n-1}\)</span>, <span class="math notranslate nohighlight">\(k=0,1,\ldots,n-1\)</span>, for <span class="math notranslate nohighlight">\(P_5\)</span> we get <span class="math notranslate nohighlight">\(\tilde{\lambda}_i=[0\;\; 0.29\;\; 1\;\; 1.71\;\; 2]\)</span>.
+<br></br>
+However, for the complete graph, all the non-trivial values are <span class="math notranslate nohighlight">\(\frac{n}{n-1}\)</span>. For <span class="math notranslate nohighlight">\(K=5\)</span> we get <span class="math notranslate nohighlight">\(\tilde{\lambda}_i=[0\;\; 1.25\;\; 1.25\;\; 1.25\;\; 1.25]\)</span>.
+<br></br>
+Then, as we have <span class="math notranslate nohighlight">\(\tilde{\lambda}_i=[0\;\; 0.35\;\; 1.3\;\; 1.5\;\; 1.85]\)</span> for <span class="math notranslate nohighlight">\(L_{3,2}\)</span> it becomes clear that the lollipop graph is <strong>“spectrally” closer to a path than to a complete graph!</strong>
+<br></br>
+Concerning the difference between the spectral gaps, the Fiedler value of <span class="math notranslate nohighlight">\(L_{3,2}\)</span> is <span class="math notranslate nohighlight">\(0.35\)</span> vs <span class="math notranslate nohighlight">\(0.29\)</span> for <span class="math notranslate nohighlight">\(P_5\)</span> and <span class="math notranslate nohighlight">\(1.25\)</span> for <span class="math notranslate nohighlight">\(K_5\)</span>. Only looking at the spectral gaps we can see that lollipop graph is far from being a complete graph. Actually the community <span class="math notranslate nohighlight">\(\{0,1,2\}\)</span> is clearly partitioned from <span class="math notranslate nohighlight">\(\{3,4\}\)</span> as it would happen in the Path graph.
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>b) Compute the ratio-cut losses of the partitions</strong> induced by each non-trivial eigenvector and justify its optimality. Consider zero values as positive ones! Draw the cuts.
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_2\)</span> induces the partition <span class="math notranslate nohighlight">\(A_2=\{0,1,2\}\)</span>, <span class="math notranslate nohighlight">\(B_2=\{3,4\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_2,B_2)=1\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_2,B_2) = \frac{\text{cut}(A_2,B_2)}{|A_2|} + \frac{\text{cut}(A_2,B_2)}{|B_2|} = \frac{1}{3} + \frac{1}{2} = \frac{5}{6} = 0.83\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_3\)</span> induces the partition <span class="math notranslate nohighlight">\(A_3=\{0,1,4\}\)</span>, <span class="math notranslate nohighlight">\(B_2=\{2,3\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_3,B_3)=2+1=3\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_3,B_3) = \frac{\text{cut}(A_3,B_3)}{|A_3|} + \frac{\text{cut}(A_3,B_3)}{|B_3|} = \frac{3}{3} + \frac{3}{2} = \frac{5}{2} = 2.5\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_4\)</span> induces the partition <span class="math notranslate nohighlight">\(A_4=\{0,2,3\}\)</span>, <span class="math notranslate nohighlight">\(B_2=\{1,4\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_4,B_4)=2+1=3\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_4,B_4) = \frac{\text{cut}(A_4,B_4)}{|A_4|} + \frac{\text{cut}(A_4,B_4)}{|B_4|} = \frac{3}{3} + \frac{3}{2} = \frac{5}{2} = 2.5\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_5\)</span> induces the partition <span class="math notranslate nohighlight">\(A_5=\{0,1,3\}\)</span>, <span class="math notranslate nohighlight">\(B_5=\{2,4\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_4,B_4)=3+1=4\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_5,B_5) = \frac{\text{cut}(A_5,B_5)}{|A_5|} + \frac{\text{cut}(A_5,B_5)}{|B_4|} = \frac{4}{3} + \frac{4}{2} = \frac{10}{3} = 3.33\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Comment</strong>. We draw the cuts in <a class="reference internal" href="#lollipopcuts"><span class="std std-numref">Fig. 20.2</span></a> and after comparing the ratio-cut losses, we see that they are consistent with the partitions of the eigenvectors. The optimal partition is given by the Fiedlear vector with cost ·<span class="math notranslate nohighlight">\(0.83\)</span> and the ratio cuts  become increasing until <span class="math notranslate nohighlight">\(\phi_5\)</span> with the worse cut!
+</span>
+<br></br></p>
+<figure class="align-center" id="lollipopcuts">
+<a class="reference internal image-reference" href="_images/LollipopCuts.png"><img alt="_images/LollipopCuts.png" src="_images/LollipopCuts.png" style="width: 820px; height: 140px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20.2 </span><span class="caption-text"><span class="math notranslate nohighlight">\(L_{3,2}\)</span>. Cuts inferred from the non-trivial eigenvectors.</span><a class="headerlink" href="#lollipopcuts" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#347fc9"><strong>c)Approximate the commute times</strong> between nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\)</span> and between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span>. Use only the Fiedler value and vector (use 2 decimals). Justify the results. Why are they different if so?
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{vol}(G) = 2 + 2 + 3 + 2 + 1 = 10\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,2)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(2)]^2 = 10\cdot\frac{1}{0.35}[0.41-0.20]^2 = 1.26\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,4)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(4)]^2 = 10\cdot\frac{1}{0.35}[0.41-(-0.70)]^2 = 35.2\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Comment</strong>. The CT between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span> is really larger than to <span class="math notranslate nohighlight">\(2\)</span> which is in the same communinity. To reach node <span class="math notranslate nohighlight">\(4\)</span> the random walk must go outside the community and travel through the path which takes a lot of time. Similarly with comming back.
+</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="real_cases_dataset.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Real cases dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ExamJuly24.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Assignment 07/24</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-plates">20.1. Number of plates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-commettee">20.2. The multi-Choose Commettee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-independent-trials">20.3. Number of independent trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lollipop-graph">20.4. The Lollipop graph</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

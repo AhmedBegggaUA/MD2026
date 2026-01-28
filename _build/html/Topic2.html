@@ -1,0 +1,2991 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Probability &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topic2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Introduction to the practical part of MD2025" href="practice_intro.html" />
+    <link rel="prev" title="2. Combinatorics as counting" href="Topic1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Topic2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Probability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-trials">3.1. Independent Trials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coins-and-dices">3.1.1. Coins and dices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-binomial-distribution">3.1.2. The Binomial distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unimodality">3.1.2.1. Unimodality</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pascal-s-triangle">3.1.2.2. Pascal’s Triangle</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-values-and-fluctuations">3.1.2.3. Probable values and fluctuations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-and-variance">3.1.2.4. Expectation and variance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-inequalities">3.1.2.5. Fundamental inequalities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks">3.1.2.6. Random walks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-normal-distribution">3.1.2.7. The Normal distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-dependence">3.2. Statistical dependence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-replacement">3.2.1. No replacement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectations">3.2.2. Conditional expectations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#martingales">3.2.3. Martingales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links-with-pascal-s-triangle">3.2.4. Links with Pascal’s Triangle</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="probability">
+<h1><span class="section-number">3. </span>Probability<a class="headerlink" href="#probability" title="Permalink to this heading">#</a></h1>
+<p>Pierre Simon (Marquis of Laplace) in <a class="reference external" href="https://www.informationphilosopher.com/solutions/scientists/laplace/probabilities.html">A Philoshopical Essay on Probabilities</a> comments:</p>
+<p><em>Present events are connected with preceding ones
+by a tie based upon the evident principle that a thing
+cannot occur without a cause which produces it.</em></p>
+<p>This leads us directly to “chance”, i.e. we are talking about the “likelihood” of an event <em>in the future</em> based on the present knowledge (also quoting <a class="reference external" href="https://www.feynmanlectures.caltech.edu/I_06.html">The Feynmann Lectures on Physics</a>).</p>
+<p>Actually, <span style="color:#469ff8"><strong>probability can be described as</strong> the quantification of chance</span>. In <strong>discrete probability</strong> we talk about a set <span class="math notranslate nohighlight">\(\Omega\)</span> (the <strong>sample set</strong>) containing all the possible <strong>atomic events</strong>. Some examples:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+\Omega_1 &amp;= \{H,T\}\; &amp; \text{Results of tossing a coin: Head (H), Tail (T)}\\
+\Omega_2 &amp;= \{1,2,\ldots,6\}\; &amp; \text{Results of playing a dice of 6 faces}\\
+\Omega_3 &amp;= \{\omega_1,\ldots,\omega_{52!}\} &amp; \text{Ways of shuffling a standard deck of 52 cards}\\
+\Omega_4 &amp;= \{\omega_1,\ldots,\omega_{N_{mn}}\} &amp; \text{Number of paths in a grid}\\
+\end{align}
+\)</span></p>
+<p>Note that sometimes we can <em>explicitly name</em> the atomic events but some other times we can only <em>enumerate</em> how many of them do we have. Anyway, in discrete probability we are always <strong>playing with countings</strong>.</p>
+<p><span style="color:#469ff8">Actually, the probability of a particular event is the ratio between two counts:</span></p>
+<ul class="simple">
+<li><p><span style="color:#469ff8">The number of <strong>favorable</strong> cases (to that event). </span></p></li>
+<li><p><span style="color:#469ff8">The number of <strong>all cases</strong>.</span></p></li>
+</ul>
+<p>For atomic events, their probability is simply <span class="math notranslate nohighlight">\(1/|\Omega|\)</span>. However, an event is any proposition that can be evaluated to true or false with a certain probability, such as: “playing a dice returns an even value with probability <span class="math notranslate nohighlight">\(3/6\)</span>”. In this case, the event “even” is not atomic, but a subset <span class="math notranslate nohighlight">\(A\subseteq \Omega\)</span>, where <span class="math notranslate nohighlight">\(A=\{2,4,6\}\)</span>, i.e. the elements in <span class="math notranslate nohighlight">\(\Omega\)</span> that satisfy the logical proposition “return an even value”. We formalize this as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+p(A) = \frac{|A|}{|\Omega|}\;.
+\]</div>
+<p><strong>Axioms of Probability</strong>. Given an atomic event <span class="math notranslate nohighlight">\(\omega\in\Omega\)</span>, its probability <span class="math notranslate nohighlight">\(p(\omega)\)</span> is a function <span class="math notranslate nohighlight">\(p:\Omega\rightarrow [0,1]\)</span> satisfying:</p>
+<p><span class="math notranslate nohighlight">\(
+0\le p(\omega)\le 1\; \text{and}\; \sum_{\omega\in\Omega}p(\omega) = 1\;.
+\)</span></p>
+<p>In addition for <strong>non-atomic events</strong> <span class="math notranslate nohighlight">\(A\)</span> we have:</p>
+<p><span class="math notranslate nohighlight">\(
+p(A) = \sum_{\omega\in A} p(\omega)= \sum_{\omega\in \Omega} p(\omega)[\omega\in A]\;,
+\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(p(\omega)[\omega\in A]\)</span> reads: <span class="math notranslate nohighlight">\(p(\omega)\)</span> if <span class="math notranslate nohighlight">\(\omega \in A\)</span> and <span class="math notranslate nohighlight">\(0\)</span> otherwise.</p>
+<p>Finally, for a countable sequence of <strong>disjoint</strong> events <span class="math notranslate nohighlight">\(A_1,A_2,\ldots\)</span> we have the following axiom:</p>
+<p><span class="math notranslate nohighlight">\(
+p\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} p\left(A_i\right)\;.
+\)</span></p>
+<p>which is a consequence of the PEI. Actually, if the events are not disjoint we have to consider the full definition of the PEI (excluding-including interesections).</p>
+<p><strong>More properties</strong>. As a result of the aforementioned axioms, we have:</p>
+<p><span class="math notranslate nohighlight">\(
+p(\emptyset) = 0\; \text{and}\; p(\Omega) = 1\;.
+\)</span></p>
+<p>However, <span class="math notranslate nohighlight">\(\emptyset\)</span> may be not the only event with probability zero. Actually:</p>
+<p><span class="math notranslate nohighlight">\(
+p(\bar{A}) = 1 - p(A)\; \text{(complement)}\; \text{and}\; A\subseteq B\Rightarrow p(A)\le p(B)\;\text{(monotonicity)}\;
+\)</span></p>
+<p>Finally, we have the <em>binary</em> PEI:</p>
+<p><span class="math notranslate nohighlight">\(
+p(A\cup B) = p(A) + p(B) - p(A\cap B)\;.
+\)</span></p>
+<section id="independent-trials">
+<h2><span class="section-number">3.1. </span>Independent Trials<a class="headerlink" href="#independent-trials" title="Permalink to this heading">#</a></h2>
+<section id="coins-and-dices">
+<h3><span class="section-number">3.1.1. </span>Coins and dices<a class="headerlink" href="#coins-and-dices" title="Permalink to this heading">#</a></h3>
+<p>Events can be seen as the output of a given experiment. One of the most simplest experiments is <em>tossing a coin</em>. There are two possible outputs <span class="math notranslate nohighlight">\(\Omega=\{H,T\}\)</span>. If the coin is <em>fair</em>, each of these outputs is <em>equiprobable</em> or <em>equally likely to happen</em>: <span class="math notranslate nohighlight">\(p(H) = p(T) = 1/2\)</span>.</p>
+<p>Now assume that the coin experiment can be repeated <span class="math notranslate nohighlight">\(n\)</span> times <strong>under the same conditions</strong>. Each of these repetitions is called a <strong>trial</strong>. So, a natural question to answer is <span style="color:#469ff8">”what is the probability of obtaining, say <span class="math notranslate nohighlight">\(k\)</span> heads after <span class="math notranslate nohighlight">\(n\)</span> trials?”</span>. We can use combinatory to answer to this question. Actually, the solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(n,k) = \frac{n\choose k}{2^n}\;.
+\]</div>
+<p>The number of <em>total cases</em> is <span class="math notranslate nohighlight">\(2^n\)</span>. If we assign <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(T\)</span>, we have <span class="math notranslate nohighlight">\(2^n\)</span> possible numbers of <span class="math notranslate nohighlight">\(n\)</span> bits (permutations with repetition) and each of these numbers concatentates the results of <span class="math notranslate nohighlight">\(n\)</span> trials. In addition, only <span class="math notranslate nohighlight">\({n\choose k}\)</span> cases are <em>favorable</em> since we have  <span class="math notranslate nohighlight">\({n\choose k}\)</span> groups of <span class="math notranslate nohighlight">\(k\)</span> heads in <span class="math notranslate nohighlight">\(n\)</span> trials.</p>
+<p>Actually, we can better understand the above rationale by reformulating <span class="math notranslate nohighlight">\(P(n,k)\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+P(n,k) = {n\choose k}\left(\frac{1}{2}\right)^n\;.
+\]</div>
+<p>This means that the probability of any trial is <span class="math notranslate nohighlight">\(1/2\)</span> and all the <span class="math notranslate nohighlight">\(n\)</span> trials are <strong>independent</strong>. Intuitively, statistical independence means that a trial does not influence the following one (same experimental conditions for any trial). More formally, <span class="math notranslate nohighlight">\(n\)</span> events <span class="math notranslate nohighlight">\(A_1, A_2,\ldots, A_n\)</span> are independent if</p>
+<div class="math notranslate nohighlight">
+\[
+P(A_1\cap A_2\cap\ldots \cap A_n) = p(A_1)p(A_2)\ldots p(A_n) = \prod_{i=1}^np(A_i)\;.
+\]</div>
+<p>Then, the probability of obtaining a given sequence say <span class="math notranslate nohighlight">\(HHHTT\)</span> (<span class="math notranslate nohighlight">\(n=5\)</span>) is</p>
+<div class="math notranslate nohighlight">
+\[
+p(HHHTT) = p(H)p(H)p(H)p(T)p(T)=\frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2} = \frac{1}{2^5}=\frac{1}{32}\;.
+\]</div>
+<p>Actually, all sequences with <span class="math notranslate nohighlight">\(n=5\)</span> are equiprobable. However, what makes <span class="math notranslate nohighlight">\(HHHTT\)</span> different from the others is the fact that <em>we have <span class="math notranslate nohighlight">\(3\)</span> <span class="math notranslate nohighlight">\(H\)</span>s (and consequently <span class="math notranslate nohighlight">\(5-3=2\)</span> heads)</em>. If we want to highlight this fact, we should <em>group</em> all sequences of <span class="math notranslate nohighlight">\(n=5\)</span> trials having <span class="math notranslate nohighlight">\(3\)</span> <span class="math notranslate nohighlight">\(H\)</span>s (or equivalently <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(T\)</span>s). Some hints:</p>
+<ul class="simple">
+<li><p><em>Order matters</em>. Strictly speaking, sequences such as <span class="math notranslate nohighlight">\(HHHTT\)</span> and <span class="math notranslate nohighlight">\(TTHHH\)</span> should count twice. Since <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(T\)</span> can be repeated (three times and twice respectively). we have <strong>permutations with repetition</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P_{\sigma}(n) = \frac{n!}{n_1!n_2!}\;\text{where}\; n=5, n_1 = k, n_2=n-k\; 
+\]</div>
+<ul class="simple">
+<li><p>However, we know that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P_{\sigma}(n) = \frac{n!}{n_1!n_2!} = \frac{n!}{k!(n - k)!} = {n\choose k}
+\]</div>
+<p>This is where the combinations come from: we have <span class="math notranslate nohighlight">\(n=5\)</span> positions and we need to fill <span class="math notranslate nohighlight">\(3\)</span> of them (order does not matter) with heads. Then, we have <span class="math notranslate nohighlight">\({5\choose 3}\)</span> ways of doing it. It works because the strings <span class="math notranslate nohighlight">\(11100\)</span> and <span class="math notranslate nohighlight">\(00111\)</span> represent different subsets of <span class="math notranslate nohighlight">\(\{0,1\}^{5}\)</span> and what combinations do is to encode subsets (members of the power set).</p>
+<p>Therefore, we have used the product rule to decompose the problem in two parts:</p>
+<ul class="simple">
+<li><p>Compute the probability of a configuration: <span class="math notranslate nohighlight">\(p(HHHTT)\)</span>.</p></li>
+<li><p>Compute how many different configurations do you have: <span class="math notranslate nohighlight">\({5\choose 3}\)</span>.</p></li>
+</ul>
+<p>Then, the probability <span class="math notranslate nohighlight">\(p(\#H=3,5)\)</span> of having <span class="math notranslate nohighlight">\(3\)</span> heads in <span class="math notranslate nohighlight">\(5\)</span> trials is:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\#H=3,5) = {5\choose 3}p(HHHTT) = {5\choose 3}\frac{1}{32} = \frac{10}{32}\;.
+\]</div>
+<p>In practice, use permutations with repetitions instead of combinations when the outcomes of a experiment are more than <span class="math notranslate nohighlight">\(2\)</span>. We illustrate this case in the following exercise.</p>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. Consider the problem of throwing a dice <span class="math notranslate nohighlight">\(n=6\)</span> dices simultaneously. What is the probability of obtaining different results? And all equal?
+</span></p>
+<p><span style="color:#347fc9"> This is equivalent to <span class="math notranslate nohighlight">\(n\)</span> independent dice trials. Since <span class="math notranslate nohighlight">\(|\Omega|=6\)</span>, we have that <span class="math notranslate nohighlight">\(p(i)=1/6\)</span> for <span class="math notranslate nohighlight">\(i=1,2,\ldots,6\)</span>. Therefore, the probability of a given sequence of <span class="math notranslate nohighlight">\(n\)</span> trials is <span class="math notranslate nohighlight">\((1/6)^n\)</span>. This is the first factor of the product rule (the probability of a given configuration).
+</span></p>
+<p><span style="color:#347fc9"> The second factor (the number of possible configurations) comes from realizing that each of the <span class="math notranslate nohighlight">\(n\)</span> positions can be filled by different values. Since order matters, we have to count the number of permutations <em>without repetition</em> or <em>permutations with individual repetition</em> (the elements must be different) of <span class="math notranslate nohighlight">\(n\)</span> elements. This leads to <span class="math notranslate nohighlight">\(n!\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+p(\text{All_diff.}) = n!\frac{1}{6^n} = \frac{n!}{1!1!1!1!1!1!}\cdot\frac{1}{6^n}= \frac{6!}{6^6} =\frac{6}{6}\cdot\frac{5}{6}\cdot\frac{4}{6}\cdot\frac{3}{6}\cdot\frac{2}{6}\cdot\frac{1}{6} = 0.015\;.
+\)</span>
+</span>
+<span style="color:#347fc9"> However, there are <span class="math notranslate nohighlight">\(n=6\)</span> configurations where all the dices give the same result:
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+p(\text{All_equal.}) = \frac{n}{6^n} = \frac{1}{6^5} = 0.0001\;. 
+\)</span>
+</span></p>
+</section>
+<section id="the-binomial-distribution">
+<h3><span class="section-number">3.1.2. </span>The Binomial distribution<a class="headerlink" href="#the-binomial-distribution" title="Permalink to this heading">#</a></h3>
+<section id="unimodality">
+<h4><span class="section-number">3.1.2.1. </span>Unimodality<a class="headerlink" href="#unimodality" title="Permalink to this heading">#</a></h4>
+<p>As we have seen in the previous section, when performing <span class="math notranslate nohighlight">\(n\)</span> independent trials, the odds of some events are higher that those of others. In particular, <strong>extremal events</strong> <span class="math notranslate nohighlight">\(E\)</span> such as maximizing (or minimizing) the appearance of one of the elements of <span class="math notranslate nohighlight">\(\Omega\)</span> have the smallest probability. However, since the probabilities of all events add <span class="math notranslate nohighlight">\(1\)</span>, the bulk of the <em>probability mass</em> should lie in non-extremal events.</p>
+<p>In order to see that, we revisite coin tossing, where the two extremal events are <span class="math notranslate nohighlight">\(E=\{\text{All_}Ts, \text{All_}Hs\}\)</span>, both with probability <span class="math notranslate nohighlight">\(1/2^n\)</span>. Then, we have</p>
+<div class="math notranslate nohighlight">
+\[
+P(\text{All_}Ts) = {n\choose 0}\frac{1}{2^n} = {n\choose n}\frac{1}{2^n} = P(\text{All_}Hs) = \frac{1}{2^n}\;.
+\]</div>
+<p>As a result, the probability of non-extremal events becomes almost <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(n\)</span> grows since:</p>
+<div class="math notranslate nohighlight">
+\[
+P(\bar{E}) = 1 - P(E) = 1 - \frac{2}{2^n} = \frac{2^n - 2}{2^n} = \frac{2(2^{n-1} - 1)}{2^n} = \frac{2^{n-1}-1}{2^{n-1}}\;.
+\]</div>
+<p>Being all the particular configurations equiprobable (i.e. <span class="math notranslate nohighlight">\(1/2^n\)</span>), the fact that <span class="math notranslate nohighlight">\(\lim_{n\rightarrow\infty}P(\bar{E}) = 1\)</span> is due to the number that each particular configuration is repeated.</p>
+<p>A closer look to <span class="math notranslate nohighlight">\(2^n = {n\choose 0} + {n\choose 1} + {n\choose 2} + \ldots + {n\choose n}\)</span> gives us the answer. The probability of having <span class="math notranslate nohighlight">\(k\)</span> <span class="math notranslate nohighlight">\(H\)</span>s becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+P(n,k) = \frac{{n\choose k}}{{n\choose 0} + {n\choose 1} + {n\choose 2} + \ldots + {n\choose n}}\;,
+\]</div>
+<p>and due to the symmetry of <span class="math notranslate nohighlight">\({n\choose k} = {n\choose n-k}\)</span>, this probability is going to grow from <span class="math notranslate nohighlight">\(k=0\)</span> until a given <span class="math notranslate nohighlight">\(k=k_{max}\)</span> and then decrease for <span class="math notranslate nohighlight">\(k=n\)</span>. Actually:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(n\)</span> is even, <span class="math notranslate nohighlight">\(k_{max} = \frac{n}{2}\)</span> and <span class="math notranslate nohighlight">\({n\choose 0}&lt;{n\choose 1}&lt;\ldots &lt;{n\choose \frac{n}{2}}&gt;{n\choose \frac{n}{2}+1}&gt;\ldots&gt;{n\choose n}\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(n\)</span> is odd, <span class="math notranslate nohighlight">\(k_{max} = \frac{n-1}{2}=\frac{n+1}{2}\)</span> and <span class="math notranslate nohighlight">\({n\choose 0}&lt;{n\choose 1}&lt;\ldots &lt;{n\choose \frac{n-1}{2}}={n\choose \frac{n+1}{2}}&gt;{n\choose \frac{n}{2}+1}&gt;\ldots&gt;{n\choose n}\)</span>.</p></li>
+</ul>
+<p>That is, for <span class="math notranslate nohighlight">\(n\)</span> odd we have a double maximum of probability. Anyway the <strong>distribution of probability</strong> among the values <span class="math notranslate nohighlight">\(k=0,1,\ldots,n\)</span> is <strong>unimodal</strong>. In addition, the increase of probability from <span class="math notranslate nohighlight">\(k-1\)</span> to <span class="math notranslate nohighlight">\(k\)</span> before the maximum is given by</p>
+<div class="math notranslate nohighlight">
+\[
+ {n\choose k} = \frac{n!}{k!(n-k)!} = \frac{n-(k-1)}{k}\frac{n!}{(k-1)!\underbrace{(n-(k-1))(n-k)!}_{[n-(k-1)]!}} = \frac{n-(k-1)}{k}{n\choose k-1}
+ \]</div>
+<p>i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{{n\choose k}}{{n\choose k-1}} = \frac{n-(k-1)}{k}\;.
+ \]</div>
+<p>These properties can be better understood by studying the Pascal’s triangle.</p>
+</section>
+<section id="pascal-s-triangle">
+<h4><span class="section-number">3.1.2.2. </span>Pascal’s Triangle<a class="headerlink" href="#pascal-s-triangle" title="Permalink to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Pascal%27s_triangle">Pascal’s Triangle</a> has had many names along the history of mathematics (e.g. Tartaglia Triangle). This construction gives the <span class="math notranslate nohighlight">\({n\choose k}\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>. For instance, in <code class="xref std std-numref docutils literal notranslate"><span class="pre">HT</span></code>, each column denotes a value of <span class="math notranslate nohighlight">\(n\)</span> and the coefficients in this column are the <span class="math notranslate nohighlight">\(n+1\)</span> so called <strong>binomial coefficients</strong> for such <span class="math notranslate nohighlight">\(n\)</span>: <span class="math notranslate nohighlight">\({n\choose 0},{n\choose 1},\ldots, {n\choose n}\)</span>.</p>
+<figure class="align-center" id="ht">
+<a class="reference internal image-reference" href="_images/HT.png"><img alt="_images/HT.png" src="_images/HT.png" style="width: 600px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Binomial coefficients.</span><a class="headerlink" href="#ht" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The triangle is constructed as follows:</p>
+<ul class="simple">
+<li><p>Start by <span class="math notranslate nohighlight">\(n=0\)</span> and make a trial. We have <span class="math notranslate nohighlight">\({1\choose 0}=1\)</span> ways of obtaining a <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\({1\choose 1}=1\)</span> ways of getting a <span class="math notranslate nohighlight">\(T\)</span>. Then set <span class="math notranslate nohighlight">\(n=1\)</span>.</p></li>
+<li><p>From <span class="math notranslate nohighlight">\(H\)</span> we have again <span class="math notranslate nohighlight">\(1\)</span> way of getting a H and one way of getting a <span class="math notranslate nohighlight">\(T\)</span>. However, this also happens from <span class="math notranslate nohighlight">\(T\)</span>. Therefore, after the second experiment we have <span class="math notranslate nohighlight">\(4\)</span> possible outcomes: <span class="math notranslate nohighlight">\(HH, HT, TH, TT\)</span>. Two of these outcomes are extreme event and two of them collapse in the same representation <span class="math notranslate nohighlight">\(HT,TH\)</span> (two ways of getting one <span class="math notranslate nohighlight">\(H\)</span> and one <span class="math notranslate nohighlight">\(T\)</span>). This is way the central node has a value <span class="math notranslate nohighlight">\(2\)</span>.</p></li>
+<li><p>Then, we set <span class="math notranslate nohighlight">\(n=2\)</span> and continue…</p></li>
+</ul>
+<p>Some properties:</p>
+<ul class="simple">
+<li><p>As noted above, even columns do have a unique maximual coefficients, whereas odd columns have two.</p></li>
+<li><p>If the normalize the <span class="math notranslate nohighlight">\(n-\)</span>th column by <span class="math notranslate nohighlight">\(2^n\)</span> we have the <strong>discrete probability distribution</strong> asociated to having <span class="math notranslate nohighlight">\(k=0,1,2,\ldots,n\)</span> heads <span class="math notranslate nohighlight">\(H\)</span>s.</p></li>
+<li><p><strong>Extreme events</strong> are always placed (by symmetry) in the main diagonals.</p></li>
+<li><p><strong>Non-extreme</strong> or <strong>regular</strong> events begin to fill the distributions as <span class="math notranslate nohighlight">\(n\)</span> increases.</p></li>
+<li><p>The coefficients of any <strong>regular event</strong> can be obtained by adding those of their parents in the tree, since:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+{n\choose k} = {n-1\choose k-1} + {n-1\choose k}\;.
+\]</div>
+<ul class="simple">
+<li><p>The binomial coefficient in a node gives the <strong>number of paths</strong> that reach that node from the origin (equivalent to <span class="math notranslate nohighlight">\(\#\Gamma\)</span> in a grid without obstacles). We will come back to this fact later on.</p></li>
+<li><p>As <span class="math notranslate nohighlight">\(n\)</span> increases, it becomes more and more clear that the <strong>Binomial probability distribution</strong> is centered on <span class="math notranslate nohighlight">\(n/2\)</span>, where the probability is maximal and then decreases to two tails corresponding to the extremal events. This allows us to intuitively understand the concept of <strong>mean value</strong>, as we will define later on.</p></li>
+</ul>
+<p>See for instance <code class="xref std std-numref docutils literal notranslate"><span class="pre">Bern</span></code>, where we highlight the binomial coefficients after <span class="math notranslate nohighlight">\(n=8\)</span> trials. Check that the highest coefficient at level <span class="math notranslate nohighlight">\(n=8\)</span> is at position <span class="math notranslate nohighlight">\(n/2\)</span> (starting by <span class="math notranslate nohighlight">\(0\)</span>).</p>
+<figure class="align-center" id="bern">
+<a class="reference internal image-reference" href="_images/Bernouilli.png"><img alt="_images/Bernouilli.png" src="_images/Bernouilli.png" style="width: 600px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Binomial coefficients.</span><a class="headerlink" href="#bern" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let us express all these things in probabilistic terms!</p>
+</section>
+<section id="probable-values-and-fluctuations">
+<h4><span class="section-number">3.1.2.3. </span>Probable values and fluctuations<a class="headerlink" href="#probable-values-and-fluctuations" title="Permalink to this heading">#</a></h4>
+<p>One of the magic elements behind the Pascal’s triangle is that it provides the binomial coefficients, independently of whether we have a <strong>fair coin</strong> or not.</p>
+<p>The fair coin is a <em>particular case</em> where the <strong>probability of success</strong> in an independent trial (called <strong>Bernouilli trial</strong>) is <span class="math notranslate nohighlight">\(p=1/2\)</span> (herein, we understand success as “landing on a head”). Consequently, the <strong>probability of failure</strong> (“landing on a tail”) is <span class="math notranslate nohighlight">\(q = 1 - p = 1/2\)</span>. Then, the probability of <span class="math notranslate nohighlight">\(k\)</span> successes after <span class="math notranslate nohighlight">\(n\)</span> trials is more generally given by</p>
+<div class="math notranslate nohighlight">
+\[
+P(n,k)  = {n\choose k}p^k(1-p)^{n-k} = {n\choose k}p^kq^{n-k}\;.
+\]</div>
+<p>Then, <span class="math notranslate nohighlight">\(P(n,k)\)</span> is the <strong>probability</strong> of having <span class="math notranslate nohighlight">\(k\)</span> successes out of <span class="math notranslate nohighlight">\(n\)</span> trials. This is the solid line in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PD</span></code>, where we have performed <span class="math notranslate nohighlight">\(10,000\)</span> games, each one with <span class="math notranslate nohighlight">\(n=1,000\)</span> and <span class="math notranslate nohighlight">\(p=1/2\)</span>. In the <span class="math notranslate nohighlight">\(x\)</span> axis we place <span class="math notranslate nohighlight">\(k=0,1,\ldots,n\)</span> (the leaves in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Bern</span></code> for <span class="math notranslate nohighlight">\(n=1,000\)</span>). In the <span class="math notranslate nohighlight">\(y\)</span> axis we plot (solid line) the <strong>theoretical</strong> <span class="math notranslate nohighlight">\(P(n,k)\)</span> vales. But we also plot (idealy) a bar per <span class="math notranslate nohighlight">\(k\)</span> value. <span style="color:#469ff8">The height of the bars is similar to <span class="math notranslate nohighlight">\(P(n,k)\)</span> but it is not identical. Why?</span> Because we have performed <span class="math notranslate nohighlight">\(10,000\)</span> games. The height of bar <span class="math notranslate nohighlight">\(k\)</span> <span class="math notranslate nohighlight">\(\times\)</span> <span class="math notranslate nohighlight">\(10,000\)</span> is the number of games where we have obtained <span class="math notranslate nohighlight">\(k\)</span> heads out of <span class="math notranslate nohighlight">\(n=1,000\)</span> trials. This number (called the <strong>observed number</strong> of successes) is close to <span class="math notranslate nohighlight">\(10,000\cdot P(n,k)\)</span> but it <strong>fluctuates</strong> around it(sometimes it is larger and sometimes it is lower).</p>
+<figure class="align-center" id="pd">
+<a class="reference internal image-reference" href="_images/PD.png"><img alt="_images/PD.png" src="_images/PD.png" style="width: 700px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Theoretical probability vs fluctuations.</span><a class="headerlink" href="#pd" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Obviously, the <strong>most likely</strong> or most probable value of <span class="math notranslate nohighlight">\(k\)</span> is <span class="math notranslate nohighlight">\(n/2=500\)</span>. However, it is not so obvious why the <span class="math notranslate nohighlight">\(k\)</span>s with smallest nonzero <span class="math notranslate nohighlight">\(P(n,k)\)</span> are close to <span class="math notranslate nohighlight">\(440\)</span> and <span class="math notranslate nohighlight">\(560\)</span>. Intuitively, this is related to the extremal events, but these values deserve a deeper mathematical interpretation.</p>
+</section>
+<section id="expectation-and-variance">
+<h4><span class="section-number">3.1.2.4. </span>Expectation and variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this heading">#</a></h4>
+<p><strong>Random variables</strong>. In the above example, each of the <span class="math notranslate nohighlight">\(10,000\)</span> experiments consists of <span class="math notranslate nohighlight">\(n=1,000\)</span> independent trials, each one resulting in landing either in <span class="math notranslate nohighlight">\(H\)</span>s or <span class="math notranslate nohighlight">\(T\)</span>s with probability <span class="math notranslate nohighlight">\(p\)</span>. Then the <strong>sample space</strong> <span class="math notranslate nohighlight">\(\Omega\)</span> is <span class="math notranslate nohighlight">\(\{H,T\}^{n}\)</span>. Well, <span style="color:#469ff8">a <em>random variable</em> <span class="math notranslate nohighlight">\(X\)</span> is a function <span class="math notranslate nohighlight">\(X:\Omega\rightarrow\mathbb{R}\)</span>: <span class="math notranslate nohighlight">\(X(\omega), \omega\in\Omega\)</span></span> , such as the <em>number of <span class="math notranslate nohighlight">\(H\)</span>s</em>. This is indicated by <span class="math notranslate nohighlight">\(X(\omega)=k\)</span>, and <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> indicates that <span class="math notranslate nohighlight">\(X\)</span> <em>follows</em> a Bernouilli or Binomial distribution.</p>
+<p><strong>Expectation</strong>. The expectation of a random variable <span class="math notranslate nohighlight">\(X\)</span> is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+E(X) = \sum_{\omega\in\Omega}X(\omega)\cdot p(w)= \sum_{x}x\cdot p(X=x)\;.
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(X) &amp;= \sum_{k=0}^n k\cdot P(n,k)\\
+     &amp;= \sum_{k=0}^n k\cdot {n\choose k}p^{k}(1-p)^{n-k}\\
+     &amp;= \sum_{k=0}^n n{n-1\choose k-1}p^{k}(1-p)^{n-k}\;\text{since}\;k{n\choose k} = n{n-1\choose k-1}\\
+     &amp;= n\sum_{k=0}^n{n-1\choose k-1}p^{k}(1-p)^{n-k}\\
+     &amp;= np\sum_{k=1}^n{n-1\choose k-1}p^{k-1}(1-p)^{(n-1)-(k-1)}\\
+     &amp;= np\sum_{r=0}^{n-1}{n-1\choose r}p^{r}(1-p)^{(n-1)-r}\;\text{with}\; r=k-1\\
+     &amp;= np\;\text{due to the Binomial Theorem}\;.
+\end{align}
+\end{split}\]</div>
+<p><strong>The Binomial Theorem</strong>. Newton’s binomial theorem is behind the Pascal’s triangle and the Binomial distribution. It basically states that the coefficients of expanding <span class="math notranslate nohighlight">\((x+y)^n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is an integer, are the binomial coefficients <span class="math notranslate nohighlight">\({n\choose k}\)</span>, as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+(x+y)^n &amp;= \sum_{j=0}^{n}{n\choose j}x^{n-j}y^{j}\\
+        &amp;= {n\choose 0}x^n + {n\choose 1}x^{n-1}y + {n\choose 2}x^{n-2}y^2 + \ldots + {n\choose n-1}xy^{n-1} + {n\choose n}y^{n}\;.
+\end{align}
+\end{split}\]</div>
+<p>Let us observe the theorem for <span class="math notranslate nohighlight">\(n=0,1,2,\ldots.\)</span></p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(n=0\)</span>, we have <span class="math notranslate nohighlight">\((x+y)^0 = {n\choose 0}x^{0-0}y^{0} = 1\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n=1\)</span>, we have <span class="math notranslate nohighlight">\((x+y) = {n\choose 0}x + {n\choose n}y = 1\cdot x + 1\cdot y\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n=2\)</span>, <span class="math notranslate nohighlight">\((x+y)^2 = {n\choose 0}x^2 +  {n\choose 1}xy + {n\choose 1}xy + {n\choose n}y^2 = 1\cdot x^2 + 2\cdot xy + 1\cdot y^2\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n=3\)</span>, <span class="math notranslate nohighlight">\((x+y)^3 = {n\choose 0}x^3 +  {n\choose 1}x^2y + {n\choose 2}xy^2 + {n\choose 1}xy^2 + {n\choose n}y^3 = 1\cdot x^3 + 3\cdot x^2y + 3\cdot xy^2 + 1\cdot x^3\)</span>.</p></li>
+</ul>
+<p>If you observe the coefficients, they are given by the levels <span class="math notranslate nohighlight">\(n=0,1,2,3,\ldots\)</span> of the Pascal’s Triangle! In other words, herein the <strong>extremal events</strong> are the unit coefficients of <span class="math notranslate nohighlight">\(x^n\)</span> and <span class="math notranslate nohighlight">\(y^n\)</span> respectively. Then, the corresponding <span class="math notranslate nohighlight">\({n\choose k}\)</span> coefficient of <span class="math notranslate nohighlight">\(x^{n-k}y^k\)</span> is just indicating the corresponding product, i.e. how many <span class="math notranslate nohighlight">\(x\)</span>s and how many <span class="math notranslate nohighlight">\(y\)</span>s do we takein each term.</p>
+<p>As a result, the way it is built the Pascal’s triangle plays a fundamental role in the <strong>inductive proof</strong> of the theorem. Simply remind the expression <span class="math notranslate nohighlight">\(
+{n\choose k} = {n-1\choose k-1} + {n-1\choose k}\;.\)</span>.</p>
+<p>Anyway, <span style="color:#469ff8">coming back to the expectation of <span class="math notranslate nohighlight">\(E(X) = np\)</span>, just apply the theorem expressing <span class="math notranslate nohighlight">\(p^{r}(1-p)^{(n-1)-r}\)</span> as <span class="math notranslate nohighlight">\(p^{r}q^{(n-1)-r}\)</span> for the binomial coefficient <span class="math notranslate nohighlight">\({n-1\choose r}\)</span></span>. All we are doing is computing <span class="math notranslate nohighlight">\((x+y)^{n-1}\)</span> where <span class="math notranslate nohighlight">\(x+y = p + q = 1\)</span>. As a result:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{r=0}^{n-1}{n-1\choose r}p^{r}q^{(n-1)-r} = (p + q)^{n-1} = 1^{n-1} = 1. 
+\]</div>
+<p><strong>Variance</strong>. The fact that when <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> we have <span class="math notranslate nohighlight">\(E(X)=np\)</span> gives us directly the most likely number of successes (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">PD</span></code>). However, to explain the <strong>amount of deviation from the expectation</strong> we rely on the <em>variance</em> which is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(X) =  \sum_{x}(x - E(X))^2\cdot p(X=x)\;.
+\]</div>
+<p>In this way, <span style="color:#469ff8"><span class="math notranslate nohighlight">\(Var(X)\)</span> is the expectation of the square deviations from <span class="math notranslate nohighlight">\(E(X)\)</span></span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+Var(X) &amp;= E([X-E(X)]^2)\\
+       &amp;= E(X^2 + E(X)^2 - 2XE(X))\\
+       &amp;= E(X^2) + E(E(X)^2)-2E(XE(X))\\
+       &amp;= E(X^2) + E(X)^2 - 2E(X)E(X))\\
+       &amp;= E(X^2) + E(X)^2 - 2E(X)^2\\
+       &amp;= E(X^2) - E(X)^2\;.
+\end{align}
+\end{split}\]</div>
+<p>One interesting (and simple) way to compute <span class="math notranslate nohighlight">\(Var(X)\)</span> for Binomial variables <span class="math notranslate nohighlight">\(X\)</span> is to realize that <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> means that <span class="math notranslate nohighlight">\(X = \sum_{i=1}^nY_n\)</span> where <span class="math notranslate nohighlight">\(Y_i\sim Bern(p)\)</span>,i.e. <strong>Bernouilli variables</strong> where the outcomes can be <span class="math notranslate nohighlight">\(1\)</span> (success) or <span class="math notranslate nohighlight">\(0\)</span> (failure).</p>
+<p>In particular, if <span class="math notranslate nohighlight">\(Y\sim Bern(p)\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[
+E(Y) = \sum_{y}y\cdot p(Y=y) = 1\cdot p(Y=1) + 0\cdot p(Y=0) = p\;.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(X\)</span> is the sum of <span class="math notranslate nohighlight">\(n\)</span> <span class="math notranslate nohighlight">\(Y_i\)</span>s: <span class="math notranslate nohighlight">\(E(X) = E(Y_1)+ E(Y_2)+ \ldots + E(Y_n)\)</span>. As <span style="color:#469ff8">the expectation of a sum is the sum of expectations (indepedently of whether the variables are independent or not)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+E(X) = E\left(\sum_{i=1}^nY_i\right) = \sum_{i=1}^n E(Y_i) = np\;.
+\]</div>
+<p>Now, for computing <span class="math notranslate nohighlight">\(E(Y^2)\)</span>, <span class="math notranslate nohighlight">\(Y\sim Bern(p)\)</span>, we do:</p>
+<div class="math notranslate nohighlight">
+\[
+E(Y^2) = \sum_{y}y^2\cdot p(Y=y) = 1^2\cdot P(Y=1) + 0^2\cdot P(Y=0) = p\;.  
+\]</div>
+<p>As a result</p>
+<div class="math notranslate nohighlight">
+\[
+Var(Y) = E(Y^2) - E(Y)^2 = p - p^2 = p(1 - p) = pq\;.
+\]</div>
+<p>Now exploit the fact that <span style="color:#469ff8">the variance of the sum is the sum of variances <strong>when the variables are independent</strong></span>. As this is the case for <span class="math notranslate nohighlight">\(Y_i\sim Bern(p)\)</span>. Then we can calculate</p>
+<div class="math notranslate nohighlight">
+\[
+Var(X) = Var(Y_1 + Y_2 + \ldots + Y_n) = \sum_{i=1}^nVar(Y_i) = npq; 
+\]</div>
+<p>It is obvious that <span class="math notranslate nohighlight">\(Var(X)\)</span> increases linearly with <span class="math notranslate nohighlight">\(n\)</span>. This simply means that the shape of the distribution (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">PD</span></code>) becomes wider and wider as <span class="math notranslate nohighlight">\(n\)</span> increases? Not really, it is the variance what increases. Later, we will see that for <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span> we have a Gaussian distribution.</p>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. It is important to realize that binomial variables are actually sums of <strong>Bernouilli trials</strong>. But, what can be really considered as a Bernouilli trial? In principle a Bernouilli trial concerns any experiment whose outcome can be grouped into two <strong>mutually-exclusive groups</strong>: “red vs black”, “red vs (black or green), “even vs odd”, “<span class="math notranslate nohighlight">\(x\le k\)</span> vs <span class="math notranslate nohighlight">\(x&gt;k\)</span>”, etc.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Consider for instance the following Bernouilli trial: <strong>Throw <span class="math notranslate nohighlight">\(2\)</span> dices simultaneously</strong> and register the outcomes as <span class="math notranslate nohighlight">\((x,y)\)</span>. Then infer <span class="math notranslate nohighlight">\(p + q = 1\)</span> in the following cases:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\;\;\text{a)}\;\; p &amp;= \{\text{Prob. of}\;\; x+y \;\;\text{is even}\}\\
+\;\;\text{b)}\;\; p &amp;= \{\text{Prob. of}\;\; x\times y \;\;\text{is even}\}\\
+\;\;\text{c)}\;\; p &amp;= \{\text{Prob. of}\;\; x+y&gt;7 \;\;\text{is even}\}\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+and give also the <strong>expectations and variances</strong> of the Bernouilli variables associated with these experiments.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Firstly, the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is given by the cartesian product <span class="math notranslate nohighlight">\(\Omega = \{1,\ldots,6\}\times \{1,\ldots,6\}\)</span>. Thus, we have
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\Omega = \begin{matrix}
+(1,1) &amp; (1,2) &amp; (1,3) &amp; (1,4) &amp; (1,5) &amp; (1,6) \\
+(2,1) &amp; (2,2) &amp; (2,3) &amp; (2,4) &amp; (2,5) &amp; (2,6) \\
+(3,1) &amp; (3,2) &amp; (3,3) &amp; (3,4) &amp; (3,5) &amp; (3,6) \\
+(4,1) &amp; (4,2) &amp; (4,3) &amp; (4,4) &amp; (4,5) &amp; (4,6) \\
+(5,1) &amp; (5,2) &amp; (5,3) &amp; (5,4) &amp; (5,5) &amp; (5,6) \\
+(6,1) &amp; (6,2) &amp; (6,3) &amp; (6,4) &amp; (6,5) &amp; (6,6) \\
+\end{matrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\Omega_{+} = \begin{matrix}
+2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7\\
+3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8\\
+4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9\\ 
+5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 10\\
+6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 &amp; 11\\
+7 &amp; 8 &amp; 9 &amp; 10 &amp; 11 &amp; 12\\
+\end{matrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\Omega_{\times} = \begin{matrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6\\
+2 &amp; 4 &amp; 6 &amp; 8 &amp; 10 &amp; 12\\
+3 &amp; 6 &amp; 9 &amp; 12 &amp; 15 &amp; 18\\
+4 &amp; 8 &amp; 12 &amp; 16 &amp; 20 &amp; 24\\
+5 &amp; 10 &amp; 15 &amp; 20 &amp; 25 &amp; 30\\
+6 &amp; 12 &amp; 18 &amp; 24 &amp; 30 &amp; 36\\
+\end{matrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+where <span class="math notranslate nohighlight">\(\Omega_{+}\)</span> and <span class="math notranslate nohighlight">\(\Omega_{\times}\)</span> are the sample spaces for the random variables <span class="math notranslate nohighlight">\(X=\{x+y: (x,y)\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{x\times y: (x,y)\}\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>a)</strong>  For each row in <span class="math notranslate nohighlight">\(\Omega_{+}\)</span> we have <span class="math notranslate nohighlight">\(3\)</span> even and <span class="math notranslate nohighlight">\(3\)</span> odds. As a result, <span class="math notranslate nohighlight">\(p=q=1/2\)</span>. Then
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;\;E(X_{even}) = 1\cdot p + 0\cdot q = p = \frac{1}{2}\\
+&amp; Var(X_{even}) = E(X_{even}^2) - E(X_{even})^2 = p - p^2 = p(1-p) = pq = \frac{1}{2}\cdot\frac{1}{2} = \frac{1}{4}
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>b)</strong>  The odd rows of <span class="math notranslate nohighlight">\(\Omega_{\times}\)</span> have <span class="math notranslate nohighlight">\(3\)</span> even and <span class="math notranslate nohighlight">\(3\)</span> odd. However, the even rows have <span class="math notranslate nohighlight">\(6\)</span> (all) even and <span class="math notranslate nohighlight">\(0\)</span> (none) odd. As a result, we have <span class="math notranslate nohighlight">\(3\times 3 + 3\times 0 = 9\)</span> odd outcomes and <span class="math notranslate nohighlight">\(3\times 3 + 3\times 6 = 27\)</span> of <span class="math notranslate nohighlight">\(36\)</span> outcomes. Then, we have <span class="math notranslate nohighlight">\(p = 27/36 = 3/4\)</span> and <span class="math notranslate nohighlight">\(q = 9/36 = 1/4\)</span>. Then
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;\;E(Y_{even}) = 1\cdot p + 0\cdot q = p = \frac{3}{4}\\
+&amp; Var(Y_{even}) = E(Y_{even}^2) - E(Y_{even})^2 = p - p^2 = p(1-p) = pq = \frac{3}{4}\cdot\frac{1}{4} = \frac{3}{16} = 0.1875
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>c)</strong> For this part we need to compute the domain of <span class="math notranslate nohighlight">\(X=\{x+y: (x,y)\}\)</span>, which is <span class="math notranslate nohighlight">\(X=\{2,3,\ldots,12\}\)</span>. We also need to know the <strong>frequencies</strong> of each value. The <strong>frequencies</strong> of the sums are given by the symmetries of this operator:<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+X(2) &amp;=X(1,1)=1\\
+X(3) &amp;=X(1,2)=X(2,1)=2\\
+X(4) &amp;=X(1,3)=X(3,1)=X(2,2)=3\\
+X(5) &amp;=X(1,4)=X(4,1)=X(2,3)=X(3,2)=4\\
+X(6) &amp;=X(1,5)=X(5,1)=X(2,4)=X(4,2)=X(3,3)=5\\
+X(7) &amp;=X(1,6)=X(6,1)=X(2,5)=X(5,2)=X(3,4)=X(4,3)=6\\
+X(8) &amp;=X(2,6)=X(6,2)=X(3,5)=X(5,3)=X(4,4)=5\\
+X(9) &amp;=X(5,4)=X(4,5)=X(6,3)=X(3,6)=4\\
+X(10) &amp;= X(6,4)=X(4,6)=X(5,5)=3\\ 
+X(11) &amp;=X(6,5)=X(5,6)=2\\
+X(12) &amp;=X(6,6)=1\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, <span class="math notranslate nohighlight">\(Z_{x+y&gt;7}\)</span> has <span class="math notranslate nohighlight">\(5+4+3+2+1 = n(n+1)/2 = 5\cdot (5+1)/2 = 15\)</span> favorable outcomes out of <span class="math notranslate nohighlight">\(36\)</span> possibilities. As a result, we have <span class="math notranslate nohighlight">\(p = 15/36=5/12\)</span> and <span class="math notranslate nohighlight">\(q = 21/36 = 7/12\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;\;E(Z_{x+y&gt;7}) = 1\cdot p + 0\cdot q = p = \frac{5}{12}=0.42\\
+&amp; Var(Z_{x+y&gt;7}) = E(Z_{x+y&gt;7}^2) - E(Z_{x+y&gt;7})^2 = p - p^2 = p(1-p) = pq = \frac{15}{36}\cdot\frac{21}{36} = 0.24
+\end{align}
+\)</span>
+</span></p>
+</section>
+<section id="fundamental-inequalities">
+<h4><span class="section-number">3.1.2.5. </span>Fundamental inequalities<a class="headerlink" href="#fundamental-inequalities" title="Permalink to this heading">#</a></h4>
+<p>Extremal events have small probabilities. In <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> the probability decays from its maximum value (for <span class="math notranslate nohighlight">\(k=\lfloor np\rfloor\)</span>) until close-to-zero at the extremal events. Such a decay is somewhat described by <span class="math notranslate nohighlight">\(Var(X)\)</span>. However, we have to go deeper in order to characterize the <strong>probability of rare events</strong>.</p>
+<p>Firstly, we should measure how the probability decays as we move away from the  expectation. For this task, we rely again on looking <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> as the sum of <span class="math notranslate nohighlight">\(n\)</span> Bernoulli trials <span class="math notranslate nohighlight">\(Y_i\sim Bern(p)\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(X = Y_1 + Y_2 + \ldots Y_n\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+p(\sum_{i=1}^nY_i - E(X)) = p(X - E(X))
+\]</div>
+<p><strong>Hoeffding’s theorem</strong> bounds <span class="math notranslate nohighlight">\(p(X - E(X)\ge t)\)</span> for <span class="math notranslate nohighlight">\(t&gt;0\)</span> and <span class="math notranslate nohighlight">\(X\)</span> being the sum of <span class="math notranslate nohighlight">\(n\)</span> independent variables <span class="math notranslate nohighlight">\(Y_i\)</span> satisfying <span class="math notranslate nohighlight">\(a_i\le  Y_i\le b_i\)</span> <em>almost surely</em> or a.s. (i.e. with probability <span class="math notranslate nohighlight">\(1\)</span>), as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X - E(X)\ge t)&amp;\le \exp\left(-\frac{2t^2}{\sum_{i=1}^n(b_i-a_i)^2}\right)\\
+p(|X - E(X)|\ge t)&amp;\le 2\exp\left(-\frac{2t^2}{\sum_{i=1}^n(b_i-a_i)^2}\right)\;.
+\end{align}
+\end{split}\]</div>
+<p>This theorem, simply means that deviating <span class="math notranslate nohighlight">\(t\)</span> units from <span class="math notranslate nohighlight">\(E(X)\)</span>, results in an <strong>exponential decay</strong>. This justifies the exponetial shape of the Binomial distribution as we move from <span class="math notranslate nohighlight">\(E(X)\)</span> towards the extremal events! In particular, for this distribution, where <span class="math notranslate nohighlight">\(0\le  Y_i\le 1\)</span> a.s.,  the Hoeffding’s bounds are:</p>
+<div class="math notranslate nohighlight">
+\[
+p(X - np\ge t)\le \exp\left(-\frac{2t^2}{n}\right)\;\;\; \text{and}\;\;\; p(|X - np|\ge t)\le 2\exp\left(-\frac{2t^2}{n}\right)\;.
+\]</div>
+<p>Interestingly, the exponential decay is attenuated by <span class="math notranslate nohighlight">\(n\)</span>: the larger <span class="math notranslate nohighlight">\(n\)</span> the slower the decay since the distribution becomes flatter and flatter as <span class="math notranslate nohighlight">\(n\)</span> increases.</p>
+<p><strong>Cumulative distribution</strong>. So far, we have been focused on describing random variables in terms of characterizing <span class="math notranslate nohighlight">\(p(X=x)\)</span> (<em>point-mass function</em> or pmf). However, sometimes it is useful to quantify the <strong>bulk of the probability</strong>, for instance between two extremal values <span class="math notranslate nohighlight">\(a&lt;b\)</span>. For <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span>, we now that this bulk is almost <span class="math notranslate nohighlight">\(1\)</span> (but not <em>almost sure</em> unless <span class="math notranslate nohighlight">\(n\rightarrow 1\)</span>, since extremal events exist). However, <span style="color:#469ff8">for <span class="math notranslate nohighlight">\(k:a\le k\le b\)</span>, what is the probability that the number of heads is “less or equal than k”?</span></p>
+<p>The usual way to answer this question is to calculate <span class="math notranslate nohighlight">\(p(X\le k)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(X\le k) = \sum_{x\le k}p(X=x)\;.
+\]</div>
+<p>We can use the <strong>Hoeffding’s bound</strong> to give an idea of this probability, since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X\le k) &amp;= 1 - p(X&gt;k)\\
+          &amp;= 1 - p(X\ge k+1)\\
+          &amp;= 1 - p(X-np\ge (k+1)-np)\\
+          &amp;\ge\exp\left(-\frac{((k+1)-np)^2}{n}\right)\;.\\
+\end{align}
+\end{split}\]</div>
+<p>Actually, <span class="math notranslate nohighlight">\(p(X\le k)\)</span> is much larger that the neg-exp. Interestingly, when <span class="math notranslate nohighlight">\(k\approx np\)</span> (close to the expected value), <span class="math notranslate nohighlight">\(p(X\le k)\ge \frac{1}{n}\)</span>, but actually it is <span class="math notranslate nohighlight">\(p(X\le np)=1/2\)</span> due to the symmetry of the distribution. Therefore, the Hoeffding’s bound is a very <strong>conservative bound</strong>.</p>
+<p><strong>The Chernoff bound</strong> is one of the tighest bounds for quantifying the probability of rare events. It is formulated as follows. If we have <span class="math notranslate nohighlight">\(n\)</span> independent variables <span class="math notranslate nohighlight">\(Y_1,Y_2,\ldots, Y_n\)</span> with <span class="math notranslate nohighlight">\(p(Y_i=1)=p_i\)</span> and <span class="math notranslate nohighlight">\(p(Y_i=0)=1-p_i\)</span>, <span class="math notranslate nohighlight">\(X = \sum_{i=1}^nY_i\)</span> has expectation <span class="math notranslate nohighlight">\(E(X) = \sum_{i=1}^np_i\)</span> and we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{(Lower tail)}\;\;\;\;\;\;\;\;\;\; &amp; p(X-E(X)\le -\lambda)\le \exp\left(-\frac{\lambda^2}{2E(X)}\right)\\
+\text{(Upper tail)}\;\;\;\;\;\;\;\;\;\; &amp; p(X-E(X)\ge \lambda)\le \exp\left(-\frac{\lambda^2}{2(E(X)+\lambda/3)}\right)\;.\\
+\end{align}
+\end{split}\]</div>
+<p>The above formulation of the Chernoff bound was proposed in the <a class="reference external" href="https://mathweb.ucsd.edu/~fan/wp/concen.pdf">Survey paper dealing with concetration inequalities</a>. Actually, we have:</p>
+<ul class="simple">
+<li><p>The lower tail bound holds for all <span class="math notranslate nohighlight">\(\lambda\in [0, E(X)]\)</span> and hence for all real <span class="math notranslate nohighlight">\(\lambda\ge 0\)</span>.</p></li>
+<li><p>The upper tail bound, too, holds for all real <span class="math notranslate nohighlight">\(\lambda\ge 0\)</span>.</p></li>
+</ul>
+<p>Note that this version of <span style="color:#469ff8">the Chernoff bound decays more slowly than the Hoeffding’s bound since the denominator is dominated by <span class="math notranslate nohighlight">\(E(X)\)</span></span>.</p>
+<p>Let us now compute the probabilities for the tails in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PD</span></code>: <span class="math notranslate nohighlight">\(440\)</span> and <span class="math notranslate nohighlight">\(560\)</span>. Since <span class="math notranslate nohighlight">\(E(X) = np = 500\)</span>, we have that <span class="math notranslate nohighlight">\(440-500 = -60\)</span> and <span class="math notranslate nohighlight">\(560 - 500 = 60\)</span>, we set <span class="math notranslate nohighlight">\(\lambda = 60\)</span>. Then</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(X-E(X)\le -\lambda)\le \exp\left(-\frac{60^2}{1000}\right) = 0.0027\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(X-E(X)\ge \lambda)\le \exp\left(-\frac{60^2}{2(500+60/3)}\right) = 0.0031\)</span>.</p></li>
+</ul>
+<p>So far, we have characterized the Binomial distribution (concept, expectation, variance and rare events). The Binomial distribution plays a fundamental role in the analysis of AI algorithms for discovering the best solution (whenever possible). These algorithms explore a tree in an “intelligent way”. Before giving an intution of this point, let us introduce an <span style="color:#469ff8">important concept also related with probability and “exploration”: the <strong>random walk</strong></span>. In particular, we will focus at random walks under the Binomial distribution.</p>
+</section>
+<section id="random-walks">
+<h4><span class="section-number">3.1.2.6. </span>Random walks<a class="headerlink" href="#random-walks" title="Permalink to this heading">#</a></h4>
+<p>Let us start by defining the following game:</p>
+<ul class="simple">
+<li><p>Put a traveler at <span class="math notranslate nohighlight">\(x=0\)</span>.</p></li>
+<li><p>Toss a coin.</p>
+<ul>
+<li><p>If the result is head move right: <span class="math notranslate nohighlight">\(x = x + 1\)</span>.</p></li>
+<li><p>Otherwise, move left: <span class="math notranslate nohighlight">\(x = x - 1\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Continue until arriving to <span class="math notranslate nohighlight">\(n\)</span> tosses.</p></li>
+</ul>
+<p><span style="color:#469ff8">The above procedure describes a <strong>one-dimensional random walk</strong> through the <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span></span>. One of the purposes of this game is to answer the question: “How far the traveler gets on average?”</p>
+<p>A bit formally, the problem consist of finding the expectation of <span class="math notranslate nohighlight">\(Z\)</span>, the sum of <span class="math notranslate nohighlight">\(n\)</span> independent events <span class="math notranslate nohighlight">\(Y_i\)</span> with output either <span class="math notranslate nohighlight">\(+1\)</span> or <span class="math notranslate nohighlight">\(-1\)</span>. For a fair coin, <span class="math notranslate nohighlight">\(E(Y_i) = 1\cdot p + (-1)\cdot p = 0\)</span> and this implies that <span class="math notranslate nohighlight">\(E(Z)=E(\sum_{i=1}^n Y_i)= \sum_{i=1}^nE(Y_i)=0\)</span>.</p>
+<p>Actually, under fairness, we can also answer the question: <span style="color:#469ff8">”What is the probability of landing at a give integer <span class="math notranslate nohighlight">\(z\)</span> after <span class="math notranslate nohighlight">\(n\)</span> steps?”</span>. This can be done by simply quering the Pascal Triangle!
+In other words, this problem is equivalent to placing the <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> line on top on the Pascal’s triangle and aligning <span class="math notranslate nohighlight">\(x=0\)</span> with the top vertex of the triangle. We do that in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PascalZ</span></code>, for clarifying that:</p>
+<figure class="align-center" id="pascalz">
+<a class="reference internal image-reference" href="_images/PascalZ.png"><img alt="_images/PascalZ.png" src="_images/PascalZ.png" style="width: 700px; height: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">One-dimensional (fair) Random Walk over Pascal’s Triangle.</span><a class="headerlink" href="#pascalz" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The random walker (RW) may progress towards the left (negative), the right (positive) or coming back home (zero). Landing at a given integer <span class="math notranslate nohighlight">\(z\)</span> is just the probability <span class="math notranslate nohighlight">\(P(z,n)\)</span> of <span class="math notranslate nohighlight">\(z\)</span> successes (if <span class="math notranslate nohighlight">\(z&gt;0\)</span>) or failures (if <span class="math notranslate nohighlight">\(z&lt;0\)</span>).</p></li>
+<li><p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">PascalZ</span></code>, we link <span class="math notranslate nohighlight">\(z\in\mathbb{Z}\)</span> with nodes of the respective <em>first levels</em> where we have <span class="math notranslate nohighlight">\(z\)</span> successes (failures), but this line do extend to nodes below them if this property is satisfied: “if we do not have <span class="math notranslate nohighlight">\(z\)</span> successes (failures) yet, maybe we may have them later”. This is basically the gambler’s conflict!</p></li>
+<li><p>However, in the long run it is expected that the gambler lands on <span class="math notranslate nohighlight">\(z=0\)</span> (no win - no lose) if its wealth is large enough. This is because <span class="math notranslate nohighlight">\(E(Z) = 0\)</span> is equivalent to <span class="math notranslate nohighlight">\(E(X)=np\)</span> for <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span>.</p></li>
+<li><p>Of course, the hope (land on <span class="math notranslate nohighlight">\(z&gt;0\)</span>) or risk (land on <span class="math notranslate nohighlight">\(z&lt;0\)</span>) is measured by the probability of extremal events as we explained above.</p></li>
+<li><p>Logically, if extremal events do happen much more frequently than when predicted by the theory, one may think that the coin is loaded (not fair).</p></li>
+</ul>
+<p><strong>Regardless of direction</strong>. We have seen that <span class="math notranslate nohighlight">\(E(Z) = 0\)</span> (going forward and backwards is equally likely). However, what happens if we reformulate the original question as follows: “How far the traveler gets on average, <strong>regardless of direction</strong>?”. Answering this question implies computing</p>
+<div class="math notranslate nohighlight">
+\[
+E(Z^2)=E[(\sum_{i=1}^nY_i^2)]\;.
+\]</div>
+<p>Using the identity (for any <span class="math notranslate nohighlight">\(Z\)</span> given by the sum of <strong>independent identically distributed</strong> or i.i.d. variables):</p>
+<div class="math notranslate nohighlight">
+\[
+Var(Z) = E(Z^2) - E(Z)^2\;.
+\]</div>
+<p>Hence, we have <span class="math notranslate nohighlight">\(Var(Z) = nVar(Y)\)</span> since the variables <span class="math notranslate nohighlight">\(Y_i\)</span> are i.i.d., so we proceed to measure</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+Var(Y) &amp;= E(Y^2) - E(Y)^2\\
+E(Y^2) &amp;= (+1)^2\cdot p + (-1)^2\cdot q = p + q = 1\;.\\
+E(Y)^2 &amp;= [(+1)\cdot p + (-1)\cdot q ]^2 = [p - q]^2\;.\\
+\end{align}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(p = q\)</span> for a fair coin, we have <span class="math notranslate nohighlight">\(Var(Y) = 1\)</span> and, a result <span class="math notranslate nohighlight">\(Var(Z)=E(Z^2)=n\)</span>. For instance, in <code class="xref std std-numref docutils literal notranslate"><span class="pre">RWrand</span></code> we plot <span class="math notranslate nohighlight">\(100\)</span> fair RWs for <span class="math notranslate nohighlight">\(n=10,000\)</span>. The darkness of the blueness of each walk is proportional to <span class="math notranslate nohighlight">\(Var(Z)=E(Z^2)\)</span> (we have inverted this brightness wrt previous figures for better visualizing extremal paths). Note that most of the paths have “deviations” upper bounded by <span class="math notranslate nohighlight">\(\pm 3\sqrt{Var(Z)} = \pm 3\sqrt{n} = \pm 300\)</span>.</p>
+<figure class="align-center" id="rwrand">
+<a class="reference internal image-reference" href="_images/RWrand.png"><img alt="_images/RWrand.png" src="_images/RWrand.png" style="width: 800px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">One-dimensional (fair) Random Walk: deviations.</span><a class="headerlink" href="#rwrand" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="the-normal-distribution">
+<h4><span class="section-number">3.1.2.7. </span>The Normal distribution<a class="headerlink" href="#the-normal-distribution" title="Permalink to this heading">#</a></h4>
+<p>When <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, the combinatorial nature of <span class="math notranslate nohighlight">\(B(n,p)\)</span> and its links with random walks can be described in a simpler way. The <span class="math notranslate nohighlight">\(B(n,p)\)</span> in the limit becomes another distribution: the well-known <em>Normal</em> or <em>Gaussian</em> distribution.</p>
+<p>In this regard, we exploit the Stirling’s approximation rewriten as</p>
+<div class="math notranslate nohighlight">
+\[
+n!\approx \sqrt{2\pi n}\cdot n^n e^{-n}\;.
+\]</div>
+<p>We plug in this formula in the probability of <span class="math notranslate nohighlight">\(k\)</span> successes, in order to approximate <em>all the factorials</em>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X=k) &amp; = {n\choose k}p^kq^{n-k}\\
+       &amp; = \frac{n!}{k!(n-k)!}p^kq^{n-k}\\
+       &amp; \approx \frac{\sqrt{2\pi n}\cdot n^n e^{-n}}{\sqrt{2\pi k}\cdot k^k e^{-k}\sqrt{2\pi (n-k)}\cdot (n-k)^{(n-k)} e^{-(n-k)}}p^kq^{n-k}\\
+       &amp; \approx \frac{\sqrt{2\pi n}\cdot n^n e^{-n}}{\sqrt{2\pi k}\sqrt{2\pi (n-k)}\cdot k^k \cdot (n-k)^{(n-k)} e^{-k}e^{-(n-k)}}p^kq^{n-k}\\
+       &amp; = \frac{\sqrt{2\pi n}\cdot n^n \cancel{e^{-n}}}{\sqrt{2\pi k}\sqrt{2\pi (n-k)}\cdot k^k \cdot (n-k)^{(n-k)} \cancel{e^{-n}}}p^kq^{n-k}\\
+       &amp; = \sqrt{\frac{n}{2\pi k(n-k)}}\cdot\frac{n^n}{k^k \cdot (n-k)^{n-k}} p^kq^{n-k}\\
+       &amp; = \sqrt{\frac{n}{2\pi k(n-k)}}\cdot\frac{n^k n^{n-k}}{k^k \cdot (n-k)^{n-k}} p^kq^{n-k}\\
+       &amp; = \sqrt{\frac{n}{2\pi k(n-k)}}\cdot\left(\frac{np}{k}\right)^k \cdot\left(\frac{nq}{n-k}\right)^{n-k}\;.\\
+\end{align}
+\end{split}\]</div>
+<p>At this point, it is convenient to formulate the number of succeses <span class="math notranslate nohighlight">\(k\)</span> in terms of deviations <span class="math notranslate nohighlight">\(k = np + z\)</span> from the expectation <span class="math notranslate nohighlight">\(np\)</span> as we did when defining random walks. As a result,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{align}
+ n-k &amp;= n - (np + z) = n - (n(1-q) + z)\\
+     &amp;= n - (n - nq + z)\\
+     &amp;= nq - z\;.
+ \end{align} 
+ \end{split}\]</div>
+<p>and we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X=k) &amp;= p(X = np + z)\\ 
+       &amp;\approx \sqrt{\frac{n}{2\pi k(n-k)}}\cdot \left(\frac{np}{np+z}\right)^{np + z} \cdot\left(\frac{nq}{nq-z}\right)^{nq - z}\\
+       &amp;= \sqrt{\frac{n}{2\pi (np + z)(nq - z)}}\cdot \left(\frac{np}{np + z}\right)^{np + z} \cdot\left(\frac{nq}{nq-z}\right)^{nq - z}\\
+\end{align}
+\end{split}\]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{n}{(np + z)(nq - z)} &amp;= \frac{n}{n^2pq - npz + nqz - z^2}\\
+                           &amp;= \frac{1}{npq + \frac{-pz + qz - z^2}{n}}\\
+                           &amp;\approx \frac{1}{npq}\\
+\end{align}
+\end{split}\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X=k) &amp;= p(X = np + z)\\
+       &amp;\approx \frac{1}{\sqrt{2\pi\cdot npq}}\cdot \left(\frac{np}{np + z}\right)^{np + z} \cdot\left(\frac{nq}{nq-z}\right)^{nq - z}\\
+       &amp;= \frac{1}{\sqrt{2\pi\cdot npq}}\cdot \left(\frac{np + z}{np}\right)^{-(np + z)} \cdot\left(\frac{nq - z}{nq}\right)^{-(nq - z)}\\
+       &amp;= \frac{1}{\sqrt{2\pi\cdot npq}}\cdot \left(\frac{np}{np + z}\right)^{np + z} \cdot\left(\frac{nq}{nq - z}\right)^{nq - z}\\
+       &amp;= \frac{1}{\sqrt{2\pi\cdot npq}}\cdot \left(1 + \frac{z}{np}\right)^{-(np + z)} \cdot\left(1 - \frac{z}{nq}\right)^{-(nq - z)}\\
+       &amp;= \frac{1}{\sqrt{2\pi\cdot npq}}\cdot \left(1 + \frac{z}{np}\right)^{-(np + z)} \cdot\left(1 - \frac{z}{nq}\right)^{-(nq - z)}\;.
+\end{align}
+\end{split}\]</div>
+<p>Now, in order to highlight the exponential shape of <span class="math notranslate nohighlight">\(p(X = np + z)\)</span> let us take logs at both sides</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\log p(X=k) &amp;= \log p(X = np + z)\\
+            &amp;\approx \log\frac{1}{\sqrt{2\pi\cdot npq}} + \left(1 + \frac{z}{np}\right)^{-(np + z)} + \left(1 - \frac{z}{nq}\right)^{-(nq - z)}\\
+            &amp;= C + \log\left(1 + \frac{z}{np}\right)^{-(np + z)} + \log\left(1 - \frac{z}{nq}\right)^{-(nq - z)}\\
+            &amp;\approx C -(np + z)\log\left(1 + \frac{z}{np}\right) -(nq - z)\log\left(1 - \frac{z}{nq}\right)\\
+            &amp;= C - A - B\\
+\end{align}
+\end{split}\]</div>
+<p>Now, we exploit the Taylor expansions of <span class="math notranslate nohighlight">\(\log(1+x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3\ldots\)</span> and <span class="math notranslate nohighlight">\(\log(1-x) = -x - \frac{1}{2}x^2 - \frac{1}{3}x^3\ldots\)</span></p>
+<p>Taking up to the quadratic terms, for A, B we have</p>
+<div class="math notranslate nohighlight">
+\[
+A = (np + z)\left[\frac{z}{np} - \frac{1}{2}\left(\frac{z}{np}\right)^2\right]\;\;\text{and}\;\; B = (nq - z)\left[-\frac{z}{nq} - \frac{1}{2}\left(\frac{z}{nq}\right)^2\right]
+\]</div>
+<p>Then, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+A &amp;= \left[np\frac{z}{np} - np\frac{1}{2}\left(\frac{z}{np}\right)^2\right] + 
+\left[z\frac{z}{np} - z\frac{1}{2}\left(\frac{z}{np}\right)^2\right]\\
+  &amp;= z - \frac{1}{2}\frac{z^2}{np} + \frac{z^2}{np} - \frac{1}{2}\frac{z^3}{(np)^2}\\
+  &amp;= z + \frac{1}{2}\frac{z^2}{np} - \frac{1}{2}\frac{z^3}{(np)^2}\\
+\end{align}
+\end{split}\]</div>
+<p>and similarly</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+B &amp;= \left[-nq\frac{z}{nq} - nq\frac{1}{2}\left(\frac{z}{nq}\right)^2\right] - 
+\left[-z\frac{z}{nq} - z\frac{1}{2}\left(\frac{z}{nq}\right)^2\right]\\
+  &amp;= -z - \frac{1}{2}\frac{z^2}{nq}  + \frac{z^2}{nq} + \frac{1}{2}\frac{z^3}{nq}\\
+  &amp;= -z + \frac{1}{2}\frac{z^2}{nq} +\frac{1}{2}\frac{z^3}{(nq)^2}
+\end{align}
+\end{split}\]</div>
+<p>Plugging <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span> in</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\log p(X=k) &amp;= \log p(X = np + z)\\
+            &amp;\approx C - A - B\\
+            &amp;= \log\frac{1}{\sqrt{2\pi\cdot npq}} - z - \frac{1}{2}\frac{z^2}{np} + \frac{1}{2}\frac{z^3}{(np)^2} + z - \frac{1}{2}\frac{z^2}{nq} -\frac{1}{2}\frac{z^3}{(nq)^2}\\
+            &amp;= \log\frac{1}{\sqrt{2\pi\cdot npq}} \cancel{- z} - \frac{1}{2}\frac{z^2}{np} + \frac{1}{2}\frac{z^3}{(np)^2} + \cancel{z} - \frac{1}{2}\frac{z^2}{nq} -\frac{1}{2}\frac{z^3}{(nq)^2}\\
+            &amp;= \log\frac{1}{\sqrt{2\pi\cdot npq}}  - \frac{1}{2}\frac{z^2}{np} - \frac{1}{2}\frac{z^2}{nq} + \left(\frac{1}{2}\frac{z^3}{(np)^2}-\frac{1}{2}\frac{z^3}{(nq)^2}\right)\\
+            &amp;\approx \log\frac{1}{\sqrt{2\pi\cdot npq}}  - \frac{1}{2}\frac{z^2}{np} - \frac{1}{2}\frac{z^2}{nq} \\
+            &amp;= \log\frac{1}{\sqrt{2\pi\cdot npq}}  + \frac{(-q - p)z^2}{2npq}\\ 
+            &amp;= \log\frac{1}{\sqrt{2\pi\cdot npq}}  + \frac{(-q - (1-q))z^2}{2npq} \\
+            &amp;= \log\frac{1}{\sqrt{2\pi\cdot npq}}  - \frac{z^2}{2npq} \\
+\end{split}\]</div>
+<p>As a result, if we replace <span class="math notranslate nohighlight">\(z\)</span> by <span class="math notranslate nohighlight">\(k - pq\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+\log p(X=k) - \log\frac{1}{\sqrt{2\pi\cdot npq}} =  - \frac{z^2}{2npq}\;,
+\]</div>
+<p>i.e., the so called  <span style="color:#469ff8"><strong>De Moivre - Laplace theorem</strong> yields the usual expression for the Normal distribution as a limit of the Binomial one</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(X=k) =  \frac{1}{\sqrt{2\pi\cdot npq}}\exp\left(-\frac{1}{2}\frac{(k-np)^2}{npq}\right)\;,
+\]</div>
+<p>More generally, as <span class="math notranslate nohighlight">\(np\)</span> is the “mean” of the Binomial, it is renamed as <strong>mean</strong> <span class="math notranslate nohighlight">\(\mu\)</span> of the Normal. Similarly, as <span class="math notranslate nohighlight">\(npq = Var(X)\)</span>, it is renamed the <strong>variance</strong> <span class="math notranslate nohighlight">\(\sigma^2\)</span> of the Normal, whose squere root is the <strong>standard deviation</strong> <span class="math notranslate nohighlight">\(\sqrt{\sigma^2}=\sigma\)</span>.</p>
+<p>Therefore, we can say that <span class="math notranslate nohighlight">\(X\sim N(\mu,\sigma^2)\)</span> if its <em>pmf</em> is</p>
+<div class="math notranslate nohighlight">
+\[
+p(X=x) =  \frac{1}{\sqrt{2\pi\cdot \sigma}}\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)\;.
+\]</div>
+<p><strong>The Standarized Normal</strong>. Coming back to the fact that</p>
+<div class="math notranslate nohighlight">
+\[
+k = np + z\;,
+\]</div>
+<p>we translate that to</p>
+<div class="math notranslate nohighlight">
+\[
+x = \mu + z\;\;,\text{i.e. to}\;\; z = x - \mu\;.
+\]</div>
+<p>Then, the above definition becomes</p>
+<div class="math notranslate nohighlight">
+\[
+p(X=z) =  \frac{1}{\sqrt{2\pi\cdot \sigma}}\exp\left(-\frac{1}{2}\frac{z^2}{\sigma^2}\right)\;.
+\]</div>
+<p>However, <span style="color:#469ff8">this expression is not yet a <strong>probability mass function</strong> but a <strong>probability density function</strong> <em>pdf</em> since</span>:</p>
+<ul class="simple">
+<li><p>It does not yet describe the probability that the RW is at position <span class="math notranslate nohighlight">\(z\)</span>, but the probability thast a RW <strong>with step-length <span class="math notranslate nohighlight">\(1\)</span> on average</strong> is <strong>near</strong> <span class="math notranslate nohighlight">\(z\)</span>.</p></li>
+<li><p>As a result, <span class="math notranslate nohighlight">\(p(X=z)=0\)</span> since we cannot undo precisely the run of the RW to land at an specific <span class="math notranslate nohighlight">\(z\)</span> but <strong>to land at an interval</strong> <span class="math notranslate nohighlight">\(\Delta z\)</span>. The smaller the <span class="math notranslate nohighlight">\(\Delta z\)</span> (it becomes a differential <span class="math notranslate nohighlight">\(dz\rightarrow 0\)</span>) the more precise is our result (see Feynman Lectures), and this happens when <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(X\in [t,t+dt]) = \sum p(z)\Delta z = \int_{t}^{t+dt}p(z)dz\;.
+\]</div>
+<p>Then, the <strong>cumulative distribution</strong> becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+p(X\le t) = \int_{z\le t}p(z)dz\;.
+\]</div>
+<p>In particular, let us define the (continuous) random variable <span class="math notranslate nohighlight">\(Z\)</span> where,</p>
+<div class="math notranslate nohighlight">
+\[
+Z = \left(\frac{x-\mu}{\sigma}\right) = \left(\frac{z}{\sigma}\right)\;.
+\]</div>
+<p>Then thr <strong>unit</strong> or <strong>standarized Normal distribution</strong> and its <em>pdf</em> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+p(Z=z) =  \phi(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}\;.
+\]</div>
+<p>Actually, the above integral, known as the <strong>Gauss integral</strong> satisfies the axioms of probability since</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}dz = 1\;,
+\]</div>
+<p>meaning that <span style="color:#469ff8">the <strong>area under the Gauss function</strong> defines a probability</span>. In particular, looking at <code class="xref std std-numref docutils literal notranslate"><span class="pre">GaussU</span></code> we have:</p>
+<figure class="align-center" id="gaussu">
+<a class="reference internal image-reference" href="_images/GaussU.png"><img alt="_images/GaussU.png" src="_images/GaussU.png" style="width: 800px; height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Cumulatives of the unit Gaussian: <span class="math notranslate nohighlight">\(a=-1, b=1\)</span>.</span><a class="headerlink" href="#gaussu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Probability of <span class="math notranslate nohighlight">\(Z\le a\)</span> (lower tail):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(Z\le a) =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^a e^{-\frac{1}{2}z^2} = \phi(a)\;. 
+\]</div>
+<ul class="simple">
+<li><p>Probability of <span class="math notranslate nohighlight">\(a\le Z\le b\)</span> (between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(a\le Z\le b) =\frac{1}{\sqrt{2\pi}}\int_{a}^b e^{-\frac{1}{2}z^2} = \phi(b) - \phi(a)\;. 
+\]</div>
+<ul class="simple">
+<li><p>Probability of <span class="math notranslate nohighlight">\(Z\ge a\)</span> (upper tail):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(Z\ge a) = 1-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^a e^{-\frac{1}{2}z^2} = 1 - \phi(a)\;. 
+\]</div>
+<p>Basically, once you standarize a variable <span class="math notranslate nohighlight">\(X\)</span> (i.e. transform it into <span class="math notranslate nohighlight">\(Z\)</span>), you have all you need to compute Gaussian probabilities:</p>
+<div class="math notranslate nohighlight">
+\[
+p(a\le X\le b) =  \frac{1}{\sqrt{2\pi\cdot \sigma}}\int_{a}^{b}\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)dx = \phi\left(\frac{b-\mu}{\sigma}\right)- \phi\left(\frac{a-\mu}{\sigma}\right)\;.
+\]</div>
+<p>If you want to query the lower tail values, please visit the <a class="reference external" href="https://www.math.arizona.edu/~jwatkins/normal-table.pdf">Standard Normal Cumulative Probability Table</a></p>
+<p><strong>Link with fundamental bounds</strong>. Once that we have discovered the exponential nature of the Gaussian, and once we realized that the Gaussian is the limit of the Binomial, we close the loop of understanding the exponential decays of both the <strong>Hoeffding’s and Chernoff bounds</strong>.</p>
+</section>
+</section>
+</section>
+<section id="statistical-dependence">
+<h2><span class="section-number">3.2. </span>Statistical dependence<a class="headerlink" href="#statistical-dependence" title="Permalink to this heading">#</a></h2>
+<section id="no-replacement">
+<h3><span class="section-number">3.2.1. </span>No replacement<a class="headerlink" href="#no-replacement" title="Permalink to this heading">#</a></h3>
+<p>Assuming that events are iid (independent and identically distributed) is somewhat far from modeling real events. <span style="color:#469ff8">The simplest way of understanding that is <strong>change the conditions of the experiment</strong> from one trial to another (<strong>no replacement</strong>)</span>.</p>
+<p>Take for instance a standard deck of <span class="math notranslate nohighlight">\(52\)</span> cards: <span class="math notranslate nohighlight">\(4\)</span> suits (clubs <span class="math notranslate nohighlight">\(\clubsuit\)</span>, diamonds <span class="math notranslate nohighlight">\(\diamondsuit\)</span>, spades <span class="math notranslate nohighlight">\(\spadesuit\)</span> and hearts <span class="math notranslate nohighlight">\(\heartsuit\)</span>) and for each of them <span class="math notranslate nohighlight">\(2-10\)</span> cards, plus Ace, <span class="math notranslate nohighlight">\(A\)</span>, Jack <span class="math notranslate nohighlight">\(J\)</span>, Queen <span class="math notranslate nohighlight">\(Q\)</span> and King <span class="math notranslate nohighlight">\(K\)</span>: <span class="math notranslate nohighlight">\(13\times 4 = 52\)</span> cards. In addition,</p>
+<ul class="simple">
+<li><p>Diamonds and hearts are <span class="math notranslate nohighlight">\(\text{Red}\)</span>, whereas the other two suits are <span class="math notranslate nohighlight">\(\text{Black}\)</span>.</p></li>
+<li><p>Jacks, Queens and Kings are <span class="math notranslate nohighlight">\(\text{Face}\)</span> cards.</p></li>
+</ul>
+<p>Then, the probability of obtaining a spade is <span class="math notranslate nohighlight">\(p(\spadesuit)=\frac{13}{52}=1/4\)</span>. However:</p>
+<ul class="simple">
+<li><p>If we obtain a <span class="math notranslate nohighlight">\(\spadesuit\)</span>, remove it from the deck and shuffle again, the probability changes: <span class="math notranslate nohighlight">\(p(\spadesuit'|\spadesuit)=\frac{12}{51}=0.235&lt;1/4\)</span>.</p></li>
+<li><p>It also changes if we obtain a card of any other suit, say <span class="math notranslate nohighlight">\(\diamondsuit\)</span>, but in a different way: <span class="math notranslate nohighlight">\(p(\spadesuit'|\diamondsuit)=\frac{13}{51} = 0.254&gt;1/4\)</span>.</p></li>
+</ul>
+<p>In both cases, the notation <span class="math notranslate nohighlight">\(p(A|B)\)</span> denotes the probability of obtaining <span class="math notranslate nohighlight">\(A\)</span> given <span class="math notranslate nohighlight">\(B\)</span>. In both cases, the conditioning modifies the probability of the original event <span class="math notranslate nohighlight">\(A\)</span>. Therefore, <span class="math notranslate nohighlight">\(A\)</span> is <strong>conditionally dependent on</strong> <span class="math notranslate nohighlight">\(B\)</span>. In other words <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are <strong>independent</strong> only if</p>
+<div class="math notranslate nohighlight">
+\[
+p(A|B) = p(A)
+\]</div>
+<p>In addition, condititional probability is computed by the <strong>Bayes theorem</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(A|B) = \frac{p(A\cap B)}{P(A)}\;.
+\]</div>
+<p>Now, enforce not-independence or <strong>conditioning</strong> (dependence) by   drawing <span class="math notranslate nohighlight">\(k\ll 52\)</span> cards <strong>without replacement</strong> and then asking for the probability of certain events related to these <span class="math notranslate nohighlight">\(k\)</span> cards.</p>
+<p>For instance, if we draw two cards <em>sequentially</em>, <span style="color:#469ff8">what is the probability of obtaining an ace of diamonds  <span class="math notranslate nohighlight">\(A\diamondsuit\)</span> and a <span class="math notranslate nohighlight">\(\text{Black}\)</span> card</span>.</p>
+<p>Since we draw the <span class="math notranslate nohighlight">\(k\)</span> cards sequentially, the we have to consider the <span class="math notranslate nohighlight">\(k!\)</span> possible orders of obtaing <span class="math notranslate nohighlight">\(k\)</span> cards from <span class="math notranslate nohighlight">\(52\)</span>. In this case, we have <span class="math notranslate nohighlight">\(k=2\)</span> and consequently two possible orders:</p>
+<ul class="simple">
+<li><p>First <span class="math notranslate nohighlight">\(A\diamondsuit\)</span>, second <span class="math notranslate nohighlight">\(\text{Black}\)</span>.</p></li>
+<li><p>First <span class="math notranslate nohighlight">\(\text{Black}\)</span>, second  <span class="math notranslate nohighlight">\(A\diamondsuit\)</span>.</p></li>
+</ul>
+<p>We denote the events as follows:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+A &amp;=\{\text{First card is}\; A\diamondsuit\}\\
+B &amp;=\{\text{Second card is}\; A\diamondsuit\}\\
+C &amp;=\{\text{First card is}\; \text{Black}\}\\
+D &amp;=\{\text{Second card is}\; \text{Black}\}\\
+\end{align}
+\)</span></p>
+<p>Then, we explore the probability of each “order”:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+p(A\cap D) &amp;= p(A)p(D|A) = \frac{1}{52}\cdot\frac{26}{51} = \frac{1}{102}\\
+p(C\cap B) &amp;= p(C)p(B|C) = \frac{26}{52}\cdot\frac{1}{51} = \frac{1}{102}\\
+\end{align}
+\)</span></p>
+<p>Therefore, since both orders are disjoint, the final result is given by</p>
+<p><span class="math notranslate nohighlight">\(
+p(A\cap D) + p(C\cap B) = \frac{1}{102} + \frac{1}{102} = \frac{2}{102} = \frac{1}{51}\;. 
+\)</span></p>
+<p><strong>Tree diagrams</strong>. As we did with coins (<span class="math notranslate nohighlight">\(H\)</span>,<span class="math notranslate nohighlight">\(T\)</span>) and the Pascal’s triangle (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">HT</span></code>), representing conditional-probability problems with trees facilitates the visualization of the problem and the interpretability of the solution. Probability trees are built as follows:</p>
+<ul class="simple">
+<li><p>The root of the tree is the origin of the experiment.</p></li>
+<li><p>All the edges are <em>directed</em> and they go from level <span class="math notranslate nohighlight">\(l\)</span> to level <span class="math notranslate nohighlight">\(l+1\)</span>. The edges are labeled with probabilities. The edges leaving a given node <span class="math notranslate nohighlight">\(n\)</span> <em>must add the unit</em>.</p></li>
+<li><p>The edges leaving the root (level <span class="math notranslate nohighlight">\(l=0\)</span>) are associated with <em>non-conditional probabilities of events</em>, e.g. <span class="math notranslate nohighlight">\(p(A)\)</span>.</p></li>
+<li><p>The edges in levels <span class="math notranslate nohighlight">\(l&gt;0\)</span> are associated with <em>probabilities conditioned</em> to the previous level e.g <span class="math notranslate nohighlight">\(p(B|A)\)</span>.</p></li>
+<li><p>The nodes describe events.</p></li>
+<li><p>The leaves encode intersectional events e.g. <span class="math notranslate nohighlight">\(p(A\cap C)\)</span>.</p></li>
+</ul>
+<p>Before using tree diagrams, it is interesting to note that <strong>tree diagrams are not well suited</strong> for solving problems like the above card-deck problem: <span style="color:#469ff8">what is the probability of obtaining an ace of diamonds  <span class="math notranslate nohighlight">\(A\diamondsuit\)</span> and a <span class="math notranslate nohighlight">\(\text{Black}\)</span> card taken sequentially (without replacement)</span>. Why?</p>
+<ul class="simple">
+<li><p>Take an order, for instance <span class="math notranslate nohighlight">\(A,D\)</span> (first card is <span class="math notranslate nohighlight">\(A\diamondsuit\)</span>, second is <span class="math notranslate nohighlight">\(\text{Black}\)</span>). As the probability of the branches must add <span class="math notranslate nohighlight">\(1\)</span>, we cannot put <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(D\)</span> as branches since <span class="math notranslate nohighlight">\(p(A) + p(D)\neq 1\)</span>.</p></li>
+<li><p>We actually need a tree for each order.</p>
+<ul>
+<li><p>In the first tree, we encode the order <span class="math notranslate nohighlight">\(A,D\)</span> (first card is <span class="math notranslate nohighlight">\(A\diamondsuit\)</span>, second is <span class="math notranslate nohighlight">\(\text{Black}\)</span>) to calculate <span class="math notranslate nohighlight">\(p(A)\)</span> and <span class="math notranslate nohighlight">\(p(D|A)\)</span> leading to <span class="math notranslate nohighlight">\(p(A\cap D)\)</span>.</p></li>
+<li><p>In the second tree, we encode the order <span class="math notranslate nohighlight">\(C,B\)</span> (first card is <span class="math notranslate nohighlight">\(\text{Black}\)</span> and second is <span class="math notranslate nohighlight">\(A\diamondsuit\)</span>), to calculate <span class="math notranslate nohighlight">\(p(B)\)</span> and <span class="math notranslate nohighlight">\(p(C|B)\)</span> leading to <span class="math notranslate nohighlight">\(p(C\cap B)\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">Tree1</span></code>, we show the first of these two trees. Note that half of the nodes provided answers not required in this particular problem. However, the answer <span class="math notranslate nohighlight">\(p(A\cap D)\)</span> added to that of <span class="math notranslate nohighlight">\(p(C\cap B)\)</span> given by a second tree, solves the problem.</p>
+<figure class="align-center" id="tree1">
+<a class="reference internal image-reference" href="_images/Tree1.png"><img alt="_images/Tree1.png" src="_images/Tree1.png" style="width: 600px; height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">Simple tree for <span class="math notranslate nohighlight">\(p(A\cap D)\)</span>.</span><a class="headerlink" href="#tree1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Despite the above example, tree diagrams are very useful in other <strong>no-replacement problems</strong> such as answering the following gambling question:</p>
+<p><span style="color:#469ff8">What is the probability that after extracting two cards from the deck, without replacement,  I get <strong>two cards with the same color?</strong></span></p>
+<p>We build the tree diagramm as follows:</p>
+<ul class="simple">
+<li><p>Level <span class="math notranslate nohighlight">\(1\)</span>: we have two possibities <span class="math notranslate nohighlight">\(R = \{\text{1st card is}\; \text{Red}\}\)</span> or <span class="math notranslate nohighlight">\(\bar{R} = \{\text{1st card is}\; \text{Black}\}\)</span>.</p></li>
+<li><p>Level <span class="math notranslate nohighlight">\(2\)</span>: we have, again two possibities <span class="math notranslate nohighlight">\(R' = \{\text{2nd card is}\; \text{Red}\}\)</span> or <span class="math notranslate nohighlight">\(\bar{R'} = \{\text{2nd card is}\; \text{Black}\}\)</span>.</p></li>
+</ul>
+<p>Then, the probabilities of the two branches at level <span class="math notranslate nohighlight">\(1\)</span> are:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+p(R) &amp; = \frac{26}{52} = \frac{1}{2}\\
+p(\bar{R}) &amp; = 1 - p(R) = 1 - \frac{1}{2} = \frac{1}{2}\\
+\end{align}
+\)</span></p>
+<p>In level <span class="math notranslate nohighlight">\(2\)</span> we have <span class="math notranslate nohighlight">\(4\)</span> branches:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+p(R'|R) &amp; = \frac{26-1}{52-1} = \frac{25}{51}\\
+p(\bar{R'}|R) &amp; = 1 - p(R'|R) = 1 - \frac{25}{51} = \frac{26}{51}\\
+p(R'|\bar{R}) &amp; = \frac{26}{52-1} = \frac{26}{51}\\
+p(\bar{R'}|\bar{R}) &amp; = 1 - p(R'|\bar{R}) = 1 - \frac{26}{51} = \frac{25}{51}\\
+\end{align}
+\)</span></p>
+<p>which lead to <span class="math notranslate nohighlight">\(4\)</span> intersection probabilities:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+p(R)p(R'|R) &amp; = \frac{1}{2}\cdot\frac{25}{51} = p(R\cap R')\\
+p(R)p(\bar{R'}|R) &amp; = \frac{1}{2}\cdot\frac{26}{51} = p(R\cap \bar{R'})\\
+p(\bar{R})p(R'|\bar{R}) &amp; = \frac{1}{2}\cdot\frac{26}{51} = p(\bar{R}\cap R')\\
+p(\bar{R})p(\bar{R'}|\bar{R}) &amp; = \frac{1}{2}\cdot\frac{25}{51} = p(\bar{R}\cap \bar{R'})\\
+\end{align}
+\)</span></p>
+<p>As a result, we are interested in events <span class="math notranslate nohighlight">\(R\cap R'\)</span> and <span class="math notranslate nohighlight">\(\bar{R}\cap \bar{R'}\)</span>, i.e. the solution to the problem is</p>
+<p><span class="math notranslate nohighlight">\(
+p(R\cap R') + p(\bar{R}\cap \bar{R'}) = \frac{1}{2}\cdot\frac{25}{51} + \frac{1}{2}\cdot\frac{25}{51} = \frac{25}{51}\;.
+\)</span></p>
+<p>Basically, when we extract a card of a given color, we <strong>reduce the odds</strong> of extracting a sample of the same color in the future and <strong>increase</strong> those of the opposite color. In other words, we are asking the probability of <strong>imbalancing the odds</strong>. The probability of balancing the odds is actually</p>
+<p><span class="math notranslate nohighlight">\(
+p(R\cap \bar{R'}) + p(\bar{R}\cap R') = 1 - \left(p(R\cap R') + p(\bar{R}\cap \bar{R'})\right) = \frac{26}{51}\;,
+\)</span></p>
+<p>i.e. slightly higher than that of imbalancing the odds.</p>
+<p>We show the tree diagram in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Tree2</span></code>. Note that at each level <span class="math notranslate nohighlight">\(l\)</span> of the tree we have that the probability of all the leaves adds to one.</p>
+<figure class="align-center" id="tree2">
+<a class="reference internal image-reference" href="_images/Tree2.png"><img alt="_images/Tree2.png" src="_images/Tree2.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">Tree diagram for a card deck (no replacement).</span><a class="headerlink" href="#tree2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note also that <span class="math notranslate nohighlight">\(p(R\cap \bar{R'}) = p(\bar{R}\cap R')\)</span> and the second and third leaves can be fused in just one with probability <span class="math notranslate nohighlight">\(2\frac{1}{2}\cdot\frac{26}{51}=\frac{26}{51}\)</span>. Actually, both events represent the same outcome in different orders if consider obtaning a red card a “success” (either in the first or in the second round) and not obtaining it a “failure”.</p>
+<p>Therefore, in some regard, this kind of tree remind us the Pascal’s tree, but <span style="color:#469ff8">this time describing <strong>conditional events or variables</strong> instead of independent ones.</span></p>
+</section>
+<section id="conditional-expectations">
+<h3><span class="section-number">3.2.2. </span>Conditional expectations<a class="headerlink" href="#conditional-expectations" title="Permalink to this heading">#</a></h3>
+<p>Before we dive deeper in “conditional trees”, it is interesting to redefine expectations in terms of conditional probabilities.</p>
+<p>Consider for instance <code class="xref std std-numref docutils literal notranslate"><span class="pre">Tree3</span></code> where we <em>generalize</em> the tree in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Tree2</span></code> as follows.</p>
+<ul class="simple">
+<li><p>The <strong>nodes</strong> are considered as the <em>states</em> of a random system with a tuple <span class="math notranslate nohighlight">\((\text{cards},\text{deck})\)</span>, where <span class="math notranslate nohighlight">\(\text{cards}\)</span> denote the number of red cards remaining in the deck, and <span class="math notranslate nohighlight">\(\text{deck}\)</span> is the number of cards (both red and black) remaining in the deck.</p></li>
+<li><p>The <strong>edges</strong> are labeled with the conditional probability of reaching the destination node from the original one. The probabilities emanating from the same node must add one.</p></li>
+</ul>
+<p>Now, we define the following <strong>random</strong> variables:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_0=\frac{a}{A}\)</span> is the fraction of red cards in the original deck where:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is the number cards in the original deck (<span class="math notranslate nohighlight">\(52\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> is the number of red cards in the deck (<span class="math notranslate nohighlight">\(26\)</span>).</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(X_1\)</span> is the fraction of red cards remaining after the first draw with <strong>no replacement</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_2\)</span> is the fraction of red cards remaining after the second draw with <strong>no replacement</strong>.</p></li>
+</ul>
+<figure class="align-center" id="tree3">
+<a class="reference internal image-reference" href="_images/Tree3.png"><img alt="_images/Tree3.png" src="_images/Tree3.png" style="width: 800px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">General tree diagram for a card deck (no replacement).</span><a class="headerlink" href="#tree3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then, we define the <strong>conditional expectation</strong> <span class="math notranslate nohighlight">\(E(X|Y=y)\)</span> of <span class="math notranslate nohighlight">\(X\)</span> wrt to setting <span class="math notranslate nohighlight">\(Y=y\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+E(X|Y=y) = \sum_{x}x\cdot p(X=x|Y=y) = \sum_{x}x\cdot \frac{p(X=x,Y=y)}{p(Y=y)}\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p(X=x,Y=y)\)</span> is the <strong>joint probability</strong> (intersection).</p>
+<p>Consider for instance, <span class="math notranslate nohighlight">\(X=X_1\)</span> and <span class="math notranslate nohighlight">\(Y=X_0\)</span>. Since <span class="math notranslate nohighlight">\(X_1\)</span> has two <em>states</em>, we commence by defining the conditional probabilities:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p\left(X_1=\frac{a}{A-1}\bigg| X_0 =\frac{a}{A}\right) &amp;= \frac{A-a}{A} = p\left(X_1=\frac{a}{A-1}\right)\\
+p\left(X_1=\frac{a-1}{A-1}\bigg| X_0 =\frac{a}{A}\right) &amp;= \frac{a}{A} = p\left(X_1=\frac{a-1}{A-1}\right)\\
+\end{align}
+\end{split}\]</div>
+<p>i.e. knowing <span class="math notranslate nohighlight">\(X_0 = \frac{a}{A}\)</span> does not modifies the probability of <span class="math notranslate nohighlight">\(X_1\)</span> (<span class="math notranslate nohighlight">\(X_0\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span> are independent).</p>
+<p>Since <span class="math notranslate nohighlight">\(X_0\)</span> has a single value, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(X_1|X_0) &amp;= \sum_{x}x\cdot p\left(X_1=x\bigg|\frac{a}{A}\right)\\
+           &amp;= \frac{a}{A-1}\cdot\frac{A-a}{A} + \frac{a-1}{A-1}\cdot\frac{a}{A}\\
+           &amp;= \frac{a}{A}\left[\frac{(A-a) + (a-1)}{(A-1)}\right]\\
+           &amp; = \frac{a}{A}\left[\frac{A-1}{A-1}\right]\\
+           &amp;= \frac{a}{A}
+\end{align}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(X_0\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span> are independent, we have that <span class="math notranslate nohighlight">\(E(X_1|X_0)=E(X_1)\)</span>.</p>
+<p>However <span class="math notranslate nohighlight">\(X_2\)</span> depends clearly on <span class="math notranslate nohighlight">\(X_1\)</span>. Looking at level <span class="math notranslate nohighlight">\(l=2\)</span> we have <span class="math notranslate nohighlight">\(3\)</span> different values for <span class="math notranslate nohighlight">\(X_2\)</span>: <span class="math notranslate nohighlight">\(\frac{a}{A-2}\)</span>, <span class="math notranslate nohighlight">\(\frac{a-1}{A-2}\)</span> and <span class="math notranslate nohighlight">\(\frac{a-2}{A-2}\)</span>.</p>
+<p>Let us compute the conditional probabilities for <span class="math notranslate nohighlight">\(X_2\)</span> (actually the probability of each leaf in the tree). Herein, we apply the <strong>chain rule</strong> for conditional probabilities <span class="math notranslate nohighlight">\(p(X|Y,Z) = p(X|Y)p(Y|Z)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X_2|X_1,X_0) &amp;= p(X_2|X_1)p(X_1|X_0)\\
+               &amp;= p(X_2=x_2|X_1=x_1)p\left(X_1=x_1\bigg| X_0 = \frac{a}{A}\right)\\
+\end{align}
+\end{split}\]</div>
+<p>Then, looking at the tree we consider the paths leading to each different leaves:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_2 = 0\;\text{red cards extracted}\)</span> (left branch):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+p\left(X_2=\frac{a}{A-2}\bigg| X_1=\frac{a}{A-1}\right)\frac{A-a}{A} &amp;= \frac{A-a-1}{A-1}\cdot\frac{A-a}{A}
+\end{align}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_2 = 1\;\text{red card extracted}\)</span> (middle branches):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+ p\left(X_2=\frac{a-1}{A-2}\bigg| X_1=\frac{a}{A-1}\right)\frac{A-a}{A} &amp;+ 
+p\left(X_2=\frac{a-1}{A-2}\bigg| X_1=\frac{a-1}{A-1}\right)\frac{a}{A} = \\
+ \frac{a}{A-1}\cdot\frac{A-a}{A} &amp;+ \frac{A-a}{A-1}\cdot\frac{a}{A} = 2\frac{A-a}{A-1}\cdot\frac{a}{A}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_2 = 2\;\text{red cards extracted}\)</span> (right branch):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+p\left(X_2=\frac{a-2}{A-2}\bigg| X_1=\frac{a-1}{A-1}\right)\frac{a}{A} &amp;= \frac{a-1}{A-1}\cdot\frac{a}{A}
+\end{align}
+\]</div>
+<p>Then, we proceed to calculate <span class="math notranslate nohighlight">\(E(X_2|X_1,X_0)\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(X_2|X_1,X_0) &amp;= \sum_{x_2}x_2\cdot p(X_2=x_2|X_1,X_0)\\
+               &amp;= \frac{a}{A-2}\cdot\frac{A-a-1}{A-1}\cdot\frac{A-a}{A} + \frac{a-1}{A-2}\cdot 2\frac{A-a}{A-1}\cdot\frac{a}{A} + \frac{a-2}{A-2}\cdot\frac{a-1}{A-1}\cdot\frac{a}{A}\\
+\end{align}
+\end{split}\]</div>
+<p><span style="color:#469ff8">Look <strong>carefully</strong> the pattern of the above expression</span>:</p>
+<ul class="simple">
+<li><p>We move from <span class="math notranslate nohighlight">\(0\)</span> successes (red card drawn) to <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span> successes.</p></li>
+<li><p>Each success is characterized by <span class="math notranslate nohighlight">\(a - k\)</span>, with <span class="math notranslate nohighlight">\(k=0,1,2\)</span>.</p></li>
+<li><p>Each failure is characterized by <span class="math notranslate nohighlight">\(A - a - l\)</span>, with <span class="math notranslate nohighlight">\(l=0,1\)</span>.</p></li>
+</ul>
+<p>Rearranging properly each term so that failures appear first, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(X_2|X_1,X_0) &amp;= \frac{A-a}{A-2}\cdot\frac{A-a-1}{A-1}\cdot\frac{a}{A} + 2\frac{A-a}{A-2}\cdot \frac{a-1}{A-1}\cdot\frac{a}{A} + \frac{a-2}{A-2}\cdot\frac{a-1}{A-1}\cdot\frac{a}{A}\\
+&amp; = \frac{a}{A}\left[\frac{A-a}{A-2}\cdot\frac{A-a-1}{A-1} + 2\frac{A-a}{A-2}\cdot \frac{a-1}{A-1} + \frac{a-2}{A-2}\cdot\frac{a-1}{A-1}\right]\\
+&amp;= \frac{a}{A}\left[\frac{A^2 - 3A + 2}{(A-1)(A-2)}\right]\\
+&amp;= \frac{a}{A}\left[\frac{(A-1)(A-2)}{(A-1)(A-2)}\right]\\
+&amp;= \frac{a}{A}
+\end{align}
+\end{split}\]</div>
+<p>Therefore, we have that <span class="math notranslate nohighlight">\(E(X_2|X_1,X_0) = E(X_1)\)</span>. This property is not satisfied, in general, by any conditional expectation, but when it happens, we say that we have a <strong>martingale</strong>.</p>
+</section>
+<section id="martingales">
+<h3><span class="section-number">3.2.3. </span>Martingales<a class="headerlink" href="#martingales" title="Permalink to this heading">#</a></h3>
+<p>Given a sequence of random variables <span class="math notranslate nohighlight">\(X_0,X_1,\ldots,X_n,X_{n+1}\)</span>, it is a martingale if</p>
+<div class="math notranslate nohighlight">
+\[
+E(X_{n+1}|X_n,\ldots,X_1,X_0) = E(X_n)\;\;\text{for all}\;\;n\ge 0\;.
+\]</div>
+<p>In the previous example, <span class="math notranslate nohighlight">\(E(X_{n+1}|X_n,\ldots,X_1,X_0)=\frac{a}{A} = E(X_1)\)</span>, even if the variables are conditioned.</p>
+<p><span style="color:#469ff8">Why Martingales are <strong>useful</strong> in Artificial Intelligence?</span></p>
+<p>Martingales are <strong>random or stochastic processes</strong> not so simpler than sums of i.i.d.s (coin tossing) but not too complex to study. Interestingly, <strong>random walks</strong> are particular cases of martingales.</p>
+<p>The idea behind martingales is that <strong>expectation never changes</strong> even when you add a new level in the tree (a new conditioned variable). On average, the value of the variable <span class="math notranslate nohighlight">\(X_{n+1}\)</span> is that of <span class="math notranslate nohighlight">\(E(X_{n})\)</span> which <em>does not mean</em> that <span class="math notranslate nohighlight">\(X_{n+1}\)</span> is only conditioned to <span class="math notranslate nohighlight">\(X_{n}\)</span> as it happens in Markov chains. Actually, <span class="math notranslate nohighlight">\(X_{n+1}\)</span> is conditioned to <span class="math notranslate nohighlight">\(X_n,X_{n-1},\ldots,X_0\)</span> but the conditional expectation is <strong>invariant</strong>.</p>
+<p><strong>Fair games</strong>. The invariance of the conditional expectation explains the application of Martingales to model the expectations of gamblers in fair games:</p>
+<p>Let us define a gambler betting <span class="math notranslate nohighlight">\(1\)</span> coin  for the Casino drawing a red card from the deck. If we wins, he gets <span class="math notranslate nohighlight">\(1\)</span> back. Doing so, the expected profit is <strong>constant</strong>. Why?.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{n}\)</span> models the gambler fortune at the end of the <span class="math notranslate nohighlight">\(n^{th}\)</span> play.</p></li>
+<li><p>If the game if fair, the <strong>expected fortune</strong> <span class="math notranslate nohighlight">\(E(X_{n+1})\)</span> at the game <span class="math notranslate nohighlight">\(n+1\)</span> is the same than that at game <span class="math notranslate nohighlight">\(n\)</span> <span class="math notranslate nohighlight">\(E(X_{n})\)</span>, i.e. conditional information cannot predict the future.</p></li>
+</ul>
+</section>
+<section id="links-with-pascal-s-triangle">
+<h3><span class="section-number">3.2.4. </span>Links with Pascal’s Triangle<a class="headerlink" href="#links-with-pascal-s-triangle" title="Permalink to this heading">#</a></h3>
+<p>Looking carefully at the structure of <span class="math notranslate nohighlight">\(E(X_2|X_1,X_0)\)</span> we have that it is equal to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{a}{A-2}\cdot\underbrace{{2\choose 0}\frac{A-a-1}{A-1}\cdot\frac{A-a}{A}}_{p(R_2=0)} + \frac{a-1}{A-2}\cdot \underbrace{{2\choose 1}\frac{A-a}{A-1}\cdot\frac{a}{A}}_{p(R_2=1)} + \frac{a-2}{A-2}\cdot\underbrace{{2\choose 2}\frac{a-1}{A-1}\cdot\frac{a}{A}}_{p(R_2=2)}\\
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p(R_2=k)\)</span> is the probability of drawing <span class="math notranslate nohighlight">\(k\)</span> red cards at level <span class="math notranslate nohighlight">\(l=2\)</span>.</p>
+<p>In general we have:</p>
+<div class="math notranslate nohighlight">
+\[
+p(R_n = k) = {n\choose k}\frac{P(A-a,n-k)\cdot P(a,n)}{P(A,n)} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(P(n,r) = n(n-1)\ldots (n - r + 1)\)</span> is an <strong>r-permutation</strong> of <span class="math notranslate nohighlight">\(n\)</span> as defined in the topic of combinatorics. The above expression comes from observing the factorial patterns in both the numerator and the denominator.</p>
+<p>Compared with the i.i.d. case (<code class="xref std std-numref docutils literal notranslate"><span class="pre">Bern</span></code>), i.e. with replacement,  where the probability of obtaining <span class="math notranslate nohighlight">\(k\)</span> red cards should be Binomial</p>
+<div class="math notranslate nohighlight">
+\[
+p(R_n = k) = {n\choose k}p^k(1-p)^{n-k}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(p=1/2\)</span>, in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PascalMartin</span></code> we show, with colors, the probability distribution for the conditional case, i.e. for the martingale, where we kept <span class="math notranslate nohighlight">\(\frac{a}
+{A} = p\)</span> for being comparable to the independent case.</p>
+<figure class="align-center" id="pascalmartin">
+<a class="reference internal image-reference" href="_images/PascalMartin.png"><img alt="_images/PascalMartin.png" src="_images/PascalMartin.png" style="width: 950px; height: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.10 </span><span class="caption-text">Distribution for a martingale.</span><a class="headerlink" href="#pascalmartin" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that:</p>
+<ul class="simple">
+<li><p>Extremal events (all failures/all success) tend to have a zero probability as <span class="math notranslate nohighlight">\(n\)</span> grows.</p></li>
+<li><p>The bulk of the distribution is close to <span class="math notranslate nohighlight">\(E(X_1)=\frac{a}{A}\)</span> but as <span class="math notranslate nohighlight">\(n\)</span> increases the pmf (point-mass function) is flattened.</p></li>
+<li><p>Flattening with <span class="math notranslate nohighlight">\(n\)</span> is due to the denominator <span class="math notranslate nohighlight">\(P(A,n)\)</span> of <span class="math notranslate nohighlight">\(p(R_n = k)\)</span>.</p></li>
+<li><p>Of course we may adapt the fundamental equalities defined for i.i.d. variables to conditional ones, but it is quite clear than rare envents will be less probable in conditional trees such as that in <code class="xref std std-numref docutils literal notranslate"><span class="pre">PascalMartin</span></code> unless we change the ratio between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+</ul>
+<!-- ## Random walks on graphs
+
+### Markov chains 
+
+So far, we have studied both **independent random processes** and **conditional random processes**. In this regard, when we have independence, our random process is a *simple random walk* (see {numref}`RWrand`). However, when the variables in the random process are fully conditioned, the corresponding random process is more difficult to study unless we have a martingale. Fortunately, <span style="color:#469ff8">there is something in between the simplicity of independent random processes and the full conditioning of the martingale: we refer to **Markov chains**</span>.   
+
+**Markov chain**. A *sequence* of random variables $X_0,X_1,\ldots$ is a Markov chain if for all possible *states* (values of the random variables) $x_{t+1},x_{t},\ldots,x_1$ we have: 
+
+$$
+\begin{align}
+p(X_{t+1}=j|& X_t=i,\ldots,X_1=x_1,X_0=x_0) = p(X_{t+1}=j|X_t=i)=p_{ij}\\
+&\text{with}\;\; p_{ij}\ge 0\;\forall i,j\;\;\text{and}\;\;\sum_{j}p_{ij}=1\;\forall i\;,
+\end{align}
+$$
+
+i.e. the probability of a future event only depends on that of a present one. This is called the **Markov property** or the **memoryless property**.
+
+A couple of interesting properties:
+- **Irreducibility**. We say that a state $j$ in the Markov chain (MC) is **accesible** from another state $i$ if exists $t\ge 0$ so that 
+
+$$
+p(X_t=j|X_0=i) = p_{ij}(t)> 0\;\text{in}\;t\;\text{steps}\;,
+$$
+
+that is, we can get from a state $i$ to state $j$ in $t$ steps with probability $p_{ij}(t)$. Then, <span style="color:#469ff8">a MC is **irreducible** if each pair $(i,j)$ of states is mutually accessible.</span> 
+
+[//]: https://galton.uchicago.edu/~lalley/Courses/312/MarkovChains.pdf
+
+[//]: https://mpaldridge.github.io/math2750/S05-markov-chains.html
+
+[//]: https://www.stat.berkeley.edu/users/aldous/RWG/book.pdf
+
+[//]: https://web.pdx.edu/~gjay/teaching/mth271_2020/html/13_GamblersRuin.html
+
+- **Periodicity**. A state $i$ has **period** $d_i$ if
+
+$$
+d_i = \text{gcd}(t\in\{1,2,\ldots\}: p_{ii}(t)>0)
+$$
+
+where $\text{gcd}$ denotes the greatest common divisor. Then, if $d_i>1$ the state $i$ is **periodic**; it $d_i=1$ it is **aperiodic**. Then <span style="color:#469ff8">a MC is **aperiodic** if all states have period $d_i=1$</span>. 
+
+**Graphs**. A graph $G=(V,E)$ consists of a set of **nodes** or vertices $V={1,2,\ldots,n}$ where $|V|=n$, and a set of **edges** $E\subseteq V\times V$. 
+- An edge $e=(i,j)$ is denoted by a pair of nodes $i$ and $j$, where $i$ is the origin and $j$ the target or destination. 
+- If the graph is **undirected** both $(i,j)$ and $(j,i)$ do exist for all $e\in E$. Otherwise, the graph is **directed**. 
+- If $e=(i,i)$ we have a **self-loop**. 
+
+Graphs are very flexible mathematical tools. We commence by using them for describing a random process. The nodes $V$ provide the **states** and the edges $E$ provide the **transitions between states**. Actually we label the edges with the probability of a Markovian transition $p(j|i) = p_{ij}$. 
+
+The following example is motivated by the essay [Random Walks and Electric Networks](https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf) by Doyle and Snell. 
+
+We want to build a graph for the **drunkard's walk**. A man walks along a $5-$blocks stretch in Madison Avenue. He starts at corner $x$ and, with probability $1/2$ walks one block to the right and, also with probability $1/2$ walks one block to the left. At the next corner, he again choses his direction randomly. He continues until he reaches corner $5$, which is home, or corner $0$, which is a bar. In both latter cases he stays there. 
+
+Our graph for this walk has $n=6$ vertices or **states** $V=\{0,1,2,3,4,5\}$, where $5$ is $\text{Home}$ and $0$ is the $\text{Bar}$. See {numref}`Drunk` where the edges or **transitions** are in blue (bidirectional if we no depict the arrowheads) and the possible decision for node $x=3$ are depicted in black. 
+ 
+```{figure} ./images/Topic2/Drunk.png
+---
+name: Drunk
+width: 750px
+align: center
+height: 100px
+---
+A graph for the drunkard's walk. 
+```
+
+Actually, the edges of the above graph are $E=\{(0,0),(1,0),(1,2),(2,1)\ldots,(4,5),(5,5)\}$
+
+<span style="color:#469ff8">Why our graph mimics the **drunkard's walk**, and why it is a **MC**?</span>
+
+- We have two states, $0$ and $1$, with **self-loops** and no edges for returning to any other node. These states are called **absorbing states** in the MC terminology, since once the Markov-chain-random walk (MCRW) reaches them, it is trapped there. As a result the MC is **reducible**. 
+- The graph is almost **bipartite**, i.e. we can parition $V$ in to subsets $V_1=\{0,2,4\}$ and $V_2=\{1,3,5\}$ so that nodes in $V_1$ can only go nodes of $V_2$ (except the absorbing nodes) and viceversa. As a result, the MC is almost **aperiodic**. Non-absorbing nodes have period $2$ and the absorbing ones have period $1$.  
+- If we start our MCRW at a non-absorbing state, say $x\in\{2,3,4\}$ we walk left with probability $1/2$ and right also with probability $1/2$. 
+- The **degree** $\text{deg}(i)$ of a node $i$ in the graph is the number of neighbors ${\cal N}_i$, i.e. the number of **outgoing edges** from $i$. In our graphs we have that all non-absorbing nodes have degree $2$ whereas the absorbing states have degree $1$ (actually their neighbors are themselves). 
+- The degree $\text{deg}(i)$ of each node $i$ reveals that the (Markovian) probability of making a transition to a neighbor is
+
+$$
+p(j|i) = p_{ij} = \frac{a_{ij}}{\text{deg}(i)}\;\; \text{where}\;\; 
+a_{ij}= 
+\begin{cases}
+     1\;\text{if}\; i\in {\cal N}_i  \\[2ex]
+     0\; \text{otherwise}\;.
+\end{cases}
+$$
+
+and $a_{ij}=1$ means that nodes $i$ and $j$ are **adjacent**. For absorbing states, we have $a_{ij}=0\;\forall j\neq i$. As a result, for these states $p_{ii}=1$ and $p_{ij}=0$ for $j\neq i$.
+
+**Patterns of the drunkard's walk**. In order to have a rough idea of the behavior of this Markov process, we have generated $40,000$ random walks ($10,000$ starting at each non-absorbing states $x=1,2,3,4$). Each random walk has length $l=10$. Why? We will discover that shorly. What is important now is to note that some of the walks end up in one of the absorbing states ($x=0$), whereas many others end in the other one ($x=5$). The  probability of reaching each absorbing state is $1/2$.
+
+We plot these walks in {numref}`Drunkard`. The darkest the blue line, the *slower* the walk reaches $x=5$. This means that if the walks reaches $x=5$ at the maximum length of the path $l=10$ it becomes the darkest one. 
+
+ Some iteresting patterns: 
+- As we start uniformly the same number of paths at each non-absorbing state, there is no clear difference between the paths ending in $x=0$ and those ending in $x=5$. 
+- In addition, some paths tending to $x=0$ turn suddenly towards $x=5$ and vice versa.
+
+Apparently, all the non-absorbing states reach $x=5$ *equally slowly*. **However this is misleading**. Actually, most of the paths reach $x=5$ very early. This suggests that the probability of reaching $x=5$ from any non-absorbing state *is not uniform*. This leads us to the answer the first question to solve about a random walk: what is the probability of ending $\text{Home}$.
+
+
+### Recurrence relations
+
+Before addressing the **two fundamental questions** for a MCRW: (a) where does it converge to, and (b) how long does it take, it is important to note that the remainder of this section requires some practice with algebraic solvers of recurrent relations, namely **linear difference equations**. They are very practical tools that are explained in the excellent [Github of Mathew Aldridge](https://mpaldridge.github.io/math2750/) and even in the [Wikipedia](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). The examples below have been adapted from the first source and solve some of the exercises in [Random Walks and Electric Networks](https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf) by Doyle and Snell.
+
+
+```{figure} ./images/Topic2/Drunkard.png
+---
+name: Drunkard
+width: 800px
+align: center
+height: 400px
+---
+Patterns of generated drunkard's walks. 
+```
+<span style="color:#469ff8">**Q1.** What is the probability of ending at $\text{Home}$ if we start from the non-absorbing state $x$?</span>
+
+In other words, what is the probability of **hitting** $x=5$ from $x$ before hitting $x=0$? 
+
+1) We commence by **formulating the Markovianity** of the drunkward's path in a more generic way: 
+
+$$
+x_{n+1}= 
+\begin{cases}
+     x_{n} + 1 \;\text{with probability}\; p\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} - 1 \;\text{with probability}\; q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     0\; \text{if}\; n=0\\[2ex]
+     m\; \text{if}\; n=m\;,
+\end{cases}
+$$
+
+where: $x_{n}$ is the position of the walk at step $n$, $p = 1 - q = 1/2$ is the probability of a transition from a non-absorbing state and $m=5$ is the target node. 
+
+2) We pose the above formula in probabilistic terms using the **condition on the first step**: 
+
+$$
+\begin{align}
+p(\text{Home}) &= p(\text{1st step right})p(\text{Home}|\text{1st step right})\\ 
+&+ p(\text{1st step left})p(\text{Home}|\text{1st step left})\\
+& = p\cdot p(\text{Home}|\text{1st step right}) + q\cdot p(\text{Home}|\text{1st step left})\;.
+\end{align}
+$$
+
+Herein, we use the **theorem of total probability** for the following events:
+
+$$
+\begin{align}
+E &= \{\text{Home}\}\\
+A &= \{\text{1st step right}\}\\ 
+\bar{A} &= \{\text{1st step left}\} 
+\end{align}
+$$
+
+Then, total probability means that the probability of an event given two (or more) exclusive events is
+
+$$
+p(E) = p(E\cap A) + p(E\cap \bar{A}) = p(A)p(E|A) + p(\bar{A})p(E|\bar{A})\;. 
+$$
+
+In our case: 
+
+$$
+P(E) = p\cdot p(E|A) + q\cdot p(E|\bar{A})\;,
+$$
+
+and we want to calculate both $p(E|A)$ and $p(E|\bar{A})$ to calculate $P(E)$. 
+
+3) Formulate and solve a **recurrence relation**: 
+
+Then, we have to solve the following recurence relation: 
+
+$$
+r_n = p\cdot r_{n+1} + q\cdot r_{n-1}\;\text{subject to}\; r_0=0, r_m = 1\;.
+$$
+
+where $r_0 = 0$ and $r_m=1$ are the **boundary conditions** that specify success if we reach $m$ ($\text{Home}$) and failure if we reach $0$ ($\text{Bar}$). 
+
+We formulate the recurrence relation as a **linear difference equation**. In this case it is **homogeneous** (like an homogeneous linear system $\mathbf{A}\mathbf{x}=\mathbf{0}$) since: 
+
+$$
+p\cdot r_{n+1} + q\cdot r_{n-1} - r_n = 0\;.
+$$
+
+First of all, we apply the following change of variable: 
+
+$$
+r_n = \lambda^n\;,
+$$
+
+which leads to 
+
+$$
+p\lambda^{n+1} + q\lambda^{n-1} - \lambda^n = 0\;,
+$$
+
+and taking $\lambda^{n-1}$ as common factor yields
+
+$$
+\lambda^{n-1}(p\lambda^{2} + q - \lambda) = 0
+$$
+
+where $p\lambda^{2} + q - \lambda = 0$ is the **characteristic equation** of the recurrence. Then, reorganzing the coefficients we have  $p\lambda^{2} - \lambda + q = 0$. To solve this quadratic equation is convenient to use the remainder theorem (Ruffini). The dividers of the independent term ($q$) are $\pm 1$ and $\pm q$. If we try first $+1$, and apply $q = 1-p$, this leads to the equation $\lambda p - q = 0$ with yields $\lambda =\frac{q}{p}$ tha we call $\rho$. Then, the factorization we are looking for is 
+
+$$
+(p\lambda - q)(\lambda - 1)\; \text{and roots}\; \lambda_1=1, \lambda_2=\rho\;.
+$$
+
+Now, we have two cases:
+- If $\rho \neq 1$, then we have two distinct roots. In this case, the general solution of an homogeneous equation has the shape: 
+
+$$
+r_n = A\lambda_1^n + B\lambda_2^n = A1^n + B\rho^n = A + B\rho^n\;.
+$$
+
+In order to determine $A$ and $B$ we exploit the two **boundary conditions** $r_0=0, r_m=1$: 
+
+$$
+\begin{align}
+r_0 &=  A + B\rho^0 = A + B = 0\\
+r_m &=  A + B\rho^m = 1\\
+\end{align}
+$$
+
+From $A + B = 0$ we get $A = -B$ which leads to 
+
+$$
+\begin{align}
+- B + B\rho^m &= 1 \Rightarrow (\rho^m - 1) B = 1 \Rightarrow B = \frac{1}{\rho^m - 1}\\
+A = -B & = -\frac{1}{\rho^m - 1}\;.
+\end{align}
+$$
+
+and, as a result 
+
+$$
+\begin{align}
+r_n &= A\lambda_1^n + B\lambda_2^n\\
+    &= -\frac{1}{\rho^m - 1} + \frac{\rho^n}{\rho^m - 1}\\
+    &= \frac{\rho^n-1}{\rho^m - 1}
+\end{align}
+$$
+
+- If $\rho=1$ we have $p=q$ and this means that we have two repeated solutions $\lambda_1=\lambda_2 = 1$. In this case, the general solution has the following shape: 
+
+$$
+r_n = (A + nB)\lambda_1^n\;,
+$$
+ 
+which leads to 
+
+$$
+\begin{align}
+r_0 &=  (A + 0B)1^0 = A = 0\\
+r_m &=  (A + mB)1^m = A + mB = 1\\
+\end{align}
+$$
+
+whose solutions are $A = 0$ and $B = \frac{1}{m}$.
+
+Finally
+
+$$
+\begin{align}
+r_n &= (A + nB)\lambda_1^n\;\\
+    &= (0 + n\frac{1}{m})\\
+    &= \frac{n}{m}
+\end{align}
+$$
+
+The generic result is: 
+
+$$
+r_n = 
+\begin{cases}
+  \frac{\rho^n-1}{\rho^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+r_n = 
+\begin{cases}
+  \frac{\left(\frac{q}{p}\right)^n-1}{\left(\frac{q}{p}\right)^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p=q\\[2ex]
+\end{cases}
+$$
+
+**Result for the ubiased walk**. If $p=q=1/2$ we have a random process according to the graph in {numref}`Drunk`. The probability of getting $\text{Home}$, i.e. of hitting $x=m=5$ before hitting $x=0$ is $p(x)=\frac{x}{m} = \frac{x}{5}$. The closer we are to $\text{Home}$ the more probable is that we get there. Note that if we invert the boundary conditions priming going to the $\text{Bar}$, the probability of getting there before arriving home is $p(x)=1-\frac{x}{5}$. 
+
+However, as $m\rightarrow\infty$ the probability of getting $\text{Home}$ tends to zero, i.e. $p(x)\rightarrow 0$. 
+
+The result for the unbiased (fair) walk is consistent with our observations in {numref}`Drunkard` and shows that the probability of reaching $\text{Home}$ is not **uniform**. This result also explain why most of the $40,000$ random walks lauched uniformly from any of the non-absorbing states reach $\text{Home}$ very soon. 
+
+**Result for the biased walk**. Biased walks, however, are modeled in a different way. We label the edges with their probabilities. Then, instead of getting the transition probabilities from the degree, we simply set $p_{ij}=a_{ij}p$ or $p_{ij} = a_{ij}q$ as in {numref}`Drunkpq`
+
+```{figure} ./images/Topic2/Drunkpq.png
+---
+name: Drunkpq
+width: 800px
+align: center
+height: 100px
+---
+Graph for biased drunkard's walks. 
+```
+
+If $q\ll p$, then $p(x)\rightarrow 1$ since we are drifted to the right. Symmetrically, if $q\gg p$, then $p(x)\rightarrow 0$ since $m>n$. 
+
+As $m\rightarrow\infty$, we have that $p(x)\rightarrow 0$, independently of the relationship between $p$ and $q$ since
+
+$$
+\lim_{m\rightarrow\infty} \frac{\rho^n-1}{\rho^m - 1} = \lim_{m\rightarrow\infty} \frac{\rho^n/\rho^m-1/\rho^m}{1 - 1/\rho^m} = \lim_{m\rightarrow\infty} \frac{0-0}{1 - 0} = 0\;.
+$$
+
+In {numref}`Drunkardpq` where $p=0.25, q=0.75$ we can see that few walks reach $x=5$, actually the proportion of "successful" paths is $p$. 
+
+
+```{figure} ./images/Topic2/Drunkardpq.png
+---
+name: Drunkardpq
+width: 800px
+align: center
+height: 400px
+---
+Patterns of generated biased drunkard's walks with $p=0.25$. 
+```
+
+<span style="color:#469ff8">**Q2.** What is the expected time or **hitting time** for arriving $\text{Home}$ if we start from the non-absorbing state $x$?</span>
+
+We are interested in estimating the expected **hitting time** of $x=5$. 
+
+As before, we rely on linear difference equations. 
+
+1) We pose the above formula in probabilistic terms using the **condition on the first step**: 
+
+$$
+\begin{align}
+E(\text{Duration}) &= p(\text{1st step right})p(\text{Duration}|\text{1st step right})\\ 
+&+ p(\text{1st step left})p(\text{Duration}|\text{1st step left})\\
+& = p\cdot p(\text{Duration}|\text{1st step right}) + q\cdot p(\text{Duration}|\text{1st step left})\;.
+\end{align}
+$$
+
+Herein, we use the **conditional expectations** for the following random variables:
+
+$$
+\begin{align}
+X &= \{\text{Duration}\}\\
+Y &= \{\text{1st step}\}\\ 
+\end{align}
+$$
+
+where $Y$ has values $y=\text{left}$ and $y=\text{right}$. 
+
+Then, 
+
+$$
+E(X|Y=y) = \sum_{x}xP(X=x|Y=y)\;.
+$$
+
+However, we are interested in $E(X)$, which is defined by the **tower property** of conditional expectation: 
+
+$$
+E(X) = E(E(X|Y))=\sum_{y}p(Y=y)E(X|Y=y)\;.
+$$
+
+where $Y$ is the outcome of the first step. 
+
+In this regard,
+
+$$
+\begin{align}
+E(X|Y=\text{left})  &= 1 + d_{n-1}\\ 
+E(X|Y=\text{right}) &= 1 + d_{n+1}\;. 
+\end{align}
+$$
+
+Always count $1$ because we had made a step. 
+
+This leads us to the following **inhomogeneous recurrence relation**: 
+
+$$
+d_n = p(1 + d_{n+1}) + q(1 + d_{n-1}) = 1 + pd_{n+1} + qd_{n-1}\;.
+$$
+
+and we have 
+
+$$
+pd_{n+1} -d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+$$
+
+Whose left-hand-size lhs leads to the same homogeneous recurrence equation that we have studied before.  
+
+- If $\rho\neq 1$ the general solution ($\lambda_1=1, \lambda_2=\rho$ are solutions of the homogeneous version) has the shape
+
+$$
+d_{n} = A + B\rho^n\;.
+$$
+
+Since we need a particular solution for the full equation and the lhs is a constant, we start trying to set $d_{n}=C$: 
+
+$$
+pC - C + qC = (p+q)C - C = C - C\neq -1\;
+$$
+
+Next, we try with $d_{n}=Cn$: 
+
+$$
+\begin{align}
+pC(n+1) - Cn + qC(n-1) &= pCn + pC - Cn + qCn -qC\\ 
+                       &= Cn - Cn + (p-q)C\\ 
+                       &= (p-q)C = -1
+\end{align}
+$$
+
+i.e. $C = \frac{-1}{p-q}$ and the particular solution becomes
+
+$$
+d_n = A + B\rho^n + Cn = A + B\rho^n - \frac{n}{p-q}\;.
+$$
+
+Then we apply the **boundary conditions** $d_0=0, d_m=0$ to find $A$ and $B$: 
+
+$$
+\begin{align}
+d_0 &= A + B\rho^0 - \frac{0}{p-q} = A + B = 0\\
+d_m &= A + B\rho^m - \frac{m}{p-q} = A + B\rho^m - \frac{m}{p-q}= 0\;,
+\end{align}
+$$
+
+$A = - B$ and $-B + B\rho^m = \frac{m}{p-q}\Rightarrow (\rho^m -1)B = \frac{m}{p-q}\Rightarrow B = \frac{1}{\rho^m-1}\cdot\frac{m}{p-q}\;.$
+
+Then
+
+$$
+\begin{align}
+d_n &= A + B\rho^n - \frac{m}{p-q}\\
+    &= -\frac{1}{\rho^m-1}\cdot\frac{m}{p-q} + \frac{\rho^n}{\rho^m-1}\cdot\frac{m}{p-q} - \frac{m}{p-q}\\
+    &= \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right)\; 
+\end{align}
+$$
+
+- If $\rho = 1$, i.e $p=q=1/2$, the general solution ($\lambda_1=1, \lambda_2=1$ are solutions of the homogeneous version) has the shape
+
+$$
+d_{n} = A + nB\;.
+$$
+
+For getting a particular solution we find that both the eductated guesses (**antsazs**) $d_i=C$ and $d_i= nC$ do not work. We try $d_i=n^2C$: 
+
+$$
+\begin{align}
+-1 &= pC(n^2 + 1 + 2n) - Cn^2 + qC(n-1)^2\\ 
+   &= pCn^2 + pC + 2pCn) -Cn^2 + qC(n-1)^2\\ 
+   &= p(Cn^2 + C + 2Cn) -Cn^2 + q(Cn^2 + C - 2Cn)\\
+   &= p(Cn^2 + C + 2Cn) -Cn^2 + q(Cn^2 + C - 2Cn)\\
+   &= \frac{1}{2}(Cn^2 + C + 2Cn) -Cn^2 +\frac{1}{2}(Cn^2 + C - 2Cn)\\
+   &= C\;.
+\end{align}
+$$
+
+and the resulting general solution is: 
+
+$$
+d_{n} = A + nB + Cn^2 = A + nB - n^2\;.
+$$
+
+Then, we exploit again the the **boundary conditions** $d_0=0, d_m=0$ to find $A$ and $B$:
+
+$$
+\begin{align}
+d_0 &= A + 0B - n^2 = A = 0\\
+d_m &= A + mB - n^2 = mB - m^2= 0\Rightarrow B = m\;,
+\end{align}
+$$
+
+And for $A=0, B=m$ the general solution is 
+
+$$
+d_{n} = A + nB - n^2 = mn - n^2 = n(m - n)\;,
+$$
+
+which clearly tells us that the hitting time of $n$ is $O(n^2)$ por $p=q=1/2$ since we have equal probability of go back and forth. 
+
+Summarizing 
+
+$$
+d_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+d_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\left(\frac{q}{p}\right)^n-0}{\left(\frac{q}{p}\right)^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p=q\\[2ex]
+\end{cases}
+$$
+
+**Result for the ubiased walk**. If $p=q=1/2$ the hitting time of $x=m$ from $n$ is $O(n^2)$ since we have equal probability of go back and forth. 
+
+The behavior for $m\rightarrow\infty$ is obvious: 
+
+$$
+\lim_{m\rightarrow\infty}n(m - n) = \infty\;, 
+$$
+
+since $m$ becomes impossible to be reached from $n$. 
+
+**Result for the biased walk**. If $p\neq q$ and $p\ll q$, the walk is drifted to the left and this means that $\rho\gg 1$, $m$ is amplified and the hitting time from $n$ increases notably. However, if $p\gg q$, $m$ is attenuated and this reduces the hitting time from $n$. 
+
+Actually, the behavior for $m\rightarrow\infty$ is: 
+
+$$
+\begin{align}
+\lim_{m\rightarrow\infty} \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) &= \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{\frac{\rho^m}{\rho^m} -\frac{1}{\rho^m}}-n\right)\\
+&=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{1 -\frac{1}{\rho^m}}-n\right)\\
+&=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)\\ 
+\end{align}
+$$
+
+We have two cases: 
+- If $q>p$, then $\rho^m\gg m$ and $\lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)$ = $\frac{1}{p-q}(-n)= \frac{1}{q-p}(n)$. Then, the hitting time is a fraction of $n$. 
+
+- If $p>q$, then $\rho^m\ll m$ and $m$ is amplified wrt $n$, increasing the hitting time. 
+
+[//]: https://discrete.openmathbooks.org/dmoi3/sec_recurrence.html
+
+[//]: https://www.youtube.com/watch?v=vEsUsaK1HBk
+
+[//]: https://web.williams.edu/Mathematics/sjmiller/public_html/331Sp17/handouts/ProbLifesaver_Recurrences.pdf
+
+[//]: https://math.stackexchange.com/questions/729432/recurrence-for-random-walk
+
+**Gambler's ruin**. The drunkard walk can be also interpreted in terms of the classical model of the Gambler's ruin. The idea is as follows. 
+- We have two players, Alice and Bob, starting respectively with $a$ and $b$ dollars, where $a + b = m$.
+- They bet $1$ dollar at each step. 
+- Alice wins with probability $p$ and Bob wins with probability $q$, where $p + q = 1$. Winning implies increasing the personal fortune by $1$ taking it from the other's fortune, i.e. if Alice wins the first round, the state of their respective fortunes are $(a+1,b-1)=m$. If Bob does, the state is $(a-1,b+1)=m$. 
+- Therefore, reaching $0$ means that Alice is ruined whereas reaching $m$ means that Bob is ruined. In both cases we stop the game.  
+
+[//]: https://www.google.com/search?q=birth-death-process+Markov+chain&oq=birth-&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg5MgYIAhBFGEAyCAgDEEUYJxg7MgkIBBAuGAoYgAQyBggFEEUYPTIGCAYQRRg8MgYIBxBFGDyoAgCwAgA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:5edd9f8f,vid:s730MPIMOpw,st:0
+
+ <span style="color:#347fc9">**Exercise**. Gambler's ruin can be slightly modified to become a variant of a **Birth-death chain**. Suppose that we have that $p\ge 0$, $q\ge 0$ and $p + q<1$. In this problem, $p$ is called the **birth rate**, whereas $q$ is the **death rate**. In order to simulate a stable population, at each state we have the probability of $r = 1 - p - q$ of neither births nor deaths. If we reach $0$ we have **extinction** and if we reach $m$ we have **survival**. This is formulated as follows: 
+ </span>
+ <br></br>
+ <span style="color:#347fc9">
+ $
+x_{n+1}= 
+\begin{cases}
+     x_{n} + 1 \;\text{with probability}\; p\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} - 1 \;\text{with probability}\; q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} \;\text{with probability}\; r = 1- p - q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     0\; \text{if}\; n=0\\[2ex]
+     m\; \text{if}\; n=m\;,
+\end{cases}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+The exercise consists of answering questions Q1 and Q2 to this chain.
+</span>
+<br></br>
+<span style="color:#347fc9">
+**Q1. Probability of extinction?** 
+</span>
+<br></br>
+<span style="color:#347fc9">
+1)We have 3 possible events for the total probability theorem
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+p(\text{Extinction}) &= p(\text{1st death})p(\text{Extinction}|\text{1st death})\\ 
+&+ p(\text{1st stable})p(\text{Extinction}|\text{1st stable})\\ 
+&+ p(\text{1st birth})p(\text{Extinction}|\text{1st birth})\\
+& = q\cdot p(\text{Extinction}|\text{1st death})\\
+&+  r\cdot p(\text{Extinction}|\text{1st stable})\\ 
+&+  p\cdot p(\text{Extinction}|\text{1st birth})\;.
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+2) Recurrence relation
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+x_n = q\cdot x_{n-1} + r\cdot x_{n} + p\cdot x_{n+1}\;\Rightarrow\;q\cdot x_{n-1} + (r-1)\cdot x_{n} + p\cdot x_{n+1}=0\; 
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Actually, we have the conditions $x_0 = 1$ and $x_m = 0$ wrt extinction. As $r=1-p-q$, then $r-1= 1-p-q-1=-(p+q)$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+q\cdot x_{n-1} - (p+q)\cdot x_{n} + p\cdot x_{n+1}=0\;\text{s.t.}\; x_0=1,x_m = 0\;.
+$ 
+</span>
+<span style="color:#347fc9">
+Aparently, the above homogeneous equation is different from that of that of the Gambler's ruin (or drunkard's walk). However, if you look at the solutions you have two roots ($1$ and $\rho$) as usual, since 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+&\frac{1}{\lambda^{n-1}}\left(q\lambda^{n-1} - (p+q)\lambda^n + p\lambda^{n+1}\right) = 0\\
+& q - (p+q)\lambda + p\lambda^2 = 0\\
+& p\lambda^2 - (p+q)\lambda + q = 0\\
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+and by Ruffini, we have that $\lambda_1=1$ and as a result $p\lambda - q = 0\Rightarrow \lambda_2 = q/p = \rho$. 
+</span>
+<br></br>
+<span style="color:#347fc9">
+We will have the following generic solutions (in the first case the solutions are distinct and in the second case we have repeated solutions): 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+x_n = 
+\begin{cases}
+     A + B\rho^n \;\;\text{if}\; \rho\neq 1 \\[2ex]
+     C + nD  \;\;\;\text{if}\; \rho= 1\;.
+\end{cases}
+$
+</span>
+<span style="color:#347fc9">
+From the two boundary condition ($x_0 = 1$ and $x_m = 0$) inverted wrt the drunkard's walk, we can obtain $A,B,C$ and $D$ which lead to inverted probabilities wrt the drunkards's walk: 
+</span>
+<span style="color:#347fc9">
+$
+x_n = 
+\begin{cases}
+  \frac{\rho^n-\rho^m}{1-\rho^m} \;\text{if}\; p\neq q\\[2ex]
+  1-\frac{n}{m} \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+x_n = 
+\begin{cases}
+  \frac{\left(\frac{q}{p}\right)^n-\left(\frac{q}{p}\right)^m}{1- \left(\frac{q}{p}\right)^m} \;\text{if}\; p\neq q\\[2ex]
+  1-\frac{n}{m} \;\text{if}\; p=q\\[2ex]
+\end{cases}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+**However**, what is different here wrt the drunkard's walk is that **$p$ and $p$ satisfy $p + q <1$**. This means that they can be arbitrarity small, for instance $q=0.1$ and $p=0.05$ which leads to $\rho = 2$, or $q=0.05$ and $p=0.1$ which leads to $\rho = 1/2$. The result is the same whenever $\rho=2$ and $\rho=1/2$ (for instance $q=0.3,p=0.6$ and $q=0.6,p=0.3$ respectively). In other words, the MCRW is invariant to changes of the $r=1-p-q$ probabilities whenever the proportion $q/p$ holds. 
+</span>
+<br></br>
+<span style="color:#347fc9">
+**Q1. Time to survival?** 
+</span>
+<br></br>
+<span style="color:#347fc9">
+As usual, we commence by formulating the **condition on the first step**: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+E(\text{Survival}) &= p(\text{1st death})p(\text{Survival}|\text{1st death})\\ 
+&+ p(\text{1st stable})p(\text{Survival}|\text{1st stable})\\ 
+&+ p(\text{1st birth})p(\text{Survival}|\text{1st birth})\\
+& = q\cdot p(\text{Survival}|\text{1st death})\\
+&+  r\cdot p(\text{Survival}|\text{1st stable})\\ 
+&+  p\cdot p(\text{Survival}|\text{1st birth})\;.
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+This leads us to the following **inhomogeneous recurrence relation**: 
+<br></br>
+<span style="color:#347fc9">
+$
+d_n = p(1 + d_{n+1}) + r(1 + d_{n}) + q(1 + d_{n-1}) \;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+From $p + q + r = 1$ and $r-1=1-p-q-1=-(p+q)$ we have
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+pd_{n+1} -(p+q)d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+$
+<br></br>
+<span style="color:#347fc9">
+The roots for its **homogeneous version** $\lambda_1 = 1$ and $\lambda_2 = \rho = q/p$.
+</span>
+<br></br>
+<span style="color:#347fc9">
+If $\rho\neq 1$, the general solution has the same shape than that of de druknard's walk (please check this as an additional exercise):
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+d_n &= A + B\rho^n - \frac{m}{p-q}\\
+    &= -\frac{1}{\rho^m-1}\cdot\frac{m}{p-q} + \frac{\rho^n}{\rho^m-1}\cdot\frac{m}{p-q} - \frac{m}{p-q}\\
+    &= \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right)\; 
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Again, the difference wrt the drunkard's walk appears when defining $p$ and $q$. Note that if $p$ and $q$ are very small (close to zero), then the hitting time tends to $\infty$ even when the proportions of $p$ and $q$ hold: look at the fraction $\frac{1}{p-q}$ dominatinq the hitting time for $p\ne q$. There is a nice explanation: the walk spends a significant amount of time without moving forward or backwards  since $r = 1- p -q \approx 1$. 
+</span>
+<br></br>
+<span style="color:#347fc9">
+However, if $p=q$ then $r = 1 -2p = 1-2q$ and from the previous inhomogeneous recurrence 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+pd_{n+1} -(p+q)d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+we have: 
+</span>
+<span style="color:#347fc9">
+$
+pd_{n+1} -2pd_n + pd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, the solution for the homogeneous version
+</span> 
+<span style="color:#347fc9">
+$
+pd_{n+1} -2pd_n + pd_{n-1} = 0
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Has now a double solution $\lambda_1 = \lambda_2 = 1$ and the general solution becomes
+</span>
+<span style="color:#347fc9">
+$
+d_n = A + nB\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+And the educated guesses (antsazs) for $d_i=C$ and $d_i=Cn$ do not work. Lets try $d_i = Cn^2$: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+-1 &= pC(n+1)^2 - 2pCn^2 + pC(n-1)^2\\
+   &= pC(n^2 + 1 + 2n) - 2pCn^2 + pC(n^2 + 1 - 2n)\\
+   &= pCn^2 + pC + 2pCn - 2pCn^2 + pCn^2 + pC - 2pCn\\
+   &= \cancel{pCn^2} + pC + 2pCn \cancel{- 2pCn^2} + \cancel{pCn^2} + pC - 2pCn\\
+   &= pC + 2pCn + pC - 2pCn\\
+   &= 2pC\\
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e $C = \frac{-1}{2p}$ and the resulting **general solution** has the following shape: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+d_n = A + nB + Cn^2 = A + nB - \frac{n^2}{2p}\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+And we exploit the **boundary conditions** $d_0=0$ and $d_m=0$ to find $A$ and $B$: 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+d_0 &= A + 0B - C0^2 = 0\Rightarrow A = 0\\
+d_m &= A + mB - \frac{m^2}{2p} = 0\Rightarrow B  = \frac{m}{2p}
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+And the **general solution** for $A=0$ and $B = m/2p$ becomes 
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{align}
+d_n &= A + nB - \frac{n^2}{2p} = n\frac{m}{2p} - \frac{n^2}{2p}\\
+    &= \frac{1}{2p}(nm - n^2)\\
+    &= \frac{1}{2p}n(m-n)\;.
+\end{align}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Actually, this results in a normalization by $2p$ of $n(m-n)$ (the solution for the drunkard's walk). The natural interpretation is that as $p\rightarrow 0$ we have $r\rightarrow 1$ and the hitting time tends to $\infty$. 
+</span>
+
+### Random walks in 2D 
+The approach of recurrence relations is very useful for **1D random processes** such as the drunkard's walk or gambler's ruin, birth-death processes and many more. However, it is the domain of more general graphs such as **grids** or **lattices** (e.g. the Pascal's triangle) where random walks become more useful for AI researchers and practicioners. For instance, a image can be seen as a matrix of pixels where each inner pixel $(i,j)$ (col, row) is connected with $8$ neighbors: 
+
+$$
+\begin{align}
+(i-1,j+1)\;\;  &\;\;   (i,j+1) & (i+1,j+1) \\
+(i-1,j)\;\;\;    &\;\;\;\;\;   (i,j)   &  (i+1,j)  \\
+(i-1,j-1)\;\;\;  &\;\;   (i,j-1) &  (i+1,j-1) \\
+\end{align}
+$$
+
+- $4$ straight directions: $\text{West},\text{North}, \text{East}$ and $\text{South}$, respectively $(i-1,j), (i,j+1), (i+1,j)$ and $(i,j-1)$. 
+- and $4$ diagonals: $(i-1,j+1), (i+1,j+1), (i+1,j-1)$ and $(i-1,j-1)$. 
+
+Therefore, images are **$8-\text{neighborhood}$ grids** where we are interested in finding objects, such as organs in medical images. The task is called **segmentation** and for medical images, which are typically very noisy, it is very useful to click at some pixels of the organ and some pixels out of it to **label** the pixels belonging the organ. Our colleague Leo Grady developed a techology for segmenting medical images in his paper [Random Walks for Image Segmentation](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1704833) and transferred it to Siemens.
+
+**The Escape Room**. Let us solve a simpler problem (but conceptually and methodologically identical) involving a **$4-\text{neighborhood}$ grid** (only straight directions). 
+
+In {numref}`Escape` we create a small 2D game. We have a $4-$grid whose nodes (called **interior nodes**) are the *positions* $x_1,x_2,\ldots,x_5$ of a player in a room. The graph also depticts in a brighter color the doors. Some of the doors are *Exits* $E_1,E_2,\ldots, E_6$ and some other doors are controled by *Policemen* $P_1,P_2$ and $P_3$. 
+
+The game is as follows: 
+
+<span style="color:#469ff8">
+What is the probability of escaping from each position? 
+</span>
+
+```{figure} ./images/Topic2/Escape.png
+---
+name: Escape
+width: 800px
+align: center
+height: 600px
+---
+Escape room with Exits $E_i$ and Policemen $P_i$ as border nodes. 
+```
+Since Exits and Policemen are **absorbing states**, this is a 2D version of the drunkard's walk. The **game ends** when we hit either an Exit, with reward $1$ or a Policeman, with reward $0$. Therefore, our problem is to estimate $p(\text{Exit}|x_i)$ for all $x_i$.
+
+Imagine that the player starts at node $x_4$ (close to a policeman and far from an exit). It is reasonable to have $p(\text{Exit}|x_4)<p(\text{Exit}|x_1)$. Actually if the player "sees" the policeman it will run away, but where? The player does not know the position of the exits and the other policemen in advance. Such info will be **propagated** to him from the so called **border nodes**: police-nodes will "send" a reward of $0$ whereas exits will send a reward of $1$, though their respective boundary conditions.   
+
+**Harmonic Principle**. Let $f(i) = p(\text{Exit}|i)$ where $j$ can be a $x_j$ a $E_j$ or a $P_j$ then, we assume that the probability of an inner node is the average of that of its $4$ neighbors:
+
+$$
+f(i) = \frac{1}{4}\sum_{j\in{\cal N}_i}f(j)\;.
+$$
+
+Actually, we have a **linear system** with $5$ unknowns $f(x_1),\ldots,f(x_5)$ and $5$ equations: 
+
+$$
+\begin{align}
+f(x_1) &= \frac{1}{4}\left[f(E_3)+ f(E_1) + f(x_2) + f(x_4)\right] = \frac{1}{4}\left[1+ 1 + f(x_2) + f(x_4)\right]\\
+f(x_2) &= \frac{1}{4}\left[f(x_1)+ f(E_2) + f(E_4) + f(x_5)\right] = \frac{1}{4}\left[f(x_1) + 1 + 1 + f(x_5)\right]\\
+f(x_3) &= \frac{1}{4}\left[f(E_5)+ f(E_3) + f(x_4) + f(E_6)\right] = \frac{1}{4}\left[1 + 1 + f(x_4) + 1\right]\\
+f(x_4) &= \frac{1}{4}\left[f(x_3)+ f(x_1) + f(x_5) + f(P_1)\right] \;= \frac{1}{4}\left[f(x_3)+ f(x_1) + f(x_5) + 0\right]\\
+f(x_5) &= \frac{1}{4}\left[f(x_4)+ f(x_2) + f(P_3) + f(P_2)\right] \;= \frac{1}{4}\left[f(x_4)+ f(x_2) + 0 + 0\right]\\
+\end{align}
+$$
+
+"Harmonicity" ensures that the system has a **unique solution** and we can solve it very easily if we understand the structure of the system. In the following, even when we use an inverse, we note that <span style="color:#469ff8">actually we do not need to compute it by hand in the exercises but to **approximate the solution iteratively**</span>. 
+
+**Transition Matrix**. Let $P$ be a $n\times n$ matrix, where $n=|V|$ is the number of nodes of the graph $G=(V,E)$. Then, the component $p_{ij}$ is the probability of reaching node $j$ from node $i$. For the above **escape room**, the transition matrix has the following **block structure**:  
+
+$$
+\mathbf{P} =
+\begin{bmatrix}
+\mathbf{I}_{n_B} & \mathbf{0}_{n_B\times n_I}\\ 
+\mathbf{R}_{n_I\times n_B} & \mathbf{Q}_{n_I}
+\end{bmatrix}
+$$
+
+where $n = n_B + n_I$ and $n_B$ is the number of **border** (absorbing) nodes and $n_I$ is the number of **interior** nodes.
+Then, we have: 
+- $\mathbf{I}_{n_B}$ is the **identity matrix of dimension** $n_B$. It has the probabilities between border nodes: only self-loops, $p_{ii}=1$ in the diagonal and $p_{ij}=0$ for $j\neq i$. 
+- $\mathbf{R}_{n_I\times n_B}$ has the probabilities between interior nodes ($x_1,\ldots,x_5$) **in the rows** and border nodes ($E_1,\ldots,E_6,P_1,P_2, P_3$) **in the cols**. In our example, we have $p_{ij}=1/4$ when $j$ is a neighbor of $i$: 
+
+$$
+\mathbf{R} = 
+\begin{bmatrix}
+\frac{1}{4} & 0 & \frac{1}{4} & 0 & 0 & 0 & 0 & 0 & 0\\
+0     & \frac{1}{4} & 0 & \frac{1}{4} & 0 & 0 & 0 & 0 & 0\\
+0  &  0 & \frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} & 0 & 0 & 0\\
+0  &  0 & 0 & 0 & 0 & 0 & \frac{1}{4} & 0 & 0\\
+0  &  0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{4} & \frac{1}{4}\\
+\end{bmatrix}
+$$
+
+- $\mathbf{R}_{n_I}$ is a **square matrix** with the probabilities only between interior nodes ($x_1,\ldots,x_5$) if any. 
+
+$$
+\mathbf{Q} = 
+\begin{bmatrix}
+0           & \frac{1}{4} & 0           & \frac{1}{4} & 0 \\
+\frac{1}{4} & 0           & 0           &  0          & \frac{1}{4}\\
+0           & 0           & 0           & \frac{1}{4} & 0\\
+\frac{1}{4} & 0           & \frac{1}{4} &  0          & \frac{1}{4}\\
+0           & \frac{1}{4} & 0           & \frac{1}{4} & 0 \\    
+\end{bmatrix}
+$$
+
+An interesting **property** of $\mathbf{P}$ is that *all rows must sum $1$* (*simple stochastic*). Then, note that the sum of probababilities of the same row in $\mathbf{R}$ and $\mathbf{Q}$ is actually $1$ for each row. 
+
+<span style="color:#469ff8">
+What is relation between the two above matrices? 
+</span>
+<br></br>
+
+The simple stochasticity of $\mathbf{P}$ gives a precise idea of how to link $\mathbf{R}$ and $\mathbf{Q}$ through a linear system. 
+
+- From one side, we have that $\mathbf{I}_{n_I}-\mathbf{Q}$ (identity matrix of size $n_i$ minus $\mathbf{R}$) encodes, by  adding each row, the probabilities of "escaping towards any absortion node". 
+
+$$
+\mathbf{I}_{n_I}-\mathbf{Q} = 
+\begin{bmatrix}
+1           & -\frac{1}{4} & 0           & -\frac{1}{4} & 0 \\
+-\frac{1}{4} & 1           & 0           &  0          & -\frac{1}{4}\\
+0           & 0           & 1           & -\frac{1}{4} & 0\\
+-\frac{1}{4} & 0           & -\frac{1}{4} &  1          & -\frac{1}{4}\\
+0           & -\frac{1}{4} & 0           & -\frac{1}{4} & 1 \\    
+\end{bmatrix}
+$$
+
+- Let $f = [f_B\; f_D]^T$ be the conditional probabilities $f(i) = p(\text{Exit}|i)$ where some of them are known ($f_B=[1\;1\;1\;1\;1\;1\;0\;0\;0]$) and some others must be estimated ($f_B$). With a little abuse of notation, let us denote $f(x_i)$ as $x_i$. Then, we have $f_B = [x_1\;x_2\;x_3\;x_4\;x_5]$.
+
+- Then, from the other side, the matrix product $\mathbf{R}f_B$ encodes the probabilities of going from each interior node to any border one: 
+
+$$
+\mathbf{R}f_B = 
+\begin{bmatrix}
+\frac{1}{4} & 0 & \frac{1}{4} & 0 & 0 & 0 & 0 & 0 & 0\\
+0     & \frac{1}{4} & 0 & \frac{1}{4} & 0 & 0 & 0 & 0 & 0\\
+0  &  0 & \frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} & 0 & 0 & 0\\
+0  &  0 & 0 & 0 & 0 & 0 & \frac{1}{4} & 0 & 0\\
+0  &  0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{4} & \frac{1}{4}\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+1\\
+1\\
+1\\
+1\\
+1\\
+0\\
+0\\
+0\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\frac{1}{4} + \frac{1}{4}\\
+\frac{1}{4} + \frac{1}{4} \\
+\frac{1}{4} + \frac{1}{4} + \frac{1}{4}\\
+0\\
+0\\
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{1}{2}\\
+\frac{1}{2}\\
+\frac{3}{4}\\
+0\\
+0\\
+\end{bmatrix}
+$$
+
+As a result, we have the linear system:
+
+$$
+\underbrace{(\mathbf{I}_{n_I}-\mathbf{R})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+$$
+
+The corresponding system in the example is: 
+
+$$
+\begin{bmatrix}
+1           & -\frac{1}{4} & 0           & -\frac{1}{4} & 0 \\
+-\frac{1}{4} & 1           & 0           &  0          & -\frac{1}{4}\\
+0           & 0           & 1           & -\frac{1}{4} & 0\\
+-\frac{1}{4} & 0           & -\frac{1}{4} &  1          & -\frac{1}{4}\\
+0           & -\frac{1}{4} & 0           & -\frac{1}{4} & 1 \\    
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+x_5\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\frac{1}{2}\\
+\frac{1}{2}\\
+\frac{3}{4}\\
+0\\
+0\\
+\end{bmatrix}
+$$
+
+**Iterative solution**. This system, which is equivalent to the one given by the harmonic constrain,  is well suited for an iterative solution, without the need of computing the inverse $(\mathbf{I}_{n_I}-\mathbf{Q})^{-1}$. 
+
+In this regard, the convergence requirements of the well-known **Jacobi Algorithm** meet: basically the $\mathbf{A}$ is *diagonally dominant* (its entries are greater in absolute value that those the off-diagonal ones). This algorithm obeys the following recurrence relation: 
+
+$$
+\mathbf{x}^{t+1} = \mathbf{D}^{-1}\mathbf{b} - \mathbf{D}^{-1}(\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;,
+$$
+
+where: 
+- $\mathbf{D}^{-1}$ is the inverse of $diag(\mathbf{A})$. In our case it is $\mathbf{I}_{n_I}$.
+- $\mathbf{U}$ and $\mathbf{L}$ are, respectively, the upper-triangular and lower-triangular sub-matrices of $\mathbf{A}$ (diagonal not included, i.e. zeroed). 
+
+Basically, in this problem, the Jacobi algorithm is extremelly simple: 
+
+$$
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+$$
+
+Thus, setting $\mathbf{x}_0 = [1\;1\;1\;1\;1]^T$ we have: 
+
+$$
+\mathbf{x}_1 = 
+\begin{bmatrix}
+1\\
+1\\
+1\\
+.75\\
+.5\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+.9375\\
+.875\\
+.9375\\
+.625\\
+.4375\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+.875\\
+.84375\\
+.90625\\
+.578125\\
+.375\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+.85546875\\
+.8125\\
+.89453125\\
+.5390625\\
+.35546875\\
+\end{bmatrix}\;,
+$$
+
+which is a good approximation of the **exact solution**:
+
+$$
+\mathbf{x} = 
+\begin{bmatrix}
+.82303371\\
+.78651685\\
+.87640449\\
+.50561798\\
+.32303371\\
+\end{bmatrix}\;.
+$$
+
+As we can see in {numref}`SolEscape`, nodes closer to the Policemen have less probability of success. Maybe the most illustrative example is $x_4\approx 0.5$, halfway bettween escape and capture!
+
+```{figure} ./images/Topic2/SolEscape.png
+---
+name: SolEscape
+width: 800px
+align: center
+height: 600px
+---
+Solution to the Escape Room. 
+```
+
+Obviously, if $x_i = p(\text{Exit}|i)$, then $1 - x_i = p(\text{Policemen}|i)$. 
+
+**Advantages of computing the inverse**. The inverse $(\mathbf{I}_{n_I}-\mathbf{Q})^{-1}$ is called the **fundamental matrix** $\mathbf{N}$ of the Markov chain (MC). The entries $N_{ij}$ can be interpreted as <span style="color:#469ff8">the expected number of times that the MC will be in state $j$ before absortion when it is in state $i$</span>. 
+
+In our example, we have: 
+
+$$ 
+(\mathbf{I}_{n_I}-\mathbf{Q})^{-1} = 
+\begin{bmatrix}
+1.1741573  & 0.33707865 & 0.08988764 & 0.35955056 & 0.1741573\\
+0.33707865 & 1.16853933 & 0.04494382 & 0.17977528 & 0.33707865\\
+0.08988764 & 0.04494382 & 1.07865169 & 0.31460674 & 0.08988764\\
+0.35955056 & 0.17977528 & 0.31460674 & 1.25842697 & 0.35955056\\
+0.1741573  & 0.33707865 & 0.08988764 & 0.35955056 & 1.1741573\\
+\end{bmatrix}
+$$
+
+Actually, the product $\mathbf{t}=\mathbf{N}\mathbf{1}$ (column vector of all ones) gives <span style="color:#469ff8">the expected number of steps before absorption for each starting
+state</span>. Namely 
+
+$$
+\mathbf{t}=
+\begin{bmatrix}
+2.13483146\\
+2.06741573\\
+1.61797753\\
+2.47191011\\
+2.13483146\\
+\end{bmatrix}\;.
+$$
+
+
+
+**Monte Carlo solution**. What if instead of solving a linear system we **launch random walks** (RWs) from the interior states $x_1,\ldots, x_5$? We proceed as follows:
+- For each $x_i$ launch $n$ walks of length $l$ from each $x_i$.
+- The proportion of walks launched from $x_i$ reach an Exit state is an approximation of $p(i)=p(\text{Exit}|i)$. 
+
+<span style="color:#469ff8">How many walks $n$ do we need to get a good approximation of $p$?
+</span>
+
+In Binomial terms, $p(i)$ can be seen as the "probability of success" and we known that when $n\rightarrow\infty$ we have a normal distribution of mean $\mu = np$ and standard deviation $\sigma = \sqrt{npq}$. 
+
+Imagine now that the want to ensure that the probability of success is $.95$. 
+
+$$
+p\left(-a\le \frac{p(i) - np}{\sqrt{npq}}\le a\right) = p\left(-a\le Z\le a \right) = .95
+$$
+
+i.e. $Z$ is a standarized variable. Due to the symmetry of the normal distribution, the above equation means that the probabilities of the tails satisfy $p(-a\le Z)=p(Z\ge a)=(1-0.95)/2 = 0.025$. Quering the [Standard Normal Cumulative Probability Table](https://www.math.arizona.edu/~jwatkins/normal-table.pdf) we have that $a = 1.9\approx 2$. Then: 
+
+$$
+-2\le \frac{p(i) - np}{\sqrt{npq}}\le 2
+$$
+
+Normizing both the numerator and the denominator by $n$ we have
+
+$$
+-2\le \frac{\frac{p(i) - np}{n}}{\frac{\sqrt{npq}}{n}}\le 2
+$$
+
+leading to 
+
+$$
+-2\le \frac{\frac{p(i)}{n}-p}{\frac{\sqrt{pq}}{n}}\le 2\;\Rightarrow -2\le \frac{\frac{p(i)}{n}-p}{\sqrt{\frac{pq}{n}}}\le 2\;\Rightarrow -2\sqrt{\frac{pq}{n}}\le \frac{p(i)}{n}-p\le 2\sqrt{\frac{pq}{n}}\;.
+$$
+
+Since $\sqrt{pq}<1/2$ we have 
+
+$$
+p\left(-\frac{1}{\sqrt{n}}<\frac{p(i)}{n}-p<\frac{1}{\sqrt{n}}\right) = 0.95\;.
+$$
+
+This means that if we want to ensure that the deviation between the mean $p(i)$ and the probability of success satisfies
+
+$$
+\left|\frac{p(i)}{n}-p\right| < \frac{1}{\sqrt{n}} = 0.01
+$$
+
+with probability $0.95$, we need $n=10,000$ walks for such a  small upper bound! Actually the Monte Carlo solution obtained by launching $10,000$ walks from each interior node is
+
+$$
+\mathbf{x} = 
+\begin{bmatrix}
+.82758621\\ 
+.80224404\\ 
+.84444444\\ 
+.49731183\\ 
+.302391\\ 
+\end{bmatrix}
+$$
+
+where the length of each walk is quite flexible ($l=20$ in this case), since absortion states are pretty close. 
+
+Monte Carlo Markov Chains (MCMCs) are very inefficent here but sometimes become an effective search strategy when they are enpowered by data. 
+<br></br>
+<span style="color:#347fc9">
+**Exercise**. What if we have negative rewards? In the small problem in {numref}`MiniDirichlet` we have **negative absorbing states** $n_1,\ldots,n_5$ labeled as $-1$ and **positive absorbing states** $p_1$ and $p_2$ set to $+1$. In this case, we have only three interior states $x_1$, $x_2$ and $x_3$. What are their probabilities? 
+</span>
+
+
+```{figure} ./images/Topic2/MiniDirichlet.png
+---
+name: MiniDirichlet
+width: 800px
+align: center
+height: 600px
+---
+Small Escape Room with positive and negative rewards. 
+```
+<br></br>
+<span style="color:#347fc9">
+Let us formulate the matrices $\mathbf{Q}$ and $\mathbf{R}$. From $n_B = 5 + 2 = 7$ and $n_I = 3$, we have  
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{Q}_{3} = 
+\begin{bmatrix}
+0           &  \frac{1}{4} &  0\\
+\frac{1}{4} &  0           &  \frac{1}{4}\\
+0           &  \frac{1}{4} &  0\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{R}_{3\times 7} = 
+\begin{bmatrix}
+\frac{1}{4}   & \frac{1}{4} & \frac{1}{4} &  0  &  0  &  0 &  0\\
+0             & 0           &  0          &  \frac{1}{4} & \frac{1}{4}  &  0 &  0\\
+0 & 0 & \frac{1}{4} & 0 & 0 & \frac{1}{4} & \frac{1}{4}\\ 
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, from $f_B = [-1\;-1\;-1\;-1\;-1\;+1\;+1]^T$ and $f_B = [x_1\;x_2\;x_3]^T$ we set the system
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\underbrace{(\mathbf{I}_{3}-\mathbf{œ})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+$
+</span>
+<span style="color:#347fc9">
+as follows
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{bmatrix}
+1           &  -\frac{1}{4} &  0\\
+-\frac{1}{4} &  1           &  -\frac{1}{4}\\
+0           &  -\frac{1}{4} &  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{1}{4}   & \frac{1}{4} & \frac{1}{4} &  0  &  0  &  0 &  0\\
+0             & 0           &  0          &  \frac{1}{4} & \frac{1}{4}  &  0 &  0\\
+0 & 0 & \frac{1}{4} & 0 & 0 & \frac{1}{4} & \frac{1}{4}\\ 
+\end{bmatrix}
+\begin{bmatrix}
+-1\\
+-1\\
+-1\\
+-1\\
+-1\\
++1\\
++1\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e.
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{bmatrix}
+1           &  -\frac{1}{4} &  0\\
+-\frac{1}{4} &  1           &  -\frac{1}{4}\\
+0           &  -\frac{1}{4} &  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+\end{bmatrix} =
+\begin{bmatrix}
+-\frac{3}{4}\\
+-\frac{2}{4}\\
++\frac{1}{4}\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us now set and solve the **iterative** system via **Jacobi** for these problems:
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\begin{bmatrix}
+\mathbf{x}_1^{t+1}\\
+\mathbf{x}_2^{t+1}\\
+\mathbf{x}_3^{t+1}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+-\frac{3}{4}\\
+-\frac{2}{4}\\
++\frac{1}{4}\\
+\end{bmatrix}-
+\begin{bmatrix}
+0           &  -\frac{1}{4} &  0\\
+-\frac{1}{4} &  0           &  -\frac{1}{4}\\
+0           &  -\frac{1}{4} &  0\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x}_1^{t}\\
+\mathbf{x}_2^{t}\\
+\mathbf{x}_3^{t}\\
+\end{bmatrix}
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+Thus, setting $\mathbf{x}_0 = [1\;1\;1]^T$ we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{x}_1 = 
+\begin{bmatrix}
+-.5\\
+0\\
+.5\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+-.75\\
+-.5\\
+.25\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+-.875\\
+-.625\\
+.125\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+-.90625\\
+-.6875\\
+.09375\\
+\end{bmatrix}\;,
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+which is a good approximation of the **exact solution**:
+</span>
+<br></br>
+<span style="color:#347fc9">
+$
+\mathbf{x} = 
+\begin{bmatrix}
+-.92857\\
+-.71428\\
+.071428\\
+\end{bmatrix}\;.
+$
+</span>
+<br></br>
+<span style="color:#347fc9">
+As we can see in {numref}`SolDirichlet`, negative states are closer to negative absorbing states, where $x_3$ is closer to the positive ones. Remind that $1-x_i$ gives the probabilities wrt positive absorbing states!
+</span>
+
+```{figure} ./images/Topic2/SolDirichlet.png
+---
+name: SolDirichlet
+width: 800px
+align: center
+height: 600px
+---
+Solution to Small Escape Room with positive and negative rewards. 
+```
+
+# The Cutoff Phenomenon 
+## Markov chains and equilibrium
+When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their **long-time behaviors**</span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance {numref}`SolDirichlet`, where the numerical solution to this system ensures that the state of an interior node converge to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of spectral graph theory. 
+
+## Shuffling cards
+For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>.  
+ -->
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Topic1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Combinatorics as counting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="practice_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Introduction to the practical part of MD2025</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-trials">3.1. Independent Trials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coins-and-dices">3.1.1. Coins and dices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-binomial-distribution">3.1.2. The Binomial distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unimodality">3.1.2.1. Unimodality</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pascal-s-triangle">3.1.2.2. Pascal’s Triangle</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-values-and-fluctuations">3.1.2.3. Probable values and fluctuations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-and-variance">3.1.2.4. Expectation and variance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-inequalities">3.1.2.5. Fundamental inequalities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks">3.1.2.6. Random walks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-normal-distribution">3.1.2.7. The Normal distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-dependence">3.2. Statistical dependence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-replacement">3.2.1. No replacement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectations">3.2.2. Conditional expectations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#martingales">3.2.3. Martingales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links-with-pascal-s-triangle">3.2.4. Links with Pascal’s Triangle</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

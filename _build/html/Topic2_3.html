@@ -1,0 +1,2044 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Random walks on graphs &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topic2_3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Topic2_3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Random walks on graphs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">Markov chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrence-relations">Recurrence relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-in-2d">Random walks in 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">Markov chains and equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">Shuffling cards</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="random-walks-on-graphs">
+<h1>Random walks on graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h1>
+<section id="markov-chains">
+<h2>Markov chains<a class="headerlink" href="#markov-chains" title="Permalink to this heading">#</a></h2>
+<p>So far, we have studied both <strong>independent random processes</strong> and <strong>conditional random processes</strong>. In this regard, when we have independence, our random process is a <em>simple random walk</em> (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">RWrand</span></code>). However, when the variables in the random process are fully conditioned, the corresponding random process is more difficult to study unless we have a martingale. Fortunately, <span style="color:#469ff8">there is something in between the simplicity of independent random processes and the full conditioning of the martingale: we refer to <strong>Markov chains</strong></span>.</p>
+<p><strong>Markov chain</strong>. A <em>sequence</em> of random variables <span class="math notranslate nohighlight">\(X_0,X_1,\ldots\)</span> is a Markov chain if for all possible <em>states</em> (values of the random variables) <span class="math notranslate nohighlight">\(x_{t+1},x_{t},\ldots,x_1\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(X_{t+1}=j|&amp; X_t=i,\ldots,X_1=x_1,X_0=x_0) = p(X_{t+1}=j|X_t=i)=p_{ij}\\
+&amp;\text{with}\;\; p_{ij}\ge 0\;\forall i,j\;\;\text{and}\;\;\sum_{j}p_{ij}=1\;\forall i\;,
+\end{align}
+\end{split}\]</div>
+<p>i.e. the probability of a future event only depends on that of a present one. This is called the <strong>Markov property</strong> or the <strong>memoryless property</strong>.</p>
+<p>A couple of interesting properties:</p>
+<ul class="simple">
+<li><p><strong>Irreducibility</strong>. We say that a state <span class="math notranslate nohighlight">\(j\)</span> in the Markov chain (MC) is <strong>accesible</strong> from another state <span class="math notranslate nohighlight">\(i\)</span> if exists <span class="math notranslate nohighlight">\(t\ge 0\)</span> so that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(X_t=j|X_0=i) = p_{ij}(t)&gt; 0\;\text{in}\;t\;\text{steps}\;,
+\]</div>
+<p>that is, we can get from a state <span class="math notranslate nohighlight">\(i\)</span> to state <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(t\)</span> steps with probability <span class="math notranslate nohighlight">\(p_{ij}(t)\)</span>. Then, <span style="color:#469ff8">a MC is <strong>irreducible</strong> if each pair <span class="math notranslate nohighlight">\((i,j)\)</span> of states is mutually accessible.</span></p>
+<ul class="simple">
+<li><p><strong>Periodicity</strong>. A state <span class="math notranslate nohighlight">\(i\)</span> has <strong>period</strong> <span class="math notranslate nohighlight">\(d_i\)</span> if</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d_i = \text{gcd}(t\in\{1,2,\ldots\}: p_{ii}(t)&gt;0)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{gcd}\)</span> denotes the greatest common divisor. Then, if <span class="math notranslate nohighlight">\(d_i&gt;1\)</span> the state <span class="math notranslate nohighlight">\(i\)</span> is <strong>periodic</strong>; it <span class="math notranslate nohighlight">\(d_i=1\)</span> it is <strong>aperiodic</strong>. Then <span style="color:#469ff8">a MC is <strong>aperiodic</strong> if all states have period <span class="math notranslate nohighlight">\(d_i=1\)</span></span>.</p>
+<p><strong>Graphs</strong>. A graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> consists of a set of <strong>nodes</strong> or vertices <span class="math notranslate nohighlight">\(V={1,2,\ldots,n}\)</span> where <span class="math notranslate nohighlight">\(|V|=n\)</span>, and a set of <strong>edges</strong> <span class="math notranslate nohighlight">\(E\subseteq V\times V\)</span>.</p>
+<ul class="simple">
+<li><p>An edge <span class="math notranslate nohighlight">\(e=(i,j)\)</span> is denoted by a pair of nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is the origin and <span class="math notranslate nohighlight">\(j\)</span> the target or destination.</p></li>
+<li><p>If the graph is <strong>undirected</strong> both <span class="math notranslate nohighlight">\((i,j)\)</span> and <span class="math notranslate nohighlight">\((j,i)\)</span> do exist for all <span class="math notranslate nohighlight">\(e\in E\)</span>. Otherwise, the graph is <strong>directed</strong>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(e=(i,i)\)</span> we have a <strong>self-loop</strong>.</p></li>
+</ul>
+<p>Graphs are very flexible mathematical tools. We commence by using them for describing a random process. The nodes <span class="math notranslate nohighlight">\(V\)</span> provide the <strong>states</strong> and the edges <span class="math notranslate nohighlight">\(E\)</span> provide the <strong>transitions between states</strong>. Actually we label the edges with the probability of a Markovian transition <span class="math notranslate nohighlight">\(p(j|i) = p_{ij}\)</span>.</p>
+<p>The following example is motivated by the essay <a class="reference external" href="https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf">Random Walks and Electric Networks</a> by Doyle and Snell.</p>
+<p>We want to build a graph for the <strong>drunkard’s walk</strong>. A man walks along a <span class="math notranslate nohighlight">\(5-\)</span>blocks stretch in Madison Avenue. He starts at corner <span class="math notranslate nohighlight">\(x\)</span> and, with probability <span class="math notranslate nohighlight">\(1/2\)</span> walks one block to the right and, also with probability <span class="math notranslate nohighlight">\(1/2\)</span> walks one block to the left. At the next corner, he again choses his direction randomly. He continues until he reaches corner <span class="math notranslate nohighlight">\(5\)</span>, which is home, or corner <span class="math notranslate nohighlight">\(0\)</span>, which is a bar. In both latter cases he stays there.</p>
+<p>Our graph for this walk has <span class="math notranslate nohighlight">\(n=6\)</span> vertices or <strong>states</strong> <span class="math notranslate nohighlight">\(V=\{0,1,2,3,4,5\}\)</span>, where <span class="math notranslate nohighlight">\(5\)</span> is <span class="math notranslate nohighlight">\(\text{Home}\)</span> and <span class="math notranslate nohighlight">\(0\)</span> is the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>. See <code class="xref std std-numref docutils literal notranslate"><span class="pre">Drunk</span></code> where the edges or <strong>transitions</strong> are in blue (bidirectional if we no depict the arrowheads) and the possible decision for node <span class="math notranslate nohighlight">\(x=3\)</span> are depicted in black.</p>
+<figure class="align-center" id="drunk">
+<a class="reference internal image-reference" href="_images/Drunk.png"><img alt="_images/Drunk.png" src="_images/Drunk.png" style="width: 750px; height: 100px;" /></a>
+<figcaption>
+<p><span class="caption-text">A graph for the drunkard’s walk.</span><a class="headerlink" href="#drunk" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Actually, the edges of the above graph are <span class="math notranslate nohighlight">\(E=\{(0,0),(1,0),(1,2),(2,1)\ldots,(4,5),(5,5)\}\)</span></p>
+<p><span style="color:#469ff8">Why our graph mimics the <strong>drunkard’s walk</strong>, and why it is a <strong>MC</strong>?</span></p>
+<ul class="simple">
+<li><p>We have two states, <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, with <strong>self-loops</strong> and no edges for returning to any other node. These states are called <strong>absorbing states</strong> in the MC terminology, since once the Markov-chain-random walk (MCRW) reaches them, it is trapped there. As a result the MC is <strong>reducible</strong>.</p></li>
+<li><p>The graph is almost <strong>bipartite</strong>, i.e. we can parition <span class="math notranslate nohighlight">\(V\)</span> in to subsets <span class="math notranslate nohighlight">\(V_1=\{0,2,4\}\)</span> and <span class="math notranslate nohighlight">\(V_2=\{1,3,5\}\)</span> so that nodes in <span class="math notranslate nohighlight">\(V_1\)</span> can only go nodes of <span class="math notranslate nohighlight">\(V_2\)</span> (except the absorbing nodes) and viceversa. As a result, the MC is almost <strong>aperiodic</strong>. Non-absorbing nodes have period <span class="math notranslate nohighlight">\(2\)</span> and the absorbing ones have period <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p>If we start our MCRW at a non-absorbing state, say <span class="math notranslate nohighlight">\(x\in\{2,3,4\}\)</span> we walk left with probability <span class="math notranslate nohighlight">\(1/2\)</span> and right also with probability <span class="math notranslate nohighlight">\(1/2\)</span>.</p></li>
+<li><p>The <strong>degree</strong> <span class="math notranslate nohighlight">\(\text{deg}(i)\)</span> of a node <span class="math notranslate nohighlight">\(i\)</span> in the graph is the number of neighbors <span class="math notranslate nohighlight">\({\cal N}_i\)</span>, i.e. the number of <strong>outgoing edges</strong> from <span class="math notranslate nohighlight">\(i\)</span>. In our graphs we have that all non-absorbing nodes have degree <span class="math notranslate nohighlight">\(2\)</span> whereas the absorbing states have degree <span class="math notranslate nohighlight">\(1\)</span> (actually their neighbors are themselves).</p></li>
+<li><p>The degree <span class="math notranslate nohighlight">\(\text{deg}(i)\)</span> of each node <span class="math notranslate nohighlight">\(i\)</span> reveals that the (Markovian) probability of making a transition to a neighbor is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+p(j|i) = p_{ij} = \frac{a_{ij}}{\text{deg}(i)}\;\; \text{where}\;\; 
+a_{ij}= 
+\begin{cases}
+     1\;\text{if}\; i\in {\cal N}_i  \\[2ex]
+     0\; \text{otherwise}\;.
+\end{cases}
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(a_{ij}=1\)</span> means that nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are <strong>adjacent</strong>. For absorbing states, we have <span class="math notranslate nohighlight">\(a_{ij}=0\;\forall j\neq i\)</span>. As a result, for these states <span class="math notranslate nohighlight">\(p_{ii}=1\)</span> and <span class="math notranslate nohighlight">\(p_{ij}=0\)</span> for <span class="math notranslate nohighlight">\(j\neq i\)</span>.</p>
+<p><strong>Patterns of the drunkard’s walk</strong>. In order to have a rough idea of the behavior of this Markov process, we have generated <span class="math notranslate nohighlight">\(40,000\)</span> random walks (<span class="math notranslate nohighlight">\(10,000\)</span> starting at each non-absorbing states <span class="math notranslate nohighlight">\(x=1,2,3,4\)</span>). Each random walk has length <span class="math notranslate nohighlight">\(l=10\)</span>. Why? We will discover that shorly. What is important now is to note that some of the walks end up in one of the absorbing states (<span class="math notranslate nohighlight">\(x=0\)</span>), whereas many others end in the other one (<span class="math notranslate nohighlight">\(x=5\)</span>). The  probability of reaching each absorbing state is <span class="math notranslate nohighlight">\(1/2\)</span>.</p>
+<p>We plot these walks in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Drunkard</span></code>. The darkest the blue line, the <em>slower</em> the walk reaches <span class="math notranslate nohighlight">\(x=5\)</span>. This means that if the walks reaches <span class="math notranslate nohighlight">\(x=5\)</span> at the maximum length of the path <span class="math notranslate nohighlight">\(l=10\)</span> it becomes the darkest one.</p>
+<p>Some iteresting patterns:</p>
+<ul class="simple">
+<li><p>As we start uniformly the same number of paths at each non-absorbing state, there is no clear difference between the paths ending in <span class="math notranslate nohighlight">\(x=0\)</span> and those ending in <span class="math notranslate nohighlight">\(x=5\)</span>.</p></li>
+<li><p>In addition, some paths tending to <span class="math notranslate nohighlight">\(x=0\)</span> turn suddenly towards <span class="math notranslate nohighlight">\(x=5\)</span> and vice versa.</p></li>
+</ul>
+<p>Apparently, all the non-absorbing states reach <span class="math notranslate nohighlight">\(x=5\)</span> <em>equally slowly</em>. <strong>However this is misleading</strong>. Actually, most of the paths reach <span class="math notranslate nohighlight">\(x=5\)</span> very early. This suggests that the probability of reaching <span class="math notranslate nohighlight">\(x=5\)</span> from any non-absorbing state <em>is not uniform</em>. This leads us to the answer the first question to solve about a random walk: what is the probability of ending <span class="math notranslate nohighlight">\(\text{Home}\)</span>.</p>
+</section>
+<section id="recurrence-relations">
+<h2>Recurrence relations<a class="headerlink" href="#recurrence-relations" title="Permalink to this heading">#</a></h2>
+<p>Before addressing the <strong>two fundamental questions</strong> for a MCRW: (a) where does it converge to, and (b) how long does it take, it is important to note that the remainder of this section requires some practice with algebraic solvers of recurrent relations, namely <strong>linear difference equations</strong>. They are very practical tools that are explained in the excellent <a class="reference external" href="https://mpaldridge.github.io/math2750/">Github of Mathew Aldridge</a> and even in the <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients">Wikipedia</a>. The examples below have been adapted from the first source and solve some of the exercises in <a class="reference external" href="https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf">Random Walks and Electric Networks</a> by Doyle and Snell.</p>
+<figure class="align-center" id="drunkard">
+<a class="reference internal image-reference" href="_images/Drunkard.png"><img alt="_images/Drunkard.png" src="_images/Drunkard.png" style="width: 800px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Patterns of generated drunkard’s walks.</span><a class="headerlink" href="#drunkard" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"><strong>Q1.</strong> What is the probability of ending at <span class="math notranslate nohighlight">\(\text{Home}\)</span> if we start from the non-absorbing state <span class="math notranslate nohighlight">\(x\)</span>?</span></p>
+<p>In other words, what is the probability of <strong>hitting</strong> <span class="math notranslate nohighlight">\(x=5\)</span> from <span class="math notranslate nohighlight">\(x\)</span> before hitting <span class="math notranslate nohighlight">\(x=0\)</span>?</p>
+<ol class="arabic simple">
+<li><p>We commence by <strong>formulating the Markovianity</strong> of the drunkward’s path in a more generic way:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x_{n+1}= 
+\begin{cases}
+     x_{n} + 1 \;\text{with probability}\; p\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} - 1 \;\text{with probability}\; q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     0\; \text{if}\; n=0\\[2ex]
+     m\; \text{if}\; n=m\;,
+\end{cases}
+\end{split}\]</div>
+<p>where: <span class="math notranslate nohighlight">\(x_{n}\)</span> is the position of the walk at step <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(p = 1 - q = 1/2\)</span> is the probability of a transition from a non-absorbing state and <span class="math notranslate nohighlight">\(m=5\)</span> is the target node.</p>
+<ol class="arabic simple" start="2">
+<li><p>We pose the above formula in probabilistic terms using the <strong>condition on the first step</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(\text{Home}) &amp;= p(\text{1st step right})p(\text{Home}|\text{1st step right})\\ 
+&amp;+ p(\text{1st step left})p(\text{Home}|\text{1st step left})\\
+&amp; = p\cdot p(\text{Home}|\text{1st step right}) + q\cdot p(\text{Home}|\text{1st step left})\;.
+\end{align}
+\end{split}\]</div>
+<p>Herein, we use the <strong>theorem of total probability</strong> for the following events:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E &amp;= \{\text{Home}\}\\
+A &amp;= \{\text{1st step right}\}\\ 
+\bar{A} &amp;= \{\text{1st step left}\} 
+\end{align}
+\end{split}\]</div>
+<p>Then, total probability means that the probability of an event given two (or more) exclusive events is</p>
+<div class="math notranslate nohighlight">
+\[
+p(E) = p(E\cap A) + p(E\cap \bar{A}) = p(A)p(E|A) + p(\bar{A})p(E|\bar{A})\;. 
+\]</div>
+<p>In our case:</p>
+<div class="math notranslate nohighlight">
+\[
+P(E) = p\cdot p(E|A) + q\cdot p(E|\bar{A})\;,
+\]</div>
+<p>and we want to calculate both <span class="math notranslate nohighlight">\(p(E|A)\)</span> and <span class="math notranslate nohighlight">\(p(E|\bar{A})\)</span> to calculate <span class="math notranslate nohighlight">\(P(E)\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Formulate and solve a <strong>recurrence relation</strong>:</p></li>
+</ol>
+<p>Then, we have to solve the following recurence relation:</p>
+<div class="math notranslate nohighlight">
+\[
+r_n = p\cdot r_{n+1} + q\cdot r_{n-1}\;\text{subject to}\; r_0=0, r_m = 1\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_0 = 0\)</span> and <span class="math notranslate nohighlight">\(r_m=1\)</span> are the <strong>boundary conditions</strong> that specify success if we reach <span class="math notranslate nohighlight">\(m\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and failure if we reach <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>).</p>
+<p>We formulate the recurrence relation as a <strong>linear difference equation</strong>. In this case it is <strong>homogeneous</strong> (like an homogeneous linear system <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{0}\)</span>) since:</p>
+<div class="math notranslate nohighlight">
+\[
+p\cdot r_{n+1} + q\cdot r_{n-1} - r_n = 0\;.
+\]</div>
+<p>First of all, we apply the following change of variable:</p>
+<div class="math notranslate nohighlight">
+\[
+r_n = \lambda^n\;,
+\]</div>
+<p>which leads to</p>
+<div class="math notranslate nohighlight">
+\[
+p\lambda^{n+1} + q\lambda^{n-1} - \lambda^n = 0\;,
+\]</div>
+<p>and taking <span class="math notranslate nohighlight">\(\lambda^{n-1}\)</span> as common factor yields</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda^{n-1}(p\lambda^{2} + q - \lambda) = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\lambda^{2} + q - \lambda = 0\)</span> is the <strong>characteristic equation</strong> of the recurrence. Then, reorganzing the coefficients we have  <span class="math notranslate nohighlight">\(p\lambda^{2} - \lambda + q = 0\)</span>. To solve this quadratic equation is convenient to use the remainder theorem (Ruffini). The dividers of the independent term (<span class="math notranslate nohighlight">\(q\)</span>) are <span class="math notranslate nohighlight">\(\pm 1\)</span> and <span class="math notranslate nohighlight">\(\pm q\)</span>. If we try first <span class="math notranslate nohighlight">\(+1\)</span>, and apply <span class="math notranslate nohighlight">\(q = 1-p\)</span>, this leads to the equation <span class="math notranslate nohighlight">\(\lambda p - q = 0\)</span> with yields <span class="math notranslate nohighlight">\(\lambda =\frac{q}{p}\)</span> tha we call <span class="math notranslate nohighlight">\(\rho\)</span>. Then, the factorization we are looking for is</p>
+<div class="math notranslate nohighlight">
+\[
+(p\lambda - q)(\lambda - 1)\; \text{and roots}\; \lambda_1=1, \lambda_2=\rho\;.
+\]</div>
+<p>Now, we have two cases:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho \neq 1\)</span>, then we have two distinct roots. In this case, the general solution of an homogeneous equation has the shape:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r_n = A\lambda_1^n + B\lambda_2^n = A1^n + B\rho^n = A + B\rho^n\;.
+\]</div>
+<p>In order to determine <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we exploit the two <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(r_0=0, r_m=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_0 &amp;=  A + B\rho^0 = A + B = 0\\
+r_m &amp;=  A + B\rho^m = 1\\
+\end{align}
+\end{split}\]</div>
+<p>From <span class="math notranslate nohighlight">\(A + B = 0\)</span> we get <span class="math notranslate nohighlight">\(A = -B\)</span> which leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+- B + B\rho^m &amp;= 1 \Rightarrow (\rho^m - 1) B = 1 \Rightarrow B = \frac{1}{\rho^m - 1}\\
+A = -B &amp; = -\frac{1}{\rho^m - 1}\;.
+\end{align}
+\end{split}\]</div>
+<p>and, as a result</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_n &amp;= A\lambda_1^n + B\lambda_2^n\\
+    &amp;= -\frac{1}{\rho^m - 1} + \frac{\rho^n}{\rho^m - 1}\\
+    &amp;= \frac{\rho^n-1}{\rho^m - 1}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho=1\)</span> we have <span class="math notranslate nohighlight">\(p=q\)</span> and this means that we have two repeated solutions <span class="math notranslate nohighlight">\(\lambda_1=\lambda_2 = 1\)</span>. In this case, the general solution has the following shape:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r_n = (A + nB)\lambda_1^n\;,
+\]</div>
+<p>which leads to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_0 &amp;=  (A + 0B)1^0 = A = 0\\
+r_m &amp;=  (A + mB)1^m = A + mB = 1\\
+\end{align}
+\end{split}\]</div>
+<p>whose solutions are <span class="math notranslate nohighlight">\(A = 0\)</span> and <span class="math notranslate nohighlight">\(B = \frac{1}{m}\)</span>.</p>
+<p>Finally</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+r_n &amp;= (A + nB)\lambda_1^n\;\\
+    &amp;= (0 + n\frac{1}{m})\\
+    &amp;= \frac{n}{m}
+\end{align}
+\end{split}\]</div>
+<p>The generic result is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+r_n = 
+\begin{cases}
+  \frac{\rho^n-1}{\rho^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+r_n = 
+\begin{cases}
+  \frac{\left(\frac{q}{p}\right)^n-1}{\left(\frac{q}{p}\right)^m - 1} \;\text{if}\; p\neq q\\[2ex]
+  \frac{n}{m} \;\text{if}\; p=q\\[2ex]
+\end{cases}
+\end{split}\]</div>
+<p><strong>Result for the ubiased walk</strong>. If <span class="math notranslate nohighlight">\(p=q=1/2\)</span> we have a random process according to the graph in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Drunk</span></code>. The probability of getting <span class="math notranslate nohighlight">\(\text{Home}\)</span>, i.e. of hitting <span class="math notranslate nohighlight">\(x=m=5\)</span> before hitting <span class="math notranslate nohighlight">\(x=0\)</span> is <span class="math notranslate nohighlight">\(p(x)=\frac{x}{m} = \frac{x}{5}\)</span>. The closer we are to <span class="math notranslate nohighlight">\(\text{Home}\)</span> the more probable is that we get there. Note that if we invert the boundary conditions priming going to the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>, the probability of getting there before arriving home is <span class="math notranslate nohighlight">\(p(x)=1-\frac{x}{5}\)</span>.</p>
+<p>However, as <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> the probability of getting <span class="math notranslate nohighlight">\(\text{Home}\)</span> tends to zero, i.e. <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span>.</p>
+<p>The result for the unbiased (fair) walk is consistent with our observations in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Drunkard</span></code> and shows that the probability of reaching <span class="math notranslate nohighlight">\(\text{Home}\)</span> is not <strong>uniform</strong>. This result also explain why most of the <span class="math notranslate nohighlight">\(40,000\)</span> random walks lauched uniformly from any of the non-absorbing states reach <span class="math notranslate nohighlight">\(\text{Home}\)</span> very soon.</p>
+<p><strong>Result for the biased walk</strong>. Biased walks, however, are modeled in a different way. We label the edges with their probabilities. Then, instead of getting the transition probabilities from the degree, we simply set <span class="math notranslate nohighlight">\(p_{ij}=a_{ij}p\)</span> or <span class="math notranslate nohighlight">\(p_{ij} = a_{ij}q\)</span> as in <code class="xref std std-numref docutils literal notranslate"><span class="pre">Drunkpq</span></code></p>
+<figure class="align-center" id="drunkpq">
+<a class="reference internal image-reference" href="_images/Drunkpq.png"><img alt="_images/Drunkpq.png" src="_images/Drunkpq.png" style="width: 800px; height: 100px;" /></a>
+<figcaption>
+<p><span class="caption-text">Graph for biased drunkard’s walks.</span><a class="headerlink" href="#drunkpq" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If <span class="math notranslate nohighlight">\(q\ll p\)</span>, then <span class="math notranslate nohighlight">\(p(x)\rightarrow 1\)</span> since we are drifted to the right. Symmetrically, if <span class="math notranslate nohighlight">\(q\gg p\)</span>, then <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span> since <span class="math notranslate nohighlight">\(m&gt;n\)</span>.</p>
+<p>As <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span>, we have that <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span>, independently of the relationship between <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m\rightarrow\infty} \frac{\rho^n-1}{\rho^m - 1} = \lim_{m\rightarrow\infty} \frac{\rho^n/\rho^m-1/\rho^m}{1 - 1/\rho^m} = \lim_{m\rightarrow\infty} \frac{0-0}{1 - 0} = 0\;.
+\]</div>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">Drunkardpq</span></code> where <span class="math notranslate nohighlight">\(p=0.25, q=0.75\)</span> we can see that few walks reach <span class="math notranslate nohighlight">\(x=5\)</span>, actually the proportion of “successful” paths is <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<figure class="align-center" id="drunkardpq">
+<a class="reference internal image-reference" href="_images/Drunkardpq.png"><img alt="_images/Drunkardpq.png" src="_images/Drunkardpq.png" style="width: 800px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text">Patterns of generated biased drunkard’s walks with <span class="math notranslate nohighlight">\(p=0.25\)</span>.</span><a class="headerlink" href="#drunkardpq" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"><strong>Q2.</strong> What is the expected time or <strong>hitting time</strong> for arriving <span class="math notranslate nohighlight">\(\text{Home}\)</span> if we start from the non-absorbing state <span class="math notranslate nohighlight">\(x\)</span>?</span></p>
+<p>We are interested in estimating the expected <strong>hitting time</strong> of <span class="math notranslate nohighlight">\(x=5\)</span>.</p>
+<p>As before, we rely on linear difference equations.</p>
+<ol class="arabic simple">
+<li><p>We pose the above formula in probabilistic terms using the <strong>condition on the first step</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(\text{Duration}) &amp;= p(\text{1st step right})p(\text{Duration}|\text{1st step right})\\ 
+&amp;+ p(\text{1st step left})p(\text{Duration}|\text{1st step left})\\
+&amp; = p\cdot p(\text{Duration}|\text{1st step right}) + q\cdot p(\text{Duration}|\text{1st step left})\;.
+\end{align}
+\end{split}\]</div>
+<p>Herein, we use the <strong>conditional expectations</strong> for the following random variables:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+X &amp;= \{\text{Duration}\}\\
+Y &amp;= \{\text{1st step}\}\\ 
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> has values <span class="math notranslate nohighlight">\(y=\text{left}\)</span> and <span class="math notranslate nohighlight">\(y=\text{right}\)</span>.</p>
+<p>Then,</p>
+<div class="math notranslate nohighlight">
+\[
+E(X|Y=y) = \sum_{x}xP(X=x|Y=y)\;.
+\]</div>
+<p>However, we are interested in <span class="math notranslate nohighlight">\(E(X)\)</span>, which is defined by the <strong>tower property</strong> of conditional expectation:</p>
+<div class="math notranslate nohighlight">
+\[
+E(X) = E(E(X|Y))=\sum_{y}p(Y=y)E(X|Y=y)\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> is the outcome of the first step.</p>
+<p>In this regard,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E(X|Y=\text{left})  &amp;= 1 + d_{n-1}\\ 
+E(X|Y=\text{right}) &amp;= 1 + d_{n+1}\;. 
+\end{align}
+\end{split}\]</div>
+<p>Always count <span class="math notranslate nohighlight">\(1\)</span> because we had made a step.</p>
+<p>This leads us to the following <strong>inhomogeneous recurrence relation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+d_n = p(1 + d_{n+1}) + q(1 + d_{n-1}) = 1 + pd_{n+1} + qd_{n-1}\;.
+\]</div>
+<p>and we have</p>
+<div class="math notranslate nohighlight">
+\[
+pd_{n+1} -d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+\]</div>
+<p>Whose left-hand-size lhs leads to the same homogeneous recurrence equation that we have studied before.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho\neq 1\)</span> the general solution (<span class="math notranslate nohighlight">\(\lambda_1=1, \lambda_2=\rho\)</span> are solutions of the homogeneous version) has the shape</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + B\rho^n\;.
+\]</div>
+<p>Since we need a particular solution for the full equation and the lhs is a constant, we start trying to set <span class="math notranslate nohighlight">\(d_{n}=C\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+pC - C + qC = (p+q)C - C = C - C\neq -1\;
+\]</div>
+<p>Next, we try with <span class="math notranslate nohighlight">\(d_{n}=Cn\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+pC(n+1) - Cn + qC(n-1) &amp;= pCn + pC - Cn + qCn -qC\\ 
+                       &amp;= Cn - Cn + (p-q)C\\ 
+                       &amp;= (p-q)C = -1
+\end{align}
+\end{split}\]</div>
+<p>i.e. <span class="math notranslate nohighlight">\(C = \frac{-1}{p-q}\)</span> and the particular solution becomes</p>
+<div class="math notranslate nohighlight">
+\[
+d_n = A + B\rho^n + Cn = A + B\rho^n - \frac{n}{p-q}\;.
+\]</div>
+<p>Then we apply the <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(d_0=0, d_m=0\)</span> to find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+d_0 &amp;= A + B\rho^0 - \frac{0}{p-q} = A + B = 0\\
+d_m &amp;= A + B\rho^m - \frac{m}{p-q} = A + B\rho^m - \frac{m}{p-q}= 0\;,
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(A = - B\)</span> and <span class="math notranslate nohighlight">\(-B + B\rho^m = \frac{m}{p-q}\Rightarrow (\rho^m -1)B = \frac{m}{p-q}\Rightarrow B = \frac{1}{\rho^m-1}\cdot\frac{m}{p-q}\;.\)</span></p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+d_n &amp;= A + B\rho^n - \frac{m}{p-q}\\
+    &amp;= -\frac{1}{\rho^m-1}\cdot\frac{m}{p-q} + \frac{\rho^n}{\rho^m-1}\cdot\frac{m}{p-q} - \frac{m}{p-q}\\
+    &amp;= \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right)\; 
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\rho = 1\)</span>, i.e <span class="math notranslate nohighlight">\(p=q=1/2\)</span>, the general solution (<span class="math notranslate nohighlight">\(\lambda_1=1, \lambda_2=1\)</span> are solutions of the homogeneous version) has the shape</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + nB\;.
+\]</div>
+<p>For getting a particular solution we find that both the eductated guesses (<strong>antsazs</strong>) <span class="math notranslate nohighlight">\(d_i=C\)</span> and <span class="math notranslate nohighlight">\(d_i= nC\)</span> do not work. We try <span class="math notranslate nohighlight">\(d_i=n^2C\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+-1 &amp;= pC(n^2 + 1 + 2n) - Cn^2 + qC(n-1)^2\\ 
+   &amp;= pCn^2 + pC + 2pCn) -Cn^2 + qC(n-1)^2\\ 
+   &amp;= p(Cn^2 + C + 2Cn) -Cn^2 + q(Cn^2 + C - 2Cn)\\
+   &amp;= p(Cn^2 + C + 2Cn) -Cn^2 + q(Cn^2 + C - 2Cn)\\
+   &amp;= \frac{1}{2}(Cn^2 + C + 2Cn) -Cn^2 +\frac{1}{2}(Cn^2 + C - 2Cn)\\
+   &amp;= C\;.
+\end{align}
+\end{split}\]</div>
+<p>and the resulting general solution is:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + nB + Cn^2 = A + nB - n^2\;.
+\]</div>
+<p>Then, we exploit again the the <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(d_0=0, d_m=0\)</span> to find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+d_0 &amp;= A + 0B - n^2 = A = 0\\
+d_m &amp;= A + mB - n^2 = mB - m^2= 0\Rightarrow B = m\;,
+\end{align}
+\end{split}\]</div>
+<p>And for <span class="math notranslate nohighlight">\(A=0, B=m\)</span> the general solution is</p>
+<div class="math notranslate nohighlight">
+\[
+d_{n} = A + nB - n^2 = mn - n^2 = n(m - n)\;,
+\]</div>
+<p>which clearly tells us that the hitting time of <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(O(n^2)\)</span> por <span class="math notranslate nohighlight">\(p=q=1/2\)</span> since we have equal probability of go back and forth.</p>
+<p>Summarizing</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+d_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+d_n = 
+\begin{cases}
+  \frac{1}{p-q}\left(m\frac{\left(\frac{q}{p}\right)^n-0}{\left(\frac{q}{p}\right)^m -1}-n\right) \;\text{if}\; p\neq q\\[2ex]
+  n(m - n) \;\text{if}\; p=q\\[2ex]
+\end{cases}
+\end{split}\]</div>
+<p><strong>Result for the ubiased walk</strong>. If <span class="math notranslate nohighlight">\(p=q=1/2\)</span> the hitting time of <span class="math notranslate nohighlight">\(x=m\)</span> from <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(O(n^2)\)</span> since we have equal probability of go back and forth.</p>
+<p>The behavior for <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> is obvious:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m\rightarrow\infty}n(m - n) = \infty\;, 
+\]</div>
+<p>since <span class="math notranslate nohighlight">\(m\)</span> becomes impossible to be reached from <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p><strong>Result for the biased walk</strong>. If <span class="math notranslate nohighlight">\(p\neq q\)</span> and <span class="math notranslate nohighlight">\(p\ll q\)</span>, the walk is drifted to the left and this means that <span class="math notranslate nohighlight">\(\rho\gg 1\)</span>, <span class="math notranslate nohighlight">\(m\)</span> is amplified and the hitting time from <span class="math notranslate nohighlight">\(n\)</span> increases notably. However, if <span class="math notranslate nohighlight">\(p\gg q\)</span>, <span class="math notranslate nohighlight">\(m\)</span> is attenuated and this reduces the hitting time from <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Actually, the behavior for <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\lim_{m\rightarrow\infty} \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right) &amp;= \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{\frac{\rho^m}{\rho^m} -\frac{1}{\rho^m}}-n\right)\\
+&amp;=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\frac{\rho^n}{\rho^m}}{1 -\frac{1}{\rho^m}}-n\right)\\
+&amp;=  \lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)\\ 
+\end{align}
+\end{split}\]</div>
+<p>We have two cases:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(q&gt;p\)</span>, then <span class="math notranslate nohighlight">\(\rho^m\gg m\)</span> and <span class="math notranslate nohighlight">\(\lim_{m\rightarrow\infty}\frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m}-n\right)\)</span> = <span class="math notranslate nohighlight">\(\frac{1}{p-q}(-n)= \frac{1}{q-p}(n)\)</span>. Then, the hitting time is a fraction of <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(p&gt;q\)</span>, then <span class="math notranslate nohighlight">\(\rho^m\ll m\)</span> and <span class="math notranslate nohighlight">\(m\)</span> is amplified wrt <span class="math notranslate nohighlight">\(n\)</span>, increasing the hitting time.</p></li>
+</ul>
+<p><strong>Gambler’s ruin</strong>. The drunkard walk can be also interpreted in terms of the classical model of the Gambler’s ruin. The idea is as follows.</p>
+<ul class="simple">
+<li><p>We have two players, Alice and Bob, starting respectively with <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> dollars, where <span class="math notranslate nohighlight">\(a + b = m\)</span>.</p></li>
+<li><p>They bet <span class="math notranslate nohighlight">\(1\)</span> dollar at each step.</p></li>
+<li><p>Alice wins with probability <span class="math notranslate nohighlight">\(p\)</span> and Bob wins with probability <span class="math notranslate nohighlight">\(q\)</span>, where <span class="math notranslate nohighlight">\(p + q = 1\)</span>. Winning implies increasing the personal fortune by <span class="math notranslate nohighlight">\(1\)</span> taking it from the other’s fortune, i.e. if Alice wins the first round, the state of their respective fortunes are <span class="math notranslate nohighlight">\((a+1,b-1)=m\)</span>. If Bob does, the state is <span class="math notranslate nohighlight">\((a-1,b+1)=m\)</span>.</p></li>
+<li><p>Therefore, reaching <span class="math notranslate nohighlight">\(0\)</span> means that Alice is ruined whereas reaching <span class="math notranslate nohighlight">\(m\)</span> means that Bob is ruined. In both cases we stop the game.</p></li>
+</ul>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. Gambler’s ruin can be slightly modified to become a variant of a <strong>Birth-death chain</strong>. Suppose that we have that <span class="math notranslate nohighlight">\(p\ge 0\)</span>, <span class="math notranslate nohighlight">\(q\ge 0\)</span> and <span class="math notranslate nohighlight">\(p + q&lt;1\)</span>. In this problem, <span class="math notranslate nohighlight">\(p\)</span> is called the <strong>birth rate</strong>, whereas <span class="math notranslate nohighlight">\(q\)</span> is the <strong>death rate</strong>. In order to simulate a stable population, at each state we have the probability of <span class="math notranslate nohighlight">\(r = 1 - p - q\)</span> of neither births nor deaths. If we reach <span class="math notranslate nohighlight">\(0\)</span> we have <strong>extinction</strong> and if we reach <span class="math notranslate nohighlight">\(m\)</span> we have <strong>survival</strong>. This is formulated as follows:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_{n+1}= 
+\begin{cases}
+     x_{n} + 1 \;\text{with probability}\; p\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} - 1 \;\text{with probability}\; q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     x_{n} \;\text{with probability}\; r = 1- p - q\; \text{if}\; 1\le n\le m-1 \\[2ex]
+     0\; \text{if}\; n=0\\[2ex]
+     m\; \text{if}\; n=m\;,
+\end{cases}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+The exercise consists of answering questions Q1 and Q2 to this chain.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Q1. Probability of extinction?</strong>
+</span>
+<br></br>
+<span style="color:#347fc9">
+1)We have 3 possible events for the total probability theorem
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+p(\text{Extinction}) &amp;= p(\text{1st death})p(\text{Extinction}|\text{1st death})\\ 
+&amp;+ p(\text{1st stable})p(\text{Extinction}|\text{1st stable})\\ 
+&amp;+ p(\text{1st birth})p(\text{Extinction}|\text{1st birth})\\
+&amp; = q\cdot p(\text{Extinction}|\text{1st death})\\
+&amp;+  r\cdot p(\text{Extinction}|\text{1st stable})\\ 
+&amp;+  p\cdot p(\text{Extinction}|\text{1st birth})\;.
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+2) Recurrence relation
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_n = q\cdot x_{n-1} + r\cdot x_{n} + p\cdot x_{n+1}\;\Rightarrow\;q\cdot x_{n-1} + (r-1)\cdot x_{n} + p\cdot x_{n+1}=0\; 
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Actually, we have the conditions <span class="math notranslate nohighlight">\(x_0 = 1\)</span> and <span class="math notranslate nohighlight">\(x_m = 0\)</span> wrt extinction. As <span class="math notranslate nohighlight">\(r=1-p-q\)</span>, then <span class="math notranslate nohighlight">\(r-1= 1-p-q-1=-(p+q)\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+q\cdot x_{n-1} - (p+q)\cdot x_{n} + p\cdot x_{n+1}=0\;\text{s.t.}\; x_0=1,x_m = 0\;.
+\)</span>
+</span>
+<span style="color:#347fc9">
+Aparently, the above homogeneous equation is different from that of that of the Gambler’s ruin (or drunkard’s walk). However, if you look at the solutions you have two roots (<span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(\rho\)</span>) as usual, since
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;\frac{1}{\lambda^{n-1}}\left(q\lambda^{n-1} - (p+q)\lambda^n + p\lambda^{n+1}\right) = 0\\
+&amp; q - (p+q)\lambda + p\lambda^2 = 0\\
+&amp; p\lambda^2 - (p+q)\lambda + q = 0\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+and by Ruffini, we have that <span class="math notranslate nohighlight">\(\lambda_1=1\)</span> and as a result <span class="math notranslate nohighlight">\(p\lambda - q = 0\Rightarrow \lambda_2 = q/p = \rho\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+We will have the following generic solutions (in the first case the solutions are distinct and in the second case we have repeated solutions):
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_n = 
+\begin{cases}
+     A + B\rho^n \;\;\text{if}\; \rho\neq 1 \\[2ex]
+     C + nD  \;\;\;\text{if}\; \rho= 1\;.
+\end{cases}
+\)</span>
+</span>
+<span style="color:#347fc9">
+From the two boundary condition (<span class="math notranslate nohighlight">\(x_0 = 1\)</span> and <span class="math notranslate nohighlight">\(x_m = 0\)</span>) inverted wrt the drunkard’s walk, we can obtain <span class="math notranslate nohighlight">\(A,B,C\)</span> and <span class="math notranslate nohighlight">\(D\)</span> which lead to inverted probabilities wrt the drunkards’s walk:
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_n = 
+\begin{cases}
+  \frac{\rho^n-\rho^m}{1-\rho^m} \;\text{if}\; p\neq q\\[2ex]
+  1-\frac{n}{m} \;\text{if}\; p = q\\[2ex]
+\end{cases}
+\;\;\;\;i.e.\;\;\;\; 
+x_n = 
+\begin{cases}
+  \frac{\left(\frac{q}{p}\right)^n-\left(\frac{q}{p}\right)^m}{1- \left(\frac{q}{p}\right)^m} \;\text{if}\; p\neq q\\[2ex]
+  1-\frac{n}{m} \;\text{if}\; p=q\\[2ex]
+\end{cases}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>However</strong>, what is different here wrt the drunkard’s walk is that <strong><span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(p\)</span> satisfy <span class="math notranslate nohighlight">\(p + q &lt;1\)</span></strong>. This means that they can be arbitrarity small, for instance <span class="math notranslate nohighlight">\(q=0.1\)</span> and <span class="math notranslate nohighlight">\(p=0.05\)</span> which leads to <span class="math notranslate nohighlight">\(\rho = 2\)</span>, or <span class="math notranslate nohighlight">\(q=0.05\)</span> and <span class="math notranslate nohighlight">\(p=0.1\)</span> which leads to <span class="math notranslate nohighlight">\(\rho = 1/2\)</span>. The result is the same whenever <span class="math notranslate nohighlight">\(\rho=2\)</span> and <span class="math notranslate nohighlight">\(\rho=1/2\)</span> (for instance <span class="math notranslate nohighlight">\(q=0.3,p=0.6\)</span> and <span class="math notranslate nohighlight">\(q=0.6,p=0.3\)</span> respectively). In other words, the MCRW is invariant to changes of the <span class="math notranslate nohighlight">\(r=1-p-q\)</span> probabilities whenever the proportion <span class="math notranslate nohighlight">\(q/p\)</span> holds.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Q1. Time to survival?</strong>
+</span>
+<br></br>
+<span style="color:#347fc9">
+As usual, we commence by formulating the <strong>condition on the first step</strong>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+E(\text{Survival}) &amp;= p(\text{1st death})p(\text{Survival}|\text{1st death})\\ 
+&amp;+ p(\text{1st stable})p(\text{Survival}|\text{1st stable})\\ 
+&amp;+ p(\text{1st birth})p(\text{Survival}|\text{1st birth})\\
+&amp; = q\cdot p(\text{Survival}|\text{1st death})\\
+&amp;+  r\cdot p(\text{Survival}|\text{1st stable})\\ 
+&amp;+  p\cdot p(\text{Survival}|\text{1st birth})\;.
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This leads us to the following <strong>inhomogeneous recurrence relation</strong>:
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+d_n = p(1 + d_{n+1}) + r(1 + d_{n}) + q(1 + d_{n-1}) \;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+From <span class="math notranslate nohighlight">\(p + q + r = 1\)</span> and <span class="math notranslate nohighlight">\(r-1=1-p-q-1=-(p+q)\)</span> we have
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+pd_{n+1} -(p+q)d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+\)</span>
+<br></br>
+<span style="color:#347fc9">
+The roots for its <strong>homogeneous version</strong> <span class="math notranslate nohighlight">\(\lambda_1 = 1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = \rho = q/p\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+If <span class="math notranslate nohighlight">\(\rho\neq 1\)</span>, the general solution has the same shape than that of de druknard’s walk (please check this as an additional exercise):
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+d_n &amp;= A + B\rho^n - \frac{m}{p-q}\\
+    &amp;= -\frac{1}{\rho^m-1}\cdot\frac{m}{p-q} + \frac{\rho^n}{\rho^m-1}\cdot\frac{m}{p-q} - \frac{m}{p-q}\\
+    &amp;= \frac{1}{p-q}\left(m\frac{\rho^n}{\rho^m -1}-n\right)\; 
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Again, the difference wrt the drunkard’s walk appears when defining <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>. Note that if <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are very small (close to zero), then the hitting time tends to <span class="math notranslate nohighlight">\(\infty\)</span> even when the proportions of <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> hold: look at the fraction <span class="math notranslate nohighlight">\(\frac{1}{p-q}\)</span> dominatinq the hitting time for <span class="math notranslate nohighlight">\(p\ne q\)</span>. There is a nice explanation: the walk spends a significant amount of time without moving forward or backwards  since <span class="math notranslate nohighlight">\(r = 1- p -q \approx 1\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+However, if <span class="math notranslate nohighlight">\(p=q\)</span> then <span class="math notranslate nohighlight">\(r = 1 -2p = 1-2q\)</span> and from the previous inhomogeneous recurrence
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+pd_{n+1} -(p+q)d_n + qd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+we have:
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+pd_{n+1} -2pd_n + pd_{n-1} = -1\;\;\text{subject to}\;\; d_0=0, d_m=0\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, the solution for the homogeneous version
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+pd_{n+1} -2pd_n + pd_{n-1} = 0
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Has now a double solution <span class="math notranslate nohighlight">\(\lambda_1 = \lambda_2 = 1\)</span> and the general solution becomes
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+d_n = A + nB\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+And the educated guesses (antsazs) for <span class="math notranslate nohighlight">\(d_i=C\)</span> and <span class="math notranslate nohighlight">\(d_i=Cn\)</span> do not work. Lets try <span class="math notranslate nohighlight">\(d_i = Cn^2\)</span>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+-1 &amp;= pC(n+1)^2 - 2pCn^2 + pC(n-1)^2\\
+   &amp;= pC(n^2 + 1 + 2n) - 2pCn^2 + pC(n^2 + 1 - 2n)\\
+   &amp;= pCn^2 + pC + 2pCn - 2pCn^2 + pCn^2 + pC - 2pCn\\
+   &amp;= \cancel{pCn^2} + pC + 2pCn \cancel{- 2pCn^2} + \cancel{pCn^2} + pC - 2pCn\\
+   &amp;= pC + 2pCn + pC - 2pCn\\
+   &amp;= 2pC\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e <span class="math notranslate nohighlight">\(C = \frac{-1}{2p}\)</span> and the resulting <strong>general solution</strong> has the following shape:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+d_n = A + nB + Cn^2 = A + nB - \frac{n^2}{2p}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+And we exploit the <strong>boundary conditions</strong> <span class="math notranslate nohighlight">\(d_0=0\)</span> and <span class="math notranslate nohighlight">\(d_m=0\)</span> to find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+d_0 &amp;= A + 0B - C0^2 = 0\Rightarrow A = 0\\
+d_m &amp;= A + mB - \frac{m^2}{2p} = 0\Rightarrow B  = \frac{m}{2p}
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+And the <strong>general solution</strong> for <span class="math notranslate nohighlight">\(A=0\)</span> and <span class="math notranslate nohighlight">\(B = m/2p\)</span> becomes
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+d_n &amp;= A + nB - \frac{n^2}{2p} = n\frac{m}{2p} - \frac{n^2}{2p}\\
+    &amp;= \frac{1}{2p}(nm - n^2)\\
+    &amp;= \frac{1}{2p}n(m-n)\;.
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Actually, this results in a normalization by <span class="math notranslate nohighlight">\(2p\)</span> of <span class="math notranslate nohighlight">\(n(m-n)\)</span> (the solution for the drunkard’s walk). The natural interpretation is that as <span class="math notranslate nohighlight">\(p\rightarrow 0\)</span> we have <span class="math notranslate nohighlight">\(r\rightarrow 1\)</span> and the hitting time tends to <span class="math notranslate nohighlight">\(\infty\)</span>.
+</span></p>
+</section>
+<section id="random-walks-in-2d">
+<h2>Random walks in 2D<a class="headerlink" href="#random-walks-in-2d" title="Permalink to this heading">#</a></h2>
+<p>The approach of recurrence relations is very useful for <strong>1D random processes</strong> such as the drunkard’s walk or gambler’s ruin, birth-death processes and many more. However, it is the domain of more general graphs such as <strong>grids</strong> or <strong>lattices</strong> (e.g. the Pascal’s triangle) where random walks become more useful for AI researchers and practicioners. For instance, a image can be seen as a matrix of pixels where each inner pixel <span class="math notranslate nohighlight">\((i,j)\)</span> (col, row) is connected with <span class="math notranslate nohighlight">\(8\)</span> neighbors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+(i-1,j+1)\;\;  &amp;\;\;   (i,j+1) &amp; (i+1,j+1) \\
+(i-1,j)\;\;\;    &amp;\;\;\;\;\;   (i,j)   &amp;  (i+1,j)  \\
+(i-1,j-1)\;\;\;  &amp;\;\;   (i,j-1) &amp;  (i+1,j-1) \\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(4\)</span> straight directions: <span class="math notranslate nohighlight">\(\text{West},\text{North}, \text{East}\)</span> and <span class="math notranslate nohighlight">\(\text{South}\)</span>, respectively <span class="math notranslate nohighlight">\((i-1,j), (i,j+1), (i+1,j)\)</span> and <span class="math notranslate nohighlight">\((i,j-1)\)</span>.</p></li>
+<li><p>and <span class="math notranslate nohighlight">\(4\)</span> diagonals: <span class="math notranslate nohighlight">\((i-1,j+1), (i+1,j+1), (i+1,j-1)\)</span> and <span class="math notranslate nohighlight">\((i-1,j-1)\)</span>.</p></li>
+</ul>
+<p>Therefore, images are <strong><span class="math notranslate nohighlight">\(8-\text{neighborhood}\)</span> grids</strong> where we are interested in finding objects, such as organs in medical images. The task is called <strong>segmentation</strong> and for medical images, which are typically very noisy, it is very useful to click at some pixels of the organ and some pixels out of it to <strong>label</strong> the pixels belonging the organ. Our colleague Leo Grady developed a techology for segmenting medical images in his paper <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=1704833">Random Walks for Image Segmentation</a> and transferred it to Siemens.</p>
+<p><strong>The Escape Room</strong>. Let us solve a simpler problem (but conceptually and methodologically identical) involving a <strong><span class="math notranslate nohighlight">\(4-\text{neighborhood}\)</span> grid</strong> (only straight directions).</p>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">Escape</span></code> we create a small 2D game. We have a <span class="math notranslate nohighlight">\(4-\)</span>grid whose nodes (called <strong>interior nodes</strong>) are the <em>positions</em> <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_5\)</span> of a player in a room. The graph also depticts in a brighter color the doors. Some of the doors are <em>Exits</em> <span class="math notranslate nohighlight">\(E_1,E_2,\ldots, E_6\)</span> and some other doors are controled by <em>Policemen</em> <span class="math notranslate nohighlight">\(P_1,P_2\)</span> and <span class="math notranslate nohighlight">\(P_3\)</span>.</p>
+<p>The game is as follows:</p>
+<span style="color:#469ff8">
+What is the probability of escaping from each position? 
+</span>
+<figure class="align-center" id="escape">
+<a class="reference internal image-reference" href="_images/Escape.png"><img alt="_images/Escape.png" src="_images/Escape.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Escape room with Exits <span class="math notranslate nohighlight">\(E_i\)</span> and Policemen <span class="math notranslate nohighlight">\(P_i\)</span> as border nodes.</span><a class="headerlink" href="#escape" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Since Exits and Policemen are <strong>absorbing states</strong>, this is a 2D version of the drunkard’s walk. The <strong>game ends</strong> when we hit either an Exit, with reward <span class="math notranslate nohighlight">\(1\)</span> or a Policeman, with reward <span class="math notranslate nohighlight">\(0\)</span>. Therefore, our problem is to estimate <span class="math notranslate nohighlight">\(p(\text{Exit}|x_i)\)</span> for all <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
+<p>Imagine that the player starts at node <span class="math notranslate nohighlight">\(x_4\)</span> (close to a policeman and far from an exit). It is reasonable to have <span class="math notranslate nohighlight">\(p(\text{Exit}|x_4)&lt;p(\text{Exit}|x_1)\)</span>. Actually if the player “sees” the policeman it will run away, but where? The player does not know the position of the exits and the other policemen in advance. Such info will be <strong>propagated</strong> to him from the so called <strong>border nodes</strong>: police-nodes will “send” a reward of <span class="math notranslate nohighlight">\(0\)</span> whereas exits will send a reward of <span class="math notranslate nohighlight">\(1\)</span>, though their respective boundary conditions.</p>
+<p><strong>Harmonic Principle</strong>. Let <span class="math notranslate nohighlight">\(f(i) = p(\text{Exit}|i)\)</span> where <span class="math notranslate nohighlight">\(j\)</span> can be a <span class="math notranslate nohighlight">\(x_j\)</span> a <span class="math notranslate nohighlight">\(E_j\)</span> or a <span class="math notranslate nohighlight">\(P_j\)</span> then, we assume that the probability of an inner node is the average of that of its <span class="math notranslate nohighlight">\(4\)</span> neighbors:</p>
+<div class="math notranslate nohighlight">
+\[
+f(i) = \frac{1}{4}\sum_{j\in{\cal N}_i}f(j)\;.
+\]</div>
+<p>Actually, we have a <strong>linear system</strong> with <span class="math notranslate nohighlight">\(5\)</span> unknowns <span class="math notranslate nohighlight">\(f(x_1),\ldots,f(x_5)\)</span> and <span class="math notranslate nohighlight">\(5\)</span> equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f(x_1) &amp;= \frac{1}{4}\left[f(E_3)+ f(E_1) + f(x_2) + f(x_4)\right] = \frac{1}{4}\left[1+ 1 + f(x_2) + f(x_4)\right]\\
+f(x_2) &amp;= \frac{1}{4}\left[f(x_1)+ f(E_2) + f(E_4) + f(x_5)\right] = \frac{1}{4}\left[f(x_1) + 1 + 1 + f(x_5)\right]\\
+f(x_3) &amp;= \frac{1}{4}\left[f(E_5)+ f(E_3) + f(x_4) + f(E_6)\right] = \frac{1}{4}\left[1 + 1 + f(x_4) + 1\right]\\
+f(x_4) &amp;= \frac{1}{4}\left[f(x_3)+ f(x_1) + f(x_5) + f(P_1)\right] \;= \frac{1}{4}\left[f(x_3)+ f(x_1) + f(x_5) + 0\right]\\
+f(x_5) &amp;= \frac{1}{4}\left[f(x_4)+ f(x_2) + f(P_3) + f(P_2)\right] \;= \frac{1}{4}\left[f(x_4)+ f(x_2) + 0 + 0\right]\\
+\end{align}
+\end{split}\]</div>
+<p>“Harmonicity” ensures that the system has a <strong>unique solution</strong> and we can solve it very easily if we understand the structure of the system. In the following, even when we use an inverse, we note that <span style="color:#469ff8">actually we do not need to compute it by hand in the exercises but to <strong>approximate the solution iteratively</strong></span>.</p>
+<p><strong>Transition Matrix</strong>. Let <span class="math notranslate nohighlight">\(P\)</span> be a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix, where <span class="math notranslate nohighlight">\(n=|V|\)</span> is the number of nodes of the graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>. Then, the component <span class="math notranslate nohighlight">\(p_{ij}\)</span> is the probability of reaching node <span class="math notranslate nohighlight">\(j\)</span> from node <span class="math notranslate nohighlight">\(i\)</span>. For the above <strong>escape room</strong>, the transition matrix has the following <strong>block structure</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{P} =
+\begin{bmatrix}
+\mathbf{I}_{n_B} &amp; \mathbf{0}_{n_B\times n_I}\\ 
+\mathbf{R}_{n_I\times n_B} &amp; \mathbf{Q}_{n_I}
+\end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n = n_B + n_I\)</span> and <span class="math notranslate nohighlight">\(n_B\)</span> is the number of <strong>border</strong> (absorbing) nodes and <span class="math notranslate nohighlight">\(n_I\)</span> is the number of <strong>interior</strong> nodes.
+Then, we have:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{I}_{n_B}\)</span> is the <strong>identity matrix of dimension</strong> <span class="math notranslate nohighlight">\(n_B\)</span>. It has the probabilities between border nodes: only self-loops, <span class="math notranslate nohighlight">\(p_{ii}=1\)</span> in the diagonal and <span class="math notranslate nohighlight">\(p_{ij}=0\)</span> for <span class="math notranslate nohighlight">\(j\neq i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{R}_{n_I\times n_B}\)</span> has the probabilities between interior nodes (<span class="math notranslate nohighlight">\(x_1,\ldots,x_5\)</span>) <strong>in the rows</strong> and border nodes (<span class="math notranslate nohighlight">\(E_1,\ldots,E_6,P_1,P_2, P_3\)</span>) <strong>in the cols</strong>. In our example, we have <span class="math notranslate nohighlight">\(p_{ij}=1/4\)</span> when <span class="math notranslate nohighlight">\(j\)</span> is a neighbor of <span class="math notranslate nohighlight">\(i\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{R} = 
+\begin{bmatrix}
+\frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0     &amp; \frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0  &amp;  0 &amp; \frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; 0\\
+0  &amp;  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0\\
+0  &amp;  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4}\\
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{Q}_{n_I}\)</span> is a <strong>square matrix</strong> with the probabilities only between interior nodes (<span class="math notranslate nohighlight">\(x_1,\ldots,x_5\)</span>) if any.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{Q} = 
+\begin{bmatrix}
+0           &amp; \frac{1}{4} &amp; 0           &amp; \frac{1}{4} &amp; 0 \\
+\frac{1}{4} &amp; 0           &amp; 0           &amp;  0          &amp; \frac{1}{4}\\
+0           &amp; 0           &amp; 0           &amp; \frac{1}{4} &amp; 0\\
+\frac{1}{4} &amp; 0           &amp; \frac{1}{4} &amp;  0          &amp; \frac{1}{4}\\
+0           &amp; \frac{1}{4} &amp; 0           &amp; \frac{1}{4} &amp; 0 \\    
+\end{bmatrix}
+\end{split}\]</div>
+<p>An interesting <strong>property</strong> of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is that <em>all rows must sum <span class="math notranslate nohighlight">\(1\)</span></em> (<em>simple stochastic</em>). Then, note that the sum of probabilities of the same row in <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> is actually <span class="math notranslate nohighlight">\(1\)</span> for each row.</p>
+<span style="color:#469ff8">
+What is relation between the two above matrices? 
+</span>
+<br></br>
+<p>The simple stochasticity of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> gives a precise idea of how to link <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> through a linear system.</p>
+<ul class="simple">
+<li><p>From one side, we have that <span class="math notranslate nohighlight">\(\mathbf{I}_{n_I}-\mathbf{Q}\)</span> (identity matrix of size <span class="math notranslate nohighlight">\(n_I\)</span> minus <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>) encodes, by  adding each row, the probabilities of “escaping towards any absortion node”. For instance, the probability of “escaping” from <span class="math notranslate nohighlight">\(x_2\)</span> towards any of the absortion nodes is <span class="math notranslate nohighlight">\(-\frac{1}{4} + 1 - \frac{1}{4} = \frac{2}{4} = \frac{1}{2}\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{I}_{n_I}-\mathbf{Q} = 
+\begin{bmatrix}
+1           &amp; -\frac{1}{4} &amp; 0           &amp; -\frac{1}{4} &amp; 0 \\
+-\frac{1}{4} &amp; 1           &amp; 0           &amp;  0          &amp; -\frac{1}{4}\\
+0           &amp; 0           &amp; 1           &amp; -\frac{1}{4} &amp; 0\\
+-\frac{1}{4} &amp; 0           &amp; -\frac{1}{4} &amp;  1          &amp; -\frac{1}{4}\\
+0           &amp; -\frac{1}{4} &amp; 0           &amp; -\frac{1}{4} &amp; 1 \\    
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(f = [f_B\; f_D]^T\)</span> be the conditional probabilities <span class="math notranslate nohighlight">\(f(i) = p(\text{Exit}|i)\)</span> where some of them are known (<span class="math notranslate nohighlight">\(f_B=[1\;1\;1\;1\;1\;1\;0\;0\;0]\)</span>) and some others must be estimated (<span class="math notranslate nohighlight">\(f_D\)</span>). With a little abuse of notation, let us denote <span class="math notranslate nohighlight">\(f(x_i)\)</span> as <span class="math notranslate nohighlight">\(x_i\)</span>. Then, we have <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3\;x_4\;x_5]\)</span>.</p></li>
+<li><p>Then, from the other side, the matrix product <span class="math notranslate nohighlight">\(\mathbf{R}f_B\)</span> encodes the probabilities of going from each interior node to any border one:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{R}f_B = 
+\begin{bmatrix}
+\frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0     &amp; \frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0  &amp;  0 &amp; \frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; 0\\
+0  &amp;  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0\\
+0  &amp;  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4}\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+1\\
+1\\
+1\\
+1\\
+1\\
+0\\
+0\\
+0\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\frac{1}{4} + \frac{1}{4}\\
+\frac{1}{4} + \frac{1}{4} \\
+\frac{1}{4} + \frac{1}{4} + \frac{1}{4}\\
+0\\
+0\\
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{1}{2}\\
+\frac{1}{2}\\
+\frac{3}{4}\\
+0\\
+0\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>As a result, we have the linear system:</p>
+<div class="math notranslate nohighlight">
+\[
+\underbrace{(\mathbf{I}_{n_I}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\]</div>
+<p>The corresponding system in the example is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+1           &amp; -\frac{1}{4} &amp; 0           &amp; -\frac{1}{4} &amp; 0 \\
+-\frac{1}{4} &amp; 1           &amp; 0           &amp;  0          &amp; -\frac{1}{4}\\
+0           &amp; 0           &amp; 1           &amp; -\frac{1}{4} &amp; 0\\
+-\frac{1}{4} &amp; 0           &amp; -\frac{1}{4} &amp;  1          &amp; -\frac{1}{4}\\
+0           &amp; -\frac{1}{4} &amp; 0           &amp; -\frac{1}{4} &amp; 1 \\    
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+x_5\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\frac{1}{2}\\
+\frac{1}{2}\\
+\frac{3}{4}\\
+0\\
+0\\
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>Iterative solution</strong>. This system, which is equivalent to the one given by the harmonic constrain,  is well suited for an iterative solution, without the need of computing the inverse <span class="math notranslate nohighlight">\((\mathbf{I}_{n_I}-\mathbf{Q})^{-1}\)</span>.</p>
+<p>In this regard, the convergence requirements of the well-known <strong>Jacobi Algorithm</strong> meet: basically the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is <em>diagonally dominant</em> (its entries are greater in absolute value that those the off-diagonal ones). This algorithm obeys the following recurrence relation:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{t+1} = \mathbf{D}^{-1}\mathbf{b} - \mathbf{D}^{-1}(\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{D}^{-1}\)</span> is the inverse of <span class="math notranslate nohighlight">\(diag(\mathbf{A})\)</span>. In our case it is <span class="math notranslate nohighlight">\(\mathbf{I}_{n_I}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{U}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> are, respectively, the upper-triangular and lower-triangular sub-matrices of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> (diagonal not included, i.e. zeroed).</p></li>
+</ul>
+<p>Basically, in this problem, the Jacobi algorithm is extremelly simple:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+\]</div>
+<p>Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1\;1\;1]^T\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x}_1 = 
+\begin{bmatrix}
+1\\
+1\\
+1\\
+.75\\
+.5\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+.9375\\
+.875\\
+.9375\\
+.625\\
+.4375\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+.875\\
+.84375\\
+.90625\\
+.578125\\
+.375\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+.85546875\\
+.8125\\
+.89453125\\
+.5390625\\
+.35546875\\
+\end{bmatrix}\;,
+\end{split}\]</div>
+<p>which is a good approximation of the <strong>exact solution</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x} = 
+\begin{bmatrix}
+.82303371\\
+.78651685\\
+.87640449\\
+.50561798\\
+.32303371\\
+\end{bmatrix}\;.
+\end{split}\]</div>
+<p>As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolEscape</span></code>, nodes closer to the Policemen have less probability of success. Maybe the most illustrative example is <span class="math notranslate nohighlight">\(x_4\approx 0.5\)</span>, halfway bettween escape and capture!</p>
+<figure class="align-center" id="solescape">
+<a class="reference internal image-reference" href="_images/SolEscape.png"><img alt="_images/SolEscape.png" src="_images/SolEscape.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Solution to the Escape Room.</span><a class="headerlink" href="#solescape" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Obviously, if <span class="math notranslate nohighlight">\(x_i = p(\text{Exit}|i)\)</span>, then <span class="math notranslate nohighlight">\(1 - x_i = p(\text{Policemen}|i)\)</span>.</p>
+<p><strong>Advantages of computing the inverse</strong>. The inverse <span class="math notranslate nohighlight">\((\mathbf{I}_{n_I}-\mathbf{Q})^{-1}\)</span> is called the <strong>fundamental matrix</strong> <span class="math notranslate nohighlight">\(\mathbf{N}\)</span> of the Markov chain (MC). The entries <span class="math notranslate nohighlight">\(N_{ij}\)</span> can be interpreted as <span style="color:#469ff8">the expected number of times that the MC will be in state <span class="math notranslate nohighlight">\(j\)</span> before absortion when it is in state <span class="math notranslate nohighlight">\(i\)</span></span>.</p>
+<p>In our example, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+(\mathbf{I}_{n_I}-\mathbf{Q})^{-1} = 
+\begin{bmatrix}
+1.1741573  &amp; 0.33707865 &amp; 0.08988764 &amp; 0.35955056 &amp; 0.1741573\\
+0.33707865 &amp; 1.16853933 &amp; 0.04494382 &amp; 0.17977528 &amp; 0.33707865\\
+0.08988764 &amp; 0.04494382 &amp; 1.07865169 &amp; 0.31460674 &amp; 0.08988764\\
+0.35955056 &amp; 0.17977528 &amp; 0.31460674 &amp; 1.25842697 &amp; 0.35955056\\
+0.1741573  &amp; 0.33707865 &amp; 0.08988764 &amp; 0.35955056 &amp; 1.1741573\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>Actually, the product <span class="math notranslate nohighlight">\(\mathbf{t}=\mathbf{N}\mathbf{1}\)</span> (column vector of all ones) gives <span style="color:#469ff8">the expected number of steps before absorption for each starting
+state</span>. Namely</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{t}=
+\begin{bmatrix}
+2.13483146\\
+2.06741573\\
+1.61797753\\
+2.47191011\\
+2.13483146\\
+\end{bmatrix}\;.
+\end{split}\]</div>
+<p><strong>Monte Carlo solution</strong>. What if instead of solving a linear system we <strong>launch random walks</strong> (RWs) from the interior states <span class="math notranslate nohighlight">\(x_1,\ldots, x_5\)</span>? We proceed as follows:</p>
+<ul class="simple">
+<li><p>For each <span class="math notranslate nohighlight">\(x_i\)</span> launch <span class="math notranslate nohighlight">\(n\)</span> walks of length <span class="math notranslate nohighlight">\(l\)</span> from each <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
+<li><p>The proportion of walks launched from <span class="math notranslate nohighlight">\(x_i\)</span> reach an Exit state is an approximation of <span class="math notranslate nohighlight">\(p(i)=p(\text{Exit}|i)\)</span>.</p></li>
+</ul>
+<p><span style="color:#469ff8">How many walks <span class="math notranslate nohighlight">\(n\)</span> do we need to get a good approximation of <span class="math notranslate nohighlight">\(p\)</span>?
+</span></p>
+<p>In Binomial terms, <span class="math notranslate nohighlight">\(p(i)\)</span> can be seen as the “probability of success” and we known that when <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span> we have a normal distribution of mean <span class="math notranslate nohighlight">\(\mu = np\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma = \sqrt{npq}\)</span>.</p>
+<p>Imagine now that the want to ensure that the probability of success is <span class="math notranslate nohighlight">\(.95\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+p\left(-a\le \frac{p(i) - np}{\sqrt{npq}}\le a\right) = p\left(-a\le Z\le a \right) = .95
+\]</div>
+<p>i.e. <span class="math notranslate nohighlight">\(Z\)</span> is a standarized variable. Due to the symmetry of the normal distribution, the above equation means that the probabilities of the tails satisfy <span class="math notranslate nohighlight">\(p(-a\le Z)=p(Z\ge a)=(1-0.95)/2 = 0.025\)</span>. Quering the <a class="reference external" href="https://www.math.arizona.edu/~jwatkins/normal-table.pdf">Standard Normal Cumulative Probability Table</a> we have that <span class="math notranslate nohighlight">\(a = 1.9\approx 2\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[
+-2\le \frac{p(i) - np}{\sqrt{npq}}\le 2
+\]</div>
+<p>Normizing both the numerator and the denominator by <span class="math notranslate nohighlight">\(n\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+-2\le \frac{\frac{p(i) - np}{n}}{\frac{\sqrt{npq}}{n}}\le 2
+\]</div>
+<p>leading to</p>
+<div class="math notranslate nohighlight">
+\[
+-2\le \frac{\frac{p(i)}{n}-p}{\frac{\sqrt{pq}}{n}}\le 2\;\Rightarrow -2\le \frac{\frac{p(i)}{n}-p}{\sqrt{\frac{pq}{n}}}\le 2\;\Rightarrow -2\sqrt{\frac{pq}{n}}\le \frac{p(i)}{n}-p\le 2\sqrt{\frac{pq}{n}}\;.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\sqrt{pq}&lt;1/2\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+p\left(-\frac{1}{\sqrt{n}}&lt;\frac{p(i)}{n}-p&lt;\frac{1}{\sqrt{n}}\right) = 0.95\;.
+\]</div>
+<p>This means that if we want to ensure that the deviation between the mean <span class="math notranslate nohighlight">\(p(i)\)</span> and the probability of success satisfies</p>
+<div class="math notranslate nohighlight">
+\[
+\left|\frac{p(i)}{n}-p\right| &lt; \frac{1}{\sqrt{n}} = 0.01
+\]</div>
+<p>with probability <span class="math notranslate nohighlight">\(0.95\)</span>, we need <span class="math notranslate nohighlight">\(n=10,000\)</span> walks for such a  small upper bound! Actually the Monte Carlo solution obtained by launching <span class="math notranslate nohighlight">\(10,000\)</span> walks from each interior node is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x} = 
+\begin{bmatrix}
+.82758621\\ 
+.80224404\\ 
+.84444444\\ 
+.49731183\\ 
+.302391\\ 
+\end{bmatrix}
+\end{split}\]</div>
+<p>where the length of each walk is quite flexible (<span class="math notranslate nohighlight">\(l=20\)</span> in this case), since absortion states are pretty close.</p>
+<p>Monte Carlo Markov Chains (MCMCs) are very inefficent here but sometimes become an effective search strategy when they are enpowered by data.
+<br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. What if we have negative rewards? In the small problem in <code class="xref std std-numref docutils literal notranslate"><span class="pre">MiniDirichlet</span></code> we have <strong>negative absorbing states</strong> <span class="math notranslate nohighlight">\(n_1,\ldots,n_5\)</span> labeled as <span class="math notranslate nohighlight">\(-1\)</span> and <strong>positive absorbing states</strong> <span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span> set to <span class="math notranslate nohighlight">\(+1\)</span>. In this case, we have only three interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>. What are their probabilities?
+</span></p>
+<figure class="align-center" id="minidirichlet">
+<a class="reference internal image-reference" href="_images/MiniDirichlet.png"><img alt="_images/MiniDirichlet.png" src="_images/MiniDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#minidirichlet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+Let us formulate the matrices <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>. From <span class="math notranslate nohighlight">\(n_B = 5 + 2 = 7\)</span> and <span class="math notranslate nohighlight">\(n_I = 3\)</span>, we have<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{Q}_{3} = 
+\begin{bmatrix}
+0           &amp;  \frac{1}{4} &amp;  0\\
+\frac{1}{4} &amp;  0           &amp;  \frac{1}{4}\\
+0           &amp;  \frac{1}{4} &amp;  0\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{R}_{3\times 7} = 
+\begin{bmatrix}
+\frac{1}{4}   &amp; \frac{1}{4} &amp; \frac{1}{4} &amp;  0  &amp;  0  &amp;  0 &amp;  0\\
+0             &amp; 0           &amp;  0          &amp;  \frac{1}{4} &amp; \frac{1}{4}  &amp;  0 &amp;  0\\
+0 &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4}\\ 
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, from <span class="math notranslate nohighlight">\(f_B = [-1\;-1\;-1\;-1\;-1\;+1\;+1]^T\)</span> and <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3]^T\)</span> we set the system
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\underbrace{(\mathbf{I}_{3}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\)</span>
+</span>
+<span style="color:#347fc9">
+as follows
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1           &amp;  -\frac{1}{4} &amp;  0\\
+-\frac{1}{4} &amp;  1           &amp;  -\frac{1}{4}\\
+0           &amp;  -\frac{1}{4} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{1}{4}   &amp; \frac{1}{4} &amp; \frac{1}{4} &amp;  0  &amp;  0  &amp;  0 &amp;  0\\
+0             &amp; 0           &amp;  0          &amp;  \frac{1}{4} &amp; \frac{1}{4}  &amp;  0 &amp;  0\\
+0 &amp; 0 &amp; \frac{1}{4} &amp; 0 &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4}\\ 
+\end{bmatrix}
+\begin{bmatrix}
+-1\\
+-1\\
+-1\\
+-1\\
+-1\\
++1\\
++1\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1           &amp;  -\frac{1}{4} &amp;  0\\
+-\frac{1}{4} &amp;  1           &amp;  -\frac{1}{4}\\
+0           &amp;  -\frac{1}{4} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+\end{bmatrix} =
+\begin{bmatrix}
+-\frac{3}{4}\\
+-\frac{2}{4}\\
++\frac{1}{4}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us now set and solve the <strong>iterative</strong> system via <strong>Jacobi</strong> for these problems:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+\mathbf{x}_1^{t+1}\\
+\mathbf{x}_2^{t+1}\\
+\mathbf{x}_3^{t+1}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+-\frac{3}{4}\\
+-\frac{2}{4}\\
++\frac{1}{4}\\
+\end{bmatrix}-
+\begin{bmatrix}
+0           &amp;  -\frac{1}{4} &amp;  0\\
+-\frac{1}{4} &amp;  0           &amp;  -\frac{1}{4}\\
+0           &amp;  -\frac{1}{4} &amp;  0\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x}_1^{t}\\
+\mathbf{x}_2^{t}\\
+\mathbf{x}_3^{t}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1]^T\)</span> we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_1 = 
+\begin{bmatrix}
+-.5\\
+0\\
+.5\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+-.75\\
+-.5\\
+.25\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+-.875\\
+-.625\\
+.125\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+-.90625\\
+-.6875\\
+.09375\\
+\end{bmatrix}\;,
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+which is a good approximation of the <strong>exact solution</strong>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x} = 
+\begin{bmatrix}
+-.92857\\
+-.71428\\
+.071428\\
+\end{bmatrix}\;.
+\)</span>
+</span>
+<br></br></p>
+<figure class="align-center" id="soldirichlet2">
+<a class="reference internal image-reference" href="_images/SolDirichlet.png"><img alt="_images/SolDirichlet.png" src="_images/SolDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldirichlet2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet2</span></code>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Let us solve the drunkard’s walk from this perspective. In <code class="xref std std-numref docutils literal notranslate"><span class="pre">DrunkDirichlet</span></code> we have <strong>two absorbing states</strong> <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>) and <span class="math notranslate nohighlight">\(1\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and four interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> and <span class="math notranslate nohighlight">\(x_4\)</span>. We know that <span class="math notranslate nohighlight">\(p(\text{Home}|x_i)=\frac{x_i}{m}\)</span> with <span class="math notranslate nohighlight">\(m=5\)</span> in this case. How to prove that using the 2D aproach?
+</span></p>
+<figure class="align-center" id="drunkdirichlet">
+<a class="reference internal image-reference" href="_images/DrunkDirichlet.png"><img alt="_images/DrunkDirichlet.png" src="_images/DrunkDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Formulation of the drunkard’s walk with two absorbing states: Bar (0) and Home (5).</span><a class="headerlink" href="#drunkdirichlet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+We apply the logic of the Markovian process as follows.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us formulate the matrices <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> (probabilities between interior nodes) and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> (probabilities between interior and absorbing nodes). From <span class="math notranslate nohighlight">\(n_B = 2\)</span> and <span class="math notranslate nohighlight">\(n_I = 4\)</span>, we have<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{Q}_{4} = 
+\begin{bmatrix}
+0 &amp; \frac{1}{2} &amp;  0  &amp;  0 \\
+\frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0  \\
+0 &amp; \frac{1}{2} &amp;  0 &amp;  \frac{1}{2} \\
+0 &amp; 0 &amp;  \frac{1}{2} &amp;  0 \\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{R}_{4\times 2} = 
+\begin{bmatrix}
+\frac{1}{2} &amp;  0 \\
+0           &amp;  0 \\
+0           &amp;  0 \\
+0           &amp; \frac{1}{2}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, from <span class="math notranslate nohighlight">\(f_B = [0\;1]^T\)</span> and <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3\;x_4]^T\)</span> we set the system
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\underbrace{(\mathbf{I}_{4}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;.
+\)</span>
+</span>
+<span style="color:#347fc9">
+as follows
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; -\frac{1}{2} &amp;  0  &amp;  0\\
+-\frac{1}{2} &amp; 1 &amp; -\frac{1}{2} &amp; 0\\
+0 &amp; -\frac{1}{2} &amp;  1 &amp;  -\frac{1}{2}\\
+0 &amp; 0 &amp;  -\frac{1}{2} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{1}{2} &amp;  0 \\
+0           &amp;  0 \\
+0           &amp;  0 \\
+0           &amp; \frac{1}{2}\\
+\end{bmatrix}
+\begin{bmatrix}
+0\\
+1\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+i.e.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; -\frac{1}{2} &amp;  0  &amp;  0\\
+-\frac{1}{2} &amp; 1 &amp; -\frac{1}{2} &amp; 0\\
+0 &amp; -\frac{1}{2} &amp;  1 &amp;  -\frac{1}{2}\\
+0 &amp; 0 &amp;  -\frac{1}{2} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0\\
+0\\
+0\\
+\frac{1}{2}
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Let us now set and solve the <strong>iterative</strong> system via <strong>Jacobi</strong> for this problem:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+\mathbf{x}_1^{t+1}\\
+\mathbf{x}_2^{t+1}\\
+\mathbf{x}_3^{t+1}\\
+\mathbf{x}_4^{t+1}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0\\
+0\\
+0\\
+\frac{1}{2}\\
+\end{bmatrix}-
+\begin{bmatrix}
+1 &amp; -\frac{1}{2} &amp;  0  &amp;  0\\
+-\frac{1}{2} &amp; 1 &amp; -\frac{1}{2} &amp; 0\\
+0 &amp; -\frac{1}{2} &amp;  1 &amp;  -\frac{1}{2}\\
+0 &amp; 0 &amp;  -\frac{1}{2} &amp;  1\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x}_1^{t}\\
+\mathbf{x}_2^{t}\\
+\mathbf{x}_3^{t}\\
+\mathbf{x}_4^{t}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1\;1]^T\)</span> we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_1 = 
+\begin{bmatrix}
+.5\\
+1\\
+1\\
+1\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_2 = 
+\begin{bmatrix}
+.5\\
+.75\\
+1\\
+1\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_3 = 
+\begin{bmatrix}
+.375\\
+.75\\
+.875\\
+1\\
+\end{bmatrix}\Rightarrow\;
+\mathbf{x}_4 = 
+\begin{bmatrix}
+.375\\
+.625\\
+.875\\
+.9375\\
+\end{bmatrix}\;,
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+which is a reasonable approximation of the <strong>exact solution</strong>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x} = 
+\begin{bmatrix}
+.2\\
+.4\\
+.6\\
+.8\\
+\end{bmatrix}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+See <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDrunkDirichlet</span></code>, darker states are closer to <span class="math notranslate nohighlight">\(\text{Home}\)</span>. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>!
+</span></p>
+<figure class="align-center" id="soldrunkdirichlet">
+<a class="reference internal image-reference" href="_images/SolDrunkDirichlet.png"><img alt="_images/SolDrunkDirichlet.png" src="_images/SolDrunkDirichlet.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldrunkdirichlet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="the-cutoff-phenomenon">
+<h2>The Cutoff Phenomenon<a class="headerlink" href="#the-cutoff-phenomenon" title="Permalink to this heading">#</a></h2>
+<section id="markov-chains-and-equilibrium">
+<h3>Markov chains and equilibrium<a class="headerlink" href="#markov-chains-and-equilibrium" title="Permalink to this heading">#</a></h3>
+<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet2</span></code>, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of Spectral Graph Theory.</p>
+</section>
+<section id="shuffling-cards">
+<h3>Shuffling cards<a class="headerlink" href="#shuffling-cards" title="Permalink to this heading">#</a></h3>
+<p>For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>. Consider for instance a mini-deck of cards consisting only of the <span class="math notranslate nohighlight">\(n=13\)</span> cards of the <span class="math notranslate nohighlight">\(\heartsuit\)</span> suit. Initially, this deck is ordered according to their increasing face values, i.e. we have</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 2_{\heartsuit}\; 3_{\heartsuit}\; 
+4_{\heartsuit}\; 5_{\heartsuit}\; 6_{\heartsuit}\; 7_{\heartsuit}\;8_{\heartsuit}\;
+9_{\heartsuit}\; 10_{\heartsuit}\; J_{\heartsuit}\; Q_{\heartsuit}\; K_{\heartsuit}
+\]</div>
+<p>A <strong>riffle suffling</strong> consists of:</p>
+<p>1- <span style="color:#469ff8">Select a <em>cut point</em></span> <span class="math notranslate nohighlight">\(k\)</span> (approximately at <span class="math notranslate nohighlight">\(1/2\)</span> of the mini-deck) so that we divide the deck into <span class="math notranslate nohighlight">\(2\)</span> packets of similar size: <span class="math notranslate nohighlight">\(1,2,\ldots,k\)</span> and <span class="math notranslate nohighlight">\(k+1,k+2,\ldots,n\)</span>. For <span class="math notranslate nohighlight">\(k=6\)</span> we have:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 2_{\heartsuit}\; 3_{\heartsuit}\; 
+4_{\heartsuit}\; 5_{\heartsuit}\;6_{\heartsuit}
+\;\;\;\; 7_{\heartsuit}\;8_{\heartsuit}\;
+9_{\heartsuit}\; 10_{\heartsuit}\; J_{\heartsuit}\; Q_{\heartsuit}\; K_{\heartsuit}
+\]</div>
+<p>2- <span style="color:#469ff8"><em>Interleave</em> the two subdecks</span> so that the relative positions within each subdeck is preserved and then form a new mini-deck:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 7_{\heartsuit}\; 2_{\heartsuit}\; 
+8_{\heartsuit}\; 9_{\heartsuit}\; 3_{\heartsuit}\; 
+10_{\heartsuit}\; 4_{\heartsuit}\; 5_{\heartsuit}\; 
+J_{\heartsuit}\; 6_{\heartsuit}\; Q_{\heartsuit}\; 
+K_{\heartsuit}\;
+\]</div>
+<p>A <strong>rising sequence</strong> is a maximal subset of cards where their successive values are displayed in increasing order. For instance, in the previous interleaving we have two rising sequences: <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(6\)</span> and <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span>, <span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span>. Actually, these rising sequences come from the first cut, so the rising sequences can be used to reconstruct the original order of the deck.</p>
+<p>What happens if we perform <strong>another riffle shuffle</strong>? Now we select <span class="math notranslate nohighlight">\(k=7\)</span> for cutting and we have:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\; 7_{\heartsuit}\; 2_{\heartsuit}\; 
+8_{\heartsuit}\; 9_{\heartsuit}\; 3_{\heartsuit}\; 
+10_{\heartsuit}\;\;\;\; 
+4_{\heartsuit}\; 5_{\heartsuit}\; 
+J_{\heartsuit}\; 6_{\heartsuit}\; Q_{\heartsuit}\; 
+K_{\heartsuit}\;
+\]</div>
+<p>Before interleaving the cards, we have that each pack has <span class="math notranslate nohighlight">\(2\)</span> <strong>rising sequences</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span> for the left pack.</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(6\)</span> and <span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span> for the right pack.</p></li>
+</ul>
+<p>This means that before mixing the cards we <strong>have doubled</strong> the number of rising sequences.</p>
+<p>Let us interleave the two packs above:</p>
+<div class="math notranslate nohighlight">
+\[
+A_{\heartsuit}\;4_{\heartsuit}\;7_{\heartsuit}\;
+5_{\heartsuit}\;2_{\heartsuit}\;J_{\heartsuit}\;
+8_{\heartsuit}\;6_{\heartsuit}\;9_{\heartsuit}\;
+Q_{\heartsuit}\;3_{\heartsuit}\;K_{\heartsuit}\;
+10_{\heartsuit}
+\]</div>
+<p>with rising sequences:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(5\)</span>, <span class="math notranslate nohighlight">\(6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(10\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(J\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
+</ul>
+<p>Effectively, each new <strong>riffle shuffle</strong> tends to double the number of rising sequences until the capacity of the deck is reached. What is such a capacity? Since <span class="math notranslate nohighlight">\(2^{3}&lt;13&lt;2^{4}\)</span>, after <span class="math notranslate nohighlight">\(4\)</span> shuffles we will have the mini-deck <strong>completely mixed</strong>. Why? Because for <span class="math notranslate nohighlight">\(a=4\)</span> riffle shuffles we have <span class="math notranslate nohighlight">\(13\)</span> rising sequences, i.e. the mini-deck in descending order:</p>
+<div class="math notranslate nohighlight">
+\[
+K_{\heartsuit}\;
+Q_{\heartsuit}\;
+J_{\heartsuit}\; 
+10_{\heartsuit}\;
+9_{\heartsuit}\;
+8_{\heartsuit}\;
+7_{\heartsuit}\; 
+6_{\heartsuit}\;
+5_{\heartsuit}\;
+4_{\heartsuit}\;
+3_{\heartsuit}\;
+2_{\heartsuit}\;
+1_{\heartsuit}\;           
+\]</div>
+<p>If we have <span class="math notranslate nohighlight">\(n\)</span> cards, the maximum number of <strong>rising sequences</strong> is <span class="math notranslate nohighlight">\(n\)</span>, i.e. every card <span class="math notranslate nohighlight">\(c_i\)</span> has a face value higher than <span class="math notranslate nohighlight">\(c_{i+1}\)</span> for <span class="math notranslate nohighlight">\(i=1,2,\ldots,n-1\)</span>. Thus for <span class="math notranslate nohighlight">\(n=52\)</span> cards we need <span class="math notranslate nohighlight">\(2^{a}\approx 52\)</span> riffle shuffles, i.e. <span class="math notranslate nohighlight">\(a=6\)</span>. <a class="reference external" href="https://www.stat.berkeley.edu/~aldous/Papers/shuffling.pdf">Aldous and Diaconis</a> proved that we need <span class="math notranslate nohighlight">\(a=7\)</span> riffle shuffles to ensure complete disorder. In any case we have that <span class="math notranslate nohighlight">\(a\)</span> is <span class="math notranslate nohighlight">\(O(log_2 n)\)</span>.</p>
+<p><span style="color:#469ff8">The <strong>cutoff phenomenon</strong> refers to the fact that when measuring how close we are from complete randomness, most of the time we are very far away</span>. However, at a certain point, we drastically become very close to randomness. Not all Markov chains have this property, but when they have it, that point is called the <strong>cutoff</strong> point.</p>
+<!--
+But how do the scientifically **measure** this?
+
+#### Probability and Total Variation 
+
+Given a deck of $n$ cards, numbered as $1,2,\ldots,n$, a permutation $\pi:\{1,2,\ldots,n\}\rightarrow \{1,2,\ldots,n\}$ maps one input sequence to another just changing the order inside the sequence, but the identity permutation $id$ which lefts a permutation invariant.  
+
+Since we have $n!$ permutations, <span style="color:#469ff8">what is the **probability of a given permutation** $\pi$?</span>
+
+For answering this question, we have to be aware that <span style="color:#469ff8">**not all permutations are equally valid**</span>. Only the permutations derived from a correct interleave, i.e. <span style="color:#469ff8">these preserving the relative order</span> inside each packed, are allowed. 
+
+- A riffle shuffle actually performs a permutation $\pi$. 
+- A riffle shuffle actually divides a deck into $2$ packets.  
+- Performing $m$ riffle shuffle is equivalent to dividing the deck into $a=2^m$ packets, considered them the leaves of a **binary tree** and mixing them using the inverse order of tree up to its root. For instance, first mix  $1^{st}$ and $2^{nd}$, $3^{rd}$ and $4^{th}$ etc until $2^{m-1}$ and $2^m$. Then $1-2$ is mixed with $3-4$, $5-6$ with $7-8$ etc and we climb a level. Just before reaching the root, the two halves of the deck will be ready to be mixed!
+- The relaving order after each mixing/interleaving is preserved.
+ -->
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">Markov chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrence-relations">Recurrence relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-in-2d">Random walks in 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">Markov chains and equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">Shuffling cards</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

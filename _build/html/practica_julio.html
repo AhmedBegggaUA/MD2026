@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Recovery Practice &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'practica_julio';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/practica_julio.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Recovery Practice</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-zachary-s-karate-club-social-network">Dataset: Zachary’s Karate Club Social Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-numpy-analysis-25">Exercise 1: NumPy Analysis (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-1-fundamental-matrices-15">Section 1.1: Fundamental matrices (15%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-2-connectivity-analysis-10">Section 1.2: Connectivity analysis (10%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualization-and-analysis-with-pandas-matplotlib-networkx-25">Exercise 2: Visualization and Analysis with Pandas/Matplotlib/NetworkX (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-1-dataframe-creation-10">Section 2.1: DataFrame creation (10%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-2-visualizations-15">Section 2.2: Visualizations (15%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-graph-exploration-25">Exercise 3: Graph Exploration (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-1-algorithm-implementation-15">Section 3.1: Algorithm implementation (15%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-2-comparative-analysis-10">Section 3.2: Comparative analysis (10%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-node2vec-and-classification-25">Exercise 4: Node2Vec and Classification (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-1-node2vec-implementation-and-application-25">Section 4.1: Node2Vec implementation and application (25%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-zip-structure">Final ZIP structure:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation criteria:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notes">Important notes:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="recovery-practice">
+<h1>Recovery Practice<a class="headerlink" href="#recovery-practice" title="Permalink to this heading">#</a></h1>
+<p><strong>Maximum time:</strong> 1 week<br />
+<strong>Submission deadline:</strong> 10/07/2025</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>This recovery practice integrates all concepts covered in the four previous practices. You will work with a social network dataset to apply graph analysis, visualization, and exploration techniques that you have learned throughout the course.</p>
+</section>
+<section id="dataset-zachary-s-karate-club-social-network">
+<h2>Dataset: Zachary’s Karate Club Social Network<a class="headerlink" href="#dataset-zachary-s-karate-club-social-network" title="Permalink to this heading">#</a></h2>
+<p>You will use the famous “Zachary’s Karate Club” dataset, which represents social relationships between members of a university karate club. This dataset is ideal because:</p>
+<ul class="simple">
+<li><p>It’s a real graph with clear community structure</p></li>
+<li><p>It has a manageable size (34 nodes, 78 edges)</p></li>
+<li><p>It’s available in NetworkX</p></li>
+<li><p>It allows applying all course concepts</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="c1"># Load the dataset</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-1-numpy-analysis-25">
+<h2>Exercise 1: NumPy Analysis (25%)<a class="headerlink" href="#exercise-1-numpy-analysis-25" title="Permalink to this heading">#</a></h2>
+<section id="section-1-1-fundamental-matrices-15">
+<h3>Section 1.1: Fundamental matrices (15%)<a class="headerlink" href="#section-1-1-fundamental-matrices-15" title="Permalink to this heading">#</a></h3>
+<p>Using <strong>only NumPy</strong> and basic NetworkX functions (without using predefined functions for matrix calculations), implement and calculate:</p>
+<ol class="arabic simple">
+<li><p><strong>Adjacency matrix</strong> of the graph</p></li>
+<li><p><strong>Degree matrix</strong> (diagonal matrix with the degrees of each node)</p></li>
+<li><p><strong>Laplacian matrix</strong> (D - A)</p></li>
+<li><p><strong>Normalized Laplacian matrix</strong> (D^(-1/2) * L * D^(-1/2))</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_matrices</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates fundamental matrices of the graph using NumPy</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - adjacency_matrix: adjacency matrix</span>
+<span class="sd">    - degree_matrix: degree matrix</span>
+<span class="sd">    - laplacian_matrix: laplacian matrix</span>
+<span class="sd">    - normalized_laplacian: normalized laplacian matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your implementation here</span>
+    <span class="k">return</span> <span class="n">adjacency_matrix</span><span class="p">,</span> <span class="n">degree_matrix</span><span class="p">,</span> <span class="n">laplacian_matrix</span><span class="p">,</span> <span class="n">normalized_laplacian</span>
+</pre></div>
+</div>
+</section>
+<section id="section-1-2-connectivity-analysis-10">
+<h3>Section 1.2: Connectivity analysis (10%)<a class="headerlink" href="#section-1-2-connectivity-analysis-10" title="Permalink to this heading">#</a></h3>
+<p>Implement a function that finds all nodes with degree greater than or equal to a given value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_high_degree_nodes</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">,</span> <span class="n">min_degree</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds nodes with degree &gt;= min_degree</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    - adjacency_matrix: adjacency matrix</span>
+<span class="sd">    - min_degree: minimum degree</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - numpy array with indices of nodes that meet the condition</span>
+<span class="sd">    - if no nodes exist, return array with [-1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your implementation here</span>
+    <span class="k">return</span> <span class="n">high_degree_nodes</span>
+</pre></div>
+</div>
+<p><strong>Deliverables:</strong> Notebook <code class="docutils literal notranslate"><span class="pre">numpy_analysis.ipynb</span></code> with all calculations, printed matrices, and result analysis.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-2-visualization-and-analysis-with-pandas-matplotlib-networkx-25">
+<h2>Exercise 2: Visualization and Analysis with Pandas/Matplotlib/NetworkX (25%)<a class="headerlink" href="#exercise-2-visualization-and-analysis-with-pandas-matplotlib-networkx-25" title="Permalink to this heading">#</a></h2>
+<section id="section-2-1-dataframe-creation-10">
+<h3>Section 2.1: DataFrame creation (10%)<a class="headerlink" href="#section-2-1-dataframe-creation-10" title="Permalink to this heading">#</a></h3>
+<p>Create a Pandas DataFrame containing information for each node:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Required DataFrame structure:</span>
+<span class="c1"># - node_id: node identifier</span>
+<span class="c1"># - degree: node degree  </span>
+<span class="c1"># - clustering: clustering coefficient</span>
+<span class="c1"># - betweenness: betweenness centrality</span>
+<span class="c1"># - closeness: closeness centrality</span>
+<span class="c1"># - community: community to which it belongs (use nx.community.greedy_modularity_communities)</span>
+<span class="c1"># - connections: list of neighboring nodes</span>
+</pre></div>
+</div>
+</section>
+<section id="section-2-2-visualizations-15">
+<h3>Section 2.2: Visualizations (15%)<a class="headerlink" href="#section-2-2-visualizations-15" title="Permalink to this heading">#</a></h3>
+<p>Create <strong>4 different visualizations</strong> using Matplotlib and/or Seaborn:</p>
+<ol class="arabic simple">
+<li><p><strong>Degree distribution histogram</strong></p></li>
+<li><p><strong>Scatter plot</strong> of betweenness centrality vs closeness</p></li>
+<li><p><strong>Bar chart</strong> showing average degree per community</p></li>
+<li><p><strong>Graph visualization</strong> with nodes colored by community and size proportional to degree</p></li>
+</ol>
+<p>Each visualization must have:</p>
+<ul class="simple">
+<li><p>Descriptive title</p></li>
+<li><p>Axis labels</p></li>
+<li><p>Legend when appropriate</p></li>
+<li><p>Comments explaining what it shows</p></li>
+</ul>
+<p><strong>Deliverables:</strong> Notebook <code class="docutils literal notranslate"><span class="pre">visualization_analysis.ipynb</span></code>, DataFrame exported as <code class="docutils literal notranslate"><span class="pre">karate_network_data.csv</span></code>, and the 4 visualizations saved as PNG files.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-3-graph-exploration-25">
+<h2>Exercise 3: Graph Exploration (25%)<a class="headerlink" href="#exercise-3-graph-exploration-25" title="Permalink to this heading">#</a></h2>
+<section id="section-3-1-algorithm-implementation-15">
+<h3>Section 3.1: Algorithm implementation (15%)<a class="headerlink" href="#section-3-1-algorithm-implementation-15" title="Permalink to this heading">#</a></h3>
+<p>Implement <strong>from scratch</strong> (using only NumPy and Python lists) the three exploration algorithms, and the most important, <strong>DO A TRACE OF THE STEPS</strong> as we did during the practice:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In class, we implemented these algorithms, so you can use those implementations, but It is compulsory to implement a trace of the algorithms. Otherwise, you will get a 0 in this exercise.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bfs_implementation</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    BFS implemented from scratch</span>
+<span class="sd">    Returns: (steps, path)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your implementation here</span>
+    <span class="k">return</span> <span class="n">steps</span><span class="p">,</span> <span class="n">path</span>
+
+<span class="k">def</span> <span class="nf">dfs_implementation</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DFS implemented from scratch  </span>
+<span class="sd">    Returns: (steps, path)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your implementation here</span>
+    <span class="k">return</span> <span class="n">steps</span><span class="p">,</span> <span class="n">path</span>
+
+<span class="k">def</span> <span class="nf">random_walk_implementation</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random Walk implemented from scratch</span>
+<span class="sd">    Returns: (steps, path, success)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your implementation here</span>
+    <span class="k">return</span> <span class="n">steps</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">success</span>
+</pre></div>
+</div>
+</section>
+<section id="section-3-2-comparative-analysis-10">
+<h3>Section 3.2: Comparative analysis (10%)<a class="headerlink" href="#section-3-2-comparative-analysis-10" title="Permalink to this heading">#</a></h3>
+<p>Execute the three algorithms to find paths between <strong>5 different pairs</strong> of nodes (you choose the pairs). For each pair:</p>
+<ol class="arabic simple">
+<li><p>Execute each algorithm</p></li>
+<li><p>Compare length of found paths</p></li>
+<li><p>Analyze number of steps needed</p></li>
+</ol>
+<p>Create a summary table with results and discuss observed differences.</p>
+<p><strong>Deliverables:</strong> Notebook <code class="docutils literal notranslate"><span class="pre">graph_exploration.ipynb</span></code> with implementations, tests, and comparative analysis.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-4-node2vec-and-classification-25">
+<h2>Exercise 4: Node2Vec and Classification (25%)<a class="headerlink" href="#exercise-4-node2vec-and-classification-25" title="Permalink to this heading">#</a></h2>
+<section id="section-4-1-node2vec-implementation-and-application-25">
+<h3>Section 4.1: Node2Vec implementation and application (25%)<a class="headerlink" href="#section-4-1-node2vec-implementation-and-application-25" title="Permalink to this heading">#</a></h3>
+<p>Using the Node2Vec code provided in classes:</p>
+<ol class="arabic simple">
+<li><p><strong>Apply Node2Vec</strong> to the karate club graph</p></li>
+<li><p><strong>Experiment with different parameters:</strong></p>
+<ul class="simple">
+<li><p>Embedding dimensions: [8, 16, 32]</p></li>
+<li><p>Number of walks: [10, 20, 50]</p></li>
+<li><p>Walk length: [10, 20, 40]</p></li>
+</ul>
+</li>
+<li><p><strong>Visualize embeddings</strong> using PCA to reduce to 2D</p></li>
+<li><p><strong>Color points</strong> according to the real community of each node</p></li>
+</ol>
+<p><strong>Deliverables:</strong> Notebook <code class="docutils literal notranslate"><span class="pre">node2vec_analysis.ipynb</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="submission">
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<section id="final-zip-structure">
+<h3>Final ZIP structure:<a class="headerlink" href="#final-zip-structure" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lastname_firstname.zip
+├── numpy_analysis.ipynb
+├── visualization_analysis.ipynb  
+├── graph_exploration.ipynb
+├── node2vec_analysis.ipynb
+├── visualization1.png
+├── visualization2.png
+├── visualization3.png
+└── visualization4.png
+</pre></div>
+</div>
+</section>
+<section id="evaluation-criteria">
+<h3>Evaluation criteria:<a class="headerlink" href="#evaluation-criteria" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Code correctness:</strong> 40%</p></li>
+<li><p><strong>Analysis and discussion:</strong> 30%</p></li>
+<li><p><strong>Visualization quality:</strong> 20%</p></li>
+<li><p><strong>Structure and documentation:</strong> 10%</p></li>
+</ul>
+</section>
+<section id="important-notes">
+<h3>Important notes:<a class="headerlink" href="#important-notes" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>You CANNOT use predefined functions</strong> for algorithms you must implement from scratch</p></li>
+<li><p><strong>Document your code well</strong> with explanatory comments</p></li>
+<li><p><strong>Include analysis and conclusions</strong> in each exercise</p></li>
+<li><p><strong>Use appropriate seeds</strong> for reproducibility</p></li>
+<li><p><strong>Follow best practices</strong> seen in class</p></li>
+</ol>
+<p><strong>Good luck with your recovery practice!</strong></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-zachary-s-karate-club-social-network">Dataset: Zachary’s Karate Club Social Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-numpy-analysis-25">Exercise 1: NumPy Analysis (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-1-fundamental-matrices-15">Section 1.1: Fundamental matrices (15%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-2-connectivity-analysis-10">Section 1.2: Connectivity analysis (10%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualization-and-analysis-with-pandas-matplotlib-networkx-25">Exercise 2: Visualization and Analysis with Pandas/Matplotlib/NetworkX (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-1-dataframe-creation-10">Section 2.1: DataFrame creation (10%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-2-visualizations-15">Section 2.2: Visualizations (15%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-graph-exploration-25">Exercise 3: Graph Exploration (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-1-algorithm-implementation-15">Section 3.1: Algorithm implementation (15%)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-2-comparative-analysis-10">Section 3.2: Comparative analysis (10%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-node2vec-and-classification-25">Exercise 4: Node2Vec and Classification (25%)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-1-node2vec-implementation-and-application-25">Section 4.1: Node2Vec implementation and application (25%)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-zip-structure">Final ZIP structure:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation criteria:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notes">Important notes:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

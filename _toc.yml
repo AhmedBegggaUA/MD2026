@@ -1,0 +1,19 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+defaults:
+  numbered: true
+parts: 
+- caption: Discrete Brain
+  chapters:
+  - file: bloque1_Introducción
+- caption: Counting and Probability 
+  chapters:
+  - file: Topic1 
+  - file: Topic2
+- caption: Practice 1
+  chapters:
+  - file: practice_intro
+  - file: numpy_practice
