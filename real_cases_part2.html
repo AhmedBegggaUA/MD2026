@@ -1,0 +1,796 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>19. Real cases part 2: Into the Message Passing and Graph Classification &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'real_cases_part2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="20. Practices Recovery MD - 2023/24" href="recuperacion.html" />
+    <link rel="prev" title="18. Real cases dataset" href="real_cases_dataset.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">8. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">9. Assignment 07/24</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">10. Introduction to the practical part of MD2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">11. Numpy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">12. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">13. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">14. NetworkX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">15. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration.html">16. Graph exploration</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">17. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">18. Real cases dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Real cases part 2: Into the Message Passing and Graph Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recovery</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="recuperacion.html">20. Practices Recovery MD - 2023/24</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/real_cases_part2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Real cases part 2: Into the Message Passing and Graph Classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">19.1. Message Passing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing-for-node-classification">19.1.1. Message Passing for Node Classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.2. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">19.2.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">19.2.2. Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-classification">19.3. Graph Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph2vec">19.4. Graph2Vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-generate-graph-embeddings-using-graph2vec">19.4.1. Steps to generate graph embeddings using Graph2Vec:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercises">19.5. Extra Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercise-1">19.5.1. Extra Exercise 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">19.6. Submission</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="real-cases-part-2-into-the-message-passing-and-graph-classification">
+<h1><span class="section-number">19. </span>Real cases part 2: Into the Message Passing and Graph Classification<a class="headerlink" href="#real-cases-part-2-into-the-message-passing-and-graph-classification" title="Permalink to this heading">#</a></h1>
+<p>In this section, we will explore the message passing and graph classification tasks. We will use the same dataset as in the previous section and we will add a new dataset to explore the graph classification task. This new dataset is MUTAG, which is a dataset of chemical compounds. The goal is to predict whether a molecule is mutagenic or not. The dataset is available in the <code class="docutils literal notranslate"><span class="pre">torch_geometric.datasets</span></code> module.</p>
+<section id="message-passing">
+<h2><span class="section-number">19.1. </span>Message Passing<a class="headerlink" href="#message-passing" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="mp">
+<a class="reference internal image-reference" href="_images/mp.gif"><img alt="_images/mp.gif" src="_images/mp.gif" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19.1 </span><span class="caption-text">Message Passing. Source: <a class="reference external" href="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fmedium.com%2F%40ashes192000%2Fgraph-neural-networks-part-4-e54251d0256d&amp;psig=AOvVaw1Beroo1pgAz7crrm0Y--HT&amp;ust=1715926367458000&amp;source=images&amp;cd=vfe&amp;opi=89978449&amp;ved=0CBIQjhxqFwoTCLDB1v7BkYYDFQAAAAAdAAAAABAE">Medium</a></span><a class="headerlink" href="#mp" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the previous section, we have seen how to use node2vec to generate node embeddings. In this section, we will use the message passing (not neural message passing) to generate node embeddings. The message passing is a technique to propagate information between nodes in a graph. The message passing is a fundamental concept in graph neural networks.</p>
+<p>The message passing is defined as follows:</p>
+<ol class="arabic simple">
+<li><p>Each node sends a message to its neighbors.</p></li>
+<li><p>Each node aggregates the messages from its neighbors.</p></li>
+<li><p>Each node updates its own state based on the aggregated messages.</p></li>
+</ol>
+<p>In a mathematical form, the message passing can be defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+h_v^{(l+1)} = \text{AGGREGATE}^{(l)} \left( \left\{ h_u^{(l)} : u \in \mathcal{N}(v) \right\} \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(h_v^{(l)}\)</span> is the state of node <span class="math notranslate nohighlight">\(v\)</span> at layer <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(\mathcal{N}(v)\)</span> is the set of neighbors of node <span class="math notranslate nohighlight">\(v\)</span>, and <span class="math notranslate nohighlight">\(\text{AGGREGATE}^{(l)}\)</span> is the aggregation function at layer <span class="math notranslate nohighlight">\(l\)</span>. The aggregation function can be a sum, mean, max, etc. If we use the sum aggregation function, the message passing can be defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+h_v^{(l+1)} = \sum_{u \in \mathcal{N}(v)} h_u^{(l)}
+\]</div>
+<p>And in matrix form, the message passing can be defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+H^{(l+1)} = A H^{(l)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(H^{(l)}\)</span> is the state matrix at layer <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is the adjacency matrix, and <span class="math notranslate nohighlight">\(H^{(l+1)}\)</span> is the state matrix at layer <span class="math notranslate nohighlight">\(l+1\)</span>. The message passing can be applied multiple times to generate node embeddings. The node embeddings can be used for node classification, link prediction, etc.</p>
+<section id="message-passing-for-node-classification">
+<h3><span class="section-number">19.1.1. </span>Message Passing for Node Classification<a class="headerlink" href="#message-passing-for-node-classification" title="Permalink to this heading">#</a></h3>
+<p>In this section, we will use the message passing for node classification. We will use the <code class="docutils literal notranslate"><span class="pre">Cora</span></code> dataset. The <code class="docutils literal notranslate"><span class="pre">Cora</span></code> dataset is a citation network. The nodes represent papers and the edges represent citations. The goal is to predict the category of each paper. The categories are <code class="docutils literal notranslate"><span class="pre">Case_Based</span></code>, <code class="docutils literal notranslate"><span class="pre">Genetic_Algorithms</span></code>, <code class="docutils literal notranslate"><span class="pre">Neural_Networks</span></code>, <code class="docutils literal notranslate"><span class="pre">Probabilistic_Methods</span></code>, <code class="docutils literal notranslate"><span class="pre">Reinforcement_Learning</span></code>, and <code class="docutils literal notranslate"><span class="pre">Theory</span></code>. The dataset is available in the <code class="docutils literal notranslate"><span class="pre">torch_geometric.datasets</span></code> module.</p>
+<p>Let’s start by loading the Cora dataset using Pytorch Geometric.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.datasets</span> <span class="kn">import</span> <span class="n">Planetoid</span> <span class="c1"># Pytorch Geometric datasets</span>
+<span class="kn">import</span> <span class="nn">torch_geometric.transforms</span> <span class="k">as</span> <span class="nn">T</span> <span class="c1"># Pytorch Geometric transformations, in this case we are going to use the LargestConnectedComponents</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.utils</span> <span class="kn">import</span> <span class="n">to_networkx</span> <span class="c1"># Convert PyG data object to NetworkX graph</span>
+
+<span class="c1"># Load the Cora dataset</span>
+<span class="c1"># root: root directory where the dataset should be saved</span>
+<span class="c1"># name: name of the dataset</span>
+<span class="c1"># transform: a function/transform that takes in an optional argument and returns a transformed version</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Planetoid</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;data/Cora&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Cora&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">LargestConnectedComponents</span><span class="p">())</span>
+<span class="c1"># Get the first element of the dataset, since it is a list of PyG data objects</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Convert the PyG data object to a NetworkX graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">to_networkx</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">to_undirected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Get the labels of the nodes</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of nodes: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of edges: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of classes: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The code above loads the Cora dataset using Pytorch Geometric and converts it to a NetworkX graph. We then print the number of nodes, edges, and classes in the graph. Now let’s visualize the graph using NetworkX.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cora Dataset&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="c1"># Color is based on data.y</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_shape</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Giving us the following graph:</p>
+<figure class="align-default" id="cora-dataset">
+<a class="reference internal image-reference" href="_images/cora_dataset.png"><img alt="_images/cora_dataset.png" src="_images/cora_dataset.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19.2 </span><span class="caption-text">Cora dataset visualization</span><a class="headerlink" href="#cora-dataset" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The graph represents the Cora dataset, where each node is colored according to its class label. The graph is a citation network, where nodes represent scientific publications and edges represent citations between publications. The colors represent the research areas of the publications.</p>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">19.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1">
+<h3><span class="section-number">19.2.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<p>In the previous section, we learned how to use Node2Vec to generate node embeddings for a graph. Now, we will use the node embeddings of the message passing to perform node classification on the Cora dataset. We will train a simple logistic regression classifier on the node embeddings to predict the class labels of the nodes.</p>
+<p>The steps to perform node classification are as follows:</p>
+<ol class="arabic simple">
+<li><p>Generate node embeddings using Message Passing.</p></li>
+<li><p>Train a logistic regression classifier on the node embeddings. Note that you will need to split the dataset into training and test sets (60% training, 40% test).</p></li>
+<li><p>Evaluate the classifier on the test set. <strong>You will need to run the training and evaluation 10 times and calculate the average accuracy to get a more reliable estimate of the classifier’s performance. If you don’t do this, you will get a 0 in the exercise.</strong></p></li>
+<li><p>Report the average accuracy of the classifier, and discuss the results. In the discussion, I want to see all the parameters that you modified during the process (e.g., the number of time you perform message passing) and how they affected the performance of the classifier. If you put a very long explanation of the parameters that you modified and how they affected the performance of the classifier, you will get a 10 in the exercise, without taking into account the accuracy of the classifier. <strong>Important</strong>: You need to save the accuracy of each run in a csv file called <code class="docutils literal notranslate"><span class="pre">node_classification_results_mp_yourname.csv</span></code> and upload it to the platform. The file should have the following columns: <code class="docutils literal notranslate"><span class="pre">Number_of_message_passing</span></code>, <code class="docutils literal notranslate"><span class="pre">Accuracy</span></code>, <code class="docutils literal notranslate"><span class="pre">std</span></code>. And atleast 3 different configurations of the number of message passing.</p></li>
+</ol>
+<p><strong>IMPORTANT: at least try to perform the message passing 3 times, for instance an experiment with just one message passing, another with 2 and another with 3. Note that the first message passing is <span class="math notranslate nohighlight">\(H^{(1)} = A H^{(0)}\)</span>, the second is <span class="math notranslate nohighlight">\(H^{(2)} = A H^{(1)}\)</span> and the third is <span class="math notranslate nohighlight">\(H^{(3)} = A H^{(2)}\)</span>, where <span class="math notranslate nohighlight">\(H^{(0)}\)</span> is the initial node features, data.x.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Important</strong>: It is forbidden to change the classifier model. Also it is important to initialize the classifier with different random states each time you run the training and evaluation to ensure that the classifier is trained on different data each time. If you don’t do this, you will get a 0 in the exercise.</p>
+</div>
+<p>You can use the following code as a reference:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s try to classify the nodes using the embeddings</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="c1"># Split the data into training and test sets</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">embeddings</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Train a logistic regression classifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the classifier</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="exercise-2">
+<h3><span class="section-number">19.2.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<p>In the previous section, we learned how to use node2vec and in this section, we learned how to use the message passing to generate node embeddings. Now, we will combine the node2vec and message passing to generate node embeddings. You just have to concatenate the node embeddings generated by node2vec and message passing. Then, you will train a logistic regression classifier on the concatenated node embeddings to predict the class labels of the nodes. <strong>You need to follow the same steps as in Exercise 1.</strong></p>
+<p><strong>Important: What I want to see in the discussion is how the combination of node2vec and message passing affected the performance of the classifier. It is also important to mention that is just one experiment, you don’t need to run all the configurations as we did before.</strong></p>
+</section>
+</section>
+<section id="graph-classification">
+<h2><span class="section-number">19.3. </span>Graph Classification<a class="headerlink" href="#graph-classification" title="Permalink to this heading">#</a></h2>
+<p>In this section, we will explore the graph classification task. We will use the MUTAG dataset. The MUTAG dataset is a dataset of chemical compounds. The goal is to predict whether a molecule is mutagenic or not. The dataset is available in the <code class="docutils literal notranslate"><span class="pre">torch_geometric.datasets</span></code> module.</p>
+<p>Let’s start by loading the MUTAG dataset using Pytorch Geometric.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.datasets</span> <span class="kn">import</span> <span class="n">TUDataset</span> 
+<span class="kn">import</span> <span class="nn">torch_geometric.transforms</span> <span class="k">as</span> <span class="nn">T</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.utils</span> <span class="kn">import</span> <span class="n">to_networkx</span>
+
+<span class="c1"># Load the MUTAG dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">TUDataset</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MUTAG&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of graphs: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of features: &quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of classes: &quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="c1"># Load the first graph in the dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of nodes: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of edges: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of classes: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The code above loads the MUTAG dataset using Pytorch Geometric and prints the number of graphs, features, and classes in the dataset. Now let’s visualize the first and the fifth graph in the dataset using NetworkX.</p>
+<figure class="align-default" id="mutag">
+<a class="reference internal image-reference" href="_images/mutag_2.png"><img alt="_images/mutag_2.png" src="_images/mutag_2.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19.3 </span><span class="caption-text">MUTAG</span><a class="headerlink" href="#mutag" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="graph2vec">
+<h2><span class="section-number">19.4. </span>Graph2Vec<a class="headerlink" href="#graph2vec" title="Permalink to this heading">#</a></h2>
+<p>In previous sections, we have seen how to generate node embeddings using node2vec and message passing. In this section, we will see how to generate graph embeddings using Graph2Vec. It is similar to node2vec, but instead of generating node embeddings, it generates graph embeddings. How we can generate graph embeddings using Graph2Vec? We only need to create a new embedding containing all the node embeddings of the graph. But, it is important to note that the order of the nodes in the embedding is not important, therefore we need to use a permutation-invariant function to generate the graph embedding. A permutation-invariant function is a function that returns the same output regardless of the order of the input. One example of a permutation-invariant function is the sum function. We can use the sum function to generate the graph embedding. The sum function sums all the node embeddings of the graph to generate the graph embedding.</p>
+<section id="steps-to-generate-graph-embeddings-using-graph2vec">
+<h3><span class="section-number">19.4.1. </span>Steps to generate graph embeddings using Graph2Vec:<a class="headerlink" href="#steps-to-generate-graph-embeddings-using-graph2vec" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Generate node embeddings using node2vec.</p></li>
+<li><p>Sum or average the node embeddings to generate the graph embedding.</p></li>
+<li><p>Use np.vstack to concatenate all the graph embeddings.</p></li>
+</ol>
+</section>
+</section>
+<section id="extra-exercises">
+<h2><span class="section-number">19.5. </span>Extra Exercises<a class="headerlink" href="#extra-exercises" title="Permalink to this heading">#</a></h2>
+<section id="extra-exercise-1">
+<h3><span class="section-number">19.5.1. </span>Extra Exercise 1<a class="headerlink" href="#extra-exercise-1" title="Permalink to this heading">#</a></h3>
+<p>In the previous section, we learned how to generate graph embeddings using Graph2Vec. Now, we will use the graph embeddings to perform graph classification on the MUTAG dataset. We will train a simple logistic regression classifier on the graph embeddings to predict whether a molecule is mutagenic or not.</p>
+<p>The steps to perform graph classification are as follows:</p>
+<ol class="arabic simple">
+<li><p>Generate graph embeddings using Graph2Vec.</p></li>
+<li><p>Train a logistic regression classifier on the graph embeddings. Note that you will need to split the dataset into training and test sets (80% training, 20% test).</p></li>
+</ol>
+<p>You can use the following code as a reference:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="c1"># Split the data into training and test sets</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">embeddings</span> <span class="c1"># If you understand the code above, your embeddings should have the shape (number of graphs, embedding dimension), for example, (188, 16), where 188 is the number of graphs and 16 is the embedding dimension</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Train a logistic regression classifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the classifier</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Important</strong>: You have to run the training and evaluation 10 times and calculate the average accuracy to get a more reliable estimate of the classifier’s performance. If you don’t do this, you will get a 0 in the exercise.</p>
+</section>
+</section>
+<section id="submission">
+<h2><span class="section-number">19.6. </span>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<p>For the delivery of the practice 4, what you will be asked to do is to make a zip (name_name.zip) containing 4 notebooks: a first notebook containing  Graphs on real life section, a second notebook containing Real cases dataset, a third notebook containing the Real cases part 2: Into the Message Passing and Graph Classification and a fourth notebook containing the Extra exercises.</p>
+<p>At the end the zip should be like this when you unzip it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>name_name.zip
+├──<span class="w"> </span>Graphs_on_real_life.ipynb<span class="w"> </span><span class="c1"># ALL THE VISUALIZATIONS SHOULD BE AVAILABLE TO SEE, DO NOT FORGET TO EXECUTE ALL THE CELLS</span>
+├──<span class="w"> </span>Real_cases_dataset.ipynb
+<span class="w">    </span>├──<span class="w"> </span>node_classification_results_yourname.csv
+├──<span class="w"> </span>Real_cases_part2.ipynb
+<span class="w">    </span>├──<span class="w"> </span>node_classification_results_mp_yourname.csv
+<span class="w">    </span>├──<span class="w"> </span>node_classification_results_mp_node2vec_yourname.csv<span class="w"> </span><span class="c1"># Only contains one row with the results of the experiment of the combination of node2vec and message passing</span>
+└──<span class="w"> </span>Extra_exercises.ipynb
+<span class="w">    </span>├──<span class="w"> </span>graph_classification_results_yourname.csv<span class="w"> </span><span class="c1"># Only contains one row with the results of the experiment of the graph classification</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="real_cases_dataset.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Real cases dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="recuperacion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>Practices Recovery MD - 2023/24</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">19.1. Message Passing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing-for-node-classification">19.1.1. Message Passing for Node Classification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.2. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">19.2.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">19.2.2. Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-classification">19.3. Graph Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph2vec">19.4. Graph2Vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-generate-graph-embeddings-using-graph2vec">19.4.1. Steps to generate graph embeddings using Graph2Vec:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercises">19.5. Extra Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-exercise-1">19.5.1. Extra Exercise 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">19.6. Submission</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

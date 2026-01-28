@@ -1,0 +1,1620 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6. Ranking and Partitions &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topic4';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Distances and Latent Spaces" href="Topic5.html" />
+    <link rel="prev" title="5. Paths, Flows and Cycles" href="Topic3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_rw.html">16. Graph Exploration Random Walks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">17. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hitting_time.html">18. Hitting time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">19. Real cases dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">20. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">21. Assignment 07/24</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice July</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practica_julio.html">22. Recovery Practice</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Topic4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ranking and Partitions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-matrix">6.1. Transition matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-distribution">6.1.1. Stationary Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-interpretation-pagerank">6.1.2. The Spectral Interpretation: PageRank</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laplacian-matrices">6.2. Laplacian matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-min-cut-problem">6.2.1. The Min-Cut Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fiedler-vector">6.2.2. The Fiedler vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplacian-and-courant-fischer">6.2.3. The Laplacian and Courant-Fischer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-theorem">6.2.4. The Spectral Theorem</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ranking-and-partitions">
+<h1><span class="section-number">6. </span>Ranking and Partitions<a class="headerlink" href="#ranking-and-partitions" title="Permalink to this heading">#</a></h1>
+<section id="transition-matrix">
+<h2><span class="section-number">6.1. </span>Transition matrix<a class="headerlink" href="#transition-matrix" title="Permalink to this heading">#</a></h2>
+<p>Given a (undirected) graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, we consider:</p>
+<ul class="simple">
+<li><p>The <strong>adjacency matrix</strong> <span class="math notranslate nohighlight">\(\mathbf{A}=[a_{ij}]\in \{0,1\}^{n\times n}\)</span> of dimension <span class="math notranslate nohighlight">\(n\times n\)</span>, where <span class="math notranslate nohighlight">\(n=|V|\)</span> is the number of nodes, and</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a_{ij}= 
+\begin{cases}
+     1\;\text{if}\; (i,j)\in E  \\[2ex]
+     0\; \text{otherwise}\;.
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>The <strong>degree matrix</strong> <span class="math notranslate nohighlight">\(\mathbf{D}=[d_i]\)</span> is an <span class="math notranslate nohighlight">\(n\times n\)</span> diagonal matrix where <span class="math notranslate nohighlight">\(d_i = \sum_{j}a_{ij}\)</span> is the degree <span class="math notranslate nohighlight">\(\text{deg}(i)\)</span> of node <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>Then, if the graph has no isolated nodes (none of them has zero degree) the so called <strong>transition matrix</strong> <span class="math notranslate nohighlight">\(\mathbf{P}=[p_{ij}]\)</span>, encoding the Markov chain associated with the nodes of the graph, is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{P} = \mathbf{D}^{-1}\mathbf{A}\;\;\text{i.e.}\;\; p_{ij} = \frac{a_{ij}}{d_i}\;.
+\]</div>
+<p>It is very interesting to remark the following properties of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>:</p>
+<ul class="simple">
+<li><p><strong>Simply Stochastic (by rows)</strong>. All the rows <span class="math notranslate nohighlight">\(i=1,2,\ldots, n\)</span> satisfy:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\sum_{j=1}^n p_{ij} = 1\;.
+\]</div>
+<p>i.e. each row <span class="math notranslate nohighlight">\(\mathbf{P}_{i:}\)</span> (associated to a node <span class="math notranslate nohighlight">\(i\)</span>) <em>can be interpreted as a probability distribution</em>.</p>
+<ul class="simple">
+<li><p><strong>Rank deficient</strong>. In general, <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is not invertible, i.e. <span class="math notranslate nohighlight">\(\text{rank}(\mathbf{P})\ll n\)</span>, and the higher the rank the more different (and thus informative) are the row probability distributions.</p></li>
+</ul>
+<section id="stationary-distribution">
+<h3><span class="section-number">6.1.1. </span>Stationary Distribution<a class="headerlink" href="#stationary-distribution" title="Permalink to this heading">#</a></h3>
+<p>When we studied Markov chains in the context of random walks, we left aside the use of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> for characterizing the Markov chain <span style="color:#469ff8"><strong>in the limit</strong></span>. This means that we can obtain very interesting information about the nodes in <span class="math notranslate nohighlight">\(G=(V,E)\)</span> by <span style="color:#469ff8"><strong>analyzing the powers</strong></span> <span class="math notranslate nohighlight">\(\mathbf{P}^k\)</span> for increasing values of <span class="math notranslate nohighlight">\(k=1,2,\ldots,\infty\)</span>.</p>
+<p>Let us start by understanding the meaning of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{P}^2\)</span>, <span class="math notranslate nohighlight">\(\mathbf{P}^3\)</span>, etc. Actually <span class="math notranslate nohighlight">\(\mathbf{P}^k_{ij}\)</span> is <span style="color:#469ff8">the probability of reaching node <span class="math notranslate nohighlight">\(j\)</span> from <span class="math notranslate nohighlight">\(i\)</span> in <span class="math notranslate nohighlight">\(k\)</span> steps or <strong>hops</strong></span>.</p>
+<p>Depending on the graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> we may need only a small number of powers <span class="math notranslate nohighlight">\(k\)</span>. Consider for instance the <strong>complete graph</strong> or <strong>clique graph</strong> for <span class="math notranslate nohighlight">\(n\)</span> nodes, dubbed <span class="math notranslate nohighlight">\(K_n\)</span>. The complete graph is the <strong>denser graph than one can imagine</strong> since it has <span class="math notranslate nohighlight">\(n\)</span> nodes and each node has <span class="math notranslate nohighlight">\(n\)</span> links (including self-loops). Therefore, the adjacency matrix of <span class="math notranslate nohighlight">\(K_n\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A} = \mathbf{1}\mathbf{1}^T\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is the <span class="math notranslate nohighlight">\(n\times 1\)</span> vector of all ones, i.e. <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a matrix of ones.</p>
+<p>Well, the degree of each node in <span class="math notranslate nohighlight">\(K_n\)</span> is constant  for each node and equal to <span class="math notranslate nohighlight">\(n\)</span>. Therefore, the transition matrix is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{P} = \frac{1}{n}\mathbf{A},\;\; \text{with}\;\; p_{ij}=\frac{1}{n}\; \forall i,j\;.
+\]</div>
+<p>Then every node <span class="math notranslate nohighlight">\(i\)</span> has the same probability of going to any other <span class="math notranslate nohighlight">\(j\)</span> (including itself) in only one hop. In other words, a node <span class="math notranslate nohighlight">\(i\)</span> does not need to visit first any other node before hitting <span class="math notranslate nohighlight">\(j\)</span>. This makes <span class="math notranslate nohighlight">\(\mathbf{P}^2\)</span>, <span class="math notranslate nohighlight">\(\mathbf{P}^3\)</span>, etc, <em>redundant</em> since</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{P}^2 = \frac{1}{n}\mathbf{1}\mathbf{1}^T\cdot \frac{1}{n}\mathbf{1}\mathbf{1}^T
+= \frac{1}{n^2}n\mathbf{1}\mathbf{1}^T = \frac{1}{n}\mathbf{1}\mathbf{1}^T=\mathbf{P}\;.
+\]</div>
+<p>This means that in <span class="math notranslate nohighlight">\(K_n\)</span> (as well as in hyper-dense graphs), all the nodes have the same structural role. Note that in these case we have <span class="math notranslate nohighlight">\(\text{rank}(\mathbf{P})=1\)</span>.</p>
+<p>However, in more general graphs <span style="color:#469ff8">we can identify or <strong>rank</strong> the structural role of each node</span> by analyzing <span class="math notranslate nohighlight">\(\mathbf{P}^k\)</span> for increasing values of <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Consider, for instance a Stochastic Block Model (SBM) graph of <span class="math notranslate nohighlight">\(n=20\)</span> nodes with intra-class probaility <span class="math notranslate nohighlight">\(p=0.75\)</span> and inter-class probability <span class="math notranslate nohighlight">\(q=0.05\)</span> (see <a class="reference internal" href="#transition1"><span class="std std-numref">Fig. 6.1</span></a>).</p>
+<figure class="align-center" id="transition1">
+<a class="reference internal image-reference" href="_images/Transition1.png"><img alt="_images/Transition1.png" src="_images/Transition1.png" style="width: 500px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">SBM graph. Diffusion from <span class="math notranslate nohighlight">\(i=1\)</span> (<span class="math notranslate nohighlight">\(0\)</span> in the picture) at <span class="math notranslate nohighlight">\(\mathbf{f}^0\)</span>.</span><a class="headerlink" href="#transition1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Imagine that we inject information into node <span class="math notranslate nohighlight">\(i=0\)</span> and <span style="color:#469ff8">see how such information is <strong>diffused</strong></span> through the graph. We do that by setting a <span style="color:#469ff8"><strong>row-probability vector</strong></span> <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^0 = [1\; 0\;\ldots\; 0]\;.
+\]</div>
+<p>Then, decomposing <span class="math notranslate nohighlight">\(\mathbf{P}=[\mathbf{P}_{:1}\;\mathbf{P}_{:2}\;\ldots\; \mathbf{P}_{:n}]\)</span> in terms of its columns <span class="math notranslate nohighlight">\(\mathbf{P}_{:j}\)</span>  we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^1 = \mathbf{f}^0\mathbf{P} = [\mathbf{f}^0\mathbf{P}_{:1}\;\mathbf{f}^0\mathbf{P}_{:2}\;\ldots\;\mathbf{f}^0\mathbf{P}_{:n}]
+\]</div>
+<p>where, starting at a general node <span class="math notranslate nohighlight">\(i\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^1_i = \sum_{j=1}^n\mathbf{f}^0_ip_{ij} = \sum_{j\in {\cal N}_i}^n\mathbf{f}^0_ip_{ij}\;.
+\]</div>
+<p>In particular, for <span class="math notranslate nohighlight">\(i=1\)</span> we have a row vector <span class="math notranslate nohighlight">\(\mathbf{f}^1\)</span> with <span class="math notranslate nohighlight">\(\mathbf{f}^1_i=p_{1j}\)</span>, i.e. we may reach any of the other nodes <span class="math notranslate nohighlight">\(j\)</span> with probability <span class="math notranslate nohighlight">\(p_{1j}\)</span>. As we see in <a class="reference internal" href="#transition2"><span class="std std-numref">Fig. 6.2</span></a>, in a first diffusion step, we only reach the nodes in the neigborhood of node <span class="math notranslate nohighlight">\(i=1\)</span>.</p>
+<figure class="align-center" id="transition2">
+<a class="reference internal image-reference" href="_images/Transition2.png"><img alt="_images/Transition2.png" src="_images/Transition2.png" style="width: 500px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">SBM graph. Diffusion from <span class="math notranslate nohighlight">\(i=1\)</span> (<span class="math notranslate nohighlight">\(0\)</span> in the picture) at <span class="math notranslate nohighlight">\(\mathbf{f}^1\)</span>.</span><a class="headerlink" href="#transition2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let us iterate again:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^2_i = \sum_{j=1}^n\mathbf{f}^1_ip_{ij} = \sum_{j\in {\cal N}_i}^n\mathbf{f}^1_ip_{ij}\;.
+\]</div>
+<p>Since,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^1\mathbf{P}=(\mathbf{f}^0\mathbf{P})\mathbf{P} = \mathbf{f}^0\mathbf{P}^2\;,
+\]</div>
+<p>we may reach the <span style="color:#469ff8"><strong>second-order neighbors</strong> of node <span class="math notranslate nohighlight">\(i\)</span>, i.e. the nodes that are <strong>two-hops away from <span class="math notranslate nohighlight">\(i\)</span></strong></span>, in particular some nodes of another community, as we see in <a class="reference internal" href="#transition3"><span class="std std-numref">Fig. 6.3</span></a>.</p>
+<figure class="align-center" id="transition3">
+<a class="reference internal image-reference" href="_images/Transition3.png"><img alt="_images/Transition3.png" src="_images/Transition3.png" style="width: 500px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">SBM graph. Diffusion from <span class="math notranslate nohighlight">\(i=1\)</span> (<span class="math notranslate nohighlight">\(0\)</span> in the picture) at <span class="math notranslate nohighlight">\(\mathbf{f}^2\)</span>.</span><a class="headerlink" href="#transition3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Iterating again we state that we are more probable to be in the community of <span class="math notranslate nohighlight">\(i=1\)</span>, but we may jump to another community (see <a class="reference internal" href="#transition4"><span class="std std-numref">Fig. 6.4</span></a>):</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^3_i = \sum_{j=1}^n\mathbf{f}^2_i p_{ij} = \sum_{j\in {\cal N}_i}^n\mathbf{f}^2_ip_{ij}\;.
+\]</div>
+<figure class="align-center" id="transition4">
+<a class="reference internal image-reference" href="_images/Transition4.png"><img alt="_images/Transition4.png" src="_images/Transition4.png" style="width: 500px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">SBM graph. Diffusion from <span class="math notranslate nohighlight">\(i=1\)</span> (<span class="math notranslate nohighlight">\(0\)</span> in the picture) at <span class="math notranslate nohighlight">\(\mathbf{f}^3\)</span>.</span><a class="headerlink" href="#transition4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then, two interesting question arise:</p>
+<ol class="arabic simple">
+<li><p><span style="color:#469ff8">For what <span class="math notranslate nohighlight">\(t\)</span> are the probabilities in <span class="math notranslate nohighlight">\(\mathbf{f}^{t}\)</span> <strong>stabilized</strong></span>?</p></li>
+<li><p><span style="color:#469ff8">Is that <strong>stabilized probability</strong> the same for all choices of starting node.</span>?</p></li>
+</ol>
+<p><strong>Stationary distribution</strong>. Under certain conditions (see below) the answer to both questions is <strong>Yes</strong>.</p>
+<p>For <span class="math notranslate nohighlight">\(t\rightarrow\infty\)</span> we have that if we reach a given row-distribution <span class="math notranslate nohighlight">\(\pi\)</span>, the resulting <span class="math notranslate nohighlight">\(\pi\mathbf{P}\)</span> is exactly <span class="math notranslate nohighlight">\(\pi\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[
+\pi = \pi\mathbf{P}\;\;\text{and}\;\;\pi_i = \frac{d_i}{\text{vol}(G)}\;, 
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(\text{vol}(G)=\sum_{i=1}^n d_i\)</span> is the <strong>volume</strong> of the graph (<span class="math notranslate nohighlight">\(\text{vol}(G)=2|E|\)</span> for undirected graphs). In other words,
+<span class="math notranslate nohighlight">\(\pi\)</span> is a <span style="color:#469ff8"><strong>fixed point</strong> known as the <strong>stationary distribution</strong></span> of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>. Actually it is very straight to prove that</p>
+<div class="math notranslate nohighlight">
+\[
+d_i = \sum_{j\in {\cal N}_i}d_ip_{ij}
+    = \sum_{j\in {\cal N}_i}\frac{d_i}{d_i}
+    = \sum_{j\in {\cal N}_i}1
+    = d_i\;.
+\]</div>
+<p>Then, the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> is the result of normalizind the degree distribution by the volume.</p>
+<p>In our example, we show the stationary distribution for our SBM in <a class="reference internal" href="#stat"><span class="std std-numref">Fig. 6.5</span></a>.</p>
+<figure class="align-center" id="stat">
+<a class="reference internal image-reference" href="_images/Stat.png"><img alt="_images/Stat.png" src="_images/Stat.png" style="width: 500px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">SBM graph. Stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>.</span><a class="headerlink" href="#stat" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In other words, reaching the stationary distribution in <span class="math notranslate nohighlight">\(t\)</span> hops means that from any <strong>discrete time</strong> <span class="math notranslate nohighlight">\(t+\Delta t\)</span>, <span style="color:#469ff8">the probability of being at <strong>any node</strong> <span class="math notranslate nohighlight">\(i\)</span>  is only dependent on its degree <span class="math notranslate nohighlight">\(d_i\)</span></span>.</p>
+<p>To clarify this point, note that we have that</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{t\rightarrow\infty}\mathbf{P}^t = \Pi\;
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(\Pi\)</span> is a matrix where each row is a copy of the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>. Look for instance at the row <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pi_{i:} = \pi = [\frac{d_1}{\text{vol}(G)}\; \frac{d_2}{\text{vol}(G)}\;\ldots\; \frac{d_n}{\text{vol}(G)}\;]\;,
+\]</div>
+<p>i.e. the probability of going from <span class="math notranslate nohighlight">\(i\)</span> to any other node <span class="math notranslate nohighlight">\(j\)</span> is proportional to <span class="math notranslate nohighlight">\(d_j\)</span>, <span style="color:#469ff8"><strong>indendendently of</strong> whether <span class="math notranslate nohighlight">\(j\)</span> is a neighbor of <span class="math notranslate nohighlight">\(i\)</span> or not!</span></p>
+<p>Consider now the complete graph <span class="math notranslate nohighlight">\(K_n\)</span>, where each node can visit any other (including itself) with probability <span class="math notranslate nohighlight">\(\frac{1}{n} = \frac{n}{n^2}=\frac{d_i}{\sum_{i}d_i}\)</span>. In other words, <span style="color:#469ff8">a complete graph is a graph that has reached its stationary distribution at time <span class="math notranslate nohighlight">\(t=0\)</span></span>.</p>
+<p><strong>Formal conditions</strong>. The stationary distribution is unique if:</p>
+<ol class="arabic simple">
+<li><p>The Markov chain is <strong>irreducible</strong> (all the states <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are mutually reachable). For undirected graph it is enough that the graph is connected. For digraphs we must ensure that exists a directed path between any pair of nodes with is more difficult to achieve in realistic networks.</p></li>
+<li><p>The Markov chain is <strong>aperiodic</strong>. For satisfying this consition, we need that if there exists a positive integer <span class="math notranslate nohighlight">\(k\)</span> s.t. all the entries in <span class="math notranslate nohighlight">\(\mathbf{P}^k\)</span> are greater than zero. A less strict condition is to have at least a node with a self loop.</p></li>
+</ol>
+</section>
+<section id="the-spectral-interpretation-pagerank">
+<h3><span class="section-number">6.1.2. </span>The Spectral Interpretation: PageRank<a class="headerlink" href="#the-spectral-interpretation-pagerank" title="Permalink to this heading">#</a></h3>
+<p>The stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>, reshaped as a <span class="math notranslate nohighlight">\(n\times 1\)</span> vector can be considered as a <strong>left eigenvector</strong> of the transition matrix for the <strong>eigenvalue</strong> <span class="math notranslate nohighlight">\(\lambda=1\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[
+\phi^T\mathbf{P} = \lambda\phi^T\;\;\text{leads to}\; \pi^T\mathbf{P} = 1\cdot\pi^T\;.
+\]</div>
+<p>Similarly, the <strong>right eigenvectors</strong> and <strong>eigenvalues</strong> (typically we calculate these ones) are defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{P}\psi = \lambda\psi\;\;\text{leads to}\; \mathbf{P}\psi = 1\cdot\psi\;.
+\]</div>
+<p>Looking at the above equations, in the next topic we will prove that <span class="math notranslate nohighlight">\(\psi = \mathbf{D}^{1/2}\mathbf{1}\)</span> is the right eigenvector of the transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>.</p>
+<p>The meaning of <span class="math notranslate nohighlight">\(\psi = \mathbf{D}^{1/2}\mathbf{1}\)</span> is that</p>
+<div class="math notranslate nohighlight">
+\[
+\psi_i = \sqrt{d_i}\;
+\]</div>
+<p>is related to <span class="math notranslate nohighlight">\(\pi_i = \frac{d_i}{\text{vol}(G)}\)</span>, in terms that it is a monotonic function of <span class="math notranslate nohighlight">\(d_i\)</span>. Both <span class="math notranslate nohighlight">\(\pi\)</span> and <span class="math notranslate nohighlight">\(\psi\)</span> <strong>rank</strong> the importance of a node in the graph in terms of its degree.</p>
+<p>As we will see below, computing the right eigenvector is very interesting in practical settings, since <span style="color:#469ff8">it can be approximated even in networks/graphs not satisfying the formal conditions of irreducibility and aperiodicity</span>!</p>
+<p><strong>Perron-Frobenius Theorem</strong>. If <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is a positive, <em>column stochastic matrix</em>, then:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda=1\)</span> is an eigenvalue of multiplicity one (unique).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda=1\)</span> is the largest eigenvalue: all the other eigenvalues have absolute value smaller than 1.</p></li>
+<li><p>The eigenvectors corresponding to the eigenvalue <span class="math notranslate nohighlight">\(\lambda=1\)</span> have either only positive entries or only negative entries.</p></li>
+<li><p>In particular, for the eigenvalue <span class="math notranslate nohighlight">\(\lambda=1\)</span> there exists a unique eigenvector with the sum of its entries equal to 1 (a probability distribution).</p></li>
+</ol>
+<p>Then <span class="math notranslate nohighlight">\(\mathbf{M}=\mathbf{P}^T\)</span> satisfies this theorem. As in general every square matrix has the same eigenvalues as its transpose, we will approximate the left eigenvector of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> by computing</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{P}^T\phi = (\phi^T\mathbf{P})^T = 1\cdot \phi\;.
+\]</div>
+<p>and in practice we may approximate the eigenvector <span class="math notranslate nohighlight">\(\phi\)</span> associated to <span class="math notranslate nohighlight">\(\lambda=1\)</span> in an iterative way. To that end we use the <strong>Power Method</strong>. As we show in <a href="#id1"><span class="problematic" id="id2">Power</span></a>, all we do is to:</p>
+<div class="proof algorithm admonition" id="Power">
+<p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (Power Method)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}=\frac{1}{n}\mathbf{1}\)</span></p>
+<p><strong>Output</strong> Compute an approximation of the main eigenvector <span class="math notranslate nohighlight">\(\phi\)</span></p>
+<ol class="arabic simple">
+<li><p><strong>for</strong> each of the <span class="math notranslate nohighlight">\(k\)</span> iterations:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}\;\leftarrow \mathbf{M}\mathbf{x}\)</span></p></li>
+<li><p>Normalize: <span class="math notranslate nohighlight">\(\mathbf{x} \;\leftarrow \frac{\mathbf{x}}{||\mathbf{x}||}\)</span></p></li>
+</ol>
+</li>
+<li><p><strong>return</strong> <span class="math notranslate nohighlight">\(\mathbf{x}\)</span></p></li>
+</ol>
+</section>
+</div><ol class="arabic simple">
+<li><p>Initialize <span class="math notranslate nohighlight">\(\mathbf{x}_i = \frac{1}{n}\)</span> (completely random estimation of the eigenvector).</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(M=\mathbf{P}^T\)</span> compute <span class="math notranslate nohighlight">\(\mathbf{M}\mathbf{x}, \mathbf{M}^2\mathbf{x},\ldots, \mathbf{M}^k\mathbf{x}\)</span>.</p></li>
+<li><p>Between one power and the next, normalize the current eigenvector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+</ol>
+<figure class="align-center" id="mininet">
+<a class="reference internal image-reference" href="_images/MiniNet.png"><img alt="_images/MiniNet.png" src="_images/MiniNet.png" style="width: 500px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">Small digraph for computing the main eigenvector.</span><a class="headerlink" href="#mininet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Our digraph <a class="reference internal" href="#mininet"><span class="std std-numref">Fig. 6.6</span></a> is not aperiodic. This problem is not so hard as not being irreducible. In particular all the nodes are mutually reachable and this allows us to get a nice approximation.
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_0=\frac{1}{n}\mathbf{1} = 
+\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix}\;\;
+\mathbf{x}_1 = \mathbf{P^T}\mathbf{x}_0 = 
+\begin{bmatrix}
+0           &amp;  0            &amp;    1    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  0            &amp;    0    &amp;      0        \\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;     0   \\     
+\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0.375\\      
+0.083\\ 
+0.333\\ 
+0.208\\
+\end{bmatrix}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_1=\frac{\mathbf{x}_1}{||\mathbf{x}_1||} = 
+\begin{bmatrix}
+0.682\\ 
+0.151\\
+0.606\\ 
+0.379\\
+\end{bmatrix}\;\;
+\mathbf{x}_1 = \mathbf{P^T}\mathbf{x}_0 = 
+\begin{bmatrix}
+0           &amp;  0            &amp;    1    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  0            &amp;    0    &amp;      0        \\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;     0   \\     
+\end{bmatrix}
+\begin{bmatrix}
+0.682\\ 
+0.151\\
+0.606\\ 
+0.379\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0.796\\ 
+0.227\\ 
+0.492\\ 
+0.303\\
+\end{bmatrix}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_2=\frac{\mathbf{x}_2}{||\mathbf{x}_2||} = 
+\begin{bmatrix}
+0.788\\ 
+0.225\\ 
+0.487\\ 
+0.300\\
+\end{bmatrix}\;\;
+\mathbf{x}_2 = \mathbf{P^T}\mathbf{x}_1 = 
+\begin{bmatrix}
+0           &amp;  0            &amp;    1    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  0            &amp;    0    &amp;      0        \\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;     0   \\     
+\end{bmatrix}
+\begin{bmatrix}
+0.788\\ 
+0.225\\ 
+0.487\\ 
+0.300\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0.637\\ 
+0.262\\ 
+0.525\\ 
+0.375\\
+\end{bmatrix}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+at iteration <span class="math notranslate nohighlight">\(10\)</span> we wil have
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_{9}=\frac{\mathbf{x}_{9}}{||\mathbf{x}_{9}||} = 
+\begin{bmatrix}
+0.720\\ 
+0.240\\  
+0.541\\ 
+0.361\\
+\end{bmatrix}\;\;
+\mathbf{x}_{10} = \mathbf{P^T}\mathbf{x}_9 = 
+\begin{bmatrix}
+0           &amp;  0            &amp;    1    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  0            &amp;    0    &amp;      0        \\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;    \frac{1}{2}\\
+\frac{1}{3} &amp;  \frac{1}{2}  &amp;    0    &amp;     0   \\     
+\end{bmatrix}
+\begin{bmatrix}
+0.720\\ 
+0.240\\  
+0.541\\ 
+0.361\\
+\end{bmatrix} = 
+\begin{bmatrix}
+0.722\\ 
+0.240\\ 
+0.540\\ 
+0.360\\
+\end{bmatrix}\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+Therefore, the most important node is node <span class="math notranslate nohighlight">\(1\)</span>, followed by nodes <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(2\)</span>. Note that this result is quite different from the stationary distribution estimated in terms of <strong>out degrees</strong>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\pi = \frac{\mathbf{D}_{out}\mathbf{1}}{\text{vol}(G)} = 
+\begin{bmatrix}
+0.375\\ 
+0.25\\  
+0.125\\ 
+0.25\\
+\end{bmatrix}\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+And also different from the theoretical right eigenvector:<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\psi = \sqrt{\mathbf{D}_{out}}\mathbf{1} = 
+\begin{bmatrix}
+1.732\\ 
+1.414\\ 
+1.000\\         
+1.414\\
+\end{bmatrix}\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+Although in both cases, the top ranked node is correctly detected.
+</span></p>
+<p><strong>The Google Pagerank</strong>. One of the most representative applications of the power method is to find the rankings of the web pages in the Internet. <span style="color:#469ff8">The higher the values (in absolute value) of the components of the resulting main eigenvector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> the more important the page</span>.</p>
+<p>However, Internet (which can be considered a gigantic graph whose nodes are the web pages), does not necessarily meet the formal conditions needed for the unicity or convergence of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<p>For instance, in <a class="reference internal" href="#pagerank"><span class="std std-numref">Fig. 6.7</span></a> we summarize the main practical problems arising in realistic networks:</p>
+<ul class="simple">
+<li><p><strong>Sources</strong>: nodes only with out degree, such as node <span class="math notranslate nohighlight">\(2\)</span> which is only linked to <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
+<li><p><strong>Sinks</strong>: node with zero out degree, such as node <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+</ul>
+<p>In addition we may have <strong>isolated nodes</strong> or graphs fragmented in many <strong>connected components</strong>.</p>
+<figure class="align-center" id="pagerank">
+<a class="reference internal image-reference" href="_images/Pagerank.png"><img alt="_images/Pagerank.png" src="_images/Pagerank.png" style="width: 550px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">Pagerank. Need of the Google matrix.</span><a class="headerlink" href="#pagerank" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The solution to these problems found by Page and Bruin when designing a model for the Google Internet surfer, was to complement the transition matrix (actually its transpose), with a complete graph so that with certain probability <span class="math notranslate nohighlight">\(1-\alpha\)</span> (typically <span class="math notranslate nohighlight">\(1-\alpha=0.85\)</span>) we follow the transition matrix, but with a small probability <span class="math notranslate nohighlight">\(\alpha=0.15\)</span> (dubbed the <strong>teleporting probability</strong>) we jump randomly to any other node or stay at the same mode (self-loop). Therefore, the so called <strong>Google matrix</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{G} = (1-\alpha)\cdot\mathbf{P}^T + \alpha\cdot\frac{1}{n}\mathbf{1}^T\mathbf{1}\; 
+\]</div>
+<p>Therefore, the Google matrix consists of adding <strong>virtual edges</strong> between any pair of nodes (including self-loops). This makes the resulting Markov chain irreducible with facilitates information flow. In this regard, finding what is the probability that a surfer ends up clicking a given page is done via the Power method.</p>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. We repeat the previous exercise by using the Google matrix for the digraph in <a class="reference internal" href="#pagerank"><span class="std std-numref">Fig. 6.7</span></a>.
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_0=\frac{1}{n}\mathbf{1} = 
+\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix}\;\;
+\mathbf{x}_1 = \mathbf{G}\mathbf{x}_0 = 
+\begin{bmatrix}
+\alpha\frac{1}{4}           &amp;  \alpha\frac{1}{4}             &amp;    \alpha\frac{1}{4}     &amp;    (1-\alpha)\frac{1}{2}\\
+\alpha\frac{1}{4}           &amp;  \alpha\frac{1}{4}             &amp;    \alpha\frac{1}{4}     &amp;      \alpha\frac{1}{4}         \\
+(1-\alpha)\frac{1}{2} &amp;  (1-\alpha)\frac{1}{2}  &amp;    \alpha\frac{1}{4}     &amp;    (1-\alpha)\frac{1}{2}\\
+(1-\alpha)\frac{1}{2} &amp;  (1-\alpha)\frac{1}{2}  &amp;    \alpha\frac{1}{4}    &amp;     \alpha\frac{1}{4}    \\     
+\end{bmatrix} 
+\begin{bmatrix}
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\frac{1}{4}\\
+\end{bmatrix} =
+\begin{bmatrix}
+\alpha\frac{1}{16} + \frac{2}{16}\\
+\alpha\frac{4}{16}\\
+\frac{6}{16}-\alpha\frac{5}{16}\\
+\frac{4}{16}-\alpha\frac{2}{16}\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_1=\frac{\mathbf{x}_1}{||\mathbf{x}_1||} = 
+\begin{bmatrix}
+0.312\\
+0.081\\ 
+0.774\\  
+0.543\\
+\end{bmatrix}\;\;
+\mathbf{x}_2 = \mathbf{G}\mathbf{x}_1 = 
+\begin{bmatrix}
+\alpha\frac{1}{4}           &amp;  \alpha\frac{1}{4}             &amp;    \alpha\frac{1}{4}     &amp;    (1-\alpha)\frac{1}{2}\\
+\alpha\frac{1}{4}           &amp;  \alpha\frac{1}{4}             &amp;    \alpha\frac{1}{4}     &amp;      \alpha\frac{1}{4}         \\
+(1-\alpha)\frac{1}{2} &amp;  (1-\alpha)\frac{1}{2}  &amp;    \alpha\frac{1}{4}     &amp;    (1-\alpha)\frac{1}{2}\\
+(1-\alpha)\frac{1}{2} &amp;  (1-\alpha)\frac{1}{2}  &amp;    \alpha\frac{1}{4}    &amp;     \alpha\frac{1}{4}    \\     
+\end{bmatrix} 
+\begin{bmatrix}
+0.312\\
+0.081\\ 
+0.774\\  
+0.543\\
+\end{bmatrix} =
+\begin{bmatrix}
+0.295\\ 
+0.064\\ 
+0.462\\ 
+0.231\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+at iteration <span class="math notranslate nohighlight">\(10\)</span> we wil have
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{x}_9=\frac{\mathbf{x}_9}{||\mathbf{x}_9||} = 
+\begin{bmatrix}
+0.264\\
+0.066\\ 
+0.484\\ 
+0.286\\
+\end{bmatrix}\;\;
+\mathbf{x}_{10} = \mathbf{G}\mathbf{x}_9 = 
+\begin{bmatrix}
+\alpha\frac{1}{4}           &amp;  \alpha\frac{1}{4}             &amp;    \alpha\frac{1}{4}     &amp;    (1-\alpha)\frac{1}{2}\\
+\alpha\frac{1}{4}           &amp;  \alpha\frac{1}{4}             &amp;    \alpha\frac{1}{4}     &amp;      \alpha\frac{1}{4}         \\
+(1-\alpha)\frac{1}{2} &amp;  (1-\alpha)\frac{1}{2}  &amp;    \alpha\frac{1}{4}     &amp;    (1-\alpha)\frac{1}{2}\\
+(1-\alpha)\frac{1}{2} &amp;  (1-\alpha)\frac{1}{2}  &amp;    \alpha\frac{1}{4}    &amp;     \alpha\frac{1}{4}    \\     
+\end{bmatrix} 
+\begin{bmatrix}
+0.264\\
+0.066\\ 
+0.484\\ 
+0.286\\
+\end{bmatrix} =
+\begin{bmatrix}
+.422\\
+.105\\ 
+.774\\ 
+.458\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Now, the top ranked node is <span class="math notranslate nohighlight">\(3\)</span>, the one with the largest <strong>in-degree</strong>. Nodes <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(4\)</span> are less accessible. Interestingly the node with the smallest rank is node <span class="math notranslate nohighlight">\(2\)</span> which is only accessed randomly.
+</span></p>
+<p>Summarizing, <span style="color:#469ff8">one important property of the Pagerank algorithm is that introducing the <span class="math notranslate nohighlight">\(\alpha\frac{1}{n}\)</span> terms (known as <strong>teleporting</strong>) endowns the Google matrix with the properties of <strong>irreducibility</strong> and <strong>aperiodicity</strong></span>. The graph is <strong>irreducible</strong> since all the nodes in the graph are reachable via random walks. In addition it is and <strong>aperiodic</strong> because self-loops with weight <span class="math notranslate nohighlight">\(\alpha\frac{1}{n}\)</span> are added if they do not exist; if they do exist their weight is <span class="math notranslate nohighlight">\(\frac{(1-\alpha)}{d_i} + \alpha\frac{1}{n}\)</span>. Anyway, as all nodes have self-loops their period is <span class="math notranslate nohighlight">\(1\)</span> and the graph is aperiodic.</p>
+</section>
+</section>
+<section id="laplacian-matrices">
+<h2><span class="section-number">6.2. </span>Laplacian matrices<a class="headerlink" href="#laplacian-matrices" title="Permalink to this heading">#</a></h2>
+<p>So far, we have learnt that eigenvectors with maximal eigenvalues do explain or <span style="color:#469ff8">summarize the <strong>stationary distribution</strong> of a graph</span> via the analysis of its (transposed) transition matrix.</p>
+<p>However, some other properties of graphs can be better understood if we analyze the eigenvectors and eigenvalues of other matrices such as the <strong>Laplacian</strong> or the <strong>normalized Laplacian</strong>. In particular, these matrices are key to <span style="color:#469ff8">uncover <strong>combinatorial properties of graphs</strong></span>.</p>
+<p>But, what does <strong>combinatorial</strong> mean here? Consider for instance the same SBM studied above <span class="math notranslate nohighlight">\(G=(V,E)\)</span> and <strong>two colors</strong>, say blue and red, encoded respectively by the numbers <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(+1\)</span> (bipolar coding). Then, the following fundamental question arises:</p>
+<p><span style="color:#469ff8"><strong>How to color the nodes</strong> of <span class="math notranslate nohighlight">\(G=(V,E)\)</span> so that color differences appear only at the <strong>weakest edges</strong>?</span></p>
+<section id="the-min-cut-problem">
+<h3><span class="section-number">6.2.1. </span>The Min-Cut Problem<a class="headerlink" href="#the-min-cut-problem" title="Permalink to this heading">#</a></h3>
+<p><strong>Min-cut</strong>. Coloring means <strong>partitioning</strong>: nodes with the same color belong to the <em>same partition</em>. If we have only two colors, then the set of nodes is the union of two <em>disjoint subsets</em>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+V = A\cup B,\; \text{with}\; A\subseteq V, B\subseteq V:\; A\cap B = \emptyset\;
+\]</div>
+<p>For instance, in <a class="reference internal" href="#partition"><span class="std std-numref">Fig. 6.8</span></a>, blue nodes <span class="math notranslate nohighlight">\(A\)</span> (with label <span class="math notranslate nohighlight">\(-1\)</span>) belong to the bottom community of the SBM whereas red ones <span class="math notranslate nohighlight">\(B\)</span> (with label <span class="math notranslate nohighlight">\(+1\)</span>) belong to the top community. Subsets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> induce a <em>partition</em> since their union is the full set of nodes and they are disjoint. Actually, such a partition is <strong>optimal</strong> since color differences appear at the <strong>weakest edges</strong>, those <span style="color:#469ff8">whose removal disconects or <strong>cuts</strong> the graph by <em>maximizing</em> the coherence of the resulting communities or <strong>clusters</strong> while the number of removed edges is <em>minimized</em></span>.</p>
+<figure class="align-center" id="partition">
+<a class="reference internal image-reference" href="_images/Partition.png"><img alt="_images/Partition.png" src="_images/Partition.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">SBM graph. Min-cut optimal partition .</span><a class="headerlink" href="#partition" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A bit more formally, let us define <span style="color:#469ff8">the <span class="math notranslate nohighlight">\(\text{cut}(A,B)\)</span> between the two subsets</span>, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, of a partition as the number of edges with different colors at their nodes:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{cut}(A,B) = \sum_{u\in A,v\in B}e(u,v)\;\;\text{with}\;\; e(u,v)\in E\;.
+\]</div>
+<p>The idea of min-cut is to find the partition <span class="math notranslate nohighlight">\((A,B)\)</span> <strong>minimizing</strong> <span class="math notranslate nohighlight">\(\text{cut}(A,B)\)</span>. However, doing so is not enough because if a given node <span class="math notranslate nohighlight">\(u\)</span> has <span class="math notranslate nohighlight">\(d_u=1\)</span>, we may consider the following partition: <span class="math notranslate nohighlight">\(A =\{u\}\)</span> and <span class="math notranslate nohighlight">\(B = V - \{u\} = V - A\)</span>, leading to <span class="math notranslate nohighlight">\(\text{cut}(A,B)=1\)</span> which is minimal but non-sense.</p>
+<p>Then, it seems more reasonable to force the partition to be <strong>balanced</strong>. This can be done in a simple way by <span style="color:#469ff8">minimizing the so called <strong>average cut</strong> or <strong>ratio cut</strong> <span class="math notranslate nohighlight">\(\text{Rcut}(A,B)\)</span></span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{\text{cut}(A,B)}{|A|} + \frac{\text{cut}(A,B)}{|B|}\;,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(|A|\)</span> and <span class="math notranslate nohighlight">\(|B|\)</span> are the number of nodes of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> respectively, which are <strong>maximized</strong> as <span class="math notranslate nohighlight">\(\text{cut}(A,B)\)</span> is minimized.</p>
+<p>However, as there are <span class="math notranslate nohighlight">\(2^{|V|}\)</span> partitions or ways of coloring <span class="math notranslate nohighlight">\(|V|\)</span> nodes with <span class="math notranslate nohighlight">\(2\)</span> colors, <span style="color:#469ff8">the <strong>ratio cut</strong> problem is NP-Hard and we can only have <strong>approximations</strong></span>.</p>
+</section>
+<section id="the-fiedler-vector">
+<h3><span class="section-number">6.2.2. </span>The Fiedler vector<a class="headerlink" href="#the-fiedler-vector" title="Permalink to this heading">#</a></h3>
+<p><strong>Encoding partitions</strong>. Given a partition <span class="math notranslate nohighlight">\((A,B)\)</span>, since <span class="math notranslate nohighlight">\(|A| + |B| = |V|\)</span> we can encode it with a vector <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> of length <span class="math notranslate nohighlight">\(|V|\)</span> whose entries <span class="math notranslate nohighlight">\(\mathbf{f}(u)\in \{-1,1\}\)</span> for <span class="math notranslate nohighlight">\(u\in V\)</span>. For instance, consider the graph in <a class="reference internal" href="#simplerand"><span class="std std-numref">Fig. 6.9</span></a> and its partition: <span class="math notranslate nohighlight">\(A = \{2,6\}, B=\{1,3,4,5\}\)</span>.</p>
+<figure class="align-center" id="simplerand">
+<a class="reference internal image-reference" href="_images/SimpleRand.png"><img alt="_images/SimpleRand.png" src="_images/SimpleRand.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.9 </span><span class="caption-text">Small graph with non-optimal partition.</span><a class="headerlink" href="#simplerand" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The corresponding vector is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}=[+1\;-1\;+1\;+1\;+1\;-1]^T\;.
+\]</div>
+<p>Then, for computing the ratio cut of the above partition we count the number of <strong>heterophilic edges</strong> (edges connecting nodes of different colors). They are <span class="math notranslate nohighlight">\(E_{cut}=\{(1,2), (2,3), (2,4), (5,6)\}\)</span>.
+Then, <span class="math notranslate nohighlight">\(\text{cut}(A,B)=|E_{cut}|=4\)</span>. Then, since <span class="math notranslate nohighlight">\(|A|=2\)</span> and <span class="math notranslate nohighlight">\(|B|=4\)</span> the ratio cut is</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{|E_{cut}|}{|A|} + \frac{|E_{cut}|}{|B|} = \frac{4}{2} + \frac{4}{4} = 3\;.
+\]</div>
+<p>Consider now the partition shown in <a class="reference internal" href="#simpleoptimal"><span class="std std-numref">Fig. 6.10</span></a>.</p>
+<figure class="align-center" id="simpleoptimal">
+<a class="reference internal image-reference" href="_images/SimpleOptimal.png"><img alt="_images/SimpleOptimal.png" src="_images/SimpleOptimal.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.10 </span><span class="caption-text">Small graph with the optimal partition.</span><a class="headerlink" href="#simpleoptimal" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We have the vector</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}=[-1\;-1\;-1\;+1\;+1\;+1]^T\; 
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{|E_{cut}|}{|A|} + \frac{|E_{cut}|}{|B|} = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}\;, 
+\]</div>
+<p>which is clearly smaller than that of the previous partition: <span class="math notranslate nohighlight">\(\frac{2}{3}&lt;3\)</span>, showing that the ratio cut <strong>loss function</strong> measures the godness of a cut.</p>
+<p>The ratio-cut <strong>loss function</strong> is, however, prone to <strong>degenerated solutions</strong> such as <span class="math notranslate nohighlight">\(A=\{1,2,3,4,5,6\},\; B=\emptyset\)</span> or vice versa:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Rcut}(A,B) = \frac{0}{|A|} + \frac{0}{|B|} = 0\;.
+\]</div>
+<p>Consequently, any algorithm minimizing <span class="math notranslate nohighlight">\(\text{Rcut}(A,B)\)</span> must:</p>
+<ol class="arabic simple">
+<li><p>Find a vector <span class="math notranslate nohighlight">\(\mathbf{f}\in\{-1,1\}^{|V|}\)</span> encoding a partition <span class="math notranslate nohighlight">\((A,B)\)</span> such that <strong>minimizes</strong> <span class="math notranslate nohighlight">\(\text{Rcut}(A,B)\)</span>.</p></li>
+<li><p>The minimizing vector must be <strong>perpendicular/orthogonal</strong> to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> as well as different from <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.</p></li>
+</ol>
+<p><span style="color:#469ff8">The last condition (orthogonality) ensures that the solution is quite different from the degenerated solution</span>.</p>
+<p>For instance,</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbf{f}=[-1\;-1\;-1\;+1\;+1\;+1]^T\; 
+\]</div>
+<p>is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> since the <strong>dot product</strong> <span class="math notranslate nohighlight">\(\mathbf{f}\cdot\mathbf{1}=0\)</span>. However,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}=[+1\;-1\;+1\;+1\;+1\;-1]^T\;.
+\]</div>
+<p>is not orthogonal to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> since <span class="math notranslate nohighlight">\(\mathbf{f}\cdot\mathbf{1}=4-2=2\neq 0\)</span>.</p>
+<p><strong>Continuous relaxation</strong>. Due to the NP hardness of the ratio-cut problem, instead of looking for discrete solutions, <span class="math notranslate nohighlight">\(\mathbf{f}\in\{-1,1\}^{|V|}\)</span> we must <strong>relax the vector space to allow</strong> <span class="math notranslate nohighlight">\(\mathbf{f}\in [-1,1]^{|V|}\)</span>. <span style="color:#469ff8">This strategy is quite common in AI and it is called <strong>continuous relaxation</strong></span>. The main idea is that vectors with continuous entries are easier to be manipulated by algebraic techqiques so that they become an approximation of their discrete counterparts (relaxation really means “approximation”).</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Miroslav_Fiedler">Miroslav Fiedler</a>, while reasoning on how to use linear algebra to characterize the connectivity of graphs proposed the following loss equivalent to the ratio-cut:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = |V|\cdot \left\{\frac{\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2}{\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2}\;: \mathbf{f}\neq\mathbf{0},\mathbf{f}\neq c\cdot\mathbf{1},c\in\mathbb{R}\right\}\;,
+\]</div>
+<p>where the notation <span class="math notranslate nohighlight">\(u\sim v\)</span> means that “<span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are neighbors”. As a result, if <span class="math notranslate nohighlight">\(\mathbf{f}\in\{-1,1\}^{|V|}\)</span>, the <strong>numerator</strong> of the above loss simply counts how many heterophilic edges do we have. The <strong>denominator</strong> counts how many heterophilic edges we would have if the graph were complete.</p>
+<p>The correspondence of <span class="math notranslate nohighlight">\(\lambda\)</span> with the ratio cut loss is very interesting. Actually, all we have to do is to operate on the denominator as follows:</p>
+<ol class="arabic simple">
+<li><p>Use the <strong>Lagrange identity</strong>, which is valid for any vector <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>, to expand the denominator</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2}\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2 = 
+|V|\sum_{u}\mathbf{f}(u)^2 - \left(\sum_{u}\mathbf{f}(u)\right)^2\;.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Since the orthogonality of <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> means that <span class="math notranslate nohighlight">\(\sum_{u}\mathbf{f}(u)=0\)</span>, the Lagrange identity becomes:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2 = 
+2|V|\sum_{u}\mathbf{f}(u)^2.
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Look now at the ratio cut and group the two fractions into a single one:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{Rcut}(A,B) &amp;= \frac{|E_{cut}|}{|A|} + \frac{|E_{cut}|}{|B|}\\
+&amp;= \frac{|B|\cdot |E_{cut}| + |A|\cdot |E_{cut}|}{|A|\cdot|B|}\\
+&amp;= \frac{(|A|+|B|)\cdot |E_{cut}|}{|A|\cdot|B|}\\ 
+&amp;= \frac{|V|\cdot |E_{cut}|}{|A|\cdot|B|}\\ 
+\end{align}\;.
+\end{split}\]</div>
+<p>Now, setting <span class="math notranslate nohighlight">\(|E_{cut}|=\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2\)</span> and considering that <span class="math notranslate nohighlight">\(\sum_{u}\mathbf{f}(u)^2\le |V|\)</span> for <span class="math notranslate nohighlight">\(\mathbf{f}\in [-1,1]^{|V|}\)</span>, we have that</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda\le\text{Rcut}(A,B)
+\]</div>
+<p>that is  <span style="color:#469ff8">the loss <span class="math notranslate nohighlight">\(\lambda\)</span> is <strong>even more restrictive than the ratio cut</strong> loss!</span></p>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. In order to <strong>better understand the ratio-cut function</strong>, let us illustrate how it applies to partition a <strong>complete graph</strong> <span class="math notranslate nohighlight">\(K_n\)</span>, with <span class="math notranslate nohighlight">\(n=5\)</span> (without self-loops).
+<br><br>
+See <a class="reference internal" href="#k5"><span class="std std-numref">Fig. 6.11</span></a> where the red curves defines in each case, what nodes are included in the subset <span class="math notranslate nohighlight">\(A\)</span> and what belong to its complementary <span class="math notranslate nohighlight">\(B=\bar{A}\)</span>. Although theoretically we have <span class="math notranslate nohighlight">\(2^{5}-2\)</span> partitions (discounting <span class="math notranslate nohighlight">\(\emptyset\)</span> and <span class="math notranslate nohighlight">\(V\)</span>) for this graph, we really have <span class="math notranslate nohighlight">\(4\)</span> different partitions: respectively with one, two, three and four elements. From left to rigth we have four partitions <span class="math notranslate nohighlight">\(A_i\)</span>: <span class="math notranslate nohighlight">\(A_1=\{3\}\)</span>, <span class="math notranslate nohighlight">\(A_2=\{3,1\}\)</span>, <span class="math notranslate nohighlight">\(A_3=\{3,1,0\}\)</span>, and <span class="math notranslate nohighlight">\(A_4=\{3,1,0,2\}\)</span>.
+</span>
+<br><br></p>
+<figure class="align-center" id="k5">
+<a class="reference internal image-reference" href="_images/K5.png"><img alt="_images/K5.png" src="_images/K5.png" style="width: 850px; height: 180px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">From left to right: <span class="math notranslate nohighlight">\((A_1,B_1)\)</span>, <span class="math notranslate nohighlight">\((A_2,B_2)\)</span>, <span class="math notranslate nohighlight">\((A_3,B_3)\)</span> and <span class="math notranslate nohighlight">\((A_4,B_4)\)</span>. All the cuts in <span class="math notranslate nohighlight">\(K_n\)</span> result from partitions which are equally optimal!</span><a class="headerlink" href="#k5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br><br>
+<span style="color:#347fc9">
+Let us <strong>compute the ratio-cut</strong> loss for each partition:
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\text{cut}(A_1,B_1)=1\cdot 4\;\Rightarrow \text{Rcut}(A_1,B_1) = \frac{4}{|A_1|} + \frac{4}{|B_1|} = \frac{4}{1} + \frac{4}{4} = 5\\ 
+\text{cut}(A_2,B_2)=2\cdot 3\;\Rightarrow \text{Rcut}(A_2,B_2) = \frac{6}{|A_2|} + \frac{6}{|B_2|} = \frac{6}{2} + \frac{6}{3} = 5\\
+\text{cut}(A_3,B_3)=3\cdot 2\;\Rightarrow \text{Rcut}(A_3,B_3) = \frac{6}{|A_3|} + \frac{6}{|B_3|} = \frac{6}{3} + \frac{6}{2} = 5\\
+\text{cut}(A_4,B_4)=4\cdot 1\;\Rightarrow \text{Rcut}(A_4,B_4) = \frac{4}{|A_4|} + \frac{4}{|B_4|} = \frac{4}{1} + \frac{4}{4} = 5\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+As a result, all the ratio cuts are equal! Why?
+<br></br>
+Consider the general case <span class="math notranslate nohighlight">\(K_n=(V,E)\)</span> with <span class="math notranslate nohighlight">\(n\)</span> nodes. Each node in <span class="math notranslate nohighlight">\(K_n\)</span> is connected to <span class="math notranslate nohighlight">\(n-1\)</span> nodes (remember that we have excluded self-loops).
+<br></br>
+Then if a subset <span class="math notranslate nohighlight">\(A_k\subset V\)</span> has <span class="math notranslate nohighlight">\(k\)</span> nodes, we have that <span class="math notranslate nohighlight">\(B_k=V - A_k\)</span> has <span class="math notranslate nohighlight">\(n-k\)</span> nodes. Since every node in <span class="math notranslate nohighlight">\(A_k\)</span> is linked (in this graph) with any node in <span class="math notranslate nohighlight">\(B_k\)</span> we have that
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{cut}(A_k,B_k)=k\cdot(n-k)\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+which results in
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_k,B_k)=\frac{k\cdot(n-k)}{|A_k|} + \frac{k\cdot(n-k)}{|B_k|} = 
+\frac{k\cdot(n-k)}{k} + \frac{k\cdot(n-k)}{(n-k)} = n - k + k = n\;.
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+Then, the ratio cut for all the cuts in <span class="math notranslate nohighlight">\(K_n\)</span> is always <span class="math notranslate nohighlight">\(n\)</span>.
+</span>
+<br></br></p>
+</section>
+<section id="the-laplacian-and-courant-fischer">
+<h3><span class="section-number">6.2.3. </span>The Laplacian and Courant-Fischer<a class="headerlink" href="#the-laplacian-and-courant-fischer" title="Permalink to this heading">#</a></h3>
+<p>One of the most <strong>interestings discoveries</strong> of spectral theory is that <span style="color:#469ff8">for minimizing <span class="math notranslate nohighlight">\(\lambda\)</span> we only need to interpret it as the <strong>eigenvalue</strong> of <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> which is an  <strong>eigenvector</strong> of a symmetric matrix called the <strong>Laplacian</strong></span>.</p>
+<p>The Laplacian of a graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, that we denote as <span class="math notranslate nohighlight">\(\triangle\)</span>, is the matrix resulting for subtracting to the degree matrix the adjacency matrix of the graph:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \mathbf{D}-\mathbf{A}\;.
+\]</div>
+<p>That is, in the diagonal of <span class="math notranslate nohighlight">\(\triangle\)</span> we have the degrees <span class="math notranslate nohighlight">\(d_u\)</span> of all the nodes <span class="math notranslate nohighlight">\(u\in V\)</span> and in the off-diagonal we have the negative of the adjacencies <span class="math notranslate nohighlight">\(-a_{uv}\)</span>.</p>
+<p>For our example graph, in <a class="reference internal" href="#simplerand"><span class="std std-numref">Fig. 6.9</span></a> and <a class="reference internal" href="#simpleoptimal"><span class="std std-numref">Fig. 6.10</span></a>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\triangle = 
+\begin{bmatrix}
+\mathbf{d}_1 = 2 &amp; -a_{12}=-1 &amp; -a_{13}=-1 &amp; -a_{14}=0 &amp; -a_{15}=0 &amp; -a_{16}=0\\
+-a_{21}=-1 &amp; \mathbf{d}_2 = 3 &amp; -a_{23}=-1 &amp; -a_{24}=-1 &amp; -a_{25}=0 &amp; -a_{26}=0\\
+-a_{31}=-1 &amp; -a_{32}=-1 &amp; \mathbf{d}_3 = 2 &amp; -a_{34}=0 &amp; -a_{35}=0 &amp; -a_{36}=0\\
+-a_{41}=0 &amp; -a_{42}=-1 &amp; -a_{43}=0 &amp; \mathbf{d}_4 = 3 &amp; -a_{45}=-1 &amp; -a_{46}=-1\\
+-a_{51}=0 &amp; -a_{52}=0 &amp; -a_{53}=0 &amp; -a_{54}=-1 &amp; \mathbf{d}_5 = 2 &amp; -a_{56}=-1\\
+-a_{61}=0 &amp; -a_{62}=0 &amp; -a_{63}=0 &amp; -a_{64}=-1 &amp; -a_{65}=-1 &amp; \mathbf{d}_6 = 2\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>i.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\triangle = 
+\begin{bmatrix}
+\mathbf{2}  &amp; -1 &amp; -1 &amp;  0 &amp; 0  &amp;  0\\
+-1 &amp; \mathbf{3}  &amp; -1 &amp; -1 &amp; 0  &amp;  0\\
+-1 &amp; -1 &amp;  \mathbf{2} &amp; 0  &amp; 0  &amp;  0\\
+0 &amp; -1  &amp;  0 &amp; \mathbf{3}  &amp; -1 &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; \mathbf{2}  &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; -1 &amp; \mathbf{2}\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>Some properties:</p>
+<ol class="arabic simple">
+<li><p><span style="color:#469ff8">The Laplacian is usually considered the <strong>derivative operator</strong> in the graph domain (this is why we use the notation <span class="math notranslate nohighlight">\(\triangle\)</span>)</span>.
+Actually for any vector <span class="math notranslate nohighlight">\(\mathbf{f}\in\mathbb{R}^{|V|}\)</span> we have:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\triangle\mathbf{f} = \sum_{u\sim v}\mathbf{f}(u)-\mathbf{f}(v)\;.
+\]</div>
+<p>Actually, in the previous example we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\triangle\mathbf{f} = 
+\begin{bmatrix}
+\mathbf{2}  &amp; -1 &amp; -1 &amp;  0 &amp; 0  &amp;  0\\
+-1 &amp; \mathbf{3}  &amp; -1 &amp; -1 &amp; 0  &amp;  0\\
+-1 &amp; -1 &amp;  \mathbf{2} &amp; 0  &amp; 0  &amp;  0\\
+0 &amp; -1  &amp;  0 &amp; \mathbf{3}  &amp; -1 &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; \mathbf{2}  &amp; -1\\
+0 &amp;  0  &amp;  0 &amp; -1 &amp; -1 &amp; \mathbf{2}\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{f}(1)\\
+\mathbf{f}(2)\\
+\mathbf{f}(3)\\
+\mathbf{f}(4)\\
+\mathbf{f}(5)\\
+\mathbf{f}(6)\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\mathbf{f}(1)-\mathbf{f}(2) + \mathbf{f}(1)-\mathbf{f}(3)\\
+\mathbf{f}(2) - \mathbf{f}(1) + \mathbf{f}(2) - \mathbf{f}(3) + \mathbf{f}(2) - \mathbf{f}(4)\\
+\mathbf{f}(3) - \mathbf{f}(1) + \mathbf{f}(3) - \mathbf{f}(2) \\
+\mathbf{f}(4) - \mathbf{f}(2) + \mathbf{f}(4) - \mathbf{f}(5) + \mathbf{f}(4) - \mathbf{f}(6)\\
+\mathbf{f}(5) - \mathbf{f}(4) + \mathbf{f}(5) - \mathbf{f}(6)\\
+\mathbf{f}(6) - \mathbf{f}(4) +  \mathbf{f}(6) - \mathbf{f}(5)\\
+\end{bmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p><span style="color:#469ff8">The Laplacian is an <strong>harmonic operator</strong></span>, i.e. it satisfies that</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(u)=\frac{1}{d_u}\sum_{v\sim u}f(v)\;.
+\]</div>
+<p>and you can check this at any row of <span class="math notranslate nohighlight">\(\triangle\mathbf{f}\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p><span style="color:#469ff8">The Laplacian is <strong>linked with the <span class="math notranslate nohighlight">\(\lambda\)</span> loss</strong></span> as follows:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}^T\triangle\mathbf{f} = \frac{1}{2}\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2
+\]</div>
+<p>In order to visualize this, let us consider the product of <span class="math notranslate nohighlight">\(\mathbf{f}^T\)</span> and <span class="math notranslate nohighlight">\(\triangle\mathbf{f}\)</span> in the example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\mathbf{f}(1) &amp; \mathbf{f}(2) &amp; \mathbf{f}(3) &amp; \mathbf{f}(4) &amp; \mathbf{f}(5) &amp; \mathbf{f}(6)
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{f}(1)-\mathbf{f}(2) + \mathbf{f}(1)-\mathbf{f}(3)\\
+\mathbf{f}(2) - \mathbf{f}(1) + \mathbf{f}(2) - \mathbf{f}(3) + \mathbf{f}(2) - \mathbf{f}(4)\\
+\mathbf{f}(3) - \mathbf{f}(1) + \mathbf{f}(3) - \mathbf{f}(2) \\
+\mathbf{f}(4) - \mathbf{f}(2) + \mathbf{f}(4) - \mathbf{f}(5) + \mathbf{f}(4) - \mathbf{f}(6)\\
+\mathbf{f}(5) - \mathbf{f}(4) + \mathbf{f}(5) - \mathbf{f}(6)\\
+\mathbf{f}(6) - \mathbf{f}(4) +  \mathbf{f}(6) - \mathbf{f}(5)\\
+\end{bmatrix}
+\end{split}\]</div>
+<p>from this product of <span class="math notranslate nohighlight">\((1\times |V|)(|V|\times 1)\)</span> we get a scalar as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(1)\triangle\mathbf{f} + \mathbf{f}(2)\triangle\mathbf{f} + \ldots + \mathbf{f}(|V|)\triangle\mathbf{f}\;.
+\]</div>
+<p>and plugging in <span class="math notranslate nohighlight">\(\triangle\mathbf{f}=\sum_{u\sim v}\mathbf{f}(u)-\mathbf{f}(v)\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(1)\sum_{1\sim v}\mathbf{f}(1)-\mathbf{f}(v) + \mathbf{f}(2)\sum_{2\sim v}\mathbf{f}(2)-\mathbf{f}(v) + \ldots + \mathbf{f}(n)\sum_{n\sim v}\mathbf{f}(n)-\mathbf{f}(v)\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n=|V|\)</span>. This leads to</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{f}(1)\sum_{1\sim v}\mathbf{f}(1)^2-\mathbf{f}(1)\mathbf{f}(v) + \sum_{2\sim v}\mathbf{f}^2(2)-\mathbf{f}(2)\mathbf{f}(v) + \ldots + \sum_{n\sim v}\mathbf{f}(n)^2-\mathbf{f}(n)\mathbf{f}(v)\;.
+\]</div>
+<p>For a any edge, say <span class="math notranslate nohighlight">\(e=(u,v)\)</span> the above sum contains <span class="math notranslate nohighlight">\(f(u)^2 + f(v)^2 - 2f(u)f(v) = (f(u)-f(v))^2\)</span>.</p>
+<p>See for instance, <span class="math notranslate nohighlight">\(e=(1,2)\)</span> which involves nodes <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(2\)</span>. From the above sum (see also the two first elements of <span class="math notranslate nohighlight">\(\triangle\mathbf{f}\)</span>) we have:</p>
+<div class="math notranslate nohighlight">
+\[
+f(1)^2 - f(1)f(2) + f(1)^2 - f(1)f(3)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+f(2)^2 - f(2)f(1) + f(2)^2 - f(2)f(3) + f(2)^2 - f(2)f(4)
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(e=(1,2)\)</span> we take</p>
+<div class="math notranslate nohighlight">
+\[
+f(1)^2 - f(1)f(2)-f(2)f(1) + f(2)^2 = (f(1) - f(2))^2
+\]</div>
+<p>and there are more terms for <span class="math notranslate nohighlight">\(e=(2,1)\)</span> and similarly for the remaining edges thus leading to</p>
+<div class="math notranslate nohighlight">
+\[
+2\sum_{u\sim v}(f(u)-f(v))^2\;.
+\]</div>
+<p>By the Lagrange identity we know that</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{u,v}(\mathbf{f}(u)-\mathbf{f}(v))^2 = 
+2|V|\sum_{u}\mathbf{f}(u)^2.
+\]</div>
+<p>As a result, we have that</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \left\{\frac{\sum_{u\sim v}(\mathbf{f}(u)-\mathbf{f}(v))^2}{\sum_{u}\mathbf{f}(u)^2}\;: \mathbf{f}\neq\mathbf{0},\mathbf{f}\neq c\cdot\mathbf{1},c\in\mathbb{R}\right\}\;.
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\sum_{u}\mathbf{f}(u)^2=\mathbf{f}^T\mathbf{f}=||\mathbf{f}||^2\)</span> is the squared modulus of <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>, we have a more compact definition of <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \left\{\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\;: \mathbf{f}\neq\mathbf{0},\mathbf{f}\neq c\cdot\mathbf{1},c\in\mathbb{R}\right\}\;.
+\]</div>
+<p><strong>Courant-Fischer Theorem</strong>. Given an <span class="math notranslate nohighlight">\(n\times n\)</span> symmetric matrix <span class="math notranslate nohighlight">\(\triangle\)</span>, it has <span class="math notranslate nohighlight">\(n\)</span> real eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\le\lambda_2\le\ldots\le\lambda_n\)</span> with their associated real-valued eigenvectors <span class="math notranslate nohighlight">\(\phi_1,\phi_2,\ldots,\phi_n\)</span> satisfying <span class="math notranslate nohighlight">\(\triangle\phi_i = \lambda_i\phi_i\)</span> also satisfies:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\lambda_1 &amp;= \min_{\mathbf{f}\neq 0}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_1\\
+\lambda_2 &amp;= \min_{\mathbf{f}\neq 0, \mathbf{f}\perp \phi_1}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_2\\
+\lambda_3 &amp;= \min_{\mathbf{f}\neq 0, \mathbf{f}\perp \{\phi_1,\phi_2\}}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_3\\
+&amp; \ldots\\
+\lambda_n &amp;= \min_{\mathbf{f}\neq 0, \mathbf{f}\perp \{\phi_1,\phi_2,\ldots,\phi_{n-1}\}}\frac{\mathbf{f}^T\triangle\mathbf{f}}{\mathbf{f}^T\mathbf{f}}\Rightarrow \mathbf{f}=\phi_n\\
+\end{align}
+\end{split}\]</div>
+<p>Looking at the eigenvectors, <span style="color:#469ff8">they are interpreted as <strong>real-valued functions</strong> <span class="math notranslate nohighlight">\(\phi:V\rightarrow\mathbb{R}\)</span> and eigenvalues are the variations of these functions over the graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span></span>.</p>
+<p><strong>Laplacian spectrum and eigenvectors</strong>. From the above theorem we have that for the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda_1=0\)</span>. Since the rows of the Laplacian add <span class="math notranslate nohighlight">\(0\)</span>, the smallest eigenvalue of the Laplacian is <span class="math notranslate nohighlight">\(\lambda_1=0\)</span> with eigenvector <span class="math notranslate nohighlight">\(\phi=\mathbf{1}\)</span>.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\triangle\phi_1 = \lambda_1\phi_1\Rightarrow \triangle\mathbf{1} = 0\cdot \mathbf{1}\;.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>If the graph is connected, <span class="math notranslate nohighlight">\(\lambda_2 = \min \lambda\)</span> (minimum of the <strong>Fiedler loss</strong>). As a result, <span class="math notranslate nohighlight">\(\lambda_2\)</span>, <span style="color:#469ff8">the <strong>Fiedler value</strong> can be interpreted as <strong>the minimal non-zero variance</strong> achievable for functions which are perpendicular to <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>, and the Fiedler vector is that function.</span>.</p></li>
+</ol>
+<p>For instance, the Fiedler vector for the small example is mapped on the graph in <a class="reference internal" href="#smallfiedler"><span class="std std-numref">Fig. 6.12</span></a>.</p>
+<figure class="align-center" id="smallfiedler">
+<a class="reference internal image-reference" href="_images/SmallFiedler.png"><img alt="_images/SmallFiedler.png" src="_images/SmallFiedler.png" style="width: 550px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">Small graph and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#smallfiedler" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the above graph, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_2=0.438,\;\; \phi_2^T=[-0.464\; -0.260\; -0.464\;  +0.260\; +0.464\;+0.464]\;,
+\]</div>
+<p>where we have <strong>part of the components negative</strong> (corresponding to <span class="math notranslate nohighlight">\(-1\)</span>) and part of them positive (corresponding to <span class="math notranslate nohighlight">\(+1\)</span>), thus approximating a partition in time <span class="math notranslate nohighlight">\(O(n^3)\)</span>, the one needed to solve a system.</p>
+<p>Interestingly the components <span class="math notranslate nohighlight">\(\phi_2(2)\)</span> and <span class="math notranslate nohighlight">\(\phi_2(4)\)</span> have the <strong>smaller absolute value</strong> although they are defining an heterophilic edge. This is a limitation of the continuous relaxation.</p>
+<p>The Fiedler vector for the SBM example is mapped on the graph in <a class="reference internal" href="#bigfiedler"><span class="std std-numref">Fig. 6.13</span></a>.</p>
+<figure class="align-center" id="bigfiedler">
+<a class="reference internal image-reference" href="_images/BigFiedler.png"><img alt="_images/BigFiedler.png" src="_images/BigFiedler.png" style="width: 620px; height: 270px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">SBM and its Fiedler vector mapped on the nodes.</span><a class="headerlink" href="#bigfiedler" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>The Spectrum</strong>. The spectrum of <span class="math notranslate nohighlight">\(\triangle\)</span> is the collection of <span class="math notranslate nohighlight">\(n\)</span> <strong>eigenvalues</strong> <span class="math notranslate nohighlight">\(\lambda_1\le\lambda_2\le\ldots\le\lambda_n\)</span>. They are not-decreasing because they summarize the increasing variability of their respective <strong>eigenvectors</strong> mapped on the nodes of the graph (see <a class="reference internal" href="#sbmspectrum"><span class="std std-numref">Fig. 6.14</span></a>).</p>
+<figure class="align-center" id="sbmspectrum">
+<a class="reference internal image-reference" href="_images/SBMSpectrum.png"><img alt="_images/SBMSpectrum.png" src="_images/SBMSpectrum.png" style="width: 620px; height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.14 </span><span class="caption-text">SBM spectrum and its associated eigenvectors.</span><a class="headerlink" href="#sbmspectrum" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="the-spectral-theorem">
+<h3><span class="section-number">6.2.4. </span>The Spectral Theorem<a class="headerlink" href="#the-spectral-theorem" title="Permalink to this heading">#</a></h3>
+<p><span style="color:#469ff8"><strong>The Spectral Theorem</strong></span>. One of the most interesting facts of spectral theory in general is that, despite not the full spectrum and eigenvectors are necessary in AI, <strong>any symmetric and square matrix can be decomposed</strong> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T + \ldots + \lambda_n\phi_n\phi_n^T\;.
+\]</div>
+<p>More compactly,</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \Phi\Phi^T = \sum_{i=1}^n\lambda_i\phi_i\phi_i^T\;,
+\]</div>
+<p>where the columns of <span class="math notranslate nohighlight">\(\Phi\)</span> are <span class="math notranslate nohighlight">\(\phi_1,\phi_2,\ldots,\phi_n\)</span>.</p>
+<p>The meaning of this theorem is that the matrix (<span class="math notranslate nohighlight">\(\triangle\)</span> for instance) can be perfectly decomposed (without loss of information) as a <strong>linear combination</strong> of <span class="math notranslate nohighlight">\(n\)</span> matrices <span class="math notranslate nohighlight">\(\phi_i^T\phi_i\)</span>, each one defined by an eigenctor, and the coefficients of this linear combination are the coefficients of the eigenvalues.</p>
+<p>However, if we do not have the full set of eigenvectors but a small number <span class="math notranslate nohighlight">\(k&lt;n\)</span> of them, all we do is to <strong>approximate</strong> the matrix (the Laplacian of the graph in the case of <span class="math notranslate nohighlight">\(\triangle\)</span>). The <strong>error of the approximation</strong> is given by the sum of the absolute values of the <strong>discarded eigenvalues or modes</strong>.</p>
+<p>In graph spectral theory, it is quite common to retain (or compute) only the smallest <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \sum_{i=1}^k\lambda_i\phi_i\phi_i^T\;.
+\]</div>
+<p>Consider, for instance the SBM example developed in this topic. In <a class="reference internal" href="#spectralthm"><span class="std std-numref">Fig. 6.15</span></a> we show the Lapacian matrix <span class="math notranslate nohighlight">\(\triangle\)</span> (top-left) and its eigenvectors <span class="math notranslate nohighlight">\(\phi_1,\phi_2,\ldots,\phi_n\)</span> (columns from left to right). The mapping of each eigenvector on the graph and the Laplacian spectrum are shown in <a class="reference internal" href="#sbmspectrum"><span class="std std-numref">Fig. 6.14</span></a>.</p>
+<figure class="align-center" id="spectralthm">
+<a class="reference internal image-reference" href="_images/SpectralThm.png"><img alt="_images/SpectralThm.png" src="_images/SpectralThm.png" style="width: 820px; height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.15 </span><span class="caption-text">SBM eigenvectors and reconstruction.</span><a class="headerlink" href="#spectralthm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Then, looking at the matrix of eigenvectors <span class="math notranslate nohighlight">\(\Phi\)</span> (bottom-left), the first one <span class="math notranslate nohighlight">\(\phi_1\)</span> is constant <span class="math notranslate nohighlight">\(\mathbf{1}\)</span>.</p>
+<p><span style="color:#469ff8"><strong>First-order approximation</strong></span>. For <span class="math notranslate nohighlight">\(k=1\)</span> we have the appoximation:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \lambda_1\phi_1\phi_1^T = 0\cdot \mathbf{1}\mathbf{1}^T = \mathbf{0}\;,
+\]</div>
+<p>i.e. the <strong>first-order approximation</strong> of the Laplacian is a matrix of ones (all the elements in the matrix are equally important) weighted by zero. We know that this is highly incorrect since the diagonal must allocate the node degrees. This is exactly what the product by <span class="math notranslate nohighlight">\(\lambda_1=0\)</span> means!</p>
+<p><span style="color:#469ff8"><strong>Second-order approximation</strong></span>. The second eigenvector, the approximation of the Fiedler vector, partitions the graph into two communities and this is why the second-order approximation <span class="math notranslate nohighlight">\(k=2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\triangle = \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T
+\]</div>
+<p>captures <span style="color:#469ff8"><strong>the dominant information</strong> in the graph: the two communities in the SBM</span>. Remember that red means high positive value and blue high negative. Then for <span class="math notranslate nohighlight">\(k=2\)</span> we only know that there is a high probability that half of the nodes belong to a community and the other half to another one.</p>
+<p><span style="color:#469ff8"><strong>Mid-order approximation</strong></span>. For <span class="math notranslate nohighlight">\(k&gt;2\)</span> we observe that few elements in the diagonal are captured. See for instance the red corners in <span class="math notranslate nohighlight">\(k=4\)</span> and <span class="math notranslate nohighlight">\(k=6\)</span>. These two nodes belong to inter-class edges. They are also linked with nodes of same community: remember that adjacency in the Laplacian is <span class="math notranslate nohighlight">\(-1\)</span> (encoded by dark blue).</p>
+<p><span style="color:#469ff8"><strong>High-order approximation</strong></span>. See that for <span class="math notranslate nohighlight">\(k\ge 11\)</span> degree information is recovered before the full (negative) adjacency emerges!</p>
+<p>Therefore, the logical order of emerging info during the approximation is:</p>
+<ol class="arabic simple">
+<li><p>Cluster structure of the graph.</p></li>
+<li><p>Important nodes (intrer-class).</p></li>
+<li><p>Degree info.</p></li>
+<li><p>Negative adjacency.</p></li>
+</ol>
+<p>For a better understanding of these steps we propose a small exercise.</p>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. Let us consider the small SBM whose Fiedler vector is shown in <a class="reference internal" href="#smallfiedler"><span class="std std-numref">Fig. 6.12</span></a>. We only have <span class="math notranslate nohighlight">\(\lambda_1,\phi_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2,\phi_2\)</span>. Then, from:
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;\lambda_1 = 0.0\;\;\phi_1 = [+1.0\; +1.0\; +1.0\; +1.0\; +1.0\; +1.0]^T\\
+&amp;\lambda_2=0.4\;\;\phi_2 =[-0.4\; -0.3\; -0.4\;  +0.3\; +0.4\;+0.4]\;
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+apply the spectral theorem to <strong>approximate the Laplacian matrix</strong> using the information given. We have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\triangle \approx \lambda_1\phi_1\phi_1^T + \lambda_2\phi_2\phi_2^T
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Since <span class="math notranslate nohighlight">\(\lambda_1=0\)</span>, we have:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\triangle \approx \lambda_2\phi_2\phi_2^T\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\phi_2\phi_2^T = 
+\begin{bmatrix}
+-0.4\\ 
+-0.3\\ 
+-0.4\\  
++0.3\\ 
++0.4\\
++0.4
+\end{bmatrix}
+\begin{bmatrix}
+-0.4 &amp; -0.3 &amp; -0.4 &amp; +0.3 &amp; +0.4 &amp; +0.4
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\phi_2\phi_2^T = 
+\begin{bmatrix}
+0.16  &amp; 0.12  &amp; 0.16  &amp; -0.12 &amp; -0.16 &amp; -0.16\\
+0.12  &amp; 0.09  &amp; 0.12  &amp; -0.09 &amp; -0.12 &amp; -0.12\\
+0.16  &amp; 0.12  &amp; 0.16  &amp; -0.12 &amp; -0.16 &amp; -0.16\\
+-0.12 &amp; -0.09 &amp; -0.12 &amp; 0.09  &amp; 0.12  &amp; 0.12\\
+-0.16 &amp; -0.12 &amp; -0.16 &amp; 0.12  &amp; 0.16  &amp; 0.16\\
+-0.16 &amp; -0.12 &amp; -0.16 &amp; 0.12  &amp; 0.16  &amp; 0.16\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\lambda_2\phi_2\phi_2^T = 
+\begin{bmatrix}
+0.064 &amp; 0.048 &amp; 0.064 &amp; -0.048 &amp; -0.064 &amp; -0.064\\
+0.048 &amp; 0.036 &amp; 0.048 &amp; -0.036 &amp; -0.048 &amp; -0.048\\
+0.064 &amp; 0.048 &amp; 0.064 &amp; -0.048 &amp; -0.064 &amp; -0.064\\
+-0.048 &amp; -0.036 &amp; -0.048 &amp; 0.036 &amp; 0.048 &amp; 0.048\\
+-0.064 &amp; -0.048 &amp; -0.064 &amp; 0.048 &amp; 0.064 &amp; 0.064\\
+-0.064 &amp; -0.048 &amp; -0.064 &amp; 0.048 &amp; 0.064 &amp; 0.064\\
+\end{bmatrix}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then, with the first two eigenvalues and eigevectors all we can do is to capture the block structure (communities) in the SBM, as shown in <a class="reference internal" href="#spectralthm"><span class="std std-numref">Fig. 6.15</span></a>. Look that the positive blocks (red in <a class="reference internal" href="#spectralthm"><span class="std std-numref">Fig. 6.15</span></a>) correspond to the intra-class links inside the two communities, where the negative blocks correspond to inter-class edges!
+</span></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Topic3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Paths, Flows and Cycles</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Topic5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Distances and Latent Spaces</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-matrix">6.1. Transition matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-distribution">6.1.1. Stationary Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-interpretation-pagerank">6.1.2. The Spectral Interpretation: PageRank</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laplacian-matrices">6.2. Laplacian matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-min-cut-problem">6.2.1. The Min-Cut Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fiedler-vector">6.2.2. The Fiedler vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-laplacian-and-courant-fischer">6.2.3. The Laplacian and Courant-Fischer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectral-theorem">6.2.4. The Spectral Theorem</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1514 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>5. Paths, Flows and Cycles &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topic3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Ranking and Partitions" href="Topic4.html" />
+    <link rel="prev" title="4. Random walks on graphs" href="Topic2_3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2025
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Paths, Flows and Cycles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_rw.html">16. Graph Exploration Random Walks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="real_cases.html">17. Graphs on real life</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hitting_time.html">18. Hitting time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_cases_dataset.html">19. Real cases dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">20. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">21. Assignment 07/24</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice July</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practica_julio.html">22. Recovery Practice</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Topic3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Paths, Flows and Cycles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-paths">5.1. Shortest Paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dijkstra-algorithm">5.1.1. Dijkstra Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heuristics-and-a-ast">5.1.2. Heuristics and <span class="math notranslate nohighlight">\(A^{\ast}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-flow">5.2. Maximum Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bottlenecks-flows-and-capacities">5.2.1. Bottlenecks, flows and capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ford-fulkerson-method">5.2.2. The Ford-Fulkerson Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-method">5.2.2.1. The general method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#augmenting-paths-and-residual-graph">5.2.2.2. Augmenting paths and Residual graph</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-optimal-traps">5.2.2.3. Sub-optimal traps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-edmonds-karp-method">5.2.3. The Edmonds-Karp Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles-hamiltonian-and-eulerian">5.3. Cycles: Hamiltonian and Eulerian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-travelling-salesman-problem">5.3.1. The Travelling Salesman Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-spaning-trees">5.3.1.1. Minimum Spaning Trees</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#min-weight-perfect-matchings">5.3.1.2. Min-weight Perfect Matchings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eulerian-cycles">5.3.1.3. Eulerian Cycles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-of-the-approximation">5.3.1.4. Optimality of the approximation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="paths-flows-and-cycles">
+<h1><span class="section-number">5. </span>Paths, Flows and Cycles<a class="headerlink" href="#paths-flows-and-cycles" title="Permalink to this heading">#</a></h1>
+<p>The study of information flow is of paramount importance in AI. For instance, in modern graph-based neural networks (GNNs) each <strong>node</strong> represents a neuron with a learnable state. Nodes start having a <strong>random state</strong> which is modified by collecting <strong>messages</strong> from their respective neighbors. Each message concerns the current state of the corresponding neighbor. Thus, the objective  of learning is that nodes marked (labeled) as belonging to a given class become having a similar internal state. This task is known as <strong>node classification</strong> and only some the labels of some nodes are known beforehand.</p>
+<p>In practice, the nodes whose labels are know are considered absorbing nodes as in the previous topic and we must find the labels in a process similar to solving a linear system. However, GNNs <strong>are not linear</strong> since they pretend to express more complex interactions as it happens in the human brain. Aside from this non-linear behavior, these networks rely on graphs as the solvers for non-absorbing nodes do. Actually, if we change the graph (the links), we may end failing in the task of learning the same internal state for nodes in the same class, and consequently labeling nodes incorrectlty. In other words, the way that the nodes communicate impact the performance of the learning task.</p>
+<p>What is the <span style="color:#469ff8">best way of communicating</span> two nodes? What is the <span style="color:#469ff8">relative position of two nodes</span> in the network? Are some networks <span style="color:#469ff8">easier to be navigated  </span> than others? Do we need auxiliary <span style="color:#469ff8">structures such as trees</span> for answering all these questions?</p>
+<p>The <span style="color:#469ff8">AI-Engineer (AIEr)</span> must master graph-based techiques for programming, understanding, and exploiting information flows.</p>
+<section id="shortest-paths">
+<h2><span class="section-number">5.1. </span>Shortest Paths<a class="headerlink" href="#shortest-paths" title="Permalink to this heading">#</a></h2>
+<p>Usually, it is interesting to know <strong>how far</strong> is a given node <span class="math notranslate nohighlight">\(i\)</span> from another one <span class="math notranslate nohighlight">\(j\)</span> in the same graph. Consider, for instance the simple case of a 2D grid. If the grid is a <span class="math notranslate nohighlight">\(4-\)</span>neighborhood (<span class="math notranslate nohighlight">\(4\)</span>N) one, all the paths have the same length, namely <span class="math notranslate nohighlight">\(m + n\)</span>, where <span class="math notranslate nohighlight">\(m\)</span> is the number of horizontal moves and <span class="math notranslate nohighlight">\(n\)</span> is the number of <span class="math notranslate nohighlight">\(n\)</span> vertical moves.</p>
+<p>Consider, for instance <span style="color:#469ff8">the problem of finding the <strong>shortest path</strong> (SP) between nodes <span class="math notranslate nohighlight">\(i=(a,b)\)</span> and <span class="math notranslate nohighlight">\(j=(m,n)\)</span> in a <strong>more general graph</strong> even where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> do not have associated any positional attribute</span>. Herein, <strong>shortest</strong> means <strong>minimal number of edges between the two nodes</strong>. In other words, <span style="color:#469ff8">we want to find out how to <strong>navigate optimaly between two nodes</strong> by using exclusively the edges of the graph</span>.</p>
+<p>For instance, if we allowed <strong>right  diagonals</strong> as in <a class="reference internal" href="#diagonal1"><span class="std std-numref">Fig. 5.1</span></a> not all paths between <span class="math notranslate nohighlight">\((a,b)\)</span> and <span class="math notranslate nohighlight">\((m,n)\)</span> would have the same length. Actually, since some diagonals are allowed, the fastest way of reaching <span class="math notranslate nohighlight">\((m,n)\)</span> from <span class="math notranslate nohighlight">\((a,b)\)</span> depends on the relative position between both nodes:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\((m&gt;a)\)</span> or <span class="math notranslate nohighlight">\((n&gt;b)\)</span>, the SP comes by <strong>marching in diagonal whenever it is possible</strong>. This is because the <strong>target</strong> <span class="math notranslate nohighlight">\((m,n)\)</span> is to the right of the <strong>source</strong> <span class="math notranslate nohighlight">\((a,b)\)</span>. This is the case of <span class="math notranslate nohighlight">\((a=0,b=0)\)</span> and <span class="math notranslate nohighlight">\((m=4,n=4)\)</span> whose SP has only diagonals as has length <span class="math notranslate nohighlight">\(4\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\((m&lt;a)\)</span> or <span class="math notranslate nohighlight">\((n&lt;b)\)</span>, the SP may come from <strong>marching either horizontally or vertically as much as possible</strong> as well. This is because the target is to the left of the source. This is the case of <span class="math notranslate nohighlight">\((a=2,b=2)\)</span> and <span class="math notranslate nohighlight">\((m=0, n=3)\)</span> whose SP has only horizontals and verticals and has length <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+</ul>
+<figure class="align-center" id="diagonal1">
+<a class="reference internal image-reference" href="_images/Diagonal1.png"><img alt="_images/Diagonal1.png" src="_images/Diagonal1.png" style="width: 800px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(6\)</span>-neighborhood grid allowing right diagonals and SP.</span><a class="headerlink" href="#diagonal1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As we do not want to consider each <strong>particular case</strong>, it is better to systematize all the cases in a <strong>general algorithm</strong>. This is the so-called <strong>Dijkstra Algorithm</strong> after his author Edsger Dijkstra, who devised this method in 20 minutes.</p>
+<section id="dijkstra-algorithm">
+<h3><span class="section-number">5.1.1. </span>Dijkstra Algorithm<a class="headerlink" href="#dijkstra-algorithm" title="Permalink to this heading">#</a></h3>
+<p>The Algorithm, described in pseudocode in
+<a href="#id1"><span class="problematic" id="id2">Dijkstra</span></a> can be summarized as follows.</p>
+<ol class="arabic simple">
+<li><p>Start at the <strong>source</strong> node <span class="math notranslate nohighlight">\(s\)</span> and visit its <strong>neighbors</strong> to find there the <strong>target</strong> <span class="math notranslate nohighlight">\(t\)</span> if possible. If this happens, the length of the SP is given by the edge <span class="math notranslate nohighlight">\((s,t)\)</span> and obviously it has length <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p>If the target <span class="math notranslate nohighlight">\(t\)</span> is not in the neigborhood of the source, we must <strong>close the source</strong> and continue the search from all its neighbors. In this case, the length of SP will be greater than <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p><strong>Closing a node</strong> means that this node <strong>will be never visited later</strong> by the algorithm. We close a node once we select it as a candidate to belong to the SP. Closing node is implemented by removing it from a list of candidates <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
+<li><p>In the beginning, all the nodes are included in <span class="math notranslate nohighlight">\(L\)</span>. This is done in the <strong>initialization phase</strong> of the algorithm (steps 1 and 2).</p></li>
+<li><p>Once a node is closed, we visit its neighbors still in <span class="math notranslate nohighlight">\(L\)</span> and check whether we can reach the target from them. This consists in updating their <strong>distance</strong> wrt the source. The nodes with shortest distances wrt the source have more chance to be selected for closing and verifying if they are the target.</p></li>
+<li><p>The algorithm <strong>proceeds until</strong> there are no more candidates to visit (<span class="math notranslate nohighlight">\(L\)</span> is empty) or we have <strong>reached the target</strong> (step 3.2).</p></li>
+</ol>
+<div class="proof algorithm admonition" id="Dijkstra">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.1 </span> (Dijkstra)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a Network <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, a source node <span class="math notranslate nohighlight">\(s\)</span>, and a target node <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Output</strong> Compute a path <span class="math notranslate nohighlight">\(\Gamma\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> of minimun length</p>
+<ol class="arabic simple">
+<li><p><strong>for</strong> each node <span class="math notranslate nohighlight">\(v\in V\)</span>:</p>
+<ol class="arabic simple">
+<li><p>dist[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow \infty\)</span></p></li>
+<li><p>prev[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\( \;\leftarrow -1\)</span></p></li>
+<li><p>add <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(L\)</span></p></li>
+</ol>
+</li>
+<li><p>dist[<span class="math notranslate nohighlight">\(s\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow 0\)</span></p></li>
+<li><p><strong>while</strong> <span class="math notranslate nohighlight">\(L\neq\emptyset\;\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(u\; \leftarrow\arg\min\)</span> dist[<span class="math notranslate nohighlight">\(u\)</span>]<span class="math notranslate nohighlight">\(\;, u\in L\)</span></p></li>
+<li><p><strong>if</strong> <span class="math notranslate nohighlight">\(u = t\)</span>:</p>
+<ol class="arabic simple">
+<li><p><strong>break</strong></p></li>
+</ol>
+</li>
+<li><p>remove <span class="math notranslate nohighlight">\(u\)</span> from <span class="math notranslate nohighlight">\(L\)</span></p></li>
+<li><p><strong>for</strong> <span class="math notranslate nohighlight">\(v\in\)</span> neighbors(<span class="math notranslate nohighlight">\(u\)</span>):</p>
+<ol class="arabic simple">
+<li><p><strong>if</strong> <span class="math notranslate nohighlight">\(v\in L\)</span>:</p>
+<ol class="arabic simple">
+<li><p>new_dist<span class="math notranslate nohighlight">\(\;\leftarrow\)</span> dist[<span class="math notranslate nohighlight">\(u\)</span>] + <span class="math notranslate nohighlight">\(w(u,v)\)</span></p></li>
+<li><p><strong>if</strong> new_dist &lt; dist[<span class="math notranslate nohighlight">\(v\)</span>]:</p>
+<ol class="arabic simple">
+<li><p>dist[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow\)</span> new_dist</p></li>
+<li><p>prev[<span class="math notranslate nohighlight">\(v\)</span>]<span class="math notranslate nohighlight">\(\;\leftarrow u\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>return</strong> dist, prev</p></li>
+</ol>
+</section>
+</div><p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Wikipedia</a></p>
+<p>Let us show how to obtain the SP in <a class="reference internal" href="#diagonal1"><span class="std std-numref">Fig. 5.1</span></a>.</p>
+<p><strong>Iteration 1</strong></p>
+<ul class="simple">
+<li><p>First of all, we visit the neighbors of the source <span class="math notranslate nohighlight">\(s\)</span> (we assume hat <span class="math notranslate nohighlight">\(s\neq t\)</span>). Visiting the neighbors of a node means <strong>expanding</strong> it.</p></li>
+<li><p>To force such a expansion we have set <span class="math notranslate nohighlight">\(dist[s]=0\)</span>. Since <span class="math notranslate nohighlight">\(dist[v]=\infty\)</span> for <span class="math notranslate nohighlight">\(v\neq s\)</span>, this will force to select <span class="math notranslate nohighlight">\(s\)</span> at 3.1.</p></li>
+<li><p>Then <span class="math notranslate nohighlight">\(s\)</span> is removed from <span class="math notranslate nohighlight">\(L\)</span> (step 3.3) because it is different from <span class="math notranslate nohighlight">\(t\)</span> and we proceed to visit its neighbors <span class="math notranslate nohighlight">\(v\)</span> (of <span class="math notranslate nohighlight">\(u\)</span>) which have not been expanded yet (still in <span class="math notranslate nohighlight">\(L\)</span>). See <a class="reference internal" href="#dijkstep1"><span class="std std-numref">Fig. 5.2</span></a> the 6 neighbors of <span class="math notranslate nohighlight">\(s=(2,2)\)</span>. They are explored sequentially (only the ones still belonging to <span class="math notranslate nohighlight">\(L\)</span>) in the <strong>for</strong> loop in 4.1.</p></li>
+<li><p>In the above figure, we put <strong>oriented edges</strong> to show who is the expanded node (origin of the edge) and who are its neighbors (destinations of the edges). This means that the SP search can be traced by a <strong>search tree</strong>!</p></li>
+</ul>
+<figure class="align-center" id="dijkstep1">
+<a class="reference internal image-reference" href="_images/DijkStep1.png"><img alt="_images/DijkStep1.png" src="_images/DijkStep1.png" style="width: 600px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Step 1. Expansion of source node.</span><a class="headerlink" href="#dijkstep1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Therefore, for each neighbor <span class="math notranslate nohighlight">\(v\)</span> of the last expanded node <span class="math notranslate nohighlight">\(u=(2,2)\)</span> we try to update the distance of <span class="math notranslate nohighlight">\(v\)</span> wrt <span class="math notranslate nohighlight">\(u\)</span>. Such a distance is encoded by <span class="math notranslate nohighlight">\(w(u,v)\)</span> which in principle is <span class="math notranslate nohighlight">\(1\)</span> unless we have positive edge weights.</p></li>
+<li><p>The updated distances are stored in <span class="math notranslate nohighlight">\(dist[\;]\)</span> (where we had  <span class="math notranslate nohighlight">\(dist[s]=0\)</span> and <span class="math notranslate nohighlight">\(dist[v]=\infty\)</span> for <span class="math notranslate nohighlight">\(v\neq s\)</span>) so that we can choose the <strong>next candidate node to expand</strong> which at this moment can be only a neighbor of <span class="math notranslate nohighlight">\(u\)</span>. In general it can be any <strong>visited node</strong> (a neighbor of a expanded node) with the smallest distance wrt the source! (the may be many of them).</p></li>
+<li><p>If a visited node becomes a <strong>candidate to expand</strong> we put in <span class="math notranslate nohighlight">\(prev[\;]\)</span> the latest node pointing to it. In this case, all the neighbors of <span class="math notranslate nohighlight">\(s\)</span> are candidates and they are pointed by <span class="math notranslate nohighlight">\(s\)</span>. The only node not pointed by anyone is <span class="math notranslate nohighlight">\(s\)</span> itself, and this is why <span class="math notranslate nohighlight">\(prev[s]=-1\)</span> stays forever.</p></li>
+</ul>
+<p><strong>Iteration 2</strong></p>
+<ul class="simple">
+<li><p>At the end of the first iteration, all the neighbors <span class="math notranslate nohighlight">\(v\)</span> of <span class="math notranslate nohighlight">\(u\)</span> satisfy <span class="math notranslate nohighlight">\(dist[v]=1\)</span> and thus they are equally elegible <strong>to be expanded</strong>.</p></li>
+<li><p>This is a <span style="color:#469ff8"><strong>remarkable feature of Dijkstra</strong>: the algorithm has no idea of what of the candidates is closer to the target. It only knows how far they are from <span class="math notranslate nohighlight">\(s\)</span>. Dijkstra is <strong>blind to the target</strong></span>.</p></li>
+<li><p>See <a class="reference internal" href="#dijkstep2"><span class="std std-numref">Fig. 5.3</span></a>. Casually, the algorithm chooses <span class="math notranslate nohighlight">\((1,1)\)</span> instead of other candidates farther from the target <span class="math notranslate nohighlight">\(t=(0,3)\)</span>.</p></li>
+</ul>
+<figure class="align-center" id="dijkstep2">
+<a class="reference internal image-reference" href="_images/DijkStep2.png"><img alt="_images/DijkStep2.png" src="_images/DijkStep2.png" style="width: 600px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Step 2. Expansion of node <span class="math notranslate nohighlight">\((1,1)\)</span>.</span><a class="headerlink" href="#dijkstep2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Note that some of the neighbors of the latest expanded node <span class="math notranslate nohighlight">\(u=(1,1)\)</span>, namely <span class="math notranslate nohighlight">\((2,1)\)</span> and <span class="math notranslate nohighlight">\((1,2)\)</span>, have been yet visited by the previous expanded node <span class="math notranslate nohighlight">\(s=(2,2)\)</span>. As a result, their entries in <span class="math notranslate nohighlight">\(dist[\;]\)</span> are not <span class="math notranslate nohighlight">\(\infty\)</span> and their distances wrt the source will not change for the moment.</p></li>
+<li><p>Only the distances wrt to the source of <span class="math notranslate nohighlight">\((0,1)\)</span>, <span class="math notranslate nohighlight">\((0,0)\)</span>
+and <span class="math notranslate nohighlight">\((1,0)\)</span> will drop from <span class="math notranslate nohighlight">\(\infty\)</span> to <span class="math notranslate nohighlight">\(2\)</span>. Thus, none of these nodes are candidates to be expanded. Only the <strong>common neighbors of</strong> <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((1,1)\)</span> since they have <span class="math notranslate nohighlight">\(dist[\;]=1&lt;2\)</span>.</p></li>
+<li><p>In particular, node <span class="math notranslate nohighlight">\((1,2)\)</span> will be chosen for expansion in the next iteration.</p></li>
+</ul>
+<p><strong>Iteration 3</strong></p>
+<ul class="simple">
+<li><p>See <a class="reference internal" href="#dijkstep3"><span class="std std-numref">Fig. 5.4</span></a>. Node <span class="math notranslate nohighlight">\(u_3=(1,2)\)</span> is expanded and some of its neighbors, <span class="math notranslate nohighlight">\((2,3)\)</span> and <span class="math notranslate nohighlight">\((0,1)\)</span> are common to the previous expanded nodes <span class="math notranslate nohighlight">\(u_1=s=(2,2)\)</span> and <span class="math notranslate nohighlight">\(u_2=(1,1)\)</span>.</p></li>
+<li><p>Dijkstra will expand any non expanded node of the source <span class="math notranslate nohighlight">\(s=(2,2)\)</span> before considering others since they are closer to it!</p></li>
+<li><p>Actually, the next expanded node is <span class="math notranslate nohighlight">\(u_4=(2,1)\)</span></p></li>
+</ul>
+<figure class="align-center" id="dijkstep3">
+<a class="reference internal image-reference" href="_images/DijkStep3.png"><img alt="_images/DijkStep3.png" src="_images/DijkStep3.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Step 3. Expansion of node <span class="math notranslate nohighlight">\((1,2)\)</span>.</span><a class="headerlink" href="#dijkstep3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Iteration 4, and beyond</strong></p>
+<ul class="simple">
+<li><p>After expanding <span class="math notranslate nohighlight">\(u_4=(2,1)\)</span> it is the turn of <span class="math notranslate nohighlight">\(u_5=(2,3)\)</span> and then <span class="math notranslate nohighlight">\(u_6=(3,2)\)</span>. See <a class="reference internal" href="#dijkstep46"><span class="std std-numref">Fig. 5.5</span></a></p></li>
+</ul>
+<figure class="align-center" id="dijkstep46">
+<a class="reference internal image-reference" href="_images/DijkStep4-6.png"><img alt="_images/DijkStep4-6.png" src="_images/DijkStep4-6.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Steps 4-6. Expansion of nodes <span class="math notranslate nohighlight">\(u_4=(2,1), u_5=(2,3), u_6=(3,2)\)</span>.</span><a class="headerlink" href="#dijkstep46" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>At this point, all the neighbors of the source <span class="math notranslate nohighlight">\(s=(2,2)\)</span> but <span class="math notranslate nohighlight">\(u_7=(3,3)\)</span> have been expanded and after expanding it we will consider nodes far away from the source in more than <span class="math notranslate nohighlight">\(1\)</span> unit.</p></li>
+<li><p>Next nodes to expand will be: <span class="math notranslate nohighlight">\(u_8=(0,0)\)</span>, <span class="math notranslate nohighlight">\(u_9=(0,1)\)</span>, <span class="math notranslate nohighlight">\(u_{10}=(0,2)\)</span>, all at distance <span class="math notranslate nohighlight">\(2\)</span> wrt the source. However the target <span class="math notranslate nohighlight">\(t=(0,3)\)</span>, which is a neighbor of <span class="math notranslate nohighlight">\(u_{10}=(0,2)\)</span> but at distance <span class="math notranslate nohighlight">\(3\)</span> from <span class="math notranslate nohighlight">\(s\)</span>, will not be expanded until all nodes at distance <span class="math notranslate nohighlight">\(2\)</span> wrt <span class="math notranslate nohighlight">\(s\)</span> are expanded: <span class="math notranslate nohighlight">\(u_{11}=(1,0)\)</span>, <span class="math notranslate nohighlight">\(u_{12}=(1,3)\)</span>, <span class="math notranslate nohighlight">\(u_{14}=(2,0)\)</span>, <span class="math notranslate nohighlight">\(u_{15}=(2,4)\)</span>, <span class="math notranslate nohighlight">\(u_{16}=(3,1)\)</span>, <span class="math notranslate nohighlight">\(u_{17}=(3,4)\)</span>, <span class="math notranslate nohighlight">\(u_{18}=(4,2)\)</span>, <span class="math notranslate nohighlight">\(u_{19}=(4,3)\)</span> and <span class="math notranslate nohighlight">\(u_{20}=(4,4)\)</span> (who is a <strong>dead-end</strong> wrt the target). See the state of the search after expanding <span class="math notranslate nohighlight">\(u_{20}=(4,4)\)</span> in <a class="reference internal" href="#dijkstep20"><span class="std std-numref">Fig. 5.6</span></a>:</p></li>
+</ul>
+<figure class="align-center" id="dijkstep20">
+<a class="reference internal image-reference" href="_images/DijkStep20.png"><img alt="_images/DijkStep20.png" src="_images/DijkStep20.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Step 20. Right before expanding the target (which is yet visited long ago).</span><a class="headerlink" href="#dijkstep20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Finally, <span class="math notranslate nohighlight">\(u_{21}=(0,3)=t\)</span> is the firts node at distance <span class="math notranslate nohighlight">\(3\)</span> from the source to be expanded. Actually <span class="math notranslate nohighlight">\((1,4)\)</span> or <span class="math notranslate nohighlight">\((0,3)\)</span> could be expanded before, but we <strong>were lucky and discovered the target</strong> in <span class="math notranslate nohighlight">\(21\)</span> steps!</p></li>
+</ul>
+<p>Therefore, <span style="color:#469ff8">if the target is at distance <span class="math notranslate nohighlight">\(d\)</span> from the source it will be expanded by Dijkstra only when all the nodes at distance <span class="math notranslate nohighlight">\(d-1\)</span> from the source have been expanded yet. This is a <strong>Bread-First Search (BFS)</strong></span>.
+<br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. In <a class="reference internal" href="#exerciseh"><span class="std std-numref">Fig. 5.7</span></a> we show a basic graph <span class="math notranslate nohighlight">\(H\)</span> with the shortest path between the source <span class="math notranslate nohighlight">\(s=(0,0)\)</span> and the target <span class="math notranslate nohighlight">\(t=(2,3)\)</span>. Show: a) the <strong>number of iterations</strong> required by the Dijkstra algorithm as well as the <strong>search tree</strong> with a <strong>possible order of expansion</strong> of the nodes. b) What is the <strong>ratio between visited nodes and total nodes</strong> in <span class="math notranslate nohighlight">\(H\)</span>?.
+</span></p>
+<figure class="align-center" id="exerciseh">
+<a class="reference internal image-reference" href="_images/ExerciseH.png"><img alt="_images/ExerciseH.png" src="_images/ExerciseH.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Basic graph <span class="math notranslate nohighlight">\(H\)</span> for a Dijkstra Exercise.</span><a class="headerlink" href="#exerciseh" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+We commence by expanding the source <span class="math notranslate nohighlight">\(u_1=s=(0,0)\)</span> and then we visit its neigbors <span class="math notranslate nohighlight">\((1,1)\)</span> and <span class="math notranslate nohighlight">\((2,0)\)</span>. Both have a distance <span class="math notranslate nohighlight">\(1\)</span> wrt to the source <span class="math notranslate nohighlight">\(s\)</span>, so we select <span class="math notranslate nohighlight">\(u_2=(2,0)\)</span> for expansion. Next we select <span class="math notranslate nohighlight">\(u_3=(1,1)\)</span> (the other neighbor of the source at distance <span class="math notranslate nohighlight">\(1\)</span>). See the search tree in <a class="reference internal" href="#exerciseh2"><span class="std std-numref">Fig. 5.8</span></a>.
+</span></p>
+<figure class="align-center" id="exerciseh2">
+<a class="reference internal image-reference" href="_images/ExerciseH2.png"><img alt="_images/ExerciseH2.png" src="_images/ExerciseH2.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Search tree after two steps (before expanding <span class="math notranslate nohighlight">\(u_3=(1,1)\)</span>)</span><a class="headerlink" href="#exerciseh2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+When expanding <span class="math notranslate nohighlight">\(u_3=(1,1)\)</span>, only its neighbor <span class="math notranslate nohighlight">\((1,2)\)</span> has not been visited yet. In addition, since all the nodes at distance <span class="math notranslate nohighlight">\(1\)</span> wrt the source have been expanded, we expand <span class="math notranslate nohighlight">\(u_4=(1,2)\)</span> at distance <span class="math notranslate nohighlight">\(2\)</span> from the source and visit its neighbors <span class="math notranslate nohighlight">\((0,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span>. Since they are distance <span class="math notranslate nohighlight">\(3\)</span>, one of them will be expanded once we verify that all nodes at distance <span class="math notranslate nohighlight">\(2\)</span> have been expanded, as it is the case.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then we expand <span class="math notranslate nohighlight">\(u_5=(0,3)\)</span> which is a <strong>dead end</strong> wrt to the target and and finally the target <span class="math notranslate nohighlight">\(u_6=t=(2,3)\)</span>. See the search tree before doing the last expansion in <a class="reference internal" href="#exerciseh3"><span class="std std-numref">Fig. 5.9</span></a>.
+</span>
+<br></br></p>
+<figure class="align-center" id="exerciseh3">
+<a class="reference internal image-reference" href="_images/ExerciseH3.png"><img alt="_images/ExerciseH3.png" src="_images/ExerciseH3.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Search tree before expanding the target.</span><a class="headerlink" href="#exerciseh3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9"> Finally, as we have expanded <em>all the nodes</em>* in <span class="math notranslate nohighlight">\(H\)</span>, the expansion ratio is <span class="math notranslate nohighlight">\(1\)</span>.
+</span></p>
+<p><br></br>
+<strong>Computational Complexity</strong>. How hard is to apply the Dijkstra algorithm wrt the number of nodes <span class="math notranslate nohighlight">\(|V|\)</span> and edges <span class="math notranslate nohighlight">\(|E|\)</span> in a graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>? To that end we use the <a class="reference external" href="https://en.wikipedia.org/wiki/Big_O_notation">Big-O notation</a> (upper bound complexity) that you will study shortly.</p>
+<ul class="simple">
+<li><p>The <strong>for</strong> loop for the distances initialization has complexity <span class="math notranslate nohighlight">\(O(|V|)\)</span>.</p></li>
+<li><p>How many steps can last the <strong>while</strong> loop? In the worst case, we iterate until the list <span class="math notranslate nohighlight">\(L\)</span> is empty. This means that all nodes have been expanded, which in principle means <span class="math notranslate nohighlight">\(O(|V|)\)</span> complexity. However, as many nodes have been expanded before a given one is expanded, we actually need to count the edges of the search tree. As a result, we may have <span class="math notranslate nohighlight">\(O(|E|)\)</span> complexity for <strong>sparse</strong> graphs and <span class="math notranslate nohighlight">\(O(|E|=|V|^2)\)</span> for <strong>dense ones</strong>.</p></li>
+<li><p>Inside the <strong>while</strong> there are two main blocks: (a) computing the <span class="math notranslate nohighlight">\(\arg\min\; dist[]\)</span> and (b) expanding the node <span class="math notranslate nohighlight">\(u\)</span> and visit its neighbors <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<ul>
+<li><p>Computing the <span class="math notranslate nohighlight">\(\arg\min\; dist[]\)</span> is has a rough complexity of <span class="math notranslate nohighlight">\(O(|V|)\)</span>.</p></li>
+<li><p>Running the <strong>for</strong> loop for visiting the u neighbors can be done in <span class="math notranslate nohighlight">\(O(d_{max})\)</span>, where <span class="math notranslate nohighlight">\(d_{max}\)</span> is the maximun degree <span class="math notranslate nohighlight">\(deg(v),v\in V\)</span>.</p></li>
+</ul>
+</li>
+<li><p>So, basically the complexity of the <strong>while</strong> loop is roughly <span class="math notranslate nohighlight">\(O(|E|\cdot|V|)\)</span>.</p></li>
+<li><p>However, as finding the <span class="math notranslate nohighlight">\(\arg\min\; dist[]\)</span> can be optimized for sparse graphs, we may have a worst-case complexity of <span class="math notranslate nohighlight">\(\Theta((|E|+|V|)\log|V|)\)</span> or even better <span class="math notranslate nohighlight">\(\Theta(|E|+|V|\log|V|)\)</span>. Herein <span class="math notranslate nohighlight">\(\Theta(.)\)</span> means “on average”.</p></li>
+<li><p>However, <span style="color:#469ff8">this <strong>almost quadratic</strong> complexity motivates also better algorithmic ways of going more straight to the target!</span></p></li>
+</ul>
+</section>
+<section id="heuristics-and-a-ast">
+<h3><span class="section-number">5.1.2. </span>Heuristics and <span class="math notranslate nohighlight">\(A^{\ast}\)</span><a class="headerlink" href="#heuristics-and-a-ast" title="Permalink to this heading">#</a></h3>
+<p>AI algorithms often rely on <strong>a bit more sophisticated</strong> criteria for exanding a node:</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(g(u)\)</span> an estimation of the shortest path distance <strong>wrt the source</strong> <span class="math notranslate nohighlight">\(g^{\ast}(u)\)</span>. If the graph is not weighted, <span class="math notranslate nohighlight">\(g^{\ast}(u)\)</span> is the length of the shortest path from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(s\)</span>.</p></li>
+<li><p>Now, we introduce <span class="math notranslate nohighlight">\(h(u)\)</span> as an estimation of <span class="math notranslate nohighlight">\(h^{\ast}(u)\)</span>, namely the optimal (shortest) path distance <strong>wrt to the target</strong> <span class="math notranslate nohighlight">\(t\)</span>. This function <span class="math notranslate nohighlight">\(h(.)\)</span> is called the <strong>heuristic</strong>.</p></li>
+</ul>
+<p>Basically, <span class="math notranslate nohighlight">\(g(u)\)</span> estimates the <strong>work yet done</strong>, whereas <span class="math notranslate nohighlight">\(h(u)\)</span> estimates how promising is <span class="math notranslate nohighlight">\(u\)</span> to reach the target <span class="math notranslate nohighlight">\(t\)</span>, i.e. the <strong>work to do</strong>. As a result, the so-called <a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm"><span class="math notranslate nohighlight">\(A^{\ast}\)</span> algorithm</a> consists of modifying the line 4.1.1 of Dijkstra (see <a href="#id3"><span class="problematic" id="id4">AStar</span></a>):</p>
+<div class="proof algorithm admonition" id="AStar">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.2 </span> (<span class="math notranslate nohighlight">\(A^{\ast}\)</span> from Dijkstra)</p>
+<section class="algorithm-content" id="proof-content">
+<ol class="arabic simple" start="4">
+<li><p><strong>for</strong> <span class="math notranslate nohighlight">\(v\in\)</span> neighbors(<span class="math notranslate nohighlight">\(u\)</span>):</p>
+<ol class="arabic simple">
+<li><p><strong>if</strong> <span class="math notranslate nohighlight">\(v\in L\)</span>:</p>
+<ol class="arabic simple">
+<li><p>new_dist<span class="math notranslate nohighlight">\(\;\leftarrow\)</span> <span class="math notranslate nohighlight">\(g(u)+ h(u)\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+</div><p>where <span class="math notranslate nohighlight">\(g(u)=\text{dist}[u] + w(u,v)\)</span>.</p>
+<p>Therefore <span style="color:#469ff8"><span class="math notranslate nohighlight">\(A^{\ast}\)</span> can be seen as an extension of Dijkstra where the node selected for expansion minimizes</span></p>
+<div class="math notranslate nohighlight">
+\[
+f(u) = g(u) + h(u)\;. 
+\]</div>
+<p><strong>Main idea</strong>. The underlying idea of <span class="math notranslate nohighlight">\(A^{\ast}\)</span> is that, Dijkstra uses only <span class="math notranslate nohighlight">\(f(u) = g(u)\)</span> but <span class="math notranslate nohighlight">\(A^{\ast}\)</span> is <strong>more informed</strong> than Dijkstra since it also includes <span class="math notranslate nohighlight">\(h(u)\)</span>, i.e. <span class="math notranslate nohighlight">\(f(u)= g(u)+ h(u)\)</span> as a means of solving draws.</p>
+<p>In other words, if several nodes <span class="math notranslate nohighlight">\(u\)</span> have the same value of <span class="math notranslate nohighlight">\(g(u)\)</span> and they are equally elegible for expansion by Dijkstra, <span class="math notranslate nohighlight">\(A^{\ast}\)</span> selects <span class="math notranslate nohighlight">\(u = \arg\min g(u) + h(u)\)</span>.</p>
+<p>Compare for instance <a class="reference internal" href="#astarexample"><span class="std std-numref">Fig. 5.10</span></a> with <a class="reference internal" href="#dijkstep20"><span class="std std-numref">Fig. 5.6</span></a>. In both cases, we have <span class="math notranslate nohighlight">\(s=(2,2)\)</span> and <span class="math notranslate nohighlight">\(t=(0,3)\)</span>. The <span class="math notranslate nohighlight">\(A^{\ast}\)</span> algorithm proceeds as follows:</p>
+<figure class="align-center" id="astarexample">
+<a class="reference internal image-reference" href="_images/AStarExample.png"><img alt="_images/AStarExample.png" src="_images/AStarExample.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.10 </span><span class="caption-text">Search tree for <span class="math notranslate nohighlight">\(A^{\ast}\)</span>.</span><a class="headerlink" href="#astarexample" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Expand <span class="math notranslate nohighlight">\(u_1=s=(2,2)\)</span> and visit all its neighbors.</p></li>
+<li><p>Expand <span class="math notranslate nohighlight">\(u_2=(1,2)\)</span> since it is the neighbor of <span class="math notranslate nohighlight">\(u_1\)</span> closer to the target <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Expand <span class="math notranslate nohighlight">\(u_3=(2,3)\)</span>, also a neighbor of <span class="math notranslate nohighlight">\(u_1\)</span>. The node <span class="math notranslate nohighlight">\((1,3)\)</span> is not expanded before, despite it is closer to the target <span class="math notranslate nohighlight">\(t\)</span> because it has not been visited yet (it is not a neighbor of <span class="math notranslate nohighlight">\(u_1\)</span>).</p></li>
+<li><p>Similarly, the remaining not-yet-expanded neighbors of <span class="math notranslate nohighlight">\(u_1\)</span> are expanded as follows: <span class="math notranslate nohighlight">\(u_4=(1,1)\)</span>, <span class="math notranslate nohighlight">\(u_5=(2,1)\)</span>, <span class="math notranslate nohighlight">\(u_6=(3,3)\)</span> and <span class="math notranslate nohighlight">\(u_7=(3,2)\)</span>.</p></li>
+<li><p>Next, it is the time to expand the nodes at distance <span class="math notranslate nohighlight">\(2\)</span> from the source <span class="math notranslate nohighlight">\(s\)</span>, prioritizing those closer to the target <span class="math notranslate nohighlight">\(t\)</span>. This results in expanding <span class="math notranslate nohighlight">\(u_8=(0,2)\)</span>, <span class="math notranslate nohighlight">\(u_9=(1,3)\)</span> and <span class="math notranslate nohighlight">\(u_{10}=(0,1)\)</span>.</p></li>
+<li><p>Finally, from them we reach <span class="math notranslate nohighlight">\(u_{11}=t=(0,3)\)</span>, i.e. the target if half iterations than Dijkstra!</p></li>
+</ul>
+<p><strong>How the heuristic is really chosen?</strong> In 2D grids, where each node <span class="math notranslate nohighlight">\(u\)</span> is anchored to a given Euclidean position <span class="math notranslate nohighlight">\(P_u = (x_u,y_u)\)</span>, the heuristic function <span class="math notranslate nohighlight">\(h(.)\)</span> is chosen according to a given <strong>distance</strong>. The most obvious one is the <strong>Euclidean</strong> or <strong>air</strong> distance between <span class="math notranslate nohighlight">\(P_u\)</span> and <span class="math notranslate nohighlight">\(P_t\)</span> (the respective anchorings of <span class="math notranslate nohighlight">\(u\)</span> and the target <span class="math notranslate nohighlight">\(t\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+h_E(u) = \sqrt{|x_u-x_t|^2 + |y_u-y_t|^2}\;. 
+\]</div>
+<p><strong>Admissibility</strong>. Not all distances are compatible with every type of graph. Such a compatibility depends on how  the <strong>optimal/perfect heuristic</strong> is computed. For a grid graph with right diagonals, as the one explored above, the true shortest-path distance <span class="math notranslate nohighlight">\(h^{\ast}(s)\)</span> between <span class="math notranslate nohighlight">\(s=(2,2)\)</span> and <span class="math notranslate nohighlight">\(t=(0,3)\)</span> is <span class="math notranslate nohighlight">\(3\)</span>. One may argue that <strong>we do not know it in advance</strong>, and this is true. Actually, we do not need to know it. We only need to satisfy:</p>
+<div class="math notranslate nohighlight">
+\[
+h(u)\le h^{\ast}(u)\; \forall u\;,
+\]</div>
+<p>so that <span style="color:#469ff8">the <span class="math notranslate nohighlight">\(A^{\ast}\)</span> algorithm guarantees that we find the <strong>optimal/shortest</strong> path</span>. This property of an heuristic function is called <strong>admissibility</strong> and it is ensured by the above minoration, since <span style="color:#469ff8">it bassically says that <strong>we never over-estimate</strong> the distance to the target. Otherwise we could discard an optimal path</span>.</p>
+<p><strong>Checking admissibility</strong>. Using the Pythagorean theorem we can easily show that <span class="math notranslate nohighlight">\(h(u)\le h^{\ast}(u)\; \forall u\;.\)</span> Actually, the Euclidean distance between <span class="math notranslate nohighlight">\(s=(2,2)\)</span> and <span class="math notranslate nohighlight">\(t=(0,3)\)</span> is <span class="math notranslate nohighlight">\(\sqrt{|0-2|^2 + |2-3|^2}=\sqrt{5}&lt;3\)</span>.You can check that such a distance is also valid for any pair of nodes.</p>
+<p>However, consider the <strong>Manhattan Distance</strong></p>
+<div class="math notranslate nohighlight">
+\[
+h_M(u) = |x_u-x_t| + |y_u-y_t|\;, 
+\]</div>
+<p>for grids with right diagonals. Such a distance is even <strong>better informed</strong> than the Euclidean distance since it satisfies <span class="math notranslate nohighlight">\(h_E(s)\le h_M(s)\le h^{\ast}(s)\)</span> for <span class="math notranslate nohighlight">\(s=(2,2)\)</span> and <span class="math notranslate nohighlight">\(t=(0,3)\)</span>, but for <span class="math notranslate nohighlight">\(t=(4,4)\)</span> we have that <span class="math notranslate nohighlight">\(h_M(s)=4&gt;h^{\ast}(s)=2\)</span>. Therefore, <span class="math notranslate nohighlight">\(h_M(.)\)</span> is <strong>not-admissible</strong> for this kind of graphs, although:</p>
+<ul class="simple">
+<li><p>The Manhattan distance it is the optimal choice <span class="math notranslate nohighlight">\(h_M(u)=h^{\ast}(u)\)</span> for <span class="math notranslate nohighlight">\(4-\)</span>neighborhood graphs.</p></li>
+<li><p>The Euclidean distance is the optimal choice <span class="math notranslate nohighlight">\(h_E(u)=h^{\ast}(u)\)</span> for <span class="math notranslate nohighlight">\(8-\)</span>neighborhood graphs (including both right and left diagonals).</p></li>
+</ul>
+<p>The Manhattan distance is a good example of <a class="reference external" href="https://en.wikipedia.org/wiki/Taxicab_geometry">Taxicab Geometry</a>: if we move in a real city, basically we put the nodes at the crossroads and we cannot go through the building blocks. In other words, <span style="color:#469ff8"><strong>we ignore the Euclidean geometry</strong></span> which indeed has many benefits in many applications of AI.</p>
+</section>
+</section>
+<section id="maximum-flow">
+<h2><span class="section-number">5.2. </span>Maximum Flow<a class="headerlink" href="#maximum-flow" title="Permalink to this heading">#</a></h2>
+<section id="bottlenecks-flows-and-capacities">
+<h3><span class="section-number">5.2.1. </span>Bottlenecks, flows and capacities<a class="headerlink" href="#bottlenecks-flows-and-capacities" title="Permalink to this heading">#</a></h3>
+<p>An essential characterization of a graph is to <span style="color:#469ff8">detect whether it has a <strong>bottleneck</strong> and where it is if any</span>.</p>
+<p>Considering herein only <strong>directed graphs</strong> or <strong>digraphs</strong> <span class="math notranslate nohighlight">\(G(V,E)\)</span>, a <span style="color:#469ff8"><strong>bottleneck</strong> <span class="math notranslate nohighlight">\(B\subseteq E\)</span> is a subset <span class="math notranslate nohighlight">\(B\)</span> of the edges <span class="math notranslate nohighlight">\(E\)</span> where the information flow collapses</span>.</p>
+<p>See, for instance, <a class="reference internal" href="#smallflow"><span class="std std-numref">Fig. 5.11</span></a> where we have a directed graph with two <strong>special nodes</strong> <span class="math notranslate nohighlight">\(s=0\)</span> (source) and <span class="math notranslate nohighlight">\(t=5\)</span> (target). In this section, source nodes can  only <strong>send information</strong> (to their <em>successors</em>) whereas target nodes (or sinks) can only <strong>receive information</strong>(from their <em>predecessors</em>).</p>
+<p>Each edge <span class="math notranslate nohighlight">\(e=(u,v)\in E\)</span> is labeled with a <strong>capacity</strong> <span class="math notranslate nohighlight">\(c(u,v)\)</span> which determines the <em>amount of information</em> that can be send through the edge. In this example the source <span class="math notranslate nohighlight">\(s=0\)</span> can send <em>at most</em> <span class="math notranslate nohighlight">\(10\)</span>, say <em>bits of information</em>. Such an amount is called <strong>edge flow</strong> <span class="math notranslate nohighlight">\(f(u,v)\)</span> and it satisfies:</p>
+<ol class="arabic simple">
+<li><p><em>Bounded by capacity.</em> Obviously, the flow along an edge is upper bounded by the edge’s capacity:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\forall (u,v)\in E\;: f(u,v)\le c(u,v)\;.
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><em>Skew symmetry.</em> During flow propagation, the flow from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span> is the opposite of the flow from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\forall (u,v)\in E\;: f(u,v) - f(v,u)\;.
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><em>Flow conservation.</em> The total flow to a node is zero, except for <span class="math notranslate nohighlight">\(s\)</span> that <em>produces</em> flow, and <span class="math notranslate nohighlight">\(t\)</span> that <em>consumes</em> flow:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\forall u\in V\;:u\neq s, u\neq t\Rightarrow \sum_{w\in V}f(u,w) = 0\;,
+\]</div>
+<p>For instance, consider <span class="math notranslate nohighlight">\(e=(2,4)\)</span> in <a class="reference internal" href="#smallflow"><span class="std std-numref">Fig. 5.11</span></a>. Since the capacity of this edge is <span class="math notranslate nohighlight">\(c(2,4)=25\)</span>,  theoretically we could sent <span class="math notranslate nohighlight">\(25\)</span> units of flow from <span class="math notranslate nohighlight">\(2\rightarrow 4\)</span>. However, this is impossible since:</p>
+<ul class="simple">
+<li><p>Node <span class="math notranslate nohighlight">\(2\)</span> can only receive at most <span class="math notranslate nohighlight">\(10\)</span> units from the source and we must satisfy <span class="math notranslate nohighlight">\(f(s,2)=f(2,4)\)</span>.</p></li>
+<li><p>Node <span class="math notranslate nohighlight">\(4\)</span> can only receive at most <span class="math notranslate nohighlight">\(16\)</span> units of flow since <span class="math notranslate nohighlight">\(f(4,1) + f(4,5)\le 16\)</span>.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><em>Losless:</em> The total flow <em>leaving</em> the source <span class="math notranslate nohighlight">\(s\)</span> must be equal to the the total flow <em>reaching</em> the sink <span class="math notranslate nohighlight">\(t\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\sum_{(s,u)\in E} f(s,u) = \sum_{(v,t)\in E} f(v,t)\;.
+\]</div>
+<p>In <a class="reference internal" href="#smallflow"><span class="std std-numref">Fig. 5.11</span></a>, if we send <span class="math notranslate nohighlight">\(10\)</span> units from <span class="math notranslate nohighlight">\(s=0\)</span> to <span class="math notranslate nohighlight">\(1\)</span> and another <span class="math notranslate nohighlight">\(10\)</span> units to <span class="math notranslate nohighlight">\(2\)</span>, the sink <span class="math notranslate nohighlight">\(t=5\)</span> must end receiving <span class="math notranslate nohighlight">\(20\)</span> units. If, for instance, the capacity <span class="math notranslate nohighlight">\(c(4,t)\)</span> where <span class="math notranslate nohighlight">\(5\)</span>, this could not be possible and it would imply that only <span class="math notranslate nohighlight">\(15\)</span> units can be produced at <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<figure class="align-center" id="smallflow">
+<a class="reference internal image-reference" href="_images/SmallFlow.png"><img alt="_images/SmallFlow.png" src="_images/SmallFlow.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Find a bottleneck in a directed graph.</span><a class="headerlink" href="#smallflow" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"> What is the <strong>bottleneck</strong> in the above figure?</span> It seems obvious that the bottleneck is defined by the edges in <span class="math notranslate nohighlight">\(G(V,E)\)</span> with the smallest capacity, i.e. those that can <strong>constrain</strong> information transfer. Clearly, in our simple example the smallest capacity is <span class="math notranslate nohighlight">\(c(1,3)=5\)</span>. Does it mean that we can only produce <span class="math notranslate nohighlight">\(5\)</span> units at <span class="math notranslate nohighlight">\(s\)</span>? Not really, <span style="color:#469ff8">this would happen if <strong>any of the paths</strong> from <span class="math notranslate nohighlight">\(s\rightarrow t\)</span> are <strong>forced to traverse</strong> <span class="math notranslate nohighlight">\(e=(1,3)\)</span></span>. This is the case when the path <span class="math notranslate nohighlight">\(\Gamma = s\rightarrow 2\rightarrow 4\rightarrow t\)</span> doesn’t exist!</p>
+<p>In other words, an edge or set of edges is really a bottleneck if it/them constrain the information flow between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>As a result, it seems reasonable to <span style="color:#469ff8">explore the paths between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> and determine the weakest edges (those with smallest capacities) relative to each path</span>.</p>
+</section>
+<section id="the-ford-fulkerson-method">
+<h3><span class="section-number">5.2.2. </span>The Ford-Fulkerson Method<a class="headerlink" href="#the-ford-fulkerson-method" title="Permalink to this heading">#</a></h3>
+<section id="the-general-method">
+<h4><span class="section-number">5.2.2.1. </span>The general method<a class="headerlink" href="#the-general-method" title="Permalink to this heading">#</a></h4>
+<p>A general approach to find the maximum flow between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> in <a class="reference internal" href="#smallflow"><span class="std std-numref">Fig. 5.11</span></a> could be as follows:</p>
+<ol class="arabic simple">
+<li><p>Find a path <span class="math notranslate nohighlight">\(\Gamma_1\)</span> between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, for instance <span class="math notranslate nohighlight">\(\Gamma_1 = s\rightarrow 1\rightarrow 3\rightarrow t\)</span>.</p></li>
+<li><p>The weakest edge in <span class="math notranslate nohighlight">\(\Gamma_1\)</span> is <strong>the bottleneck of this path</strong>: <span class="math notranslate nohighlight">\(e=(1,3)\)</span> with <span class="math notranslate nohighlight">\(c(1,3)=5\)</span>. This means that the maximum amount of information flowing through <span class="math notranslate nohighlight">\(\Gamma_1\)</span> will be <span class="math notranslate nohighlight">\(f_1 = 5\)</span>.</p></li>
+<li><p>Assign a flow equal to <span class="math notranslate nohighlight">\(5\)</span> to any edge in <span class="math notranslate nohighlight">\(\Gamma_1\)</span>. Then we have</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+f(s,1)=f(1,3)=f(3,t) = f_1 = 5\;.
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Let us discover another path, say <span class="math notranslate nohighlight">\(\Gamma_2 = s\rightarrow 2\rightarrow 4\rightarrow t\)</span>. The bottleneck of <span class="math notranslate nohighlight">\(\Gamma_2\)</span> is given by edges <span class="math notranslate nohighlight">\((s,2)\)</span> and <span class="math notranslate nohighlight">\((4,5)\)</span> with <span class="math notranslate nohighlight">\(c(s,2)=c(4,5)=10\)</span>. As a result, although <span class="math notranslate nohighlight">\(c(2,4)=25\)</span> we can only send <span class="math notranslate nohighlight">\(f_2=10\)</span> units of flow through <span class="math notranslate nohighlight">\(\Gamma_2\)</span>.</p></li>
+<li><p>Assign a flow equal to <span class="math notranslate nohighlight">\(10\)</span> to any edge in <span class="math notranslate nohighlight">\(\Gamma_2\)</span>. Then we have:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+f(s,2)=f(2,4)=f(4,t) = f_2 = 10\;.
+\]</div>
+<p>At this point, the last path between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\Gamma_3 = s\rightarrow 2\rightarrow 4\rightarrow 1\rightarrow 3\rightarrow t\)</span> is <em>no longer explored</em>. Why?</p>
+<ul class="simple">
+<li><p>As the edge <span class="math notranslate nohighlight">\((s,2)\)</span> satisfies that <span class="math notranslate nohighlight">\(c(s,2)=f(s,2)=f_2=10\)</span> (we say that it is <strong>saturated</strong>) we are sure that <em>any other path containing this edge will not return a better flow</em>.</p></li>
+<li><p>Although the edge <span class="math notranslate nohighlight">\((s,1)\)</span> is not saturated,
+(assume in this section to deal with <strong>directed graphs</strong>), path <span class="math notranslate nohighlight">\(\Gamma_1\)</span> contains a <strong>saturated edge</strong> <span class="math notranslate nohighlight">\((1,3)\)</span> with <span class="math notranslate nohighlight">\(c(2,3)=f(s,1)=f_1=5\)</span>.</p></li>
+</ul>
+<p>Then, the resulting <strong>total max-flow</strong> between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> is <span class="math notranslate nohighlight">\(f_1 + f_2 = 5 + 10 = 15\)</span>.</p>
+<p>Therefore, this method, called <span style="color:#469ff8">the <strong>Ford-Fulkerson</strong> method (see <a href="#id5"><span class="problematic" id="id6">Ford_Fulkerson</span></a>) can be summarized as follows:</span></p>
+<ol class="arabic simple">
+<li><p>Set <span class="math notranslate nohighlight">\(i=1\)</span></p></li>
+<li><p><strong>Find an augmenting path</strong> <span class="math notranslate nohighlight">\(\Gamma_i\)</span> and its bottleneck edge/s <span class="math notranslate nohighlight">\(E_i\)</span>. This bottleneck provides the flow <span class="math notranslate nohighlight">\(f_i\)</span> and the corresponding saturated edges <span class="math notranslate nohighlight">\(E_i\)</span>.</p></li>
+<li><p><strong>Update the flows</strong> of all the edges in <span class="math notranslate nohighlight">\(\Gamma_i\)</span>.</p></li>
+<li><p>Stop if no new augmenting paths can be found. Else,increment <span class="math notranslate nohighlight">\(i = i+1\)</span>.</p></li>
+<li><p><strong>Return</strong> the total <strong>max-flow</strong>: <span class="math notranslate nohighlight">\(F=\sum_i f_i\)</span>.</p></li>
+</ol>
+<div class="proof algorithm admonition" id="Ford_Fulkerson">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.3 </span> (Ford–Fulkerson)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a Network <span class="math notranslate nohighlight">\(G=(V,E)\)</span> with flow capacity <span class="math notranslate nohighlight">\(c\)</span>, a source node <span class="math notranslate nohighlight">\(s\)</span>, and a sink node <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Output</strong> Compute a flow <span class="math notranslate nohighlight">\(f\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> of maximum value</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u, v) \leftarrow 0\)</span> for all edges <span class="math notranslate nohighlight">\((u,v)\)</span></p></li>
+<li><p><strong>while</strong> there is a path <span class="math notranslate nohighlight">\(\Gamma\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> in <span class="math notranslate nohighlight">\(G_{f}\)</span> such that <span class="math notranslate nohighlight">\(c_{f}(u,v)&gt;0\)</span>
+for all edges <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Find <span class="math notranslate nohighlight">\(c_{f}(\Gamma)= \min \{c_{f}(u,v):(u,v)\in \Gamma\}\)</span></p></li>
+<li><p><strong>for</strong> each edge <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span></p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u,v) \leftarrow f(u,v) + c_{f}(\Gamma)\)</span> <em>(Send flow along the path)</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(v,u) \leftarrow f(v,u) - c_{f}(\Gamma)\)</span> <em>(The flow might be “returned” later)</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>return</strong> <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+</ol>
+</section>
+</div></section>
+<section id="augmenting-paths-and-residual-graph">
+<h4><span class="section-number">5.2.2.2. </span>Augmenting paths and Residual graph<a class="headerlink" href="#augmenting-paths-and-residual-graph" title="Permalink to this heading">#</a></h4>
+<p>Some interesting elements in the above algorithm are as follows.</p>
+<p><strong>Augmenting paths</strong>. A central concept in this method are the <span class="math notranslate nohighlight">\(s-t\)</span> paths (directed paths between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\Gamma_i\)</span>), proposed at each iteration. They are called <em>augmenting paths</em> because they do not contain any saturated edge.</p>
+<p><strong>Residual graph</strong> <span class="math notranslate nohighlight">\(G_f=(V, E_f, c_f, f)\)</span> is the graph where flows are updated. It works as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_f\)</span> has <span class="math notranslate nohighlight">\(2|E|\)</span> edges, i.e. if <span class="math notranslate nohighlight">\((u,v)\in E\)</span> then we include <strong>both</strong> <span class="math notranslate nohighlight">\((u,v)\)</span> and <span class="math notranslate nohighlight">\((v,u)\)</span> in <span class="math notranslate nohighlight">\(E_f\)</span>.</p></li>
+<li><p>Initially all the edges <span class="math notranslate nohighlight">\((u,v)\in E_f\)</span> have <span class="math notranslate nohighlight">\(f(u,v)=0\)</span> (Step 1)</p></li>
+<li><p>The <strong>residual capacity</strong> <span class="math notranslate nohighlight">\(c(u,v)\in E_f\)</span> is always given by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+c_f(u,v) = c(u,v) - f(u,v)\ge 0\;.
+\]</div>
+<ul class="simple">
+<li><p>In the initial residual graph <span class="math notranslate nohighlight">\(G_f\)</span> (see <a class="reference internal" href="#smallcapacities"><span class="std std-numref">Fig. 5.12</span></a>) we have <span class="math notranslate nohighlight">\(c_f(u,v)=c(u,v)\)</span> for <span class="math notranslate nohighlight">\((u,v)\in E\)</span> and <span class="math notranslate nohighlight">\(c_f(u,v)=0\)</span> otherwise.</p></li>
+</ul>
+<figure class="align-center" id="smallcapacities">
+<a class="reference internal image-reference" href="_images/SmallCapacities.png"><img alt="_images/SmallCapacities.png" src="_images/SmallCapacities.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">Initial residual graph.</span><a class="headerlink" href="#smallcapacities" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The residual graph is an <strong>auxiliary data structure</strong> to keeping track of the current capacity after each update the flows.</p></li>
+<li><p>In addition, the residual graph registers the <strong>current flows</strong>, which always satisfy the above flow properties, in particular <span class="math notranslate nohighlight">\(f(u,v)= - f(v,u)\)</span> for <span class="math notranslate nohighlight">\((u,v)\in E_f\)</span>.</p></li>
+<li><p>Finally, <span style="color:#469ff8">it is very important to note that the <strong>all the edges in <span class="math notranslate nohighlight">\(E_f\)</span></strong> can be used for finding augmenting paths</span>, as we see below.</p></li>
+</ul>
+<p>In <a class="reference internal" href="#smallresult"><span class="std std-numref">Fig. 5.13</span></a>, we show the <strong>final flows</strong> of <span class="math notranslate nohighlight">\(G_f\)</span> for the above example. Can you interpret the results?</p>
+<figure class="align-center" id="smallresult">
+<a class="reference internal image-reference" href="_images/SmallResult.png"><img alt="_images/SmallResult.png" src="_images/SmallResult.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Final flows of the residual graph.</span><a class="headerlink" href="#smallresult" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can see that the two augmented paths discoverd by the algorithm are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\Gamma_1 &amp;= s\rightarrow 1\rightarrow 3\rightarrow t\\
+\Gamma_2 &amp;= s\rightarrow 2\rightarrow 4\rightarrow t\;.\\
+\end{align}
+\end{split}\]</div>
+<p>with respective flows <span class="math notranslate nohighlight">\(f_1=5\)</span> and <span class="math notranslate nohighlight">\(f_2=10\)</span>.
+We know that from the above figure because:</p>
+<ul class="simple">
+<li><p>The two leaving flows from <span class="math notranslate nohighlight">\(s\)</span> are respectively <span class="math notranslate nohighlight">\(f_1=5\)</span> and <span class="math notranslate nohighlight">\(f_2=10\)</span>, exacly the same flows arriving to <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Edge <span class="math notranslate nohighlight">\((4,1)\)</span> is bypassed (it does not appear in any augmenting path) because both edges <span class="math notranslate nohighlight">\((4,1)\)</span> and <span class="math notranslate nohighlight">\((1,4)\)</span> have null flow!</p></li>
+</ul>
+<p><span style="color:#469ff8"><strong>How do we find the augmenting paths?</strong></span> As a result of the previous reasoning, all we need to solve the max-flow problem is to choose properly the augmenting paths <span class="math notranslate nohighlight">\(\Gamma_i\)</span>. Actually, the algorithm for doing that is not specified in the Ford-Fulkerson method. Actually, we can send a random walker from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> at each iteration. However, doing so may increase the complexity of the method.</p>
+<p>Let us exemplify this by the following execution:</p>
+<ol class="arabic simple">
+<li><p>Use the <span class="math notranslate nohighlight">\(G_f\)</span> of <a class="reference internal" href="#smallcapacities"><span class="std std-numref">Fig. 5.12</span></a>.</p></li>
+<li><p>Set all flows to zero <span class="math notranslate nohighlight">\(f(u,v) = 0\;,\forall (u,v)\in E_f\)</span>.</p></li>
+<li><p>Imagine, for instance, that the first augmenting path proposed by a random walker is</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\Gamma_1 = s\rightarrow 2\rightarrow 4\rightarrow 1\rightarrow 3\rightarrow t\;.
+\]</div>
+<p>Looking at <a class="reference internal" href="#smallflow"><span class="std std-numref">Fig. 5.11</span></a>, the bottleneck of <span class="math notranslate nohighlight">\(\Gamma_1\)</span> is given by edge <span class="math notranslate nohighlight">\((1,3)\)</span> with <span class="math notranslate nohighlight">\(c(1,3)=5\)</span>. As a result, all the edges in this path are assigned a flow <span class="math notranslate nohighlight">\(f_1=5\)</span>. The edge <span class="math notranslate nohighlight">\((s,2)\)</span> is clearly <strong>unsaturated</strong>, and therefore it can be used in subsequent paths.</p>
+<ol class="arabic simple" start="4">
+<li><p>For instance, suppose that the second augmenting path proposed by a random walker is <strong>quite shorter</strong> (in terms of the number of edges) than <span class="math notranslate nohighlight">\(\Gamma_1\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\Gamma_2 = s\rightarrow 1\rightarrow 4\rightarrow t\;.
+\]</div>
+<p><span style="color:#469ff8"><strong>Remember</strong>: we can do that because the all the edges in <span class="math notranslate nohighlight">\(E_f\)</span> can be used for finding augmenting paths!</span></p>
+<p>The current flows of the edges in this path are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f(s,1)&amp;=0\;\text{with residual capacity}\; c_f(s,1)=10-0 = 10\\
+f(1,4)&amp;=-5\;\text{with residual capacity}\; c_f(1,4)=0-(-5) = 5\\
+f(4,t)&amp;=0\;\text{with residual capacity}\; c_f(4,t)=10-0 = 10\\
+\end{align}
+\end{split}\]</div>
+<p>and the respective negative values for the reverse edges. The current flows in the other edges are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f(s,2)&amp;=5\;\text{with residual capacity}\; c_f(s,2)=10-5 = 5\\
+f(2,4)&amp;=5\;\text{with residual capacity}\; c_f(2,4)=10-5 = 5\\
+f(4,1)&amp;=5\;\text{with residual capacity}\; c_f(4,1)=6-5 = 1\\
+f(1,3)&amp;=5\;\text{with residual capacity}\; c_f(1,3)=5-5 = 0\\
+f(3,5)&amp;=5\;\text{with residual capacity}\; c_f(3,5)=10-5 = 5\\
+f(s,1)&amp;=f(1,s)=0\;\text{with residual capacity}\; c_f=10-0 = 10\\
+\end{align}
+\end{split}\]</div>
+<p>respective negative values for the reverse edges.</p>
+<p>Since the bottleneck of <span class="math notranslate nohighlight">\(\Gamma_2=s\rightarrow 1\rightarrow 4\rightarrow t\)</span> is given (according to Step 2.1) by</p>
+<div class="math notranslate nohighlight">
+\[
+f_2=\min(c_f(s,1), c_f(1,4), c_f(4,t)) = \min(10, 5, 10) = 5
+\]</div>
+<p>we will update the flows in the edges of <span class="math notranslate nohighlight">\(\Gamma_2\)</span> (Step 2.2) as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f(s,1)&amp;= 0 + 5 = 5\;\text{whereas the reverse flow becomes}\; f(1,s)=0-5 = -5\\
+f(1,4)&amp;=-5+ 5 = 0\;\text{whereas the reverse flow becomes}\; f(4,1)=5-5 = 0\\
+f(4,t)&amp;= 0 + 5 = 5\;\text{whereas the reverse flow becomes}\; f(t,4)=0-5 = -5\;.\\
+\end{align}
+\end{split}\]</div>
+<p>Herein, <strong>we have recovered</strong> the flow <span class="math notranslate nohighlight">\(f(1,4)\)</span> which increases from <span class="math notranslate nohighlight">\(-5\)</span> to <span class="math notranslate nohighlight">\(0\)</span>. Therefore, edges <span class="math notranslate nohighlight">\((1,4)\)</span> and <span class="math notranslate nohighlight">\((4,1)\)</span> are still unsaturated since the capacity is <span class="math notranslate nohighlight">\(6\)</span>.</p>
+<p><span style="color:#469ff8"><strong>Therefore</strong>: the fact that an edge appears with zero flow in the final result happens if it has been part of an augmeted path and then of another in the reverse direction which has <strong>restored the flow</strong>. This is actual <strong>the purpose of Step 2.2</strong></span>.</p>
+</section>
+<section id="sub-optimal-traps">
+<h4><span class="section-number">5.2.2.3. </span>Sub-optimal traps<a class="headerlink" href="#sub-optimal-traps" title="Permalink to this heading">#</a></h4>
+<p>After the second step, note that the total flow is <span class="math notranslate nohighlight">\(f_1 + f_2 = 5 + 5 = 10\)</span> which is not optimal at all (we know that the max-flow for this example is <span class="math notranslate nohighlight">\(15\)</span>).</p>
+<p>Actually, this path <span class="math notranslate nohighlight">\(\Gamma_2 = s\rightarrow 1\rightarrow 4\rightarrow t\)</span> can be taken again. What does happen if <span class="math notranslate nohighlight">\(\Gamma_3=\Gamma_2\)</span>?</p>
+<ul class="simple">
+<li><p>First of all, the flows and current residual capacities of the edges in this path are</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f(s,1)&amp;= 5\;\text{with residual capacity}\; c_f(s,1)=10-5 = 5\\
+f(1,4)&amp;= 0\;\text{with residual capacity}\; c_f(1,4)=6-0 = 6\\
+f(4,t)&amp;= 5\;\text{with residual capacity}\; c_f(4,t)=10-5 = 5\\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Secondly, the bottleneck of this path is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+f_3 = \min(c_f(s,1),c_f(1,4),c_f(4,t)) = \min(5, 6, 5) = 5\;.
+\]</div>
+<ul class="simple">
+<li><p>Then, the new flows for these edges are:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f(s,1)&amp;= 5 + 5 = 10\;\text{whereas the reverse flow becomes}\; f(1,s)=-5-5 = -10\\
+f(1,4)&amp;= 0 + 5 = 5\;\text{whereas the reverse flow becomes}\; f(4,1)=0-5 = -5\\
+f(4,t)&amp;= 5 + 5 = 10\;\text{whereas the reverse flow becomes}\; f(t,4)=-5 -5 = -10\;.\\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>In this way, the total flow is <span class="math notranslate nohighlight">\(f_1 + f_3 = 5 + 5 = 10\)</span>, still suboptimal. However, we have saturated both the edges <span class="math notranslate nohighlight">\((s,1)\)</span> and <span class="math notranslate nohighlight">\((4,t)\)</span> and this path <span class="math notranslate nohighlight">\(\Gamma_3\)</span> can not be used again.</p></li>
+<li><p>Instead of that, we will discover the path</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\Gamma_{4} = s\rightarrow 2\rightarrow 4\rightarrow t\;,
+\]</div>
+<p>which will provide the optimal max-flow: <span class="math notranslate nohighlight">\(f_1 + f_4 = 5 + 10 = 15\)</span>.</p>
+<ul class="simple">
+<li><p>In other words, if we have the bad luck of choosing a path whose edges are not saturated, but the maximum runing through these edges is, say <span class="math notranslate nohighlight">\(f\)</span>, we can re-use this path until the flow of one of it edges reaches <span class="math notranslate nohighlight">\(f\)</span> and gets saturated.</p></li>
+<li><p>As we can potential visit all edges of <span class="math notranslate nohighlight">\(E_f\)</span> (if the unsaturated path is very long), the complexity of this method is <span class="math notranslate nohighlight">\(O(f\cdot|E|)\)</span>, that is, it depends on the value of the maximum flow running through the graph!</p></li>
+<li><p>To fully understand this complexity we propose the following simple exercise.</p></li>
+</ul>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. In <a class="reference internal" href="#smallexercise"><span class="std std-numref">Fig. 5.14</span></a> we show a basic digraph <span class="math notranslate nohighlight">\(G\)</span> with <span class="math notranslate nohighlight">\(s=0\)</span> and <span class="math notranslate nohighlight">\(t=3\)</span>, illustrating the worst case for the Ford-Fulkerson method. It happens if we select alternatively the following paths</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\Gamma_{odd}  &amp;= s\rightarrow 1\rightarrow 2\rightarrow t\\
+\Gamma_{even} &amp;= s\rightarrow 2\rightarrow 1\rightarrow t\\
+\end{align}
+\)</span>
+</span>
+<br></br></p>
+<figure class="align-center" id="smallexercise">
+<a class="reference internal image-reference" href="_images/SmallExercise.png"><img alt="_images/SmallExercise.png" src="_images/SmallExercise.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.14 </span><span class="caption-text">Illustrating the worst case of Ford-Fulkerson.</span><a class="headerlink" href="#smallexercise" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+Remember that <span class="math notranslate nohighlight">\(\Gamma_{even}\)</span> can be selected because we search paths in the residual graph. The initial residual graph <span class="math notranslate nohighlight">\(G_f\)</span> is shown in <a class="reference internal" href="#smallexerciseres"><span class="std std-numref">Fig. 5.15</span></a>
+</span>
+<br></br></p>
+<figure class="align-center" id="smallexerciseres">
+<a class="reference internal image-reference" href="_images/SmallExerciseRes.png"><img alt="_images/SmallExerciseRes.png" src="_images/SmallExerciseRes.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.15 </span><span class="caption-text">Initial residual graph <span class="math notranslate nohighlight">\(G_f\)</span> of the exercise.</span><a class="headerlink" href="#smallexerciseres" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Why this is the worst case of the Ford-Fulkerson method?</strong>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Iteration 1</strong>: After setting all flows to <span class="math notranslate nohighlight">\(0\)</span>, we select the path <span class="math notranslate nohighlight">\(\Gamma_{odd} = s\rightarrow 1\rightarrow 2\rightarrow t\)</span>. Obviously, the bottleneck is given by <span class="math notranslate nohighlight">\(c_f(1,2)=1\)</span>. The resulting flows of the edges in <span class="math notranslate nohighlight">\(\Gamma_{odd}\)</span> and their residual capacities are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+f(s,1)&amp;= 0 + 1 = 1\;\text{with residual capacity}\; c_f(s,1)=100-1 = 99\\
+f(1,s)&amp;= 0 - 1 = -1\;\text{with residual capacity}\; c_f(1,s)=0-(-1) = 1\\
+\mathbf{f(1,2)}&amp;= 0 + 1 = 1\;\text{with residual capacity}\; \mathbf{c_f(1,2)=1-1 = 0}\\
+f(2,1)&amp;= 0 - 1 = -1\;\text{with residual capacity}\; c_f(2,1)=0-(-1) = 1\\
+f(2,t)&amp;= 0 + 1 = 1\;\text{with residual capacity}\; c_f(1,2)=100-1 = 99\\
+f(t,2)&amp;= 0 - 1 = -1\;\text{with residual capacity}\; c_f(t,2)=0-(-1) = 1\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+As a result, edge <span class="math notranslate nohighlight">\((1,2)\)</span> is saturated and we cannot use the path <span class="math notranslate nohighlight">\(\Gamma_{even}\)</span> for the moment.<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Iteration 2</strong>: Let us use then <span class="math notranslate nohighlight">\(\Gamma_{even} = s\rightarrow 2\rightarrow 1\rightarrow t\)</span>, because <span class="math notranslate nohighlight">\(c_f(2,1)=1&gt;0\)</span>. The bottleneck of this path is actually  given by <span class="math notranslate nohighlight">\(c_f(2,1)=1\)</span>. The resulting flows of the edges in <span class="math notranslate nohighlight">\(\Gamma_{even}\)</span> and their residual capacities are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+f(s,2)&amp;= 0 + 1 = 1\;\text{with residual capacity}\; c_f(s,2)=100-1 = 99\\
+f(2,s)&amp;= 0 - 1 = -1\;\text{with residual capacity}\; c_f(2,s)=0-(-1) = 1\\
+\mathbf{f(2,1)}&amp;= -1 + 1 = 0\;\text{with residual capacity}\; \mathbf{c_f(2,1)=0- 0 = 0}\\
+f(1,2)&amp;= 1 - 1 = 0\;\text{with residual capacity}\; c_f(1,2)=1- 0 = 1\\
+f(1,t)&amp;= 0 + 1 = 1\;\text{with residual capacity}\; c_f(1,t)=100-1 = 99\\
+f(t,1)&amp;= 0 - 1 = -1\;\text{with residual capacity}\; c_f(t,1)=0-(-1) = 1\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Iteration 3</strong>: We cannot use <span class="math notranslate nohighlight">\(\Gamma_{even} = s\rightarrow 2\rightarrow 1\rightarrow t\)</span>, because <span class="math notranslate nohighlight">\(c_f(2,1)=0\)</span>, but we can use again <span class="math notranslate nohighlight">\(\Gamma_{odd} = s\rightarrow 1\rightarrow 2\rightarrow t\)</span> since <span class="math notranslate nohighlight">\(c_f(1,2)=1&gt;0\)</span>. Doing so, we have again a bottlenec of <span class="math notranslate nohighlight">\(1\)</span> and:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+f(s,1)&amp;= 1 + 1 = 2\;\text{with residual capacity}\; c_f(s,1)=100-2 = 98\\
+f(1,s)&amp;= - 1 - 1 = -2\;\text{with residual capacity}\; c_f(1,s)=0-(-2) = 2\\
+\mathbf{f(1,2)}&amp;= 0 + 1 = 1\;\text{with residual capacity}\; \mathbf{c_f(1,2)=1-1 = 0}\\
+f(2,1)&amp;= 0 - 1 = -1\;\text{with residual capacity}\; c_f(2,1)=0-(-1) = 1\\
+f(2,t)&amp;= 1 + 1 = 2\;\text{with residual capacity}\; c_f(2,t)=100-2 = 98\\
+f(t,2)&amp;= -1 - 1 = -2\;\text{with residual capacity}\; c_f(t,2)=0-(-2) = 2\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+After three iterations, we have enough evidence to show that:
+</span>
+<br></br>
+<span style="color:#347fc9">
+(a) <strong>Every time we run through <span class="math notranslate nohighlight">\((1,2)\)</span></strong> we push an additional unit of flow through it, thus increasing the flow <span class="math notranslate nohighlight">\(f(s,1)\)</span>, and as a result we saturate this edge <span class="math notranslate nohighlight">\((1,2)\)</span> and we enable the edge <span class="math notranslate nohighlight">\((2,1)\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+(b) Then, <strong>if we choose to run through <span class="math notranslate nohighlight">\((2,1)\)</span></strong>, we increase the flow <span class="math notranslate nohighlight">\(f(s,2)\)</span> and as a result we saturate <span class="math notranslate nohighlight">\((2,1)\)</span> and we enable <span class="math notranslate nohighlight">\((1,2)\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Therefore, after <span class="math notranslate nohighlight">\(2\cdot 100\)</span> iterations, we are able to saturate both <span class="math notranslate nohighlight">\(\Gamma_{odd}\)</span> and <span class="math notranslate nohighlight">\(\Gamma_{even}\)</span>, thus sending <span class="math notranslate nohighlight">\(200\)</span> units. Since each iteration takes almost all the edges in <span class="math notranslate nohighlight">\(E\)</span>, the time complexity if of order <span class="math notranslate nohighlight">\(O(f\cdot |E|)\)</span>.
+</span>
+<br></br></p>
+<p>The <strong>take to home message</strong> of the above exercise is to show that <strong>in the absence of a systematic (not random) way of choosing the paths</strong>, the Ford-Fulkerson method has a complexity which depends on the flow values. If our flows are as those in the example (we have a <em>leaking</em> link <span class="math notranslate nohighlight">\((1,2)\)</span> with a very small flow), this path choosing leads to the worst case of the method.</p>
+</section>
+</section>
+<section id="the-edmonds-karp-method">
+<h3><span class="section-number">5.2.3. </span>The Edmonds-Karp Method<a class="headerlink" href="#the-edmonds-karp-method" title="Permalink to this heading">#</a></h3>
+<p>This method basically addresses exactly the point of <strong>incorporating a systematic way of exploring the augmenting paths</strong>. Basically, it consists in incorporating a BFS (Breadth-First-Search) method, such as the Dijkstra algorithm, in the Step 2 of the Ford-Fulkerson method (see <a href="#id7"><span class="problematic" id="id8">Edmonds_Karp</span></a>).</p>
+<div class="proof algorithm admonition" id="Edmonds_Karp">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.4 </span> (Edmonds-Karp)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a Network <span class="math notranslate nohighlight">\(G=(V,E)\)</span> with flow capacity <span class="math notranslate nohighlight">\(c\)</span>, a source node <span class="math notranslate nohighlight">\(s\)</span>, and a sink node <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Output</strong> Compute a flow <span class="math notranslate nohighlight">\(f\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> of maximum value</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u, v) \leftarrow 0\)</span> for all edges <span class="math notranslate nohighlight">\((u,v)\)</span></p></li>
+<li><p><strong>while</strong> there is a <strong>BFS shortest path</strong> <span class="math notranslate nohighlight">\(\Gamma\)</span> from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(t\)</span> in <span class="math notranslate nohighlight">\(G_{f}\)</span> such that <span class="math notranslate nohighlight">\(c_{f}(u,v)&gt;0\)</span>
+for all edges <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Find <span class="math notranslate nohighlight">\(c_{f}(\Gamma)= \min \{c_{f}(u,v):(u,v)\in \Gamma\}\)</span></p></li>
+<li><p><strong>for</strong> each edge <span class="math notranslate nohighlight">\((u,v) \in \Gamma\)</span></p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(u,v) \leftarrow f(u,v) + c_{f}(\Gamma)\)</span> <em>(Send flow along the path)</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(v,u) \leftarrow f(v,u) - c_{f}(\Gamma)\)</span> <em>(The flow might be “returned” later)</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>return</strong> <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+</ol>
+</section>
+</div><p>Some precisions have to be made at this point:</p>
+<ul class="simple">
+<li><p>The BFS looks for the <strong>shortest paths</strong> (in terms of the number of edges) between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> in the residual graph.</p></li>
+<li><p>Shortest paths are more interesting than random walkers or even DFS (Depth-First Search) because the <strong>longer the path the more probable is to find a leaking edge</strong> (an edge with a very small capacity wrt to others) in it. Long paths usually result in the worst case of the algorithm.</p></li>
+</ul>
+<p>Actually, the worst case of Ford-Fulkerson illustrated in <a class="reference internal" href="#smallexerciseres"><span class="std std-numref">Fig. 5.15</span></a>, is easily avoided by finding the two paths:</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma_1 = s\rightarrow 1\rightarrow t
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma_2 = s\rightarrow 2\rightarrow t
+\]</div>
+<p>thus avoiding the bottleneck edge <span class="math notranslate nohighlight">\((1,2)\)</span> (see <a class="reference internal" href="#smallexerciseresfinal"><span class="std std-numref">Fig. 5.16</span></a>, where the total flow is <span class="math notranslate nohighlight">\(100 + 100 = 200\)</span>).</p>
+<figure class="align-center" id="smallexerciseresfinal">
+<a class="reference internal image-reference" href="_images/SmallExerciseResFinal.png"><img alt="_images/SmallExerciseResFinal.png" src="_images/SmallExerciseResFinal.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.16 </span><span class="caption-text">Final residual graph <span class="math notranslate nohighlight">\(G_f\)</span> of the exercise.</span><a class="headerlink" href="#smallexerciseresfinal" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8"><strong>Therefore</strong>: the fact that an edge appears with zero flow in the final result <strong>also happens</strong> when we avoid this edge (remember that the flow is set to <span class="math notranslate nohighlight">\(0\)</span> initially for all edges).
+</span>.</p>
+<p><strong>Complexity</strong>. Concerning the complexity of Edmonds-Karp (E-K), since each iteration requires to run a BFS algorithm such as Dijkstra, with complexity <span class="math notranslate nohighlight">\(O(|V|\cdot|E|)\)</span> one may expect this complexity for E-K. However:</p>
+<ul class="simple">
+<li><p>On each iteration of the algorithm, the shortest path between the source and all other vertices in the residual graph must increase monotonic. That is, it is always either non-decreasing or increasing. As a result, the path in the real graph is decreasing. This bounds the length of one iteration of Edmonds-Karp to <span class="math notranslate nohighlight">\(O(|E|)\)</span>.</p></li>
+<li><p>No modification to the residual graph ever reduces the distance from the source to any vertex; with this, and the fact that BFS always finds a shortest path, it’s possible to show that after finding at most <span class="math notranslate nohighlight">\(|V|\cdot |E|\)</span>
+augmenting paths, no source-to-sink path remains in the residual graph.</p></li>
+<li><p>Then, the total complexity is <span class="math notranslate nohighlight">\(O(|V|\cdot |E|^2)\)</span>.</p></li>
+</ul>
+<p><br></br>
+<span style="color:#347fc9">
+<strong>Exercise</strong>. In <a class="reference internal" href="#bigexercise"><span class="std std-numref">Fig. 5.17</span></a> we show a digraph <span class="math notranslate nohighlight">\(G\)</span> with <span class="math notranslate nohighlight">\(s=0\)</span> and <span class="math notranslate nohighlight">\(t=10\)</span>, illustrating the general case for the E-K method. Assume that you are given the augmenting paths discovered by the BFS algorithm. In this case we have used the <strong>bidirectional BFS</strong> exploited by Networkx. We have, ayway, the paths:</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\Gamma_{1}  &amp;= s\rightarrow 1\rightarrow 4\rightarrow 7\rightarrow t\\
+\Gamma_{2} &amp;= s\rightarrow 2\rightarrow 5\rightarrow 8\rightarrow t\\
+\Gamma_{3} &amp;= s\rightarrow 3\rightarrow 6\rightarrow 8\rightarrow t\\
+\end{align}
+\)</span>
+</span>
+<br></br></p>
+<figure class="align-center" id="bigexercise">
+<a class="reference internal image-reference" href="_images/BigExercise.png"><img alt="_images/BigExercise.png" src="_images/BigExercise.png" style="width: 600px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.17 </span><span class="caption-text">A more complex E-K example.</span><a class="headerlink" href="#bigexercise" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+The exercise consists in <strong>explaining how these paths contribute to find the maximal flow and what is it</strong>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Iteration 1</strong>. After initializing all the flows in the residual graph as <span class="math notranslate nohighlight">\(f=0\)</span>, let us start by <span class="math notranslate nohighlight">\(
+\Gamma_{1}  = s\rightarrow 1\rightarrow 4\rightarrow 7\rightarrow t\)</span>. Its bottleneck is at edge <span class="math notranslate nohighlight">\(e=(s,1)\)</span> (or at <span class="math notranslate nohighlight">\(e=(7,t)\)</span>) where we have <span class="math notranslate nohighlight">\(c(e)=5\)</span>. Anyway, this leads to the following flows and residual capacities:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{f(s,1)}&amp;= 0 + 5 = 5\;\text{with residual capacity}\; \mathbf{c_f(s,1)}=5-5 = 0\\
+f(1,s)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(1,s)=0-(-5) = 5\\
+f(1,4)&amp;= 0 + 5 = 5\;\text{with residual capacity}\; c_f(1,2)=10-5 = 5\\
+f(4,1)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(2,1)=0-(-5) = 5\\
+f(4,7)&amp;= 0 + 5 = 5\;\text{with residual capacity}\; c_f(4,7)=10-5 = 5\\
+f(7,4)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(4,7)=0-(-5) = 5\\
+\mathbf{f(7,t)}&amp;= 0 + 5 = 5\;\text{with residual capacity}\; \mathbf{c_f(7,10)}=5-5 = 0\\
+f(t,7)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(t,7)=0-(-5) = 5\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This results in the saturation of the bottleneck edges <span class="math notranslate nohighlight">\((s,1)\)</span> and <span class="math notranslate nohighlight">\((7,t)\)</span>. These two edges cannot be used in other augmenting paths. The length of <span class="math notranslate nohighlight">\(\Gamma_1\)</span> in terms of number of edges is <span class="math notranslate nohighlight">\(|\Gamma_1|=4\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Iteration 2</strong>. As we cannot take a path with the saturated edge <span class="math notranslate nohighlight">\((t,1)\)</span> the algorithm picks another shortest path <strong>in the residual graph</strong>. In this case, it takes <span class="math notranslate nohighlight">\(\Gamma_{2} = s\rightarrow 2\rightarrow 5\rightarrow 8\rightarrow t\)</span> also with length <span class="math notranslate nohighlight">\(|\Gamma_2|=4\)</span> as it has <span class="math notranslate nohighlight">\(\Gamma_1\)</span>. The bottleneck is given by the edge <span class="math notranslate nohighlight">\(e=(t,2)\)</span> with capacity <span class="math notranslate nohighlight">\(c(t,2)=10\)</span>. Next, we proceed to update flows and residual capacities:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{f(s,2)}&amp;= 0 + 10 = 10\;\text{with residual capacity}\; \mathbf{c_f(s,2)}=10-10 = 0\\
+f(2,s)&amp;= 0 - 10 = -10\;\text{with residual capacity}\; c_f(2,s)=0-(-10) = 10\\
+f(2,5)&amp;= 0 + 10 = 10\;\text{with residual capacity}\; c_f(1,2)=20-5 = 10\\
+f(5,2)&amp;= 0 - 10 = -10\;\text{with residual capacity}\; c_f(5,2)=0-(-10) = 10\\
+f(5,8)&amp;= 0 + 10 = 10\;\text{with residual capacity}\; c_f(5,8)=30-10 = 20\\
+f(8,5)&amp;= 0 - 10 = -10\;\text{with residual capacity}\; c_f(8,5)=0-(-10) = 10\\
+f(8,t)&amp;= 0 + 10 = 10\;\text{with residual capacity}\; \mathbf{c_f(8,10)}=15-10 = 5\\
+f(t,8)&amp;= 0 - 10 = -10\;\text{with residual capacity}\; c_f(t,8)=0-(-10) = 10\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+This results in the saturation of edge <span class="math notranslate nohighlight">\((t,1)\)</span> and thus we cannot use it in any other paths. At this point, <strong>note that each augmenting path discarts many others in the future</strong> and this is why this motivates the computational complexity described above.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Iteration 3</strong>. The remaining augmenting paths cannot use neither the edge <span class="math notranslate nohighlight">\((s,1)\)</span> not the edge <span class="math notranslate nohighlight">\((s,2)\)</span>. As a result, they must depart from <span class="math notranslate nohighlight">\((s,3)\)</span>. Some of them have length <span class="math notranslate nohighlight">\(4\)</span> (please identify them) but the algorithm chooses <span class="math notranslate nohighlight">\(\Gamma_{3} = s\rightarrow 3\rightarrow 6\rightarrow 8\rightarrow t\)</span> also with length <span class="math notranslate nohighlight">\(|\Gamma_3|=4\)</span>. Its bottleneck is the edges <span class="math notranslate nohighlight">\(e=(t,3)\)</span> and <span class="math notranslate nohighlight">\(e=(6,8)\)</span> with capacities <span class="math notranslate nohighlight">\(c(e)=5\)</span>. This results in the following flows and residual capacities.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\mathbf{f(s,3)}&amp;= 0 + 5 = 5\;\text{with residual capacity}\; \mathbf{c_f(s,3)}=5-5 = 0\\
+f(3,s)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(s,s)=0-(-5) = 5\\
+f(3,6)&amp;= 0 + 5 = 5\;\text{with residual capacity}\; c_f(3,6)=10-5 = 5\\
+f(6,3)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(6,3)=0-(-5) = 5\\
+\mathbf{f(6,8)}&amp;= 0 + 5 = 5\;\text{with residual capacity}\; \mathbf{c_f(6,8)}=5-5 = 0\\
+f(8,6)&amp;= 0 - 5 = -5\;\text{with residual capacity}\; c_f(8,6)=0-(-5) = 5\\
+f(8,t)&amp;= 10 + 5 = 15\;\text{with residual capacity}\; \mathbf{c_f(8,t)}=10-5 = 5\\
+f(t,8)&amp;= -10 - 5 = -15\;\text{with residual capacity}\; c_f(t,8)=0-(-15) = 15\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Total flow</strong>. Since we have <span class="math notranslate nohighlight">\(f_1 = 5\)</span>, <span class="math notranslate nohighlight">\(f_2 = 10\)</span>, and <span class="math notranslate nohighlight">\(f_3 = 5\)</span>, the total flow is <span class="math notranslate nohighlight">\(f_1 + f_2 + f_3 = 20\)</span>.
+</span></p>
+</section>
+</section>
+<section id="cycles-hamiltonian-and-eulerian">
+<h2><span class="section-number">5.3. </span>Cycles: Hamiltonian and Eulerian<a class="headerlink" href="#cycles-hamiltonian-and-eulerian" title="Permalink to this heading">#</a></h2>
+<p>Cycles (circuits) in graphs are very interesting for AIers since they are linked with intriguing combinatorial problems, some of them being NP-Hard. In this regard, it seems convenient to explore one of these problems, namely <span style="color:#469ff8"><strong>The Travelling Salesman Problem</strong> (TSP)</span> where the study of two main types of cycles  <span style="color:#469ff8"><strong>Hamiltonian Cycles</strong></span> and <span style="color:#469ff8"><strong>Eulerian Cycles</strong></span> play a key role.</p>
+<section id="the-travelling-salesman-problem">
+<h3><span class="section-number">5.3.1. </span>The Travelling Salesman Problem<a class="headerlink" href="#the-travelling-salesman-problem" title="Permalink to this heading">#</a></h3>
+<p>A travelling salesman optimizes its visits as follows: He/She has to visit <span class="math notranslate nohighlight">\(n\)</span> cities <span class="math notranslate nohighlight">\(c_1, c_2,\ldots, c_n\)</span> <strong>once</strong> in such a way that after visiting the last city the traveller comes back to the departing one (i.e. we have a cycle). This type of cycle is called a <strong>Hamiltonial cycle</strong>.</p>
+<p>In the <span style="color:#469ff8"><strong>metric version</strong></span> of the problem, each city has associated a location on the plane <span class="math notranslate nohighlight">\((x_i, y_i)\)</span>, meaning that we may exploit the Euclidean distances between cities to decide the optimal strategy. Actually the algorithm must find the <span style="color:#469ff8"><strong>minimum cost cycle</strong></span>. A bit more formally, we must find a permutation <span class="math notranslate nohighlight">\(\pi(1,\ldots,n)\)</span> of the cities so that</p>
+<div class="math notranslate nohighlight">
+\[
+\pi = \arg\min d(\pi(1),\pi(2)) + d(\pi(2),\pi(3)) + \ldots + d(\pi(n-1),\pi(n)) + d(\pi(n),\pi(1))\;.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(d(\pi(i),\pi(j))=\sqrt{(x_{\pi(i)} - x_{\pi(j)})^2 + (y_{\pi(i)} - y_{\pi(j)})^2}\)</span>. Since we have <span class="math notranslate nohighlight">\(n!\)</span> permutations of <span class="math notranslate nohighlight">\(n\)</span> cities, the fact of looking for a specific  permutation, the one leading to the minimum cost, makes the problem NP-Hard. All we can do is to propose <strong>reasonable polynomial approximations</strong>.</p>
+<p>In the following, we are going to specify the steps of the Christophides algorithm (see <a href="#id9"><span class="problematic" id="id10">Christophides</span></a>), which is the approximation used in Networkx.</p>
+<div class="proof algorithm admonition" id="Christophides">
+<p class="admonition-title"><span class="caption-number">Algorithm 5.5 </span> (Christophides)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Given a <strong>complete</strong> graph <span class="math notranslate nohighlight">\(G=(V,E,w)\)</span> with edge weights (distances) <span class="math notranslate nohighlight">\(w:E\rightarrow\mathbb{R}\)</span>,i.e. <span class="math notranslate nohighlight">\(w(i,j)=d(i,j)\)</span>.</p>
+<p><strong>Output</strong> Return a Hamiltonian cycle <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Find a <strong>Minimum Spanning Tree</strong> <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(O\)</span> be the set of nodes with odd degree in <span class="math notranslate nohighlight">\(T\)</span>. Find a <strong>minimum-cost perfect matching</strong> <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p>Add the set of edges of <span class="math notranslate nohighlight">\(M\)</span> to <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Find an <strong>Eulerian Tour</strong> <span class="math notranslate nohighlight">\(\Gamma^0\)</span>.</p></li>
+<li><p><strong>Shortcut</strong> <span class="math notranslate nohighlight">\(\Gamma^0\)</span> to make a Hamiltonian Cycle <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p></li>
+<li><p><strong>return</strong> <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p></li>
+</ol>
+</section>
+</div><p>This algorithm is the one used for approximating the TSP in <a class="reference internal" href="#tsp1"><span class="std std-numref">Fig. 5.18</span></a>, where the route of the traveller is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma = 0\rightarrow 6\rightarrow 1\rightarrow 4\rightarrow 8\rightarrow 3\rightarrow 5\rightarrow 7\rightarrow 2\rightarrow 9\rightarrow 0\;. 
+\]</div>
+<p>For the sake of simplicity, we only show in the figure the closest edges to each of the <span class="math notranslate nohighlight">\(|V|=10\)</span> nodes in <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<figure class="align-center" id="tsp1">
+<a class="reference internal image-reference" href="_images/TSP1.png"><img alt="_images/TSP1.png" src="_images/TSP1.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.18 </span><span class="caption-text">Complete graph and a TSP solution (in bold).</span><a class="headerlink" href="#tsp1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="minimum-spaning-trees">
+<h4><span class="section-number">5.3.1.1. </span>Minimum Spaning Trees<a class="headerlink" href="#minimum-spaning-trees" title="Permalink to this heading">#</a></h4>
+<p>The first step for the above TSP algorithm consists in computing a <strong>Minimum Spanning Tree</strong> (MST).</p>
+<p>First of all, a <strong>tree</strong> is nothing but <em>a graph without cycles</em>. Given the nodes <span class="math notranslate nohighlight">\(V\)</span> of <span class="math notranslate nohighlight">\(G=(V,E,w)\)</span>, we must find a <strong>subgraph</strong> <span class="math notranslate nohighlight">\(T=(V,E',w)\)</span>, with <span class="math notranslate nohighlight">\(E'\subseteq E\)</span>,  satisfying:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is a connected graph, i.e. it <strong>links all the nodes</strong> in <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> <strong>is a tree</strong> i.e. it does not have cycles/circuits.</p></li>
+<li><p>The sum of weights <span class="math notranslate nohighlight">\(\sum_{e'\in E'}w(e')\)</span> is <strong>minimal</strong>.</p></li>
+</ul>
+<p>Finding an MST (a tree <em>spanning</em> all nodes with minimal total cost) can be done in <span class="math notranslate nohighlight">\(O(|E|\log|E|)\)</span>, or in <span class="math notranslate nohighlight">\(O(|E|\log|V|)\)</span> if <span class="math notranslate nohighlight">\(G\)</span> does not have isolated vertices) as follows (<strong>Kruskal’s Algorithm</strong>):</p>
+<ol class="arabic simple">
+<li><p><strong>Sort</strong> all the edges in ascending order according to <span class="math notranslate nohighlight">\(w(e), e\in E\)</span>. Put them in a list <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(T=\emptyset\)</span>.</p></li>
+<li><p>While <span class="math notranslate nohighlight">\(T\)</span> is not connected:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Select the following edge <span class="math notranslate nohighlight">\(e\)</span> of <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(e\)</span> does not form a loop, include it in <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+</ul>
+<figure class="align-center" id="tsp2">
+<a class="reference internal image-reference" href="_images/TSP2.png"><img alt="_images/TSP2.png" src="_images/TSP2.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.19 </span><span class="caption-text">TSP Phase 1: Compute a MST.</span><a class="headerlink" href="#tsp2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span style="color:#469ff8">Concerning the TSP problem, the purpose of finding an MST is actually to find an initial way of connecting all the nodes in <span class="math notranslate nohighlight">\(G\)</span> with minimal cost</span>. Of course, this is not a cycle as we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">TSP2</span></code>, since th TSP is acyclic, but the Christophides algorithm <em>extends the TSP to find a Hamiltonian cycle</em> in the steps to follow.</p>
+</section>
+<section id="min-weight-perfect-matchings">
+<h4><span class="section-number">5.3.1.2. </span>Min-weight Perfect Matchings<a class="headerlink" href="#min-weight-perfect-matchings" title="Permalink to this heading">#</a></h4>
+<p>Given an undirected graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span>, a <strong>matching</strong> <span class="math notranslate nohighlight">\(M\)</span> is a set of <strong>non-adjacent</strong> edges <span class="math notranslate nohighlight">\(E'\subseteq E\)</span> which do not form loops. As a result:</p>
+<ol class="arabic simple">
+<li><p>The edges in <span class="math notranslate nohighlight">\(M\)</span> <strong>do not share common nodes</strong>.</p></li>
+<li><p>The matching <span class="math notranslate nohighlight">\(M\)</span> is called <strong>maximal</strong> if it is not included in any other matching.</p></li>
+<li><p>The matching <span class="math notranslate nohighlight">\(M\)</span> is called <strong>perfect</strong> if it links all the nodes in <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+<li><p>The <strong>Min-weight perfect matchings</strong> is the perfect matching with minimum total weight <span class="math notranslate nohighlight">\(\sum_{e'\in M}w(e')\)</span>. This problem can be solved by the dual of the <strong>Edmond’s Blossom Algorithm</strong> with complexity <span class="math notranslate nohighlight">\(O(|V|^3)\)</span> by first replacing the weights as follows <span class="math notranslate nohighlight">\(w'(e)=(\max\{w(e):e\in E\}+1)-w(e)\)</span> and then finding the <strong>Max-weight perfect matching</strong> with the Blossom’s algorithm.</p></li>
+</ol>
+<p>Concerning the MST problem, we exploit the following properties of perfect matchings:</p>
+<ol class="arabic simple">
+<li><p><span style="color:#469ff8">A graph can only contain a perfect matching when the graph has an <strong>even</strong> number of nodes</span>.</p></li>
+<li><p><span style="color:#469ff8">Perfect matchings are always possible in <strong>complete graphs</strong></span> such as the one used the TSP. Actually, the number of perfect matchings in the complete graphs (of course with an even number of nodes) is the double factorial of the even number of nodes: <span class="math notranslate nohighlight">\(|V|!!\)</span>.</p></li>
+</ol>
+<p>Therefore, <span style="color:#469ff8">before computing the Min-weight Perfect Matching, we remove from <span class="math notranslate nohighlight">\(G\)</span> all the nodes wich have an  odd degree in the MST <span class="math notranslate nohighlight">\(T\)</span></span>. Doing so, we obtain edges with the smallest weights as possible. As we show in  <code class="xref std std-numref docutils literal notranslate"><span class="pre">TSP3</span></code>, where we add the min-weight perfect matching <span class="math notranslate nohighlight">\(M\)</span>, being</p>
+<div class="math notranslate nohighlight">
+\[
+M = \{(3, 8), (4, 1), (9, 2), (0, 6)\}
+\]</div>
+<p>we get <strong>edges incident in the MST</strong>.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/TSP3.png"><img alt="_images/TSP3.png" src="_images/TSP3.png" style="width: 600px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.20 </span><span class="caption-text">TSP Phase 2: Add min-weight Perfect Matching to MST.</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="eulerian-cycles">
+<h4><span class="section-number">5.3.1.3. </span>Eulerian Cycles<a class="headerlink" href="#eulerian-cycles" title="Permalink to this heading">#</a></h4>
+<p>Eulerian cycles (circuits or tours) are cycles where each vertex in the graph is visited once. When the graph is undirected, we consider <span class="math notranslate nohighlight">\((u,v)\neq (v,u)\)</span>. Therefore in the above example, we can use <span class="math notranslate nohighlight">\((3,8)\)</span> and <span class="math notranslate nohighlight">\((8,3)\)</span> but not any of them twice!.</p>
+<p>The name “Eulerian” comes from the mathematician  Leonhard Euler who motivated the problem through the famous Konigsberg-bridges problem. He derived the following <em>necessary condition</em>* for the existence of Eulerian tours in a graph:</p>
+<p><span style="color:#469ff8"><strong>Euler’s Theorem</strong>. A connected graph has an Euler cycle if and only if every vertex has even degree</span>.</p>
+<p>Of course, this condition is satisfied by the TSP graph after removing the vertices with odd degree. Then, a Eulerian tour can be found with complexity <span class="math notranslate nohighlight">\(O(|E|^2)\)</span> with the Fleury’s algorithm.</p>
+<p>In particular, the Eulerian tour found by Networkx in the above example is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma^0 = 0\rightarrow 6\rightarrow 1\rightarrow 4\rightarrow 1\rightarrow 0\rightarrow 8\rightarrow 3\rightarrow 8\rightarrow 5\rightarrow 7\rightarrow 2\rightarrow 9\rightarrow 0\;.
+\]</div>
+<p>All the edges in <span class="math notranslate nohighlight">\(\Gamma^0\)</span> belong to  <span class="math notranslate nohighlight">\(MST\bigcup M\)</span>. All we have to do in order to find a Hamiltonian tour is to <strong>remove the repeated nodes</strong> (shortcult) in <span class="math notranslate nohighlight">\(\Gamma^0\)</span>, thus resulting the solution to the MST:</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma = 0\rightarrow 6\rightarrow 1\rightarrow 4\rightarrow 8\rightarrow 3\rightarrow 5\rightarrow 7\rightarrow 2\rightarrow 9\rightarrow 0\;.
+\]</div>
+</section>
+<section id="optimality-of-the-approximation">
+<h4><span class="section-number">5.3.1.4. </span>Optimality of the approximation<a class="headerlink" href="#optimality-of-the-approximation" title="Permalink to this heading">#</a></h4>
+<p>The Christophides algorithm returns an approximation whose cost is upper_bounded by <span class="math notranslate nohighlight">\(3/2\)</span> times that of the optimal solution (which requires non-polinomial  algorithm).</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Topic2_3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Random walks on graphs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Topic4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Ranking and Partitions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-paths">5.1. Shortest Paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dijkstra-algorithm">5.1.1. Dijkstra Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heuristics-and-a-ast">5.1.2. Heuristics and <span class="math notranslate nohighlight">\(A^{\ast}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-flow">5.2. Maximum Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bottlenecks-flows-and-capacities">5.2.1. Bottlenecks, flows and capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ford-fulkerson-method">5.2.2. The Ford-Fulkerson Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-method">5.2.2.1. The general method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#augmenting-paths-and-residual-graph">5.2.2.2. Augmenting paths and Residual graph</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-optimal-traps">5.2.2.3. Sub-optimal traps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-edmonds-karp-method">5.2.3. The Edmonds-Karp Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles-hamiltonian-and-eulerian">5.3. Cycles: Hamiltonian and Eulerian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-travelling-salesman-problem">5.3.1. The Travelling Salesman Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-spaning-trees">5.3.1.1. Minimum Spaning Trees</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#min-weight-perfect-matchings">5.3.1.2. Min-weight Perfect Matchings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eulerian-cycles">5.3.1.3. Eulerian Cycles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-of-the-approximation">5.3.1.4. Optimality of the approximation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
