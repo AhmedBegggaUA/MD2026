@@ -20,3 +20,4 @@ parts:
   chapters:
   - file: numpy_practice
   - file: pandas
+  - file: plot
