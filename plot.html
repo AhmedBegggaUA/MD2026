@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Matplotlib &#8212; Matemáticas Discreta IA</title>
+    <title>7. Matplotlib &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -98,6 +98,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'plot';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="6. Pandas" href="pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -213,9 +214,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas.html">6. Pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Matplotlib</a></li>
 </ul>
 
     </div>
@@ -364,28 +366,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">Installation and Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-plot">Creating a Plot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-plot">Customizing the Plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-title">Adding a Title</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-labels">Adding Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-legend">Adding a Legend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-color-line-style-and-marker-style">Changing the Color, Line Style, and Marker Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">7.1. Installation and Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-plot">7.2. Creating a Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-plot">7.3. Customizing the Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-title">7.3.1. Adding a Title</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-labels">7.3.2. Adding Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-legend">7.3.3. Adding a Legend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-color-line-style-and-marker-style">7.3.4. Changing the Color, Line Style, and Marker Style</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-plots">Multiple Plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-version">Raw version</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-version">Formatted version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-plots">7.4. Multiple Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-version">7.4.1. Raw version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-version">7.4.2. Formatted version</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-and-matplotlib-a-perfect-combination">Seaborn and Matplotlib, a perfect combination</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Installation and Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Creating a Plot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Multiple Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-and-matplotlib-a-perfect-combination">7.5. Seaborn and Matplotlib, a perfect combination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.5.1. Installation and Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.5.2. Creating a Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5.3. Multiple Plots</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.7. Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -398,10 +400,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
-<h1>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
 <p>In this section, we will learn how to use Matplotlib to create plots. Matplotlib is a plotting library for the Python programming language and its numerical mathematics extension NumPy. It provides an object-oriented API for embedding plots into applications using general-purpose GUI toolkits like Tkinter, wxPython, Qt, or GTK. It is widely used to visualize data and is very useful for data analysis and machine learning.</p>
 <section id="installation-and-setup">
-<h2>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permalink to this heading">#</a></h2>
 <p>To install Matplotlib, you can use pip, a package manager for Python. Run the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
 </pre></div>
@@ -421,7 +423,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-a-plot">
-<h2>Creating a Plot<a class="headerlink" href="#creating-a-plot" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>Creating a Plot<a class="headerlink" href="#creating-a-plot" title="Permalink to this heading">#</a></h2>
 <p>In this section we will see how to create a simple plot using Matplotlib. We will create a simple line plot using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function. The <code class="docutils literal notranslate"><span class="pre">plot</span></code> function takes two arguments, the x-axis and the y-axis. The x-axis is the independent variable and the y-axis is the dependent variable. The <code class="docutils literal notranslate"><span class="pre">plot</span></code> function will plot the y-axis against the x-axis.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -437,7 +439,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-plot">
 <a class="reference internal image-reference" href="_images/plot.png"><img alt="_images/plot.png" src="_images/plot.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the plot</span><a class="headerlink" href="#output-of-the-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#output-of-the-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can also produce a scatter plot using the <code class="docutils literal notranslate"><span class="pre">scatter</span></code> function. The <code class="docutils literal notranslate"><span class="pre">scatter</span></code> function takes two arguments, the x-axis and the y-axis. The <code class="docutils literal notranslate"><span class="pre">scatter</span></code> function will plot the y-axis against the x-axis.</p>
@@ -454,7 +456,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-scatter-plot">
 <a class="reference internal image-reference" href="_images/scatter.png"><img alt="_images/scatter.png" src="_images/scatter.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the scatter plot</span><a class="headerlink" href="#output-of-the-scatter-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Output of the scatter plot</span><a class="headerlink" href="#output-of-the-scatter-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can also draw 3D plots using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function. The <code class="docutils literal notranslate"><span class="pre">plot</span></code> function takes three arguments, the x-axis, the y-axis, and the z-axis. The <code class="docutils literal notranslate"><span class="pre">plot</span></code> function will plot the z-axis against the x-axis and the y-axis.</p>
@@ -477,7 +479,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-3d-plot">
 <a class="reference internal image-reference" href="_images/3d.png"><img alt="_images/3d.png" src="_images/3d.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the 3D plot</span><a class="headerlink" href="#output-of-the-3d-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Output of the 3D plot</span><a class="headerlink" href="#output-of-the-3d-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Also, we can produce a bar plot using the <code class="docutils literal notranslate"><span class="pre">bar</span></code> function. The <code class="docutils literal notranslate"><span class="pre">bar</span></code> function takes two arguments, the x-axis and the y-axis. The <code class="docutils literal notranslate"><span class="pre">bar</span></code> function will plot the y-axis against the x-axis.</p>
@@ -495,7 +497,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-bar-plot">
 <a class="reference internal image-reference" href="_images/bar.png"><img alt="_images/bar.png" src="_images/bar.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the bar plot</span><a class="headerlink" href="#output-of-the-bar-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Output of the bar plot</span><a class="headerlink" href="#output-of-the-bar-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Finally, we can produce a histogram using the <code class="docutils literal notranslate"><span class="pre">hist</span></code> function. The <code class="docutils literal notranslate"><span class="pre">hist</span></code> function takes one argument, the data. The <code class="docutils literal notranslate"><span class="pre">hist</span></code> function will plot the frequency of the data.</p>
@@ -515,16 +517,16 @@ document.write(`
 <figure class="align-center" id="output-of-the-histogram">
 <a class="reference internal image-reference" href="_images/hist.png"><img alt="_images/hist.png" src="_images/hist.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the histogram</span><a class="headerlink" href="#output-of-the-histogram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Output of the histogram</span><a class="headerlink" href="#output-of-the-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This kind of plot is useful to visualize the distribution of the data.</p>
 </section>
 <section id="customizing-the-plot">
-<h2>Customizing the Plot<a class="headerlink" href="#customizing-the-plot" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Customizing the Plot<a class="headerlink" href="#customizing-the-plot" title="Permalink to this heading">#</a></h2>
 <p>In this section we will see how to customize the plot using Matplotlib. We will see how to add a title, labels, and a legend to the plot. Also, we will see how to change the color, the line style, and the marker style of the plot.</p>
 <section id="adding-a-title">
-<h3>Adding a Title<a class="headerlink" href="#adding-a-title" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>Adding a Title<a class="headerlink" href="#adding-a-title" title="Permalink to this heading">#</a></h3>
 <p>To add a title to the plot, you can use the <code class="docutils literal notranslate"><span class="pre">title</span></code> function. The <code class="docutils literal notranslate"><span class="pre">title</span></code> function takes one argument, the title of the plot.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -540,12 +542,12 @@ document.write(`
 <figure class="align-center" id="output-of-the-title">
 <a class="reference internal image-reference" href="_images/title.png"><img alt="_images/title.png" src="_images/title.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the title</span><a class="headerlink" href="#output-of-the-title" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Output of the title</span><a class="headerlink" href="#output-of-the-title" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="adding-labels">
-<h3>Adding Labels<a class="headerlink" href="#adding-labels" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>Adding Labels<a class="headerlink" href="#adding-labels" title="Permalink to this heading">#</a></h3>
 <p>To add labels to the x-axis and y-axis, you can use the <code class="docutils literal notranslate"><span class="pre">xlabel</span></code> and <code class="docutils literal notranslate"><span class="pre">ylabel</span></code> functions. The <code class="docutils literal notranslate"><span class="pre">xlabel</span></code> and <code class="docutils literal notranslate"><span class="pre">ylabel</span></code> functions take one argument, the label of the x-axis and y-axis, respectively.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -562,12 +564,12 @@ document.write(`
 <figure class="align-center" id="output-of-the-labels">
 <a class="reference internal image-reference" href="_images/labels.png"><img alt="_images/labels.png" src="_images/labels.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the labels</span><a class="headerlink" href="#output-of-the-labels" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.7 </span><span class="caption-text">Output of the labels</span><a class="headerlink" href="#output-of-the-labels" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="adding-a-legend">
-<h3>Adding a Legend<a class="headerlink" href="#adding-a-legend" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.3. </span>Adding a Legend<a class="headerlink" href="#adding-a-legend" title="Permalink to this heading">#</a></h3>
 <p>To add a legend to the plot, you can use the <code class="docutils literal notranslate"><span class="pre">legend</span></code> function. The <code class="docutils literal notranslate"><span class="pre">legend</span></code> function takes one argument, the label of the plot.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -583,12 +585,12 @@ document.write(`
 <figure class="align-center" id="output-of-the-legend">
 <a class="reference internal image-reference" href="_images/legend.png"><img alt="_images/legend.png" src="_images/legend.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the legend</span><a class="headerlink" href="#output-of-the-legend" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.8 </span><span class="caption-text">Output of the legend</span><a class="headerlink" href="#output-of-the-legend" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="changing-the-color-line-style-and-marker-style">
-<h3>Changing the Color, Line Style, and Marker Style<a class="headerlink" href="#changing-the-color-line-style-and-marker-style" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.4. </span>Changing the Color, Line Style, and Marker Style<a class="headerlink" href="#changing-the-color-line-style-and-marker-style" title="Permalink to this heading">#</a></h3>
 <p>To change the color, the line style, and the marker style of the plot, you can use the <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">linestyle</span></code>, and <code class="docutils literal notranslate"><span class="pre">marker</span></code> arguments of the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function, respectively.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -604,15 +606,15 @@ document.write(`
 <figure class="align-center" id="output-of-the-custom">
 <a class="reference internal image-reference" href="_images/custom.png"><img alt="_images/custom.png" src="_images/custom.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the custom</span><a class="headerlink" href="#output-of-the-custom" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Output of the custom</span><a class="headerlink" href="#output-of-the-custom" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="multiple-plots">
-<h2>Multiple Plots<a class="headerlink" href="#multiple-plots" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Multiple Plots<a class="headerlink" href="#multiple-plots" title="Permalink to this heading">#</a></h2>
 <section id="raw-version">
-<h3>Raw version<a class="headerlink" href="#raw-version" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.4.1. </span>Raw version<a class="headerlink" href="#raw-version" title="Permalink to this heading">#</a></h3>
 <p>In matplotlib, you can create multiple plots in the same figure using the <code class="docutils literal notranslate"><span class="pre">subplot</span></code> function. The <code class="docutils literal notranslate"><span class="pre">subplot</span></code> function takes three arguments, the number of rows, the number of columns, and the index of the plot.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -632,12 +634,12 @@ document.write(`
 <figure class="align-center" id="output-of-the-multiple-plots">
 <a class="reference internal image-reference" href="_images/multiple.png"><img alt="_images/multiple.png" src="_images/multiple.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the multiple plots</span><a class="headerlink" href="#output-of-the-multiple-plots" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.10 </span><span class="caption-text">Output of the multiple plots</span><a class="headerlink" href="#output-of-the-multiple-plots" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="formatted-version">
-<h3>Formatted version<a class="headerlink" href="#formatted-version" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.4.2. </span>Formatted version<a class="headerlink" href="#formatted-version" title="Permalink to this heading">#</a></h3>
 <p>One of the best ways of creating multiple plots is using <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> objects. This way, you can create a figure and multiple axes, and then plot in each axis.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -668,7 +670,7 @@ document.write(`
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="_images/multiple2.png"><img alt="_images/multiple2.png" src="_images/multiple2.png" style="width: 700px; height: 350px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the multiple plots</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.11 </span><span class="caption-text">Output of the multiple plots</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As you can see, the <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> objects are very useful to create multiple plots in the same figure. Note that this plot was more customized than the previous one. So, do not hesitate to use the <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> objects to create your plots, and visit the <a class="reference external" href="https://matplotlib.org/stable/contents.html">Matplotlib documentation</a> to learn more about the customization of the plots.</p>
@@ -686,10 +688,10 @@ document.write(`
 </section>
 </section>
 <section id="seaborn-and-matplotlib-a-perfect-combination">
-<h2>Seaborn and Matplotlib, a perfect combination<a class="headerlink" href="#seaborn-and-matplotlib-a-perfect-combination" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Seaborn and Matplotlib, a perfect combination<a class="headerlink" href="#seaborn-and-matplotlib-a-perfect-combination" title="Permalink to this heading">#</a></h2>
 <p>Seaborn is a Python data visualization library based on Matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. Seaborn is very useful to visualize complex data, and it is widely used in data analysis and machine learning.</p>
 <section id="id2">
-<h3>Installation and Setup<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>Installation and Setup<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>To install Seaborn, you can use pip, a package manager for Python. Run the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>seaborn
 </pre></div>
@@ -704,7 +706,7 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h3>Creating a Plot<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.2. </span>Creating a Plot<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>In this section we will see how to create a simple plot using Seaborn. We will create a simple line plot using the <code class="docutils literal notranslate"><span class="pre">lineplot</span></code> function. The <code class="docutils literal notranslate"><span class="pre">lineplot</span></code> function takes two arguments, the x-axis and the y-axis. The x-axis is the independent variable and the y-axis is the dependent variable. The <code class="docutils literal notranslate"><span class="pre">lineplot</span></code> function will plot the y-axis against the x-axis.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -721,7 +723,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-seaborn-plot">
 <a class="reference internal image-reference" href="_images/seaborn.png"><img alt="_images/seaborn.png" src="_images/seaborn.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the Seaborn plot</span><a class="headerlink" href="#output-of-the-seaborn-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.12 </span><span class="caption-text">Output of the Seaborn plot</span><a class="headerlink" href="#output-of-the-seaborn-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Also, bar plots, scatter plots, and histograms can be created using Seaborn. The <code class="docutils literal notranslate"><span class="pre">barplot</span></code>, <code class="docutils literal notranslate"><span class="pre">scatterplot</span></code>, and <code class="docutils literal notranslate"><span class="pre">histplot</span></code> functions take two arguments, the x-axis and the y-axis. The <code class="docutils literal notranslate"><span class="pre">barplot</span></code> function will plot the y-axis against the x-axis, the <code class="docutils literal notranslate"><span class="pre">scatterplot</span></code> function will plot the y-axis against the x-axis, and the <code class="docutils literal notranslate"><span class="pre">histplot</span></code> function will plot the frequency of the data.</p>
@@ -740,7 +742,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-seaborn-bar-plot">
 <a class="reference internal image-reference" href="_images/seaborn2.png"><img alt="_images/seaborn2.png" src="_images/seaborn2.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the Seaborn bar plot</span><a class="headerlink" href="#output-of-the-seaborn-bar-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.13 </span><span class="caption-text">Output of the Seaborn bar plot</span><a class="headerlink" href="#output-of-the-seaborn-bar-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -759,7 +761,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-seaborn-scatter-plot">
 <a class="reference internal image-reference" href="_images/seaborn3.png"><img alt="_images/seaborn3.png" src="_images/seaborn3.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the Seaborn scatter plot</span><a class="headerlink" href="#output-of-the-seaborn-scatter-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.14 </span><span class="caption-text">Output of the Seaborn scatter plot</span><a class="headerlink" href="#output-of-the-seaborn-scatter-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -777,12 +779,12 @@ document.write(`
 <figure class="align-center" id="output-of-the-seaborn-histogram">
 <a class="reference internal image-reference" href="_images/seaborn4.png"><img alt="_images/seaborn4.png" src="_images/seaborn4.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the Seaborn histogram</span><a class="headerlink" href="#output-of-the-seaborn-histogram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.15 </span><span class="caption-text">Output of the Seaborn histogram</span><a class="headerlink" href="#output-of-the-seaborn-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id4">
-<h3>Multiple Plots<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.3. </span>Multiple Plots<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>In Seaborn, you can create multiple plots in the same figure using the <code class="docutils literal notranslate"><span class="pre">subplots</span></code> function. The <code class="docutils literal notranslate"><span class="pre">subplots</span></code> function takes two arguments, the number of rows and the number of columns.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -814,18 +816,18 @@ document.write(`
 <figure class="align-center" id="output-of-the-seaborn-multiple-plots">
 <a class="reference internal image-reference" href="_images/seaborn5.png"><img alt="_images/seaborn5.png" src="_images/seaborn5.png" style="width: 700px; height: 350px;" /></a>
 <figcaption>
-<p><span class="caption-text">Output of the Seaborn multiple plots</span><a class="headerlink" href="#output-of-the-seaborn-multiple-plots" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7.16 </span><span class="caption-text">Output of the Seaborn multiple plots</span><a class="headerlink" href="#output-of-the-seaborn-multiple-plots" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As you can see, Seaborn is very useful to visualize complex data, and it is widely used in data analysis and machine learning. Do not hesitate to use Seaborn to visualize your data, and visit the <a class="reference external" href="https://seaborn.pydata.org/">Seaborn documentation</a> to learn more about the customization of the plots.</p>
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>In this section, we have learned how to use Matplotlib to create plots. We have seen how to create a simple plot, a scatter plot, a 3D plot, a bar plot, and a histogram. Also, we have seen how to customize the plot using Matplotlib. We have seen how to add a title, labels, and a legend to the plot. Also, we have seen how to change the color, the line style, and the marker style of the plot. We have also learned how to create multiple plots in the same figure using Matplotlib. Finally, we have learned how to use Seaborn to create plots. We have seen how to create a simple plot, a bar plot, a scatter plot, and a histogram using Seaborn. Also, we have seen how to create multiple plots in the same figure using Seaborn. We hope that this section has been useful to you, and we encourage you to use Matplotlib and Seaborn to visualize your data.</p>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <p>This time is different. We will <strong>be ask you to summarize the content of this section</strong>. We will ask you also to create a Jupyter Notebook and create 4 <strong>different</strong> plots of your choice using Matplotlib and Seaborn. The data that you will use to create the plots is the dataframe that you have already created in the previous section.</p>
 <div class="tip admonition">
 <p class="admonition-title">Hint</p>
@@ -865,6 +867,15 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Pandas</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -880,28 +891,28 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">Installation and Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-plot">Creating a Plot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-plot">Customizing the Plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-title">Adding a Title</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-labels">Adding Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-legend">Adding a Legend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-color-line-style-and-marker-style">Changing the Color, Line Style, and Marker Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">7.1. Installation and Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-plot">7.2. Creating a Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-plot">7.3. Customizing the Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-title">7.3.1. Adding a Title</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-labels">7.3.2. Adding Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-legend">7.3.3. Adding a Legend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-color-line-style-and-marker-style">7.3.4. Changing the Color, Line Style, and Marker Style</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-plots">Multiple Plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-version">Raw version</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-version">Formatted version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-plots">7.4. Multiple Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-version">7.4.1. Raw version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-version">7.4.2. Formatted version</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-and-matplotlib-a-perfect-combination">Seaborn and Matplotlib, a perfect combination</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Installation and Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Creating a Plot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Multiple Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-and-matplotlib-a-perfect-combination">7.5. Seaborn and Matplotlib, a perfect combination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.5.1. Installation and Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.5.2. Creating a Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5.3. Multiple Plots</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.7. Exercises</a></li>
 </ul>
   </nav></div>
 
