@@ -430,20 +430,16 @@ height: 500px
 Output of the plot
 ```
 
-## Conclusion
-
-In this section, we have learned how to create a graph, add nodes and edges, access the nodes and edges, access the attributes of the nodes and edges, access the neighbors of a node, access the degree of a node, access the number of nodes and edges, access the adjacency matrix, access the degree matrix, access the Laplacian matrix, and visualize the graph. In the next section, we will learn how to analyze the graph and perform some operations on the graph.
-
 ## Exercises
 ### Exercise 1
-After reading the previous section, you should be able to create your first Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook. 
+After reading the previous section, you should be able to create your  Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook. 
 ### Exercise 2
 After what we saw in class, you should be able to your own graph from your pandas dataframe. Once you have created the graph, you should be able to visualize it in the best way possible.
 
 ```{hint}
 This is temporally
 ```python
-# Now we are going to performe a random walk on the graph
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
