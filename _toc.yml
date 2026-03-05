@@ -21,3 +21,4 @@ parts:
   chapters:
   - file: pandas
   - file: plot
+  - file: networkx
