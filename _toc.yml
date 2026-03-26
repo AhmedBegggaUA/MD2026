@@ -22,3 +22,6 @@ parts:
   - file: pandas
   - file: plot
   - file: networkx
+- caption: Practice 3
+  chapters:
+  - file: graph_generation
