@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>9. Graph Generation &#8212; Matemáticas Discreta IA</title>
+    <title>11. Graph Generation &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -96,8 +96,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'graph_generation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10. Graph Exploration BFS" href="graph_exploration_bfs.html" />
-    <link rel="prev" title="8. NetworkX" href="networkx.html" />
+    <link rel="next" title="12. Graph Exploration BFS" href="graph_exploration_bfs.html" />
+    <link rel="prev" title="10. NetworkX" href="networkx.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -216,22 +216,32 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">6. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">7. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">6. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">7. Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networkx.html">8. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">8. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">9. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">10. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">10. Graph Exploration BFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">11. Graph Exploration DFS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">12. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">13. Graph Exploration DFS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">14. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">15. Assignment 07/24</a></li>
 </ul>
 
     </div>
@@ -380,23 +390,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-graphs">9.1. Synthetic Graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-graphs">9.1.1. Random Graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-renyi-model">9.1.1.1. Erdős-Rényi Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#barabasi-albert-model">9.1.1.2. Barabási-Albert Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-graphs">11.1. Synthetic Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-graphs">11.1.1. Random Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-renyi-model">11.1.1.1. Erdős-Rényi Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#barabasi-albert-model">11.1.1.2. Barabási-Albert Model</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-world-graphs">9.1.2. Small-World Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-graphs">9.1.3. Tree Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-model">9.1.4. Stochastic Block Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-world-graphs">11.1.2. Small-World Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-graphs">11.1.3. Tree Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-model">11.1.4. Stochastic Block Model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-properties">9.2. Graph Properties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.3. Conclusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.4. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">9.4.1. Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">9.4.2. Exercise 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">9.4.3. Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-properties">11.2. Graph Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.3. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">11.4. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">11.4.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">11.4.2. Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">11.4.3. Exercise 3</a></li>
 </ul>
 </li>
 </ul>
@@ -411,16 +421,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="graph-generation">
-<h1><span class="section-number">9. </span>Graph Generation<a class="headerlink" href="#graph-generation" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Graph Generation<a class="headerlink" href="#graph-generation" title="Permalink to this heading">#</a></h1>
 <p>In this section, we will discuss how to generate a graph using the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library. Specifically, we will study how to create synthetic graphs, that they are not real-world graphs but are useful for testing and benchmarking algorithms. Also, we will see some important graph properties that can be used to analyze the structure of a graph.</p>
 <section id="synthetic-graphs">
-<h2><span class="section-number">9.1. </span>Synthetic Graphs<a class="headerlink" href="#synthetic-graphs" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Synthetic Graphs<a class="headerlink" href="#synthetic-graphs" title="Permalink to this heading">#</a></h2>
 <p>A synthetic graph is a graph that is generated artificially, rather than being extracted from real-world data. These graphs are useful for testing and benchmarking algorithms, as they allow us to control the graph’s properties and structure. In this section, we will discuss how to generate synthetic graphs using the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library.</p>
 <section id="random-graphs">
-<h3><span class="section-number">9.1.1. </span>Random Graphs<a class="headerlink" href="#random-graphs" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.1.1. </span>Random Graphs<a class="headerlink" href="#random-graphs" title="Permalink to this heading">#</a></h3>
 <p>One of the simplest types of synthetic graphs is a random graph. A random graph is a graph in which the edges are generated randomly, subject to certain constraints. There are several models for generating random graphs, such as the Erdős-Rényi model and the Barabási-Albert model.</p>
 <section id="erdos-renyi-model">
-<h4><span class="section-number">9.1.1.1. </span>Erdős-Rényi Model<a class="headerlink" href="#erdos-renyi-model" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">11.1.1.1. </span>Erdős-Rényi Model<a class="headerlink" href="#erdos-renyi-model" title="Permalink to this heading">#</a></h4>
 <p>The Erdős-Rényi model is one of the most well-known models for generating random graphs. In this model, we start with a fixed number of nodes and add edges between pairs of nodes with a certain probability. The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library provides a function <code class="docutils literal notranslate"><span class="pre">networkx.erdos_renyi_graph</span></code> to generate random graphs using the Erdős-Rényi model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -443,13 +453,13 @@ document.write(`
 <figure class="align-center" id="random-graph">
 <a class="reference internal image-reference" href="_images/random_graph.png"><img alt="_images/random_graph.png" src="_images/random_graph.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Random Graph (Erdős-Rényi Model)</span><a class="headerlink" href="#random-graph" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">Random Graph (Erdős-Rényi Model)</span><a class="headerlink" href="#random-graph" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the code snippet above, we generate a random graph with 10 nodes and an edge probability of 0.3 using the Erdős-Rényi model. We then visualize the graph using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library.</p>
 </section>
 <section id="barabasi-albert-model">
-<h4><span class="section-number">9.1.1.2. </span>Barabási-Albert Model<a class="headerlink" href="#barabasi-albert-model" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">11.1.1.2. </span>Barabási-Albert Model<a class="headerlink" href="#barabasi-albert-model" title="Permalink to this heading">#</a></h4>
 <p>The Barabási-Albert model is another popular model for generating random graphs. In this model, we start with a small number of nodes and add new nodes with a preferential attachment mechanism, where nodes with higher degrees are more likely to receive new edges. The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library provides a function <code class="docutils literal notranslate"><span class="pre">networkx.barabasi_albert_graph</span></code> to generate random graphs using the Barabási-Albert model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Generate a random graph with 10 nodes and preferential attachment parameter m=2</span>
@@ -469,14 +479,14 @@ document.write(`
 <figure class="align-center" id="barabasi-albert-graph">
 <a class="reference internal image-reference" href="_images/barabasi_albert_graph.png"><img alt="_images/barabasi_albert_graph.png" src="_images/barabasi_albert_graph.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Random Graph (Barabási-Albert Model)</span><a class="headerlink" href="#barabasi-albert-graph" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.2 </span><span class="caption-text">Random Graph (Barabási-Albert Model)</span><a class="headerlink" href="#barabasi-albert-graph" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the code snippet above, we generate a random graph with 10 nodes and a preferential attachment parameter <code class="docutils literal notranslate"><span class="pre">m=2</span></code> using the Barabási-Albert model. We then visualize the graph using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library.</p>
 </section>
 </section>
 <section id="small-world-graphs">
-<h3><span class="section-number">9.1.2. </span>Small-World Graphs<a class="headerlink" href="#small-world-graphs" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.1.2. </span>Small-World Graphs<a class="headerlink" href="#small-world-graphs" title="Permalink to this heading">#</a></h3>
 <p>Another interesting type of synthetic graph is a small-world graph. Small-world graphs are characterized by having a small average shortest path length between nodes, similar to real-world social networks. The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library provides a function <code class="docutils literal notranslate"><span class="pre">networkx.watts_strogatz_graph</span></code> to generate small-world graphs using the Watts-Strogatz model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a small-world graph with 10 nodes, average degree 4, and rewiring probability 0.3</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">watts_strogatz_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
@@ -495,13 +505,13 @@ document.write(`
 <figure class="align-center" id="small-world-graph">
 <a class="reference internal image-reference" href="_images/small_world_graph.png"><img alt="_images/small_world_graph.png" src="_images/small_world_graph.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Small-World Graph (Watts-Strogatz Model)</span><a class="headerlink" href="#small-world-graph" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.3 </span><span class="caption-text">Small-World Graph (Watts-Strogatz Model)</span><a class="headerlink" href="#small-world-graph" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the code snippet above, we generate a small-world graph with 10 nodes, an average degree of 4, and a rewiring probability of 0.3 using the Watts-Strogatz model. We then visualize the graph using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library.</p>
 </section>
 <section id="tree-graphs">
-<h3><span class="section-number">9.1.3. </span>Tree Graphs<a class="headerlink" href="#tree-graphs" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.1.3. </span>Tree Graphs<a class="headerlink" href="#tree-graphs" title="Permalink to this heading">#</a></h3>
 <p>A tree is a connected acyclic graph, meaning that there are no cycles in the graph. Trees are a fundamental data structure in computer science and are used in various algorithms and data structures. The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library provides a function <code class="docutils literal notranslate"><span class="pre">networkx.random_tree</span></code> to generate random tree graphs.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a random tree graph with 10 nodes</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_tree</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -520,13 +530,13 @@ document.write(`
 <figure class="align-center" id="random-tree-graph">
 <a class="reference internal image-reference" href="_images/random_tree_graph.png"><img alt="_images/random_tree_graph.png" src="_images/random_tree_graph.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">Random Tree Graph</span><a class="headerlink" href="#random-tree-graph" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.4 </span><span class="caption-text">Random Tree Graph</span><a class="headerlink" href="#random-tree-graph" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the code snippet above, we generate a random tree graph with 10 nodes using the <code class="docutils literal notranslate"><span class="pre">networkx.random_tree</span></code> function. We then visualize the graph using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library.</p>
 </section>
 <section id="stochastic-block-model">
-<h3><span class="section-number">9.1.4. </span>Stochastic Block Model<a class="headerlink" href="#stochastic-block-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.1.4. </span>Stochastic Block Model<a class="headerlink" href="#stochastic-block-model" title="Permalink to this heading">#</a></h3>
 <p>The stochastic block model is a generative model for random graphs that captures the community structure of the graph. In this model, nodes are divided into blocks or communities, and edges are generated between nodes based on the block they belong to. The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library provides a function <code class="docutils literal notranslate"><span class="pre">networkx.stochastic_block_model</span></code> to generate random graphs using the stochastic block model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a random graph with 2 blocks of 20 nodes each</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">stochastic_block_model</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span>
@@ -549,14 +559,14 @@ document.write(`
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="_images/stochastic_block_model.png"><img alt="_images/stochastic_block_model.png" src="_images/stochastic_block_model.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Stochastic Block Model</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.5 </span><span class="caption-text">Stochastic Block Model</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the code snippet above, we generate a random graph with 2 blocks of 20 nodes each using the stochastic block model. We then visualize the graph using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library.</p>
 </section>
 </section>
 <section id="graph-properties">
-<h2><span class="section-number">9.2. </span>Graph Properties<a class="headerlink" href="#graph-properties" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Graph Properties<a class="headerlink" href="#graph-properties" title="Permalink to this heading">#</a></h2>
 <p>Once we have generated a graph, we can analyze its properties to gain insights into its structure. Some important graph properties that can be computed using the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library include:</p>
 <ul class="simple">
 <li><p><strong>Number of Nodes and Edges</strong>: The number of nodes and edges in a graph can be computed using the <code class="docutils literal notranslate"><span class="pre">networkx.number_of_nodes</span></code> and <code class="docutils literal notranslate"><span class="pre">networkx.number_of_edges</span></code> functions, respectively.</p></li>
@@ -569,17 +579,17 @@ document.write(`
 </ul>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">9.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>In this section, we have discussed how to generate synthetic graphs using the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library. We have explored different models for generating random graphs, such as the Erdős-Rényi model, the Barabási-Albert model, and the Watts-Strogatz model. We have also seen how to generate tree graphs and stochastic block model graphs. Finally, we have discussed some important graph properties that can be computed using the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> library. These properties can help us analyze the structure of a graph and gain insights into its properties.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">9.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="exercise-1">
-<h3><span class="section-number">9.4.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p>After reading the previous section, you should be able to create your first Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook.</p>
 </section>
 <section id="exercise-2">
-<h3><span class="section-number">9.4.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>NO PUEDE ESTAR DESCONECTADO EL GRAFO. USAR LA MISMA POS PARA EL DRAW, SI NO, SE CASTIGARÁ. JUSTIFICACIÓN EXTENSA Y CON SENTIDO. NADA DE COSAS OBVIAS.</p>
@@ -591,7 +601,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-3">
-<h3><span class="section-number">9.4.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>SOLO LOS DOS SBMS GENERADOS EN EL EJERCICIO 2.</p>
@@ -656,7 +666,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>NetworkX</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>NetworkX</p>
       </div>
     </a>
     <a class="right-next"
@@ -664,7 +674,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Graph Exploration BFS</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Graph Exploration BFS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -684,23 +694,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-graphs">9.1. Synthetic Graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-graphs">9.1.1. Random Graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-renyi-model">9.1.1.1. Erdős-Rényi Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#barabasi-albert-model">9.1.1.2. Barabási-Albert Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-graphs">11.1. Synthetic Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-graphs">11.1.1. Random Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-renyi-model">11.1.1.1. Erdős-Rényi Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#barabasi-albert-model">11.1.1.2. Barabási-Albert Model</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-world-graphs">9.1.2. Small-World Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-graphs">9.1.3. Tree Graphs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-model">9.1.4. Stochastic Block Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-world-graphs">11.1.2. Small-World Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-graphs">11.1.3. Tree Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-model">11.1.4. Stochastic Block Model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-properties">9.2. Graph Properties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.3. Conclusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.4. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">9.4.1. Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">9.4.2. Exercise 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">9.4.3. Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-properties">11.2. Graph Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.3. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">11.4. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">11.4.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">11.4.2. Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">11.4.3. Exercise 3</a></li>
 </ul>
 </li>
 </ul>

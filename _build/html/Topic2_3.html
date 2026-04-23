@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Random walks on graphs &#8212; Matemáticas Discreta IA</title>
+    <title>4. Random walks on graphs &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -98,6 +98,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Topic2_3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Paths, Flows and Cycles" href="Topic3.html" />
+    <link rel="prev" title="3. Probability" href="Topic2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -216,22 +218,32 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">4. Introduction to the practical part of MD2025</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">5. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">6. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">7. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">6. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">7. Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networkx.html">8. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">8. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">9. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">10. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">9. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">10. Graph Exploration BFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">11. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">11. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">12. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">13. Graph Exploration DFS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">14. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">15. Assignment 07/24</a></li>
 </ul>
 
     </div>
@@ -380,12 +392,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">Markov chains</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrence-relations">Recurrence relations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-in-2d">Random walks in 2D</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">Markov chains and equilibrium</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">Shuffling cards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">4.1. Markov chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrence-relations">4.2. Recurrence relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-in-2d">4.3. Random walks in 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">4.4. The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">4.4.1. Markov chains and equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">4.4.2. Shuffling cards</a></li>
 </ul>
 </li>
 </ul>
@@ -400,9 +412,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="random-walks-on-graphs">
-<h1>Random walks on graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Random walks on graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h1>
 <section id="markov-chains">
-<h2>Markov chains<a class="headerlink" href="#markov-chains" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Markov chains<a class="headerlink" href="#markov-chains" title="Permalink to this heading">#</a></h2>
 <p>So far, we have studied both <strong>independent random processes</strong> and <strong>conditional random processes</strong>. In this regard, when we have independence, our random process is a <em>simple random walk</em> (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">RWrand</span></code>). However, when the variables in the random process are fully conditioned, the corresponding random process is more difficult to study unless we have a martingale. Fortunately, <span style="color:#469ff8">there is something in between the simplicity of independent random processes and the full conditioning of the martingale: we refer to <strong>Markov chains</strong></span>.</p>
 <p><strong>Markov chain</strong>. A <em>sequence</em> of random variables <span class="math notranslate nohighlight">\(X_0,X_1,\ldots\)</span> is a Markov chain if for all possible <em>states</em> (values of the random variables) <span class="math notranslate nohighlight">\(x_{t+1},x_{t},\ldots,x_1\)</span> we have:</p>
 <div class="math notranslate nohighlight">
@@ -443,7 +455,7 @@ d_i = \text{gcd}(t\in\{1,2,\ldots\}: p_{ii}(t)&gt;0)
 <figure class="align-center" id="drunk">
 <a class="reference internal image-reference" href="_images/Drunk.png"><img alt="_images/Drunk.png" src="_images/Drunk.png" style="width: 750px; height: 100px;" /></a>
 <figcaption>
-<p><span class="caption-text">A graph for the drunkard’s walk.</span><a class="headerlink" href="#drunk" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">A graph for the drunkard’s walk.</span><a class="headerlink" href="#drunk" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Actually, the edges of the above graph are <span class="math notranslate nohighlight">\(E=\{(0,0),(1,0),(1,2),(2,1)\ldots,(4,5),(5,5)\}\)</span></p>
@@ -475,12 +487,12 @@ a_{ij}=
 <p>Apparently, all the non-absorbing states reach <span class="math notranslate nohighlight">\(x=5\)</span> <em>equally slowly</em>. <strong>However this is misleading</strong>. Actually, most of the paths reach <span class="math notranslate nohighlight">\(x=5\)</span> very early. This suggests that the probability of reaching <span class="math notranslate nohighlight">\(x=5\)</span> from any non-absorbing state <em>is not uniform</em>. This leads us to the answer the first question to solve about a random walk: what is the probability of ending <span class="math notranslate nohighlight">\(\text{Home}\)</span>.</p>
 </section>
 <section id="recurrence-relations">
-<h2>Recurrence relations<a class="headerlink" href="#recurrence-relations" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Recurrence relations<a class="headerlink" href="#recurrence-relations" title="Permalink to this heading">#</a></h2>
 <p>Before addressing the <strong>two fundamental questions</strong> for a MCRW: (a) where does it converge to, and (b) how long does it take, it is important to note that the remainder of this section requires some practice with algebraic solvers of recurrent relations, namely <strong>linear difference equations</strong>. They are very practical tools that are explained in the excellent <a class="reference external" href="https://mpaldridge.github.io/math2750/">Github of Mathew Aldridge</a> and even in the <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients">Wikipedia</a>. The examples below have been adapted from the first source and solve some of the exercises in <a class="reference external" href="https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf">Random Walks and Electric Networks</a> by Doyle and Snell.</p>
 <figure class="align-center" id="drunkard">
 <a class="reference internal image-reference" href="_images/Drunkard.png"><img alt="_images/Drunkard.png" src="_images/Drunkard.png" style="width: 800px; height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Patterns of generated drunkard’s walks.</span><a class="headerlink" href="#drunkard" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Patterns of generated drunkard’s walks.</span><a class="headerlink" href="#drunkard" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span style="color:#469ff8"><strong>Q1.</strong> What is the probability of ending at <span class="math notranslate nohighlight">\(\text{Home}\)</span> if we start from the non-absorbing state <span class="math notranslate nohighlight">\(x\)</span>?</span></p>
@@ -644,7 +656,7 @@ r_n =
 <figure class="align-center" id="drunkpq">
 <a class="reference internal image-reference" href="_images/Drunkpq.png"><img alt="_images/Drunkpq.png" src="_images/Drunkpq.png" style="width: 800px; height: 100px;" /></a>
 <figcaption>
-<p><span class="caption-text">Graph for biased drunkard’s walks.</span><a class="headerlink" href="#drunkpq" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Graph for biased drunkard’s walks.</span><a class="headerlink" href="#drunkpq" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If <span class="math notranslate nohighlight">\(q\ll p\)</span>, then <span class="math notranslate nohighlight">\(p(x)\rightarrow 1\)</span> since we are drifted to the right. Symmetrically, if <span class="math notranslate nohighlight">\(q\gg p\)</span>, then <span class="math notranslate nohighlight">\(p(x)\rightarrow 0\)</span> since <span class="math notranslate nohighlight">\(m&gt;n\)</span>.</p>
@@ -657,7 +669,7 @@ r_n =
 <figure class="align-center" id="drunkardpq">
 <a class="reference internal image-reference" href="_images/Drunkardpq.png"><img alt="_images/Drunkardpq.png" src="_images/Drunkardpq.png" style="width: 800px; height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Patterns of generated biased drunkard’s walks with <span class="math notranslate nohighlight">\(p=0.25\)</span>.</span><a class="headerlink" href="#drunkardpq" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Patterns of generated biased drunkard’s walks with <span class="math notranslate nohighlight">\(p=0.25\)</span>.</span><a class="headerlink" href="#drunkardpq" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span style="color:#469ff8"><strong>Q2.</strong> What is the expected time or <strong>hitting time</strong> for arriving <span class="math notranslate nohighlight">\(\text{Home}\)</span> if we start from the non-absorbing state <span class="math notranslate nohighlight">\(x\)</span>?</span></p>
@@ -1111,7 +1123,7 @@ Actually, this results in a normalization by <span class="math notranslate nohig
 </span></p>
 </section>
 <section id="random-walks-in-2d">
-<h2>Random walks in 2D<a class="headerlink" href="#random-walks-in-2d" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Random walks in 2D<a class="headerlink" href="#random-walks-in-2d" title="Permalink to this heading">#</a></h2>
 <p>The approach of recurrence relations is very useful for <strong>1D random processes</strong> such as the drunkard’s walk or gambler’s ruin, birth-death processes and many more. However, it is the domain of more general graphs such as <strong>grids</strong> or <strong>lattices</strong> (e.g. the Pascal’s triangle) where random walks become more useful for AI researchers and practicioners. For instance, a image can be seen as a matrix of pixels where each inner pixel <span class="math notranslate nohighlight">\((i,j)\)</span> (col, row) is connected with <span class="math notranslate nohighlight">\(8\)</span> neighbors:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1127,7 +1139,7 @@ Actually, this results in a normalization by <span class="math notranslate nohig
 </ul>
 <p>Therefore, images are <strong><span class="math notranslate nohighlight">\(8-\text{neighborhood}\)</span> grids</strong> where we are interested in finding objects, such as organs in medical images. The task is called <strong>segmentation</strong> and for medical images, which are typically very noisy, it is very useful to click at some pixels of the organ and some pixels out of it to <strong>label</strong> the pixels belonging the organ. Our colleague Leo Grady developed a techology for segmenting medical images in his paper <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=1704833">Random Walks for Image Segmentation</a> and transferred it to Siemens.</p>
 <p><strong>The Escape Room</strong>. Let us solve a simpler problem (but conceptually and methodologically identical) involving a <strong><span class="math notranslate nohighlight">\(4-\text{neighborhood}\)</span> grid</strong> (only straight directions).</p>
-<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">Escape</span></code> we create a small 2D game. We have a <span class="math notranslate nohighlight">\(4-\)</span>grid whose nodes (called <strong>interior nodes</strong>) are the <em>positions</em> <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_5\)</span> of a player in a room. The graph also depticts in a brighter color the doors. Some of the doors are <em>Exits</em> <span class="math notranslate nohighlight">\(E_1,E_2,\ldots, E_6\)</span> and some other doors are controled by <em>Policemen</em> <span class="math notranslate nohighlight">\(P_1,P_2\)</span> and <span class="math notranslate nohighlight">\(P_3\)</span>.</p>
+<p>In <a class="reference internal" href="#escape"><span class="std std-numref">Fig. 4.5</span></a> we create a small 2D game. We have a <span class="math notranslate nohighlight">\(4-\)</span>grid whose nodes (called <strong>interior nodes</strong>) are the <em>positions</em> <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_5\)</span> of a player in a room. The graph also depticts in a brighter color the doors. Some of the doors are <em>Exits</em> <span class="math notranslate nohighlight">\(E_1,E_2,\ldots, E_6\)</span> and some other doors are controled by <em>Policemen</em> <span class="math notranslate nohighlight">\(P_1,P_2\)</span> and <span class="math notranslate nohighlight">\(P_3\)</span>.</p>
 <p>The game is as follows:</p>
 <span style="color:#469ff8">
 What is the probability of escaping from each position? 
@@ -1135,7 +1147,7 @@ What is the probability of escaping from each position?
 <figure class="align-center" id="escape">
 <a class="reference internal image-reference" href="_images/Escape.png"><img alt="_images/Escape.png" src="_images/Escape.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Escape room with Exits <span class="math notranslate nohighlight">\(E_i\)</span> and Policemen <span class="math notranslate nohighlight">\(P_i\)</span> as border nodes.</span><a class="headerlink" href="#escape" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Escape room with Exits <span class="math notranslate nohighlight">\(E_i\)</span> and Policemen <span class="math notranslate nohighlight">\(P_i\)</span> as border nodes.</span><a class="headerlink" href="#escape" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Since Exits and Policemen are <strong>absorbing states</strong>, this is a 2D version of the drunkard’s walk. The <strong>game ends</strong> when we hit either an Exit, with reward <span class="math notranslate nohighlight">\(1\)</span> or a Policeman, with reward <span class="math notranslate nohighlight">\(0\)</span>. Therefore, our problem is to estimate <span class="math notranslate nohighlight">\(p(\text{Exit}|x_i)\)</span> for all <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
@@ -1353,11 +1365,11 @@ x_5\\
 .32303371\\
 \end{bmatrix}\;.
 \end{split}\]</div>
-<p>As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolEscape</span></code>, nodes closer to the Policemen have less probability of success. Maybe the most illustrative example is <span class="math notranslate nohighlight">\(x_4\approx 0.5\)</span>, halfway bettween escape and capture!</p>
+<p>As we can see in <a class="reference internal" href="#solescape"><span class="std std-numref">Fig. 4.6</span></a>, nodes closer to the Policemen have less probability of success. Maybe the most illustrative example is <span class="math notranslate nohighlight">\(x_4\approx 0.5\)</span>, halfway bettween escape and capture!</p>
 <figure class="align-center" id="solescape">
 <a class="reference internal image-reference" href="_images/SolEscape.png"><img alt="_images/SolEscape.png" src="_images/SolEscape.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Solution to the Escape Room.</span><a class="headerlink" href="#solescape" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Solution to the Escape Room.</span><a class="headerlink" href="#solescape" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Obviously, if <span class="math notranslate nohighlight">\(x_i = p(\text{Exit}|i)\)</span>, then <span class="math notranslate nohighlight">\(1 - x_i = p(\text{Policemen}|i)\)</span>.</p>
@@ -1441,12 +1453,12 @@ p\left(-\frac{1}{\sqrt{n}}&lt;\frac{p(i)}{n}-p&lt;\frac{1}{\sqrt{n}}\right) = 0.
 <p>Monte Carlo Markov Chains (MCMCs) are very inefficent here but sometimes become an effective search strategy when they are enpowered by data.
 <br></br>
 <span style="color:#347fc9">
-<strong>Exercise</strong>. What if we have negative rewards? In the small problem in <code class="xref std std-numref docutils literal notranslate"><span class="pre">MiniDirichlet</span></code> we have <strong>negative absorbing states</strong> <span class="math notranslate nohighlight">\(n_1,\ldots,n_5\)</span> labeled as <span class="math notranslate nohighlight">\(-1\)</span> and <strong>positive absorbing states</strong> <span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span> set to <span class="math notranslate nohighlight">\(+1\)</span>. In this case, we have only three interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>. What are their probabilities?
+<strong>Exercise</strong>. What if we have negative rewards? In the small problem in <a class="reference internal" href="#minidirichlet"><span class="std std-numref">Fig. 4.7</span></a> we have <strong>negative absorbing states</strong> <span class="math notranslate nohighlight">\(n_1,\ldots,n_5\)</span> labeled as <span class="math notranslate nohighlight">\(-1\)</span> and <strong>positive absorbing states</strong> <span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span> set to <span class="math notranslate nohighlight">\(+1\)</span>. In this case, we have only three interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>. What are their probabilities?
 </span></p>
 <figure class="align-center" id="minidirichlet">
 <a class="reference internal image-reference" href="_images/MiniDirichlet.png"><img alt="_images/MiniDirichlet.png" src="_images/MiniDirichlet.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#minidirichlet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#minidirichlet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br></br>
@@ -1628,21 +1640,21 @@ which is a good approximation of the <strong>exact solution</strong>:
 <figure class="align-center" id="soldirichlet2">
 <a class="reference internal image-reference" href="_images/SolDirichlet.png"><img alt="_images/SolDirichlet.png" src="_images/SolDirichlet.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldirichlet2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldirichlet2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br></br>
 <span style="color:#347fc9">
-As we can see in <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet2</span></code>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
+As we can see in <a class="reference internal" href="#soldirichlet2"><span class="std std-numref">Fig. 4.8</span></a>, negative states are closer to negative absorbing states, where <span class="math notranslate nohighlight">\(x_3\)</span> is closer to the positive ones. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt positive absorbing states!
 </span>
 <br></br>
 <span style="color:#347fc9">
-<strong>Exercise</strong>. Let us solve the drunkard’s walk from this perspective. In <code class="xref std std-numref docutils literal notranslate"><span class="pre">DrunkDirichlet</span></code> we have <strong>two absorbing states</strong> <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>) and <span class="math notranslate nohighlight">\(1\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and four interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> and <span class="math notranslate nohighlight">\(x_4\)</span>. We know that <span class="math notranslate nohighlight">\(p(\text{Home}|x_i)=\frac{x_i}{m}\)</span> with <span class="math notranslate nohighlight">\(m=5\)</span> in this case. How to prove that using the 2D aproach?
+<strong>Exercise</strong>. Let us solve the drunkard’s walk from this perspective. In <a class="reference internal" href="#drunkdirichlet"><span class="std std-numref">Fig. 4.9</span></a> we have <strong>two absorbing states</strong> <span class="math notranslate nohighlight">\(0\)</span> (<span class="math notranslate nohighlight">\(\text{Bar}\)</span>) and <span class="math notranslate nohighlight">\(1\)</span> (<span class="math notranslate nohighlight">\(\text{Home}\)</span>) and four interior states <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> and <span class="math notranslate nohighlight">\(x_4\)</span>. We know that <span class="math notranslate nohighlight">\(p(\text{Home}|x_i)=\frac{x_i}{m}\)</span> with <span class="math notranslate nohighlight">\(m=5\)</span> in this case. How to prove that using the 2D aproach?
 </span></p>
 <figure class="align-center" id="drunkdirichlet">
 <a class="reference internal image-reference" href="_images/DrunkDirichlet.png"><img alt="_images/DrunkDirichlet.png" src="_images/DrunkDirichlet.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Formulation of the drunkard’s walk with two absorbing states: Bar (0) and Home (5).</span><a class="headerlink" href="#drunkdirichlet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Formulation of the drunkard’s walk with two absorbing states: Bar (0) and Home (5).</span><a class="headerlink" href="#drunkdirichlet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br></br>
@@ -1838,23 +1850,23 @@ which is a reasonable approximation of the <strong>exact solution</strong>:
 </span>
 <br></br>
 <span style="color:#347fc9">
-See <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDrunkDirichlet</span></code>, darker states are closer to <span class="math notranslate nohighlight">\(\text{Home}\)</span>. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>!
+See <a class="reference internal" href="#soldrunkdirichlet"><span class="std std-numref">Fig. 4.10</span></a>, darker states are closer to <span class="math notranslate nohighlight">\(\text{Home}\)</span>. Remind that <span class="math notranslate nohighlight">\(1-x_i\)</span> gives the probabilities wrt the <span class="math notranslate nohighlight">\(\text{Bar}\)</span>!
 </span></p>
 <figure class="align-center" id="soldrunkdirichlet">
 <a class="reference internal image-reference" href="_images/SolDrunkDirichlet.png"><img alt="_images/SolDrunkDirichlet.png" src="_images/SolDrunkDirichlet.png" style="width: 800px; height: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldrunkdirichlet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Solution to Small Escape Room with positive and negative rewards.</span><a class="headerlink" href="#soldrunkdirichlet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="the-cutoff-phenomenon">
-<h2>The Cutoff Phenomenon<a class="headerlink" href="#the-cutoff-phenomenon" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>The Cutoff Phenomenon<a class="headerlink" href="#the-cutoff-phenomenon" title="Permalink to this heading">#</a></h2>
 <section id="markov-chains-and-equilibrium">
-<h3>Markov chains and equilibrium<a class="headerlink" href="#markov-chains-and-equilibrium" title="Permalink to this heading">#</a></h3>
-<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <code class="xref std std-numref docutils literal notranslate"><span class="pre">SolDirichlet2</span></code>, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of Spectral Graph Theory.</p>
+<h3><span class="section-number">4.4.1. </span>Markov chains and equilibrium<a class="headerlink" href="#markov-chains-and-equilibrium" title="Permalink to this heading">#</a></h3>
+<p>When studying Markov Chains (MCs) we have <span style="color:#469ff8">left intentionally appart one fundamental aspect of them: their <strong>long-time behaviors</strong></span>. This includes, of course, their limiting distributions or steady states. The quest for harmonicity, for instance, gives us some search for equilibrium in the linear system. See for instance <a class="reference internal" href="#soldirichlet2"><span class="std std-numref">Fig. 4.8</span></a>, where the numerical solution to this system ensures that the state of an interior node converges to the average of its neighbors (which may include other interior nodes or border/absorbing ones). Actually, <span style="color:#469ff8">harmonicity implies equilibrium and vice versa</span> as we will show later on, as a first example of Spectral Graph Theory.</p>
 </section>
 <section id="shuffling-cards">
-<h3>Shuffling cards<a class="headerlink" href="#shuffling-cards" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.4.2. </span>Shuffling cards<a class="headerlink" href="#shuffling-cards" title="Permalink to this heading">#</a></h3>
 <p>For the moment, a rough idea of this concept is to <span style="color:#469ff8">identify equilibrium with complete disorder or randomness</span>. Consider for instance a mini-deck of cards consisting only of the <span class="math notranslate nohighlight">\(n=13\)</span> cards of the <span class="math notranslate nohighlight">\(\heartsuit\)</span> suit. Initially, this deck is ordered according to their increasing face values, i.e. we have</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1982,6 +1994,24 @@ For answering this question, we have to be aware that <span style="color:#469ff8
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Topic2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Probability</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Topic3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Paths, Flows and Cycles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1998,12 +2028,12 @@ For answering this question, we have to be aware that <span style="color:#469ff8
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">Markov chains</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrence-relations">Recurrence relations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-in-2d">Random walks in 2D</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">Markov chains and equilibrium</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">Shuffling cards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains">4.1. Markov chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrence-relations">4.2. Recurrence relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-in-2d">4.3. Random walks in 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cutoff-phenomenon">4.4. The Cutoff Phenomenon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chains-and-equilibrium">4.4.1. Markov chains and equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shuffling-cards">4.4.2. Shuffling cards</a></li>
 </ul>
 </li>
 </ul>
