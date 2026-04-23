@@ -25,3 +25,5 @@ parts:
 - caption: Practice 3
   chapters:
   - file: graph_generation
+  - file: graph_exploration_bfs
+  - file: graph_exploration_dfs
