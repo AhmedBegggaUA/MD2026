@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>10. NetworkX &#8212; Matemáticas Discreta IA</title>
+    <title>12. NetworkX &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -96,8 +96,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'networkx';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11. Graph Generation" href="graph_generation.html" />
-    <link rel="prev" title="9. Matplotlib" href="plot.html" />
+    <link rel="next" title="13. Graph Generation" href="graph_generation.html" />
+    <link rel="prev" title="11. Matplotlib" href="plot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -221,27 +221,32 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">6. Introduction to the practical part of MD2025</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">7. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">8. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">9. Matplotlib</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">11. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">12. Graph Exploration BFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">13. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">14. Assignment 06/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">15. Assignment 07/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">16. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">17. Assignment 07/24</a></li>
 </ul>
 
     </div>
@@ -390,31 +395,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-packages">10.2. Importing the packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph">10.3. Creating a graph</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-numpy-matrix">10.3.1. Creating a graph from numpy matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-pandas-dataframe-easy-way">10.3.2. Creating a graph from pandas dataframe (easy way)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes">10.3.3. Adding nodes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-edges">10.3.4. Adding edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-nodes-and-edges">10.3.5. Removing nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-nodes-and-edges">10.3.6. Accessing nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-attributes-of-the-nodes-and-edges">10.3.7. Accessing the attributes of the nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-neighbors-of-a-node">10.3.8. Accessing the neighbors of a node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-of-a-node">10.3.9. Accessing the degree of a node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-number-of-nodes-and-edges">10.3.10. Accessing the number of nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-adjacency-matrix">10.3.11. Accessing the adjacency matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-matrix">10.3.12. Accessing the degree matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-laplacian-matrix">10.3.13. Accessing the Laplacian matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-packages">12.2. Importing the packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph">12.3. Creating a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-numpy-matrix">12.3.1. Creating a graph from numpy matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-pandas-dataframe-easy-way">12.3.2. Creating a graph from pandas dataframe (easy way)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes">12.3.3. Adding nodes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-edges">12.3.4. Adding edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-nodes-and-edges">12.3.5. Removing nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-nodes-and-edges">12.3.6. Accessing nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-attributes-of-the-nodes-and-edges">12.3.7. Accessing the attributes of the nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-neighbors-of-a-node">12.3.8. Accessing the neighbors of a node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-of-a-node">12.3.9. Accessing the degree of a node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-number-of-nodes-and-edges">12.3.10. Accessing the number of nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-adjacency-matrix">12.3.11. Accessing the adjacency matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-matrix">12.3.12. Accessing the degree matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-laplacian-matrix">12.3.13. Accessing the Laplacian matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-graph">10.4. Visualizing the graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.5. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">10.5.1. Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">10.5.2. Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-graph">12.4. Visualizing the graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">12.5. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">12.5.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">12.5.2. Exercise 2</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">10.6. Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">12.6. Submission</a></li>
 </ul>
             </nav>
         </div>
@@ -427,11 +432,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="networkx">
-<h1><span class="section-number">10. </span>NetworkX<a class="headerlink" href="#networkx" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>NetworkX<a class="headerlink" href="#networkx" title="Permalink to this heading">#</a></h1>
 <p>NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks. It provides data structures for networks, or graphs, as well as algorithms that can be used to analyze properties of those networks. The package is designed to allow the creation of networks and the analysis of their structure and function to be done in a few lines of code. It is used in a wide range of applications, from the analysis of social networks to the study of biological networks.</p>
 <p>The rest of the course will be focused on the use of NetworkX to analyze and visualize networks. Also we will use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> package to visualize the networks. And finally, we will use the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package to manipulate the data and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> to perform numerical operations. So, let’s start by installing the packages.</p>
 <section id="installation">
-<h2><span class="section-number">10.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>To install the packages, you can use the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>networkx
 </pre></div>
@@ -442,14 +447,14 @@ document.write(`
 </div>
 </section>
 <section id="importing-the-packages">
-<h2><span class="section-number">10.2. </span>Importing the packages<a class="headerlink" href="#importing-the-packages" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Importing the packages<a class="headerlink" href="#importing-the-packages" title="Permalink to this heading">#</a></h2>
 <p>To import the packages, you can use the following commands:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-a-graph">
-<h2><span class="section-number">10.3. </span>Creating a graph<a class="headerlink" href="#creating-a-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Creating a graph<a class="headerlink" href="#creating-a-graph" title="Permalink to this heading">#</a></h2>
 <p>To create a graph, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty graph</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c1"># This gives as a output: Graph with 0 nodes and 0 edges</span>
@@ -461,7 +466,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="creating-a-graph-from-numpy-matrix">
-<h3><span class="section-number">10.3.1. </span>Creating a graph from numpy matrix<a class="headerlink" href="#creating-a-graph-from-numpy-matrix" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.1. </span>Creating a graph from numpy matrix<a class="headerlink" href="#creating-a-graph-from-numpy-matrix" title="Permalink to this heading">#</a></h3>
 <p>To create a graph from a numpy matrix, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> <span class="c1"># This creates a numpy matrix</span>
@@ -477,7 +482,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-a-graph-from-pandas-dataframe-easy-way">
-<h3><span class="section-number">10.3.2. </span>Creating a graph from pandas dataframe (easy way)<a class="headerlink" href="#creating-a-graph-from-pandas-dataframe-easy-way" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.2. </span>Creating a graph from pandas dataframe (easy way)<a class="headerlink" href="#creating-a-graph-from-pandas-dataframe-easy-way" title="Permalink to this heading">#</a></h3>
 <p>To create a graph from a pandas dataframe, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]})</span> <span class="c1"># This creates a pandas dataframe</span>
@@ -488,7 +493,7 @@ document.write(`
 </div>
 </section>
 <section id="adding-nodes">
-<h3><span class="section-number">10.3.3. </span>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.3. </span>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this heading">#</a></h3>
 <p>To add nodes to the graph, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -525,7 +530,7 @@ document.write(`
 </div>
 </section>
 <section id="adding-edges">
-<h3><span class="section-number">10.3.4. </span>Adding edges<a class="headerlink" href="#adding-edges" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.4. </span>Adding edges<a class="headerlink" href="#adding-edges" title="Permalink to this heading">#</a></h3>
 <p>To add edges to the graph, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># This adds an edge between the nodes 1 and 2</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span> <span class="c1"># This adds edges between the nodes 2 and 3, 3 and 4, and 4 and 5</span>
@@ -560,7 +565,7 @@ document.write(`
 </div>
 </section>
 <section id="removing-nodes-and-edges">
-<h3><span class="section-number">10.3.5. </span>Removing nodes and edges<a class="headerlink" href="#removing-nodes-and-edges" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.5. </span>Removing nodes and edges<a class="headerlink" href="#removing-nodes-and-edges" title="Permalink to this heading">#</a></h3>
 <p>To remove nodes and edges from the graph, you can use the following commands:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># This removes the node with the label 1</span>
 <span class="n">G</span><span class="o">.</span><span class="n">remove_nodes_from</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># This removes the nodes with the labels 2, 3, 4, and 5</span>
@@ -572,7 +577,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-nodes-and-edges">
-<h3><span class="section-number">10.3.6. </span>Accessing nodes and edges<a class="headerlink" href="#accessing-nodes-and-edges" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.6. </span>Accessing nodes and edges<a class="headerlink" href="#accessing-nodes-and-edges" title="Permalink to this heading">#</a></h3>
 <p>To access the nodes and edges of the graph, you can use the following commands:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -586,7 +591,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-attributes-of-the-nodes-and-edges">
-<h3><span class="section-number">10.3.7. </span>Accessing the attributes of the nodes and edges<a class="headerlink" href="#accessing-the-attributes-of-the-nodes-and-edges" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.7. </span>Accessing the attributes of the nodes and edges<a class="headerlink" href="#accessing-the-attributes-of-the-nodes-and-edges" title="Permalink to this heading">#</a></h3>
 <p>To access the attributes of the nodes and edges of the graph, you can use the following commands:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -604,7 +609,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-neighbors-of-a-node">
-<h3><span class="section-number">10.3.8. </span>Accessing the neighbors of a node<a class="headerlink" href="#accessing-the-neighbors-of-a-node" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.8. </span>Accessing the neighbors of a node<a class="headerlink" href="#accessing-the-neighbors-of-a-node" title="Permalink to this heading">#</a></h3>
 <p>To access the neighbors of a node, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -615,7 +620,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-degree-of-a-node">
-<h3><span class="section-number">10.3.9. </span>Accessing the degree of a node<a class="headerlink" href="#accessing-the-degree-of-a-node" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.9. </span>Accessing the degree of a node<a class="headerlink" href="#accessing-the-degree-of-a-node" title="Permalink to this heading">#</a></h3>
 <p>To access the degree of a node, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -626,7 +631,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-number-of-nodes-and-edges">
-<h3><span class="section-number">10.3.10. </span>Accessing the number of nodes and edges<a class="headerlink" href="#accessing-the-number-of-nodes-and-edges" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.10. </span>Accessing the number of nodes and edges<a class="headerlink" href="#accessing-the-number-of-nodes-and-edges" title="Permalink to this heading">#</a></h3>
 <p>To access the number of nodes and edges of the graph, you can use the following commands:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -638,7 +643,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-adjacency-matrix">
-<h3><span class="section-number">10.3.11. </span>Accessing the adjacency matrix<a class="headerlink" href="#accessing-the-adjacency-matrix" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.11. </span>Accessing the adjacency matrix<a class="headerlink" href="#accessing-the-adjacency-matrix" title="Permalink to this heading">#</a></h3>
 <p>To access the adjacency matrix of the graph, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -654,7 +659,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-degree-matrix">
-<h3><span class="section-number">10.3.12. </span>Accessing the degree matrix<a class="headerlink" href="#accessing-the-degree-matrix" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.12. </span>Accessing the degree matrix<a class="headerlink" href="#accessing-the-degree-matrix" title="Permalink to this heading">#</a></h3>
 <p>To access the degree matrix of the graph, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -682,7 +687,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-the-laplacian-matrix">
-<h3><span class="section-number">10.3.13. </span>Accessing the Laplacian matrix<a class="headerlink" href="#accessing-the-laplacian-matrix" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.13. </span>Accessing the Laplacian matrix<a class="headerlink" href="#accessing-the-laplacian-matrix" title="Permalink to this heading">#</a></h3>
 <p>To access the Laplacian matrix of the graph, you can use the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># This sentence creates an empty directed graph</span>
@@ -699,7 +704,7 @@ document.write(`
 </section>
 </section>
 <section id="visualizing-the-graph">
-<h2><span class="section-number">10.4. </span>Visualizing the graph<a class="headerlink" href="#visualizing-the-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Visualizing the graph<a class="headerlink" href="#visualizing-the-graph" title="Permalink to this heading">#</a></h2>
 <p>To visualize the graph, we are going to use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and the command <code class="docutils literal notranslate"><span class="pre">nx.draw</span></code>. This command takes 2 important parameters: the <code class="docutils literal notranslate"><span class="pre">graph</span></code> and the <code class="docutils literal notranslate"><span class="pre">position</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">nodes</span></code>. The position of the nodes is a dictionary where the keys are the nodes and the values are the positions of the nodes. The positions of the nodes can be calculated using the commands <code class="docutils literal notranslate"><span class="pre">nx.spring_layout</span></code>, <code class="docutils literal notranslate"><span class="pre">nx.kamada_kawai_layout</span></code>,etc. You can check more details in the <a class="reference external" href="https://networkx.org/documentation/stable/reference/drawing.html">official documentation</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1"># This sets the size of the figure</span>
@@ -715,7 +720,7 @@ document.write(`
 <figure class="align-center" id="output-of-the-plot">
 <a class="reference internal image-reference" href="_images/graph.png"><img alt="_images/graph.png" src="_images/graph.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#output-of-the-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12.1 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#output-of-the-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This is the most basic way to visualize a graph. We can make more complex visualizations using the parameters of the <code class="docutils literal notranslate"><span class="pre">nx.draw</span></code> command. For example, we can change the color of the nodes and the edges, the size of the nodes, the width of the edges, the opacity of the nodes and the edges, the shape of the nodes, the border of the nodes, etc. You can check more details in the <a class="reference external" href="https://networkx.org/documentation/stable/reference/drawing.html">official documentation</a>.</p>
@@ -740,7 +745,7 @@ document.write(`
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="_images/graph2.png"><img alt="_images/graph2.png" src="_images/graph2.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12.2 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Let’s step a little bit further and create a more complex graph. We are going to create a graph with 10 nodes and 15 edges. Also each node will have a color based on the class of the node, different sizes based on the degree of the node. Edges will be different styled based on if they connect nodes with the same class or different classes.</p>
@@ -809,18 +814,18 @@ document.write(`
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="_images/graph3.png"><img alt="_images/graph3.png" src="_images/graph3.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12.3 </span><span class="caption-text">Output of the plot</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="exercises">
-<h2><span class="section-number">10.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="exercise-1">
-<h3><span class="section-number">10.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p>After reading the previous section, you should be able to create your  Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook.</p>
 </section>
 <section id="exercise-2">
-<h3><span class="section-number">10.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
 <p>After what we saw in class, you should be able to your own graph from your pandas dataframe. Once you have created the graph, you should be able to visualize it in the best way possible.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -850,7 +855,7 @@ document.write(`
 </section>
 </section>
 <section id="submission">
-<h2><span class="section-number">10.6. </span>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>Submission<a class="headerlink" href="#submission" title="Permalink to this heading">#</a></h2>
 <p>For the delivery of the practice 2, what you will be asked to do is to make a zip (name_name.zip) containing 3 notebooks: a first notebook containing the pandas section, a second notebook containing how you have done the visualizations and a third notebook representing the networkx part. Also it is important to add to the zip the pandas dataset you have created and the 4 figures</p>
 <p>At the end the zip should be like this when you unzip it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>name_surname.zip
@@ -903,7 +908,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Matplotlib</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Matplotlib</p>
       </div>
     </a>
     <a class="right-next"
@@ -911,7 +916,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Graph Generation</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Graph Generation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -931,31 +936,31 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-packages">10.2. Importing the packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph">10.3. Creating a graph</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-numpy-matrix">10.3.1. Creating a graph from numpy matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-pandas-dataframe-easy-way">10.3.2. Creating a graph from pandas dataframe (easy way)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes">10.3.3. Adding nodes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-edges">10.3.4. Adding edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-nodes-and-edges">10.3.5. Removing nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-nodes-and-edges">10.3.6. Accessing nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-attributes-of-the-nodes-and-edges">10.3.7. Accessing the attributes of the nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-neighbors-of-a-node">10.3.8. Accessing the neighbors of a node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-of-a-node">10.3.9. Accessing the degree of a node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-number-of-nodes-and-edges">10.3.10. Accessing the number of nodes and edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-adjacency-matrix">10.3.11. Accessing the adjacency matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-matrix">10.3.12. Accessing the degree matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-laplacian-matrix">10.3.13. Accessing the Laplacian matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-packages">12.2. Importing the packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph">12.3. Creating a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-numpy-matrix">12.3.1. Creating a graph from numpy matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-graph-from-pandas-dataframe-easy-way">12.3.2. Creating a graph from pandas dataframe (easy way)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes">12.3.3. Adding nodes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-edges">12.3.4. Adding edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-nodes-and-edges">12.3.5. Removing nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-nodes-and-edges">12.3.6. Accessing nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-attributes-of-the-nodes-and-edges">12.3.7. Accessing the attributes of the nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-neighbors-of-a-node">12.3.8. Accessing the neighbors of a node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-of-a-node">12.3.9. Accessing the degree of a node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-number-of-nodes-and-edges">12.3.10. Accessing the number of nodes and edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-adjacency-matrix">12.3.11. Accessing the adjacency matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-degree-matrix">12.3.12. Accessing the degree matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-laplacian-matrix">12.3.13. Accessing the Laplacian matrix</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-graph">10.4. Visualizing the graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.5. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">10.5.1. Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">10.5.2. Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-graph">12.4. Visualizing the graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">12.5. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">12.5.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">12.5.2. Exercise 2</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">10.6. Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">12.6. Submission</a></li>
 </ul>
   </nav></div>
 

@@ -17,6 +17,10 @@ parts:
   chapters:
   - file: Topic2_3
   - file: Topic3
+- caption: Spectral Theory
+  chapters:
+  - file: Topic4  
+  - file: Topic5 
 - caption: Practice 1
   chapters:
   - file: practice_intro
