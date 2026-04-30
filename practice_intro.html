@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>6. Introduction to the practical part of MD2025 &#8212; Matemáticas Discreta IA</title>
+    <title>8. Introduction to the practical part of MD2025 &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -98,8 +98,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'practice_intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Numpy" href="numpy_practice.html" />
-    <link rel="prev" title="5. Paths, Flows and Cycles" href="Topic3.html" />
+    <link rel="next" title="9. Numpy" href="numpy_practice.html" />
+    <link rel="prev" title="7. Distances and Latent Spaces" href="Topic5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,27 +223,32 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Introduction to the practical part of MD2025</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">7. Numpy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">8. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">9. Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networkx.html">10. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">11. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">12. Graph Exploration BFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">13. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">14. Assignment 06/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">15. Assignment 07/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">16. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">17. Assignment 07/24</a></li>
 </ul>
 
     </div>
@@ -392,33 +397,33 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-practice-material-of-md2025">6.1. Welcome to the practice material of MD2025</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda">6.2. Installing Conda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-resources-for-installing-anaconda">6.2.1. Other resources for installing Anaconda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-practice-material-of-md2025">8.1. Welcome to the practice material of MD2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda">8.2. Installing Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-resources-for-installing-anaconda">8.2.1. Other resources for installing Anaconda</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ides-for-python">6.3. IDEs for Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook">6.3.1. Jupyter Notebook</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#headers">6.3.1.1. Headers</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emphasis">6.3.1.2. Emphasis</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">6.3.1.3. Lists</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#math">6.3.1.4. Math</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-blocks">6.3.1.4.1. Math blocks</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-symbols">6.3.1.4.2. Math symbols</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">6.3.1.4.3. Matrices</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">6.3.1.4.4. Derivatives</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals">6.3.1.4.5. Integrals</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">6.3.1.4.6. Limits</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sums">6.3.1.4.7. Sums</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#products">6.3.1.4.8. Products</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#roots">6.3.1.4.9. Roots</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fractions">6.3.1.4.10. Fractions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ides-for-python">8.3. IDEs for Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook">8.3.1. Jupyter Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#headers">8.3.1.1. Headers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emphasis">8.3.1.2. Emphasis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">8.3.1.3. Lists</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#math">8.3.1.4. Math</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-blocks">8.3.1.4.1. Math blocks</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-symbols">8.3.1.4.2. Math symbols</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">8.3.1.4.3. Matrices</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">8.3.1.4.4. Derivatives</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals">8.3.1.4.5. Integrals</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">8.3.1.4.6. Limits</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sums">8.3.1.4.7. Sums</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#products">8.3.1.4.8. Products</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#roots">8.3.1.4.9. Roots</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fractions">8.3.1.4.10. Fractions</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">6.3.1.5. Tables</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images">6.3.1.6. Images</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#links">6.3.1.7. Links</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">6.3.1.8. Citations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">8.3.1.5. Tables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images">8.3.1.6. Images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#links">8.3.1.7. Links</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">8.3.1.8. Citations</a></li>
 </ul>
 </li>
 </ul>
@@ -435,9 +440,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-the-practical-part-of-md2025">
-<h1><span class="section-number">6. </span>Introduction to the practical part of MD2025<a class="headerlink" href="#introduction-to-the-practical-part-of-md2025" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Introduction to the practical part of MD2025<a class="headerlink" href="#introduction-to-the-practical-part-of-md2025" title="Permalink to this heading">#</a></h1>
 <section id="welcome-to-the-practice-material-of-md2025">
-<h2><span class="section-number">6.1. </span>Welcome to the practice material of MD2025<a class="headerlink" href="#welcome-to-the-practice-material-of-md2025" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Welcome to the practice material of MD2025<a class="headerlink" href="#welcome-to-the-practice-material-of-md2025" title="Permalink to this heading">#</a></h2>
 <p>Welcome to the practice part of MD2025. In this part we will learn the main libraries of Python for Machine Learning and Data Science. We will review the main libraries for solving Machine Learning problems, such as Numpy, NetworkX, Matplotlib, Scikit-Learn, etc. We will also learn how to use Jupyter Notebook, a web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. The notebooks can be used to perform data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, etc. In the following code, we will see an example of how to these libraries can work together.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -477,13 +482,13 @@ document.write(`
 <figure class="align-center" id="integration-between-libraries">
 <a class="reference internal image-reference" href="_images/grafo_ejemplo.png"><img alt="_images/grafo_ejemplo.png" src="_images/grafo_ejemplo.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Integration between libraries</span><a class="headerlink" href="#integration-between-libraries" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Integration between libraries</span><a class="headerlink" href="#integration-between-libraries" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>But before we start, we need to set up our environment. For this, we will use Anaconda, a free and open source distribution of the Python and R programming languages for scientific computing, that aims to simplify package management and deployment. Anaconda comes with more than 1,500 packages and a package manager called conda. We will use conda to install the libraries we need for this course.</p>
 </section>
 <section id="installing-conda">
-<h2><span class="section-number">6.2. </span>Installing Conda<a class="headerlink" href="#installing-conda" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>Installing Conda<a class="headerlink" href="#installing-conda" title="Permalink to this heading">#</a></h2>
 <p>There are lots of ways to install conda, but we recommend you to install Anaconda. There are lots of tutorials on how to install Anaconda in Youtube or websites. Here are some of them, but again, you can choose the one you like the most.
 To install Anaconda, you can follow the instructions in the following link: <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">https://docs.anaconda.com/anaconda/install/</a>. Once you have installed Anaconda, you can open the Anaconda Navigator and install the libraries we will use in this course. To do this, you can follow the instructions in the following link: <a class="reference external" href="https://docs.anaconda.com/anaconda/navigator/getting-started/">https://docs.anaconda.com/anaconda/navigator/getting-started/</a>.</p>
 <div class="admonition warning">
@@ -491,23 +496,23 @@ To install Anaconda, you can follow the instructions in the following link: <a c
 <p>After trying your best and spent 2 or 3 hours, if you have any problems installing Anaconda,, you can ask for help by sending an email to the following address: <a class="reference external" href="mailto:ahmed&#46;begga&#37;&#52;&#48;ua&#46;es">ahmed<span>&#46;</span>begga<span>&#64;</span>ua<span>&#46;</span>es</a>. Please, include the error message you are getting and the steps you have followed to install Anaconda. And do not send trivial questions, please.</p>
 </div>
 <section id="other-resources-for-installing-anaconda">
-<h3><span class="section-number">6.2.1. </span>Other resources for installing Anaconda<a class="headerlink" href="#other-resources-for-installing-anaconda" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.2.1. </span>Other resources for installing Anaconda<a class="headerlink" href="#other-resources-for-installing-anaconda" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://youtu.be/5mDYijMfSzs?si=IUoeUcX3v33rNmwy">Anaconda for windows</a></p>
 <p><a class="reference external" href="https://youtu.be/6-i9pY2n2FU?si=-pWth1et98XTsRWF">Anaconda for Mac (M1, M2, etc)</a></p>
 </section>
 </section>
 <section id="ides-for-python">
-<h2><span class="section-number">6.3. </span>IDEs for Python<a class="headerlink" href="#ides-for-python" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>IDEs for Python<a class="headerlink" href="#ides-for-python" title="Permalink to this heading">#</a></h2>
 <p>You can use any IDE you want to write your code. However, we recommend you to use Jupyter Notebook, a web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. The notebooks can be used to perform data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, etc. To install Jupyter Notebook, you can follow the instructions in the following link: <a class="reference external" href="https://jupyter.org/install">https://jupyter.org/install</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this course, we will use Jupyter Notebook to write our practical reports. You can use any other IDE you want, but we recommend you to use Jupyter Notebook.</p>
 </div>
 <section id="jupyter-notebook">
-<h3><span class="section-number">6.3.1. </span>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.3.1. </span>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this heading">#</a></h3>
 <p>Jupyter Notebook is an user-friendly IDE that allows you to write code in Python and Markdown. It is very useful for writing reports, as you can write code and text in the same document. Here we are going to give you few commands to learn how to use markdown in Jupyter Notebook. For more information, you can check the following link: <a class="reference external" href="https://www.datacamp.com/tutorial/markdown-in-jupyter-notebook">jupyter tutorial</a>.</p>
 <section id="headers">
-<h4><span class="section-number">6.3.1.1. </span>Headers<a class="headerlink" href="#headers" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.1. </span>Headers<a class="headerlink" href="#headers" title="Permalink to this heading">#</a></h4>
 <p>To create a header, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gh"># Header 1</span>
 <span class="gu">## Header 2</span>
@@ -519,7 +524,7 @@ To install Anaconda, you can follow the instructions in the following link: <a c
 </div>
 </section>
 <section id="emphasis">
-<h4><span class="section-number">6.3.1.2. </span>Emphasis<a class="headerlink" href="#emphasis" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.2. </span>Emphasis<a class="headerlink" href="#emphasis" title="Permalink to this heading">#</a></h4>
 <p>To create emphasis, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="ge">*italic*</span>
 <span class="gs">**bold**</span>
@@ -529,7 +534,7 @@ To install Anaconda, you can follow the instructions in the following link: <a c
 </div>
 </section>
 <section id="lists">
-<h4><span class="section-number">6.3.1.3. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.3. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h4>
 <p>To create lists, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>Item 1
 <span class="k">-</span><span class="w"> </span>Item 2
@@ -556,7 +561,7 @@ To install Anaconda, you can follow the instructions in the following link: <a c
 </ol>
 </section>
 <section id="math">
-<h4><span class="section-number">6.3.1.4. </span>Math<a class="headerlink" href="#math" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.4. </span>Math<a class="headerlink" href="#math" title="Permalink to this heading">#</a></h4>
 <p>To create math expressions, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$y = x^2$
 </pre></div>
@@ -564,7 +569,7 @@ To install Anaconda, you can follow the instructions in the following link: <a c
 <p>Giving as a result:
 <span class="math notranslate nohighlight">\(y = x^2\)</span></p>
 <section id="math-blocks">
-<h5><span class="section-number">6.3.1.4.1. </span>Math blocks<a class="headerlink" href="#math-blocks" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.1. </span>Math blocks<a class="headerlink" href="#math-blocks" title="Permalink to this heading">#</a></h5>
 <p>To create math blocks, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$$
 y = x^2
@@ -577,7 +582,7 @@ y = x^2
 \)</span>$</p>
 </section>
 <section id="math-symbols">
-<h5><span class="section-number">6.3.1.4.2. </span>Math symbols<a class="headerlink" href="#math-symbols" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.2. </span>Math symbols<a class="headerlink" href="#math-symbols" title="Permalink to this heading">#</a></h5>
 <p>To create math symbols, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$\alpha$
 $\beta$
@@ -604,7 +609,7 @@ $\phi$
 <span class="math notranslate nohighlight">\(\alpha, \beta,\gamma ,\delta ,\epsilon ,\zeta ,\eta ,\theta ,\iota ,\kappa ,\lambda ,\mu ,\nu ,\xi ,\pi ,\rho ,\sigma ,\tau ,\phi\)</span></p>
 </section>
 <section id="matrices">
-<h5><span class="section-number">6.3.1.4.3. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.3. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h5>
 <p>To create matrices, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \begin{bmatrix}
@@ -625,7 +630,7 @@ $
 \)</span></p>
 </section>
 <section id="derivatives">
-<h5><span class="section-number">6.3.1.4.4. </span>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.4. </span>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this heading">#</a></h5>
 <p>To create derivatives, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \frac{dy}{dx}
@@ -638,7 +643,7 @@ $
 \)</span></p>
 </section>
 <section id="integrals">
-<h5><span class="section-number">6.3.1.4.5. </span>Integrals<a class="headerlink" href="#integrals" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.5. </span>Integrals<a class="headerlink" href="#integrals" title="Permalink to this heading">#</a></h5>
 <p>To create integrals, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \int_{a}^{b} x^2 dx
@@ -651,7 +656,7 @@ $
 \)</span></p>
 </section>
 <section id="limits">
-<h5><span class="section-number">6.3.1.4.6. </span>Limits<a class="headerlink" href="#limits" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.6. </span>Limits<a class="headerlink" href="#limits" title="Permalink to this heading">#</a></h5>
 <p>To create limits, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \lim_{x \to \infty} x^2
@@ -664,7 +669,7 @@ $
 \)</span></p>
 </section>
 <section id="sums">
-<h5><span class="section-number">6.3.1.4.7. </span>Sums<a class="headerlink" href="#sums" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.7. </span>Sums<a class="headerlink" href="#sums" title="Permalink to this heading">#</a></h5>
 <p>To create sums, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \sum_{i=1}^{n} x_i
@@ -677,7 +682,7 @@ $
 \)</span></p>
 </section>
 <section id="products">
-<h5><span class="section-number">6.3.1.4.8. </span>Products<a class="headerlink" href="#products" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.8. </span>Products<a class="headerlink" href="#products" title="Permalink to this heading">#</a></h5>
 <p>To create products, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \prod_{i=1}^{n} x_i
@@ -690,7 +695,7 @@ $
 \)</span></p>
 </section>
 <section id="roots">
-<h5><span class="section-number">6.3.1.4.9. </span>Roots<a class="headerlink" href="#roots" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.9. </span>Roots<a class="headerlink" href="#roots" title="Permalink to this heading">#</a></h5>
 <p>To create roots, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \sqrt{x}
@@ -703,7 +708,7 @@ $
 \)</span></p>
 </section>
 <section id="fractions">
-<h5><span class="section-number">6.3.1.4.10. </span>Fractions<a class="headerlink" href="#fractions" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">8.3.1.4.10. </span>Fractions<a class="headerlink" href="#fractions" title="Permalink to this heading">#</a></h5>
 <p>To create fractions, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>$
 \frac{1}{2}
@@ -717,7 +722,7 @@ $
 </section>
 </section>
 <section id="tables">
-<h4><span class="section-number">6.3.1.5. </span>Tables<a class="headerlink" href="#tables" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.5. </span>Tables<a class="headerlink" href="#tables" title="Permalink to this heading">#</a></h4>
 <p>To create tables, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>| Header 1 | Header 2 |
 | -------- | -------- |
@@ -743,21 +748,21 @@ $
 </table>
 </section>
 <section id="images">
-<h4><span class="section-number">6.3.1.6. </span>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.6. </span>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h4>
 <p>To add an image, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>![<span class="nt">alt text</span>](<span class="na">image_path</span>)
 </pre></div>
 </div>
 </section>
 <section id="links">
-<h4><span class="section-number">6.3.1.7. </span>Links<a class="headerlink" href="#links" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.7. </span>Links<a class="headerlink" href="#links" title="Permalink to this heading">#</a></h4>
 <p>To add a link, you can use the following syntax:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>[<span class="nt">link text</span>](<span class="na">url</span>)
 </pre></div>
 </div>
 </section>
 <section id="citations">
-<h4><span class="section-number">6.3.1.8. </span>Citations<a class="headerlink" href="#citations" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">8.3.1.8. </span>Citations<a class="headerlink" href="#citations" title="Permalink to this heading">#</a></h4>
 <p>We have agreed to add them by hand with bullets like this:</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>[1] Author, Title, Year
 <span class="k">-</span><span class="w"> </span>[2] Author, Title, Year
@@ -799,12 +804,12 @@ $
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Topic3.html"
+       href="Topic5.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Paths, Flows and Cycles</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Distances and Latent Spaces</p>
       </div>
     </a>
     <a class="right-next"
@@ -812,7 +817,7 @@ $
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Numpy</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Numpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -832,33 +837,33 @@ $
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-practice-material-of-md2025">6.1. Welcome to the practice material of MD2025</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda">6.2. Installing Conda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-resources-for-installing-anaconda">6.2.1. Other resources for installing Anaconda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-practice-material-of-md2025">8.1. Welcome to the practice material of MD2025</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda">8.2. Installing Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-resources-for-installing-anaconda">8.2.1. Other resources for installing Anaconda</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ides-for-python">6.3. IDEs for Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook">6.3.1. Jupyter Notebook</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#headers">6.3.1.1. Headers</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emphasis">6.3.1.2. Emphasis</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">6.3.1.3. Lists</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#math">6.3.1.4. Math</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-blocks">6.3.1.4.1. Math blocks</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-symbols">6.3.1.4.2. Math symbols</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">6.3.1.4.3. Matrices</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">6.3.1.4.4. Derivatives</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals">6.3.1.4.5. Integrals</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">6.3.1.4.6. Limits</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sums">6.3.1.4.7. Sums</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#products">6.3.1.4.8. Products</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#roots">6.3.1.4.9. Roots</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fractions">6.3.1.4.10. Fractions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ides-for-python">8.3. IDEs for Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook">8.3.1. Jupyter Notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#headers">8.3.1.1. Headers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emphasis">8.3.1.2. Emphasis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">8.3.1.3. Lists</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#math">8.3.1.4. Math</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-blocks">8.3.1.4.1. Math blocks</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#math-symbols">8.3.1.4.2. Math symbols</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">8.3.1.4.3. Matrices</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives">8.3.1.4.4. Derivatives</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals">8.3.1.4.5. Integrals</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">8.3.1.4.6. Limits</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sums">8.3.1.4.7. Sums</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#products">8.3.1.4.8. Products</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#roots">8.3.1.4.9. Roots</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fractions">8.3.1.4.10. Fractions</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">6.3.1.5. Tables</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images">6.3.1.6. Images</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#links">6.3.1.7. Links</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">6.3.1.8. Citations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">8.3.1.5. Tables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images">8.3.1.6. Images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#links">8.3.1.7. Links</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">8.3.1.8. Citations</a></li>
 </ul>
 </li>
 </ul>

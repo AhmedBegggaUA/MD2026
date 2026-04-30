@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>14. Assignment 06/24 &#8212; Matemáticas Discreta IA</title>
+    <title>16. Assignment 06/24 &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -98,8 +98,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ExamJune24';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15. Assignment 07/24" href="ExamJuly24.html" />
-    <link rel="prev" title="13. Graph Exploration DFS" href="graph_exploration_dfs.html" />
+    <link rel="next" title="17. Assignment 07/24" href="ExamJuly24.html" />
+    <link rel="prev" title="15. Graph Exploration DFS" href="graph_exploration_dfs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,27 +223,32 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">6. Introduction to the practical part of MD2025</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">7. Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">8. Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">9. Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="networkx.html">10. NetworkX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">11. Graph Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">12. Graph Exploration BFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">13. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Assignment 06/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">15. Assignment 07/24</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">17. Assignment 07/24</a></li>
 </ul>
 
     </div>
@@ -392,10 +397,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-plates">14.1. Number of plates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-commettee">14.2. The multi-Choose Commettee</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-independent-trials">14.3. Number of independent trials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lollipop-graph">14.4. The Lollipop graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-plates">16.1. Number of plates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-commettee">16.2. The multi-Choose Commettee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-independent-trials">16.3. Number of independent trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lollipop-graph">16.4. The Lollipop graph</a></li>
 </ul>
             </nav>
         </div>
@@ -408,9 +413,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="assignment-06-24">
-<h1><span class="section-number">14. </span>Assignment 06/24<a class="headerlink" href="#assignment-06-24" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">16. </span>Assignment 06/24<a class="headerlink" href="#assignment-06-24" title="Permalink to this heading">#</a></h1>
 <section id="number-of-plates">
-<h2><span class="section-number">14.1. </span>Number of plates<a class="headerlink" href="#number-of-plates" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.1. </span>Number of plates<a class="headerlink" href="#number-of-plates" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong>. In the EU, car plates are composed by concatenating <span class="math notranslate nohighlight">\(4\)</span> digits <span class="math notranslate nohighlight">\(0..6\)</span> and <span class="math notranslate nohighlight">\(3\)</span> letters <span class="math notranslate nohighlight">\(A..Z\)</span>. <strong>How many different plates</strong> can be have? Justify your answer!
 <br></br>
 Let us apply the <strong>product rule</strong> for decomposing the problem into two parts.
@@ -423,7 +428,7 @@ The final result is <span class="math notranslate nohighlight">\(10^4\cdot 26^3 
 </span></p>
 </section>
 <section id="the-multi-choose-commettee">
-<h2><span class="section-number">14.2. </span>The multi-Choose Commettee<a class="headerlink" href="#the-multi-choose-commettee" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.2. </span>The multi-Choose Commettee<a class="headerlink" href="#the-multi-choose-commettee" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong>. We have <span class="math notranslate nohighlight">\(7\)</span> women and <span class="math notranslate nohighlight">\(9\)</span> men on the faculty. How many ways are to create a committee of <span class="math notranslate nohighlight">\(5\)</span> members if: </span></p>
 <p><span style="color:#347fc9"><strong>a)</strong> At least one woman must be on the committee.</span>
 <br></br>
@@ -484,7 +489,7 @@ C_{\sigma}(m=2,k=5) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} =
 <br></br></p>
 </section>
 <section id="number-of-independent-trials">
-<h2><span class="section-number">14.3. </span>Number of independent trials<a class="headerlink" href="#number-of-independent-trials" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.3. </span>Number of independent trials<a class="headerlink" href="#number-of-independent-trials" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong>. It is well known that the Binomial distribution <span class="math notranslate nohighlight">\(B(n,p)\)</span> converges to the Gaussian distribution for large values of <span class="math notranslate nohighlight">\(n\)</span>.
 <br></br>
 Given <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> and <span class="math notranslate nohighlight">\(p=q\)</span>, <strong>how many indendent trials <span class="math notranslate nohighlight">\(n\)</span> do we need</strong> so that the probability of having not more than <span class="math notranslate nohighlight">\(E(X)+ 1\)</span> successes is <span class="math notranslate nohighlight">\(0.6554\)</span>?
@@ -529,15 +534,15 @@ This leads to
 <br></br></p>
 </section>
 <section id="the-lollipop-graph">
-<h2><span class="section-number">14.4. </span>The Lollipop graph<a class="headerlink" href="#the-lollipop-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.4. </span>The Lollipop graph<a class="headerlink" href="#the-lollipop-graph" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9">The <strong>Lollipop Graph</strong> <span class="math notranslate nohighlight">\(L_{m,n}\)</span> results from combining a <strong>complete graph</strong> (without loops)  <span class="math notranslate nohighlight">\(K_m\)</span> of <span class="math notranslate nohighlight">\(m\)</span> nodes and a <strong>path graph</strong> <span class="math notranslate nohighlight">\(P_n\)</span> of <span class="math notranslate nohighlight">\(n\)</span> nodes. For instance, <span class="math notranslate nohighlight">\(L_{3,2}\)</span> results from sticking <span class="math notranslate nohighlight">\(K_3\)</span> to <span class="math notranslate nohighlight">\(P_2\)</span>.
 <br></br>
-In <a class="reference internal" href="#lollipop"><span class="std std-numref">Fig. 14.1</span></a> we show the non-trivial eigevector on the Laplacian, the spectrum <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> and the spectrum <span class="math notranslate nohighlight">\(\lambda_i\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\phi_i\)</span> of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>.
+In <a class="reference internal" href="#lollipop"><span class="std std-numref">Fig. 16.1</span></a> we show the non-trivial eigevector on the Laplacian, the spectrum <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> and the spectrum <span class="math notranslate nohighlight">\(\lambda_i\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\phi_i\)</span> of the Laplacian <span class="math notranslate nohighlight">\(\triangle\)</span>.
 </span>.</p>
 <figure class="align-center" id="lollipop">
 <a class="reference internal image-reference" href="_images/Lollipop.png"><img alt="_images/Lollipop.png" src="_images/Lollipop.png" style="width: 820px; height: 280px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(L_{3,2}\)</span>. Normalized Laplacian’s spectrum, Laplacian spectrum and and non-trivial eigenvectors.</span><a class="headerlink" href="#lollipop" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(L_{3,2}\)</span>. Normalized Laplacian’s spectrum, Laplacian spectrum and and non-trivial eigenvectors.</span><a class="headerlink" href="#lollipop" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span style="color:#347fc9"><strong>a) How different is the spectrum</strong> <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of its normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> with respect to those of the <strong>Path graph</strong> <span class="math notranslate nohighlight">\(P_5\)</span> and the <strong>complete graph</strong> (without loops) <span class="math notranslate nohighlight">\(K_5\)</span>?. Is its spectrum closer to that of a path or to that of a complete graph? In particular justify if your decision changes if you only compares the <strong>spectral gaps</strong> (Fiedler values). Are the closer graphs optimally <strong>cut similarly</strong>?
@@ -593,13 +598,13 @@ Concerning the difference between the spectral gaps, the Fiedler value of <span 
 </span>
 <br></br>
 <span style="color:#347fc9">
-<strong>Comment</strong>. We draw the cuts in <a class="reference internal" href="#lollipopcuts"><span class="std std-numref">Fig. 14.2</span></a> and after comparing the ratio-cut losses, we see that they are consistent with the partitions of the eigenvectors. The optimal partition is given by the Fiedlear vector with cost ·<span class="math notranslate nohighlight">\(0.83\)</span> and the ratio cuts  become increasing until <span class="math notranslate nohighlight">\(\phi_5\)</span> with the worse cut!
+<strong>Comment</strong>. We draw the cuts in <a class="reference internal" href="#lollipopcuts"><span class="std std-numref">Fig. 16.2</span></a> and after comparing the ratio-cut losses, we see that they are consistent with the partitions of the eigenvectors. The optimal partition is given by the Fiedlear vector with cost ·<span class="math notranslate nohighlight">\(0.83\)</span> and the ratio cuts  become increasing until <span class="math notranslate nohighlight">\(\phi_5\)</span> with the worse cut!
 </span>
 <br></br></p>
 <figure class="align-center" id="lollipopcuts">
 <a class="reference internal image-reference" href="_images/LollipopCuts.png"><img alt="_images/LollipopCuts.png" src="_images/LollipopCuts.png" style="width: 820px; height: 140px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14.2 </span><span class="caption-text"><span class="math notranslate nohighlight">\(L_{3,2}\)</span>. Cuts inferred from the non-trivial eigenvectors.</span><a class="headerlink" href="#lollipopcuts" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16.2 </span><span class="caption-text"><span class="math notranslate nohighlight">\(L_{3,2}\)</span>. Cuts inferred from the non-trivial eigenvectors.</span><a class="headerlink" href="#lollipopcuts" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span style="color:#347fc9"><strong>c)Approximate the commute times</strong> between nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\)</span> and between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(4\)</span>. Use only the Fiedler value and vector (use 2 decimals). Justify the results. Why are they different if so?
@@ -665,7 +670,7 @@ CT(0,4)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(4)]^2 = 10\cdot\frac{1
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Graph Exploration DFS</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Graph Exploration DFS</p>
       </div>
     </a>
     <a class="right-next"
@@ -673,7 +678,7 @@ CT(0,4)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(4)]^2 = 10\cdot\frac{1
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>Assignment 07/24</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Assignment 07/24</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -693,10 +698,10 @@ CT(0,4)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(4)]^2 = 10\cdot\frac{1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-plates">14.1. Number of plates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-commettee">14.2. The multi-Choose Commettee</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-independent-trials">14.3. Number of independent trials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lollipop-graph">14.4. The Lollipop graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-plates">16.1. Number of plates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-commettee">16.2. The multi-Choose Commettee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-independent-trials">16.3. Number of independent trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lollipop-graph">16.4. The Lollipop graph</a></li>
 </ul>
   </nav></div>
 
