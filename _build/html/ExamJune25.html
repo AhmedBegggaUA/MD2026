@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>18. Assignment 06/25 &#8212; Matemáticas Discreta IA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/jquery-3.6.0.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
+    <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js"></script>
+    <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ExamJune25';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="17. Assignment 07/24" href="ExamJuly24.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logos.jpeg" class="logo__image only-light" alt="Matemáticas Discreta IA - Home"/>
+    <script>document.write(`<img src="_static/logos.jpeg" class="logo__image only-dark" alt="Matemáticas Discreta IA - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD2026
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Brain</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bloque1_Introducci%C3%B3n.html">1. The Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Counting and Probability</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic1.html">2. Combinatorics as counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic2.html">3. Probability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic2_3.html">4. Random walks on graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic3.html">5. Paths, Flows and Cycles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spectral Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Topic4.html">6. Ranking and Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Topic5.html">7. Distances and Latent Spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice_intro.html">8. Introduction to the practical part of MD2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_practice.html">9. Numpy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">10. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">11. Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkx.html">12. NetworkX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">16. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">17. Assignment 07/24</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Assignment 06/25</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ExamJune25.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment 06/25</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-sum">18.1. The multi-Choose Sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussians-and-binomials">18.2. Gaussians and Binomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barbell-graph">18.3. The Barbell graph</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="assignment-06-25">
+<h1><span class="section-number">18. </span>Assignment 06/25<a class="headerlink" href="#assignment-06-25" title="Permalink to this heading">#</a></h1>
+<section id="the-multi-choose-sum">
+<h2><span class="section-number">18.1. </span>The multi-Choose Sum<a class="headerlink" href="#the-multi-choose-sum" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. We have <span class="math notranslate nohighlight">\(3\)</span> natural numbers, including <span class="math notranslate nohighlight">\(0\)</span> (whatever they are, this is actually the question). Then: </span></p>
+<p><span style="color:#347fc9"><strong>a)</strong> How may <strong>ways do we have of summing three numbers</strong> so that the result is exacltly <span class="math notranslate nohighlight">\(10\)</span>?</span>
+<br></br>
+<span style="color:#347fc9"><strong>b)</strong> How may <strong>ways do we have of summing three numbers</strong> so that the result is exacltly <span class="math notranslate nohighlight">\(10\)</span> <strong>but</strong> no-one can be <span class="math notranslate nohighlight">\(0\)</span>?</span>
+<br></br>
+<span style="color:#347fc9">First of all, <strong>we can repeat</strong> the numbers (they are not necessarily different) and the <strong>order does not matter</strong> (the sum is invariant to order). This is a <strong>really good candidate to a multi-choose problem or combinations-with-repetitions</strong>.
+</span>
+<br></br>
+<span style="color:#347fc9">Then, we identify the elements of the problem: three variables <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>, each one for the numbers we want to sum. Then, in <strong>a)</strong>  we must solve these variables for<br />
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+ x_1 + x_2 + x_3= 10\;.
+ \)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">The <strong>general solution</strong> (without constraints) is
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+C_{\sigma}(m=3,k=10) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} = \left(\!\!{3\choose 10}\!\!\right) = {3 + 10 - 1\choose 10} = {12\choose 10}= 12\cdot 11\cdot 10!/(2!\cdot 10!) = 66 \;.
+\)</span>
+</span>
+<br></br></p>
+<p><span style="color:#347fc9"><strong>b)</strong> We have a minimal value for the numbers: <span class="math notranslate nohighlight">\(x_i\ge 1\;\)</span>. Then, we “take” these values by making <span class="math notranslate nohighlight">\(y_i = x_i - 1\)</span> and solve the problem.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+ y_1 + y_2 + y_3= 10-3 = 7\;.
+ \)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">The <strong>solutions</strong> is
+<span class="math notranslate nohighlight">\(
+C_{\sigma}(m=3,k=7) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} = \left(\!\!{3\choose 7}\!\!\right) = {3 + 7 - 1\choose 7} = {9\choose 7}= 9\cdot 8\cdot 7!/(2!\cdot 7!) = 36 \;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">Some of the <strong>solutions</strong> and their transformations after <strong>undoing</strong> <span class="math notranslate nohighlight">\(y_i = x_i - 1\)</span>, so that <span class="math notranslate nohighlight">\(x_1 + x_2 + x_3 = 10\)</span>, are
+</span>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp; (0\;0\;7)\rightarrow (1\;1\;8)\\
+&amp; (1\;0\;6)\rightarrow (2\;1\;7)\\
+&amp; (2\;1\;4)\rightarrow (3\;2\;5)\\
+&amp; (3\;2\;2)\rightarrow (4\;3\;3)\\
+&amp; (4\;1\;2)\rightarrow (5\;2\;3)\\
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"><strong>Additional explanation to the problem</strong>. In other words, from the <span class="math notranslate nohighlight">\(66\)</span> solutions for the general unconstrained problem, removing the posibilities of any of the <span class="math notranslate nohighlight">\(x_i=0\)</span> reduces the solution space to only <span class="math notranslate nohighlight">\(36\)</span>, i.e. <span class="math notranslate nohighlight">\(66-36=30\)</span> solutions are lost. This is not difficult  to prove since we have to discard, in addition to <span class="math notranslate nohighlight">\((10\;0\;0)\)</span>,<span class="math notranslate nohighlight">\((0\;10\;0)\)</span> and <span class="math notranslate nohighlight">\((0\;0\;10)\)</span>, solutions where they have a <strong>unique</strong> zero and the remaining slots sum <span class="math notranslate nohighlight">\(10\)</span>. For instance: <span class="math notranslate nohighlight">\((1\;9\;0),(2\;8\;0),(3\;7\;0),(4\;6\;0),(5\;5\;0),(6\;4\;0),(7\;3\;0),(8\;2\;0)\)</span> and <span class="math notranslate nohighlight">\((9\;1\;0)\)</span> [a block of <span class="math notranslate nohighlight">\(9\)</span> solutions]. Since we can do this in <span class="math notranslate nohighlight">\(3\)</span> different slots we have <span class="math notranslate nohighlight">\(9\cdot 3 + 3 = 27 + 3 = 30\)</span> solutions to remove!
+</span>
+<br></br></p>
+</section>
+<section id="gaussians-and-binomials">
+<h2><span class="section-number">18.2. </span>Gaussians and Binomials<a class="headerlink" href="#gaussians-and-binomials" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise</strong>. It is well known that the Binomial distribution <span class="math notranslate nohighlight">\(B(n,p)\)</span> converges to the Gaussian distribution for large values of <span class="math notranslate nohighlight">\(n\)</span>.
+<br></br>
+Given <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> <strong>compute the following probability</strong> <span class="math notranslate nohighlight">\(P(E(X)-2 \le X \le E(X)+2)\)</span> under 2 conditions: <strong>a)</strong> <span class="math notranslate nohighlight">\(n=100, p=q\)</span> and <strong>b)</strong> <span class="math notranslate nohighlight">\(n=100, p=1/4\)</span>. <strong>c)</strong> How are both <strong>results related</strong> and why if so?
+</span>
+<br></br>
+<span style="color:#347fc9">
+The expectation of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(E(X)=np\)</span>. Therefore we need to find <span class="math notranslate nohighlight">\(P(np-2 \le X \le np+2)\)</span>. Then:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+P(np-2 \le X \le np+2) = P(X \le np+2)-P(X \le np-2)
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+P(X \le np+2) &amp;= \phi\left(\frac{np+2 - np}{\sqrt{npq}}\right) =  \phi\left(\frac{2}{\sqrt{npq}}\right)\\
+P(X \le np-2) &amp;= \phi\left(\frac{np-2 - np}{\sqrt{npq}}\right) = \phi\left(\frac{-2}{\sqrt{npq}}\right)
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>a)</strong> For <span class="math notranslate nohighlight">\(n=100, p=q=1/2\)</span> we have <span class="math notranslate nohighlight">\(\mathbf{E(X)=np=50}\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\phi\left(\frac{2}{\sqrt{npq}}\right)  &amp;= \phi\left(\frac{2}{\sqrt{100\frac{1}{2}\frac{1}{2}}}\right) = 
+\phi\left(\frac{2}{10\cdot \frac{1}{2}}\right) = \phi\left(\frac{2}{5}\right)=\phi\left(0.4\right)=0.6554\\
+\phi\left(\frac{-2}{\sqrt{npq}}\right)  &amp;= \phi\left(\frac{-2}{\sqrt{100\frac{1}{2}\frac{1}{2}}}\right) = 
+\phi\left(\frac{-2}{10\cdot \frac{1}{2}}\right) = \phi\left(-\frac{2}{5}\right)=\phi\left(-0.4\right)=0.3446\\
+\\
+&amp; \mathbf{P(X \le 52) - P(X \le 48) = \phi\left(0.4\right) - \phi\left(-0.4\right) = 0.6554 - 0.3446 = 0.3108}\;. 
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>b)</strong> For <span class="math notranslate nohighlight">\(n=100, p=1/4\)</span> we have <span class="math notranslate nohighlight">\(\mathbf{E(X)=np=25}\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\phi\left(\frac{2}{\sqrt{npq}}\right)  &amp;= \phi\left(\frac{2}{\sqrt{100\frac{1}{4}\frac{3}{4}}}\right) = 
+\phi\left(\frac{2}{10\cdot \frac{\sqrt{3}}{4}}\right) = \phi\left(\frac{2}{4.3}\right)=\phi\left(0.46\right)=0.6772\\
+\phi\left(\frac{-2}{\sqrt{npq}}\right)  &amp;= \phi\left(\frac{-2}{\sqrt{100\frac{1}{4}\frac{3}{4}}}\right) = 
+\phi\left(\frac{-2}{10\cdot \frac{\sqrt{3}}{4}}\right) = \phi\left(-\frac{2}{4.3}\right)=\phi\left(-0.46\right)=0.3228\\
+\\
+&amp; \mathbf{P(X \le 27) - P(X \le 23) = \phi\left(0.46\right) - \phi\left(-0.46\right) = 0.6772 - 0.3228= 0.3544}\;. 
+\end{align}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>c)</strong> There are small differences in both results but the highest probability is given in <strong>b)</strong>. Basically, what happens is that in this latter case the standard deviation is <span class="math notranslate nohighlight">\(4.3\)</span> whereas in the first case is <span class="math notranslate nohighlight">\(5\)</span>. Smaller normalization in the standarized variables lead to higher values of <span class="math notranslate nohighlight">\(\phi(.)\)</span> when fixing the numerators to <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(-2\)</span>.
+</span>
+<br></br></p>
+</section>
+<section id="the-barbell-graph">
+<h2><span class="section-number">18.3. </span>The Barbell graph<a class="headerlink" href="#the-barbell-graph" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">The <strong>Barbell graph</strong> <span class="math notranslate nohighlight">\(B_{m}\)</span> results from joining two <strong>complete graphs</strong> <span class="math notranslate nohighlight">\(K_m\)</span> (without loops) with a single edge (known as the “bottleneck”). For <span class="math notranslate nohighlight">\(m=4\)</span> we have <span class="math notranslate nohighlight">\(n=2m=8\)</span> nodes.
+<br></br>
+In <a class="reference internal" href="#barbell"><span class="std std-numref">Fig. 18.1</span></a> we show the non-trivial eigevector on the Laplacian, the spectrum <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\phi_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span>.
+</span>.</p>
+<figure class="align-center" id="barbell">
+<a class="reference internal image-reference" href="images/Topic5/Barbellcuts.png"><img alt="images/Topic5/Barbellcuts.png" src="images/Topic5/Barbellcuts.png" style="width: 820px; height: 480px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(B_4\)</span>. Normalized Laplacian’s spectrum and partitions inferred from the non-trivial eigenvectors.</span><a class="headerlink" href="#barbell" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9"> <strong>a) Compute the ratio-cut losses of the partitions</strong> induced by eigenvectors <span class="math notranslate nohighlight">\(\phi_2\)</span>, <span class="math notranslate nohighlight">\(\phi_3\)</span> and <span class="math notranslate nohighlight">\(\phi_8\)</span>. Do the results agree with Spectral Theory?
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_2\)</span> induces the partition <span class="math notranslate nohighlight">\(A_2=\{0,1,2,3\}\)</span>, <span class="math notranslate nohighlight">\(B_2=\{4,5,6,7\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_2,B_2)=1\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_2,B_2) = \frac{\text{cut}(A_2,B_2)}{|A_2|} + \frac{\text{cut}(A_2,B_2)}{|B_2|} = \frac{1}{4} + \frac{1}{4} = \frac{1}{2} = 0.83\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_3\)</span> induces the partition <span class="math notranslate nohighlight">\(A_3=\{0,1,2,5,6,7\}\)</span>, <span class="math notranslate nohighlight">\(B_3=\{3,4\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_3,B_3)=6\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_3,B_3) = \frac{\text{cut}(A_3,B_3)}{|A_3|} + \frac{\text{cut}(A_3,B_3)}{|B_3|} = \frac{6}{6} + \frac{6}{2} = 1 + 3 = 4\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9"> <strong>Eigenvector</strong> <span class="math notranslate nohighlight">\(\phi_8\)</span> induces the partition <span class="math notranslate nohighlight">\(A_4=\{0,1,2,4\}\)</span>, <span class="math notranslate nohighlight">\(B_4=\{3,5,6,7\}\)</span> has <span class="math notranslate nohighlight">\(\text{cut}(A_4,B_4)=6+1=7\)</span> and
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{Rcut}(A_4,B_4) = \frac{\text{cut}(A_4,B_4)}{|A_4|} + \frac{\text{cut}(A_4,B_4)}{|B_4|} = \frac{7}{4} + \frac{7}{4} = \frac{7}{2} = 3.5\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>On SGT</strong>. The above partitions result from the eigenvectors. When evaluating the Rcuts we see that the Fiedler vector <span class="math notranslate nohighlight">\(\phi_2\)</span> provides the minimal Rcut (<span class="math notranslate nohighlight">\(0.83\)</span>). This is actally very consistent with Spectral Graph Theory (SGT). When we examine the Rcut of <span class="math notranslate nohighlight">\(\phi_2\)</span>’s partition, where there is a kind of sub-division of the Fiedler’s partition, the Rcut suddenly climbs to <span class="math notranslate nohighlight">\(4\)</span>. There is then an agreement between SGT and discrete solutions (Rcut). However, the theoretically worst partition <span class="math notranslate nohighlight">\(\phi_8\)</span> has  slighly smaller Rcut than <span class="math notranslate nohighlight">\(\phi_3\)</span> which is not so consistent.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>b) Compare <span class="math notranslate nohighlight">\(\tilde{\lambda_2}\)</span> (spectral gap) with those of other graphs (complete, star, path, cycle)  and justify why it is significantly smaller than the corresponding gaps</strong>. The <strong>spectral gap</strong> of the Barbell graph (<span class="math notranslate nohighlight">\(0.11\)</span>) is significanly smaller than those of the path graph (<span class="math notranslate nohighlight">\(0.29\)</span>) and cycle (<span class="math notranslate nohighlight">\(0.6\)</span>), and off course those of the star (<span class="math notranslate nohighlight">\(1.0\)</span>) and the complete graph (<span class="math notranslate nohighlight">\(8/7=1.14)\)</span>. Actually, the Barbell graph is formed by a partition with minimal cut and maximal elements per cluster, where the <strong>Cheeger constant</strong> is better bounded!
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>c1)What is the commute time</strong> between two nodes in a graph? The commute time <span class="math notranslate nohighlight">\(C(u,v)\)</span> between nodes <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, is the expected time taken by a random walk to go from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span> and then return to <span class="math notranslate nohighlight">\(u\)</span>.
+</span>
+<span style="color:#347fc9">
+<strong>c2)Approximate the commute times</strong> between nodes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> and between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(7\)</span>.  Use only the Fiedler value and vector (use 2 decimals). NOT NECESSARY TO USE THE VOLUME. Justify the results. Why are they different if so?
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\text{vol}(G) = 2*(3 + 3 + 3) + 2*4 = 26\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,1)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(1)]^2 = 26\cdot\frac{1}{0.11}[0.37-0.37]^2 = 0\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+CT(0,7)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(7)]^2 = 26\cdot\frac{1}{0.35}[0.37-(-0.37)]^2 = 26\cdot 4.97 = 129.43\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Comment</strong>. The CT between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(7\)</span> is really larger than between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\)</span> since these latter ones belong to the same community and <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(7\)</span> belong to different communities. Technically, as <span class="math notranslate nohighlight">\(\tilde{\lambda_2}\rightarrow 0\)</span>, random walks starting in one community resonate inside it before crossing the “bottleneck”. Statistically, the “leakage” of info between two communities becomes less and less for smaller <span class="math notranslate nohighlight">\(\tilde{\lambda_2}\)</span>.
+</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ExamJuly24.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Assignment 07/24</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-sum">18.1. The multi-Choose Sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussians-and-binomials">18.2. Gaussians and Binomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barbell-graph">18.3. The Barbell graph</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Universidad de Alicante
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

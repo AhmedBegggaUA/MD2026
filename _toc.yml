@@ -38,5 +38,7 @@ parts:
 
 - caption: Exam Solutions 
   chapters:
-  - file: ExamJune24
-  - file: ExamJuly24
+    - file: ExamJune24
+    - file: ExamJuly24
+    - file: ExamJune25
+
