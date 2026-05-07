@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>18. Assignment 06/25 &#8212; Matemáticas Discreta IA</title>
+    <title>19. Assignment 06/25 &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -98,7 +98,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ExamJune25';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="17. Assignment 07/24" href="ExamJuly24.html" />
+    <link rel="prev" title="18. Assignment 07/24" href="ExamJuly24.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -243,12 +243,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_rw.html">16. Graph Exploration Random Walks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">16. Assignment 06/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">17. Assignment 07/24</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Assignment 06/25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">17. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">18. Assignment 07/24</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Assignment 06/25</a></li>
 </ul>
 
     </div>
@@ -397,9 +398,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-sum">18.1. The multi-Choose Sum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussians-and-binomials">18.2. Gaussians and Binomials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barbell-graph">18.3. The Barbell graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-sum">19.1. The multi-Choose Sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussians-and-binomials">19.2. Gaussians and Binomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barbell-graph">19.3. The Barbell graph</a></li>
 </ul>
             </nav>
         </div>
@@ -412,9 +413,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="assignment-06-25">
-<h1><span class="section-number">18. </span>Assignment 06/25<a class="headerlink" href="#assignment-06-25" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">19. </span>Assignment 06/25<a class="headerlink" href="#assignment-06-25" title="Permalink to this heading">#</a></h1>
 <section id="the-multi-choose-sum">
-<h2><span class="section-number">18.1. </span>The multi-Choose Sum<a class="headerlink" href="#the-multi-choose-sum" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">19.1. </span>The multi-Choose Sum<a class="headerlink" href="#the-multi-choose-sum" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong>. We have <span class="math notranslate nohighlight">\(3\)</span> natural numbers, including <span class="math notranslate nohighlight">\(0\)</span> (whatever they are, this is actually the question). Then: </span></p>
 <p><span style="color:#347fc9"><strong>a)</strong> How may <strong>ways do we have of summing three numbers</strong> so that the result is exacltly <span class="math notranslate nohighlight">\(10\)</span>?</span>
 <br></br>
@@ -475,7 +476,7 @@ C_{\sigma}(m=3,k=7) = \left(\!\!{m\choose k}\!\!\right) = {k + m - 1\choose k} =
 <br></br></p>
 </section>
 <section id="gaussians-and-binomials">
-<h2><span class="section-number">18.2. </span>Gaussians and Binomials<a class="headerlink" href="#gaussians-and-binomials" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">19.2. </span>Gaussians and Binomials<a class="headerlink" href="#gaussians-and-binomials" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong>. It is well known that the Binomial distribution <span class="math notranslate nohighlight">\(B(n,p)\)</span> converges to the Gaussian distribution for large values of <span class="math notranslate nohighlight">\(n\)</span>.
 <br></br>
 Given <span class="math notranslate nohighlight">\(X\sim B(n,p)\)</span> <strong>compute the following probability</strong> <span class="math notranslate nohighlight">\(P(E(X)-2 \le X \le E(X)+2)\)</span> under 2 conditions: <strong>a)</strong> <span class="math notranslate nohighlight">\(n=100, p=q\)</span> and <strong>b)</strong> <span class="math notranslate nohighlight">\(n=100, p=1/4\)</span>. <strong>c)</strong> How are both <strong>results related</strong> and why if so?
@@ -540,15 +541,15 @@ P(X \le np-2) &amp;= \phi\left(\frac{np-2 - np}{\sqrt{npq}}\right) = \phi\left(\
 <br></br></p>
 </section>
 <section id="the-barbell-graph">
-<h2><span class="section-number">18.3. </span>The Barbell graph<a class="headerlink" href="#the-barbell-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">19.3. </span>The Barbell graph<a class="headerlink" href="#the-barbell-graph" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9">The <strong>Barbell graph</strong> <span class="math notranslate nohighlight">\(B_{m}\)</span> results from joining two <strong>complete graphs</strong> <span class="math notranslate nohighlight">\(K_m\)</span> (without loops) with a single edge (known as the “bottleneck”). For <span class="math notranslate nohighlight">\(m=4\)</span> we have <span class="math notranslate nohighlight">\(n=2m=8\)</span> nodes.
 <br></br>
-In <a class="reference internal" href="#barbell"><span class="std std-numref">Fig. 18.1</span></a> we show the non-trivial eigevector on the Laplacian, the spectrum <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\phi_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span>.
+In <a class="reference internal" href="#barbell"><span class="std std-numref">Fig. 19.1</span></a> we show the non-trivial eigevector on the Laplacian, the spectrum <span class="math notranslate nohighlight">\(\tilde{\lambda}_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\phi_i\)</span> of the normalized Laplacian <span class="math notranslate nohighlight">\(\tilde{\triangle}\)</span>.
 </span>.</p>
 <figure class="align-center" id="barbell">
 <a class="reference internal image-reference" href="images/Topic5/Barbellcuts.png"><img alt="images/Topic5/Barbellcuts.png" src="images/Topic5/Barbellcuts.png" style="width: 820px; height: 480px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(B_4\)</span>. Normalized Laplacian’s spectrum and partitions inferred from the non-trivial eigenvectors.</span><a class="headerlink" href="#barbell" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19.1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(B_4\)</span>. Normalized Laplacian’s spectrum and partitions inferred from the non-trivial eigenvectors.</span><a class="headerlink" href="#barbell" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br></br>
@@ -657,7 +658,7 @@ CT(0,7)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(7)]^2 = 26\cdot\frac{1
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">17. </span>Assignment 07/24</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Assignment 07/24</p>
       </div>
     </a>
 </div>
@@ -676,9 +677,9 @@ CT(0,7)=\text{vol}(G)\frac{1}{\lambda_2}[\phi_2(0)-\phi_2(7)]^2 = 26\cdot\frac{1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-sum">18.1. The multi-Choose Sum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussians-and-binomials">18.2. Gaussians and Binomials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barbell-graph">18.3. The Barbell graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multi-choose-sum">19.1. The multi-Choose Sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussians-and-binomials">19.2. Gaussians and Binomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barbell-graph">19.3. The Barbell graph</a></li>
 </ul>
   </nav></div>
 

@@ -35,6 +35,7 @@ parts:
   - file: graph_generation
   - file: graph_exploration_bfs
   - file: graph_exploration_dfs
+  - file: graph_exploration_rw
 
 - caption: Exam Solutions 
   chapters:

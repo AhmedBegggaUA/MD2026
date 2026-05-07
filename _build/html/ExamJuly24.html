@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>17. Assignment 07/24 &#8212; Matemáticas Discreta IA</title>
+    <title>18. Assignment 07/24 &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -98,8 +98,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ExamJuly24';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="18. Assignment 06/25" href="ExamJune25.html" />
-    <link rel="prev" title="16. Assignment 06/24" href="ExamJune24.html" />
+    <link rel="next" title="19. Assignment 06/25" href="ExamJune25.html" />
+    <link rel="prev" title="17. Assignment 06/24" href="ExamJune24.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -244,12 +244,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="graph_generation.html">13. Graph Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graph_exploration_bfs.html">14. Graph Exploration BFS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_exploration_rw.html">16. Graph Exploration Random Walks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">16. Assignment 06/24</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Assignment 07/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJune25.html">18. Assignment 06/25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">17. Assignment 06/24</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Assignment 07/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune25.html">19. Assignment 06/25</a></li>
 </ul>
 
     </div>
@@ -398,9 +399,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-groups">17.1. Counting groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">17.2. Bernouilli trials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">17.3. Random Walks on Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-groups">18.1. Counting groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">18.2. Bernouilli trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">18.3. Random Walks on Graphs</a></li>
 </ul>
             </nav>
         </div>
@@ -413,9 +414,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="assignment-07-24">
-<h1><span class="section-number">17. </span>Assignment 07/24<a class="headerlink" href="#assignment-07-24" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">18. </span>Assignment 07/24<a class="headerlink" href="#assignment-07-24" title="Permalink to this heading">#</a></h1>
 <section id="counting-groups">
-<h2><span class="section-number">17.1. </span>Counting groups<a class="headerlink" href="#counting-groups" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.1. </span>Counting groups<a class="headerlink" href="#counting-groups" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong> <strong>a)</strong> How many groups of up to <span class="math notranslate nohighlight">\(3\)</span> different elements can we form with <span class="math notranslate nohighlight">\(10\)</span> individuals (including a group with no-one)?
 <strong>b)</strong> How many groups of more than <span class="math notranslate nohighlight">\(3\)</span> different elements can we form with <span class="math notranslate nohighlight">\(10\)</span> individuals?
 </span>
@@ -445,7 +446,7 @@ N_{k&gt;}=2^n - N_k = 2^{10} - 176 = 1024 - 176 = 848\;.
 </span></p>
 </section>
 <section id="bernouilli-trials">
-<h2><span class="section-number">17.2. </span>Bernouilli trials<a class="headerlink" href="#bernouilli-trials" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.2. </span>Bernouilli trials<a class="headerlink" href="#bernouilli-trials" title="Permalink to this heading">#</a></h2>
 <p><span style="color:#347fc9"><strong>Exercise</strong>
 Consider the following Bernouilli trial: <strong>Throw <span class="math notranslate nohighlight">\(2\)</span> dices simultaneously</strong> and register the outcomes as <span class="math notranslate nohighlight">\((x,y)\)</span>. Then infer <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, where <span class="math notranslate nohighlight">\(p + q = 1\)</span> in the following case:
 </span>
@@ -563,14 +564,14 @@ As a result, <span class="math notranslate nohighlight">\(p=\frac{6+5+3}{36}=\fr
 <br></br></p>
 </section>
 <section id="random-walks-on-graphs">
-<h2><span class="section-number">17.3. </span>Random Walks on Graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h2>
-<p><span style="color:#347fc9"><strong>Exercise</strong>.  Given the <strong>escape room</strong> in the In <a class="reference internal" href="#triangle"><span class="std std-numref">Fig. 17.1</span></a> we plot a triangular mesh where the outputs (border nodes or absorbing states) are marked as <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(0\)</span> indicating respectively “success” and “failure”. What are the probabilities that random walks launched from the interior nodes  <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>, succeed?. Set the system and perform <span class="math notranslate nohighlight">\(3\)</span> iterations starting from <span class="math notranslate nohighlight">\(\mathbf{x}^0=[1\;1\;1]^T\)</span>. Explain the results.
+<h2><span class="section-number">18.3. </span>Random Walks on Graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise</strong>.  Given the <strong>escape room</strong> in the In <a class="reference internal" href="#triangle"><span class="std std-numref">Fig. 18.1</span></a> we plot a triangular mesh where the outputs (border nodes or absorbing states) are marked as <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(0\)</span> indicating respectively “success” and “failure”. What are the probabilities that random walks launched from the interior nodes  <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>, succeed?. Set the system and perform <span class="math notranslate nohighlight">\(3\)</span> iterations starting from <span class="math notranslate nohighlight">\(\mathbf{x}^0=[1\;1\;1]^T\)</span>. Explain the results.
 </span>
 <br></br></p>
 <figure class="align-center" id="triangle">
 <a class="reference internal image-reference" href="_images/Triangle.png"><img alt="_images/Triangle.png" src="_images/Triangle.png" style="width: 450px; height: 480px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17.1 </span><span class="caption-text">Triangular mesh with interior nodes <span class="math notranslate nohighlight">\(x_1\)</span>,<span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>.</span><a class="headerlink" href="#triangle" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18.1 </span><span class="caption-text">Triangular mesh with interior nodes <span class="math notranslate nohighlight">\(x_1\)</span>,<span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>.</span><a class="headerlink" href="#triangle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br></br>
@@ -785,7 +786,7 @@ Then the second:
 </span>
 <br></br>
 <span style="color:#347fc9">
-The solution up to only two iterations is quite representative of the final solution since we have: <span class="math notranslate nohighlight">\(x_2\)</span> half-way between the two external nodes, <span class="math notranslate nohighlight">\(x_1\)</span> closer to the top one and <span class="math notranslate nohighlight">\(x_3\)</span> closer to the bottom one (see <a class="reference internal" href="#trianglesol"><span class="std std-numref">Fig. 17.2</span></a>).
+The solution up to only two iterations is quite representative of the final solution since we have: <span class="math notranslate nohighlight">\(x_2\)</span> half-way between the two external nodes, <span class="math notranslate nohighlight">\(x_1\)</span> closer to the top one and <span class="math notranslate nohighlight">\(x_3\)</span> closer to the bottom one (see <a class="reference internal" href="#trianglesol"><span class="std std-numref">Fig. 18.2</span></a>).
 </span>
 <br></br>
 <span style="color:#347fc9">
@@ -795,7 +796,7 @@ Finally, if we add an edge between <span class="math notranslate nohighlight">\(
 <figure class="align-center" id="trianglesol">
 <a class="reference internal image-reference" href="_images/TriangleSol.png"><img alt="_images/TriangleSol.png" src="_images/TriangleSol.png" style="width: 450px; height: 480px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17.2 </span><span class="caption-text">Solution for Triangular mesh with interior nodes <span class="math notranslate nohighlight">\(x_1\)</span>,<span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>.</span><a class="headerlink" href="#trianglesol" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18.2 </span><span class="caption-text">Solution for Triangular mesh with interior nodes <span class="math notranslate nohighlight">\(x_1\)</span>,<span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>.</span><a class="headerlink" href="#trianglesol" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -837,7 +838,7 @@ Finally, if we add an edge between <span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Assignment 06/24</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Assignment 06/24</p>
       </div>
     </a>
     <a class="right-next"
@@ -845,7 +846,7 @@ Finally, if we add an edge between <span class="math notranslate nohighlight">\(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Assignment 06/25</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Assignment 06/25</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -865,9 +866,9 @@ Finally, if we add an edge between <span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-groups">17.1. Counting groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">17.2. Bernouilli trials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">17.3. Random Walks on Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-groups">18.1. Counting groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">18.2. Bernouilli trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">18.3. Random Walks on Graphs</a></li>
 </ul>
   </nav></div>
 
