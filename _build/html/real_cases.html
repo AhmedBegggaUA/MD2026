@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Graphs on real life &#8212; Matemáticas Discreta IA</title>
+    <title>17. Graphs on real life &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -96,6 +96,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'real_cases';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="18. Assignment 06/24" href="ExamJune24.html" />
+    <link rel="prev" title="16. Graph Exploration Random Walks" href="graph_exploration_rw.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -242,11 +244,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="graph_exploration_dfs.html">15. Graph Exploration DFS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graph_exploration_rw.html">16. Graph Exploration Random Walks</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Practice 4</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Graphs on real life</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">17. Assignment 06/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">18. Assignment 07/24</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExamJune25.html">19. Assignment 06/25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">18. Assignment 06/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">19. Assignment 07/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJune25.html">20. Assignment 06/25</a></li>
 </ul>
 
     </div>
@@ -395,19 +401,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec">Node2Vec</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-word2vec">Embeddings and word2vec</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-algorithm">Node2Vec algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippet">Code snippet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec">17.1. Node2Vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-word2vec">17.1.1. Embeddings and word2vec</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-algorithm">17.1.2. Node2Vec algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippet">17.1.2.1. Code snippet</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-in-action">Node2Vec in action</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-can-visualize-the-embeddings">How we can visualize the embeddings?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-in-action">17.1.3. Node2Vec in action</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-can-visualize-the-embeddings">17.1.4. How we can visualize the embeddings?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.2. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">17.2.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">17.2.2. Exercise 2</a></li>
 </ul>
 </li>
 </ul>
@@ -422,7 +428,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="graphs-on-real-life">
-<h1>Graphs on real life<a class="headerlink" href="#graphs-on-real-life" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>Graphs on real life<a class="headerlink" href="#graphs-on-real-life" title="Permalink to this heading">#</a></h1>
 <p>During the course we have seen many libraries and tools that can be used to create graphs. Additionally, we have seen how to navigate through the data and how to create a graph from it. Finally, the last couple of weeks we have seen how to explore the graph and how to extract information from it.</p>
 <p>In this section, we will apply all the knowledge we have acquired to a real case. We will use the data from the library <code class="docutils literal notranslate"><span class="pre">PytorchGeometric</span></code> to create a graph and explore it. Do not worry if you are not familiar with the library, we will guide you through the process and also provide you with the necessary information and code to perform the tasks.</p>
 <div class="admonition note">
@@ -430,23 +436,23 @@ document.write(`
 <p>It is important to mention that the scope of this subject is not to teach you how different machine learning or deep learning models work, but to show you how to create a graph from a dataset and how to explore it. If you are interested in learning more about the models, we encourage you to visit the official documentation of the library or the official documentation of the model you are interested in.</p>
 </div>
 <section id="node2vec">
-<h2>Node2Vec<a class="headerlink" href="#node2vec" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.1. </span>Node2Vec<a class="headerlink" href="#node2vec" title="Permalink to this heading">#</a></h2>
 <p>In the previous classes, we have seen how to perform a random walk on a graph. A random walk is a stochastic process that describes a path that consists of a sequence of random steps on a graph. The random walk starts at a given node in the graph and then moves to a neighboring node with a certain probability. The random walk continues in this way until it reaches a terminal node. The random walk can be used to explore the graph and to find interesting patterns in the graph.</p>
 <p>One of the algorithms that can be used to perform a random walk on a graph is the Node2Vec algorithm. The Node2Vec algorithm is a representation learning algorithm that is used to learn the embeddings of the nodes in a graph. The embeddings of the nodes are learned in such a way that the nodes that are close in the graph are also close in the embedding space. The Node2Vec algorithm is based on the idea of using a biased random walk to explore the graph and to learn the embeddings of the nodes.</p>
 <p>But before we can use the Node2Vec algorithm to learn the embeddings of the nodes in a graph, we need to understand the meaning of the embeddings and how  powerful they are.</p>
 <section id="embeddings-and-word2vec">
-<h3>Embeddings and word2vec<a class="headerlink" href="#embeddings-and-word2vec" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.1.1. </span>Embeddings and word2vec<a class="headerlink" href="#embeddings-and-word2vec" title="Permalink to this heading">#</a></h3>
 <p>The embeddings of the nodes in a graph are the low-dimensional representations of the nodes in the graph. These representations are learned in such a way that the nodes that are close in the graph are also close in the embedding space. The embeddings of the nodes can be used to perform various tasks on the graph, such as classification, clustering, and link prediction. Embeddings in graphs are similar to embeddings in text, where the words that are close in the text are also close in the embedding space. That is why the Node2Vec algorithm is based on the Word2Vec algorithm. Word2Vec is a representation learning algorithm that is used to learn the embeddings of the words in a text. The embeddings of the words are learned in such a way that the words that are close in the text are also close in the embedding space.</p>
 <figure class="align-center" id="embeddings-idea">
 <a class="reference internal image-reference" href="_images/embedding.png"><img alt="_images/embedding.png" src="_images/embedding.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Embeddings idea</span><a class="headerlink" href="#embeddings-idea" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17.1 </span><span class="caption-text">Embeddings idea</span><a class="headerlink" href="#embeddings-idea" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Embeddings are useful in the field of machine learning and deep learning because they allow us to represent the data in a more compact and meaningful way. For instance, in computer vision, we can use embeddings to represent the images of millions of pixels in a more compact and meaningful way. The same happens with the embeddings of the nodes in a graph, we can represent the nodes in a more compact and meaningful way. But the most important thing about embeddings is that they capture all the information in few dimensions.</p>
 </section>
 <section id="node2vec-algorithm">
-<h3>Node2Vec algorithm<a class="headerlink" href="#node2vec-algorithm" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.1.2. </span>Node2Vec algorithm<a class="headerlink" href="#node2vec-algorithm" title="Permalink to this heading">#</a></h3>
 <p>Following the idea of Word2Vec, the Node2Vec algorithm is a representation learning algorithm that is used to learn the embeddings of the nodes in a graph. The embeddings of the nodes are learned in such a way that the nodes that are close in the graph are also close in the embedding space.</p>
 <p>Here is a brief explanation of how the Node2Vec algorithm works:</p>
 <ol class="arabic simple">
@@ -454,7 +460,7 @@ document.write(`
 <li><p><strong>Learn the embeddings</strong>: The second step of the Node2Vec algorithm is to learn the embeddings of the nodes in the graph. The embeddings of the nodes are learned in such a way that the nodes that are close in the graph are also close in the embedding space. The embeddings are learned using the Skip-Gram model, which is a variant of the Word2Vec model.</p></li>
 </ol>
 <section id="code-snippet">
-<h4>Code snippet<a class="headerlink" href="#code-snippet" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">17.1.2.1. </span>Code snippet<a class="headerlink" href="#code-snippet" title="Permalink to this heading">#</a></h4>
 <p>Here is a code snippet that shows how to use the Node2Vec algorithm to learn the embeddings of the nodes in a graph:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -497,7 +503,7 @@ document.write(`
 </section>
 </section>
 <section id="node2vec-in-action">
-<h3>Node2Vec in action<a class="headerlink" href="#node2vec-in-action" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.1.3. </span>Node2Vec in action<a class="headerlink" href="#node2vec-in-action" title="Permalink to this heading">#</a></h3>
 <p>Now that we have seen how the Node2Vec algorithm works, let’s see how to use it in practice by generating the embeddings of the nodes in a graph.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -535,7 +541,7 @@ document.write(`
 </div>
 </section>
 <section id="how-we-can-visualize-the-embeddings">
-<h3>How we can visualize the embeddings?<a class="headerlink" href="#how-we-can-visualize-the-embeddings" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.1.4. </span>How we can visualize the embeddings?<a class="headerlink" href="#how-we-can-visualize-the-embeddings" title="Permalink to this heading">#</a></h3>
 <p>Now that we have learned the embeddings of the nodes in the graph, we can visualize the embeddings in a low-dimensional space using dimensionality reduction techniques such as PCA or t-SNE. These techniques allow us to reduce the dimensionality of the embeddings from a high-dimensional space to a low-dimensional space, so that we can visualize the embeddings in a 2D or 3D space. If you are not familiar with these techniques, do not worry, we will let you video tutorials and documentation to learn more about them.</p>
 <p>Here is a code snippet that shows how to visualize the embeddings of the nodes in a graph using PCA:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -554,19 +560,19 @@ document.write(`
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="_images/node2vec_embeddings.png"><img alt="_images/node2vec_embeddings.png" src="_images/node2vec_embeddings.png" style="width: 700px; height: 500px;" /></a>
 <figcaption>
-<p><span class="caption-text">Embeddings idea</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17.2 </span><span class="caption-text">Embeddings idea</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.2. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.2.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
 <p>As we did in the previous classes, After reading the previous section, you should be able to create your Jupyter-Notebook and write a report about all the things you have learned in this section. In order to have a good structure, we recommend you to follow exactly the same structure as in this notebook. <strong>IMPORTANT: I want a very detailed report, with all the explanations and code snippets that you have used to perform the tasks. Just like the previous practices where we made a trace of the algorithms</strong></p>
 </section>
 <section id="exercise-2">
-<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">17.2.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
 <p>Now that you have learned how to use the Node2Vec algorithm to learn the embeddings of the nodes in a graph, I want you to apply the Node2Vec algorithm to the graph that we have generated in the previous classes (4 + 2 Graphs). Then, visualize the embeddings of the nodes in a low-dimensional space using PCA or t-SNE. What can you say about the embeddings of the nodes in the graph? Are the nodes that are close in the graph also close in the embedding space? What can you say about the quality of the embeddings? And if you could improve the quality of the embeddings, how would you do it?</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -606,6 +612,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="graph_exploration_rw.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Graph Exploration Random Walks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ExamJune24.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Assignment 06/24</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -622,19 +646,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec">Node2Vec</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-word2vec">Embeddings and word2vec</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-algorithm">Node2Vec algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippet">Code snippet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec">17.1. Node2Vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-word2vec">17.1.1. Embeddings and word2vec</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-algorithm">17.1.2. Node2Vec algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#code-snippet">17.1.2.1. Code snippet</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-in-action">Node2Vec in action</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-can-visualize-the-embeddings">How we can visualize the embeddings?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node2vec-in-action">17.1.3. Node2Vec in action</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-can-visualize-the-embeddings">17.1.4. How we can visualize the embeddings?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.2. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">17.2.1. Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">17.2.2. Exercise 2</a></li>
 </ul>
 </li>
 </ul>

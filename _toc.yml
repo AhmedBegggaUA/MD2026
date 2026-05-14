@@ -36,6 +36,10 @@ parts:
   - file: graph_exploration_bfs
   - file: graph_exploration_dfs
   - file: graph_exploration_rw
+- caption: Practice 4
+  chapters:
+  - file: real_cases
+
 
 - caption: Exam Solutions 
   chapters:
