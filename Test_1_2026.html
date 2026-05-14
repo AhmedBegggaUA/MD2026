@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>19. Assignment 07/24 &#8212; Matemáticas Discreta IA</title>
+    <title>21. Test Combinatorics and Probability 04/26 &#8212; Matemáticas Discreta IA</title>
   
   
   
@@ -95,11 +95,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ExamJuly24';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Test_1_2026';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20. Assignment 06/25" href="ExamJune25.html" />
-    <link rel="prev" title="18. Assignment 06/24" href="ExamJune24.html" />
+    <link rel="prev" title="20. Assignment 06/25" href="ExamJune25.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -253,9 +252,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exam Solutions</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ExamJune24.html">18. Assignment 06/24</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Assignment 07/24</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExamJuly24.html">19. Assignment 07/24</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ExamJune25.html">20. Assignment 06/25</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Test_1_2026.html">21. Test Combinatorics and Probability 04/26</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">21. Test Combinatorics and Probability 04/26</a></li>
 </ul>
 
     </div>
@@ -310,7 +309,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/ExamJuly24.md" target="_blank"
+      <li><a href="_sources/Test_1_2026.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -394,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment 07/24</h1>
+    <h1>Test Combinatorics and Probability 04/26</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -404,9 +403,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-groups">19.1. Counting groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">19.2. Bernouilli trials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">19.3. Random Walks on Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinatorics">21.1. Combinatorics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pascal-s-triangle">21.2. Pascal’s Triangle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variables">21.3. Gaussian variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-pei">21.4. Counting paths (PEI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-sum-principle">21.5. Permutations and Sum principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multichoose">21.6. Multichoose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">21.7. Conditional probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">21.8. Bernouilli trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-1d">21.9. Random walks (1D)</a></li>
 </ul>
             </nav>
         </div>
@@ -418,61 +423,244 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="assignment-07-24">
-<h1><span class="section-number">19. </span>Assignment 07/24<a class="headerlink" href="#assignment-07-24" title="Permalink to this heading">#</a></h1>
-<section id="counting-groups">
-<h2><span class="section-number">19.1. </span>Counting groups<a class="headerlink" href="#counting-groups" title="Permalink to this heading">#</a></h2>
-<p><span style="color:#347fc9"><strong>Exercise</strong> <strong>a)</strong> How many groups of up to <span class="math notranslate nohighlight">\(3\)</span> different elements can we form with <span class="math notranslate nohighlight">\(10\)</span> individuals (including a group with no-one)?
-<strong>b)</strong> How many groups of more than <span class="math notranslate nohighlight">\(3\)</span> different elements can we form with <span class="math notranslate nohighlight">\(10\)</span> individuals?
-</span>
-<br></br>
-<span style="color:#347fc9">
-<strong>a)</strong> For this simple exercise it is essential to understand that “forming a group of <span class="math notranslate nohighlight">\(k\)</span> different elements from <span class="math notranslate nohighlight">\(n\)</span> elements” is simply <span class="math notranslate nohighlight">\({n\choose k}=\frac{n!}{k!(n-k)!}\)</span>.
-<br></br>
-However, we are asked to count how many groups of <span class="math notranslate nohighlight">\(k=0,1,2,3\)</span> elements do we have. Since each group is different from the others, we have that this number, for <span class="math notranslate nohighlight">\(n=10\)</span>, is
-</span>
-<br></br>
+  <section id="test-combinatorics-and-probability-04-26">
+<h1><span class="section-number">21. </span>Test Combinatorics and Probability 04/26<a class="headerlink" href="#test-combinatorics-and-probability-04-26" title="Permalink to this heading">#</a></h1>
+<section id="combinatorics">
+<h2><span class="section-number">21.1. </span>Combinatorics<a class="headerlink" href="#combinatorics" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9"><strong>Exercise 1</strong>. How many bit strings of length 4 contain: </span>
+<br><br>
+<span style="color:#347fc9"><strong>a)</strong>. At least two 1s?: </span>
+<br><br>
+<span style="color:#347fc9"><strong>b)</strong>. Exactly three 1s?: </span>
+<br><br>
+<span style="color:#347fc9"><strong>c)</strong>. At most two ones?: </span>
+<br><br>
+<span style="color:#347fc9"><strong>d)</strong>. An equal number of 0s and 1s?: </span>
+<br><br>
+<span style="color:#347fc9"><strong>General answer</strong>. For this exercise consider that we have <span class="math notranslate nohighlight">\(2^n\)</span> different strings where <span class="math notranslate nohighlight">\(n=5\)</span>. In addition, as order is not required we have <strong>combinations</strong>. Therefore, we use we expression: </span>
+<br><br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
-N_k={n\choose 0} + {n\choose 1} + {n\choose 2} + {n\choose 3} = {10\choose 0} + {10\choose 1} + {10\choose 2} + {10\choose 3} = 1 + 10 + 45 + 120 = 176\;.
+{5\choose 0} + {5\choose 1} + {5\choose 2} + {5\choose 3} + {5\choose 4} + {5\choose 5} = 2^5\;.
 \)</span>
 </span>
 <br></br>
-<span style="color:#347fc9">
-<strong>b)</strong> For <span class="math notranslate nohighlight">\(k&gt;3\)</span> elements, we have to count <span class="math notranslate nohighlight">\({n\choose 4}+{n\choose 5}+\ldots+{n\choose 10}\)</span> but this solution requires a lot of calculus. In theory, we studied that <span class="math notranslate nohighlight">\({n\choose k}\)</span> counts the <strong>number of subsets of size</strong> <span class="math notranslate nohighlight">\(k\)</span> <strong>in a set of <span class="math notranslate nohighlight">\(n\)</span> elements</strong>. This means that  <span class="math notranslate nohighlight">\({n\choose 0}+{n\choose 1}+\ldots+{n\choose n}=2^n\)</span>.
-<br></br>
-Then, the number of groups with more than <span class="math notranslate nohighlight">\(k=3\)</span> elements is simply
+<span style="color:#347fc9"><strong>a)</strong>. At least two 1s?: (all minus those with less than 2 ones)
 </span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-N_{k&gt;}=2^n - N_k = 2^{10} - 176 = 1024 - 176 = 848\;.
-\)</span>
-</span></p>
-</section>
-<section id="bernouilli-trials">
-<h2><span class="section-number">19.2. </span>Bernouilli trials<a class="headerlink" href="#bernouilli-trials" title="Permalink to this heading">#</a></h2>
-<p><span style="color:#347fc9"><strong>Exercise</strong>
-Consider the following Bernouilli trial: <strong>Throw <span class="math notranslate nohighlight">\(2\)</span> dices simultaneously</strong> and register the outcomes as <span class="math notranslate nohighlight">\((x,y)\)</span>. Then infer <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, where <span class="math notranslate nohighlight">\(p + q = 1\)</span> in the following case:
-</span>
-<br></br>
+<br><br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
 \begin{align}
-\;\;\text{a)}\;\; p &amp;= \{\text{Prob. of}\;\; |x-y|&gt;0 \;\;\text{is even}\}\\
-\;\;\text{b)}\;\; p &amp;= \{\text{Prob. of}\;\; \frac{x}{y} \;\;\text{is integer}\}\\
+\textbf{Sol}_a &amp;= 2^5 -\left({5\choose 0} + {5\choose 1}\right)\\
+             &amp;= 2^5 - \left(1 + \frac{5!}{4!1!}\right)\\
+             &amp;= 2^5 - \left(1 + \frac{5\cdot 4!}{4!1!}\right)\\
+             &amp;= 2^5 - \left(1 + 5\right)\\
+             &amp;= 2^5 - \left(6\right)\\
+             &amp;= \mathbf{26}\\
 \end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9"><strong>b)</strong>. Exactly three 1s?: </span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\textbf{Sol}_b = {5\choose 3} = \frac{5!}{3!2!} = \frac{5\cdot 4\cdot 3!}{3!2!} = \mathbf{10}\\
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9"><strong>c)</strong>. At most two ones?: (0, 1 or 2 ones) </span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\begin{align}
+\textbf{Sol}_c &amp;= {5\choose 0} + {5\choose 1} + {5\choose 2}= 1 + 5 + 10 = \mathbf{16}
+\end{align}
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9"><strong>d)</strong>. An equal number of 0s and 1s?: <em>None</em> <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> </span>
+<br><br></p>
+</section>
+<section id="pascal-s-triangle">
+<h2><span class="section-number">21.2. </span>Pascal’s Triangle<a class="headerlink" href="#pascal-s-triangle" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">Given that the root <span class="math notranslate nohighlight">\(n=0\)</span> is <span class="math notranslate nohighlight">\({0\choose 0}=1\)</span>, the following leven <span class="math notranslate nohighlight">\(n=1\)</span> is <span class="math notranslate nohighlight">\({1\choose 0}\; {1\choose 0}=1\)</span>, we have that the <span class="math notranslate nohighlight">\(n-\)</span>th level is given by
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+{n\choose 0}=1\; {n\choose 1}=n\;\ldots\; {n\choose n-1}=n\; {n\choose n}=1
+\)</span>
+</span>
+<br><br>
+<span style="color:#347fc9">
+Therefore, the solution is <strong>a)</strong> <span class="math notranslate nohighlight">\(n=10\)</span> since the second element gives you the level.
+</span>
+<br><br></p>
+</section>
+<section id="gaussian-variables">
+<h2><span class="section-number">21.3. </span>Gaussian variables<a class="headerlink" href="#gaussian-variables" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">Given a random variable <span class="math notranslate nohighlight">\(X\sim N(1,2.5^2)\)</span> where <span class="math notranslate nohighlight">\(\sigma = 2.5\)</span>, compute <span class="math notranslate nohighlight">\(p(X\le 2)\)</span>. We have
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+Z = \frac{X-\mu}{\sigma} = \frac{2-1}{2.5} = \frac{1}{2.5}=0.4\;\Rightarrow\; p(X\le 2)=p(z\le 0.4)=0.6554.
+\)</span>
+</span>
+<br></br></p>
+</section>
+<section id="counting-paths-pei">
+<h2><span class="section-number">21.4. </span>Counting paths (PEI)<a class="headerlink" href="#counting-paths-pei" title="Permalink to this heading">#</a></h2>
+<span style="color:#347fc9">
+Given the figure
+</span>
+<figure class="align-center" id="grid1withobs">
+<a class="reference internal image-reference" href="_images/grid1withobs.png"><img alt="_images/grid1withobs.png" src="_images/grid1withobs.png" style="width: 600px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21.1 </span><span class="caption-text">Grid for counting paths between <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((4,4)\)</span> after marking nodes <span class="math notranslate nohighlight">\((2,2)\)</span> and <span class="math notranslate nohighlight">\((2,3)\)</span> as forbidden or <em>obstacles</em>.</span><a class="headerlink" href="#grid1withobs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+How many different paths between <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((4,4)\)</span> DO NOT PASS through <span class="math notranslate nohighlight">\((2,3)\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(\textbf{Sol}\)</span>: In this case, we <strong>have a simple application of the PEI</strong>. The total paths going from <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((4,4)\)</span> are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+N_{44} = {4+4\choose 4} = 70\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">The paths going from <span class="math notranslate nohighlight">\((0,0)\)</span> to <span class="math notranslate nohighlight">\((2,3)\)</span> and then going to <span class="math notranslate nohighlight">\((4,4)\)</span> are:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\#P = \underbrace{N_{23}}_{\text{from}\;(0,0)\text{to}\;(2,3)}\cdot\underbrace{N_{(4-2)(4-3)}}_{\text{from}\; (2,3)\;\text{to}\;(4,4)} = N_{23}\cdot N_{21} = {5\choose 2}{3\choose 1} = \mathbf{30}\;.
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">Therefore
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\textbf{Sol} = N_{44} - \#P = 70 - 30  = 40.
 \)</span>
 </span>
 <br></br>
 <span style="color:#347fc9">
-and give also the <strong>expectations and variances</strong> of the Bernouilli variables associated with these experiments.
+is the solution.
+</span></p>
+</section>
+<section id="permutations-and-sum-principle">
+<h2><span class="section-number">21.5. </span>Permutations and Sum principle<a class="headerlink" href="#permutations-and-sum-principle" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">Each user in a computer has a password, which is <strong>six to eight</strong> characters (0-9) long. How many passwords are there?
 </span>
 <br></br>
 <span style="color:#347fc9">
-Firstly, the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is given by the cartesian product <span class="math notranslate nohighlight">\(\Omega = \{1,\ldots,6\}\times \{1,\ldots,6\}\)</span>. Thus, we have
+Herein, we apply the <strong>sum</strong> principle since we may have 6, 7 or 8 lengths and each length is disjoint. Therefore, we hae <span class="math notranslate nohighlight">\(P_6 + P_7 + P_8\)</span> (<ins>we do not count repetitions here</ins>) where
 </span>
 <br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+\mathbf{Sol}= P_6 + P_7 + P_8 = 10^6 + 10^7 + 10^8 = 1O^6(10 + 10^2) = 10^6\cdot 110 = \mathbf{110}\;\textbf{M}\;.
+\)</span>
+</span></p>
+</section>
+<section id="multichoose">
+<h2><span class="section-number">21.6. </span>Multichoose<a class="headerlink" href="#multichoose" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">How many ways are there to select five bills from a cash box containing <strong>$1 bills, $5
+bills, $10 bills, $50 bills and $100 bills</strong>? Assume that the order in which the bills are
+chosen does not matter, that the bills of each denomination are indistinguishable and that there
+are at least five bills of each type.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Solution</strong>. This is a problem of multi-choosing. We have <span class="math notranslate nohighlight">\(5\)</span> types of objects and there are at least <span class="math notranslate nohighlight">\(5\)</span> bills of each type. However <strong>we have to select only 5 bills of each type, so we can assume that we have no constraints</strong>:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+S = \{\infty\cdot \$1,\; \infty\cdot \$5,\; \infty\cdot \$10,\;\infty\cdot \$50,\; \infty\cdot \$100\}
+\)</span>
+</span>
+<br></br>
+<span style="color:#347fc9">
+Then we have to solve the following integer equation:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+x_1 + x_2 + x_3 + x_4 + x_5 = 5\;\Rightarrow \left(\!\!{m=5\choose k=5}\!\!\right) = {5+5-1\choose 5} = {9\choose 5} = \mathbf{126}\;.
+\)</span>
+</span></p>
+</section>
+<section id="conditional-probability">
+<h2><span class="section-number">21.7. </span>Conditional probability<a class="headerlink" href="#conditional-probability" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">The above tree corresponds to a conditional tree where each level 0, 1, and 2 corresponds to the random variables
+<span class="math notranslate nohighlight">\(𝑍_0=𝑋_0\)</span>, <span class="math notranslate nohighlight">\(𝑍_1=(𝑋_1|𝑋_0)\)</span> and <span class="math notranslate nohighlight">\(𝑍_2=(𝑋2|𝑋1,𝑋0)\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+The content of each node means the value of the variable at that level. For instance  <span class="math notranslate nohighlight">\(𝑋_0=\frac{𝑎}{𝐴}\)</span>
+and the node <span class="math notranslate nohighlight">\((𝑎−1,𝐴−2)\)</span>
+in level 2 corresponds to
+<span class="math notranslate nohighlight">\(𝑍_2=\left(\frac{𝑎−1}{𝐴−2}|𝑍_1=\frac{𝑎}{𝐴−1}\right)\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+The numbers on the edges are the conditional probabilities of reaching a node given its parent in
+the tree. For instance, <span class="math notranslate nohighlight">\(𝑝(𝑍_2=\frac{𝑎−1}{𝐴−2}|𝑍_1=\frac{𝑎}{𝐴−1})=\frac{𝑎}{𝐴−1}\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>What is</strong> <span class="math notranslate nohighlight">\(𝑝(𝑍_2=\frac{𝑎-1}{𝐴−2}|𝑍_1,𝑍_0)\)</span>
+i.e. with respect to the zero level  if <span class="math notranslate nohighlight">\(a = 10\)</span> and <span class="math notranslate nohighlight">\(A = 20\)</span>?
+</span></p>
+<figure class="align-center" id="tree3">
+<a class="reference internal image-reference" href="_images/Tree3.png"><img alt="_images/Tree3.png" src="_images/Tree3.png" style="width: 800px; height: 450px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21.2 </span><span class="caption-text">General tree diagram for a card deck (no replacement).</span><a class="headerlink" href="#tree3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><br></br>
+<span style="color:#347fc9">
+For <span class="math notranslate nohighlight">\(a=10\)</span>, <span class="math notranslate nohighlight">\(A=20\)</span> we have the root <span class="math notranslate nohighlight">\(a/A =1/2\)</span>. Then
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+𝑝\left(𝑍_2=\frac{𝑎-1}{𝐴−2}|𝑍_1,𝑍_0\right) =  2\cdot\frac{a}{A-1}\cdot\frac{A-a}{A} = 2\cdot\frac{10}{20-1}\cdot\frac{10}{20} = 2\cdot\frac{10}{19}\cdot\frac{1}{2} = \frac{10}{19}=\mathbf{0.5263}
+\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+Since there two branches leading to this state, the above solution is identical to:
+</span>
+<br></br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+𝑝\left(𝑍_2=\frac{𝑎-1}{𝐴−2}|𝑍_1,𝑍_0\right) =  2\cdot\frac{A-a}{A-1}\cdot\frac{a}{A} = 2\cdot\frac{10}{20-1}\cdot\frac{10}{20} = 2\cdot\frac{10}{19}\cdot\frac{1}{2} = \frac{10}{19}=\mathbf{0.5263}
+\)</span>.
+</span>
+<br></br>
+<span style="color:#347fc9">
+I.e we have to solutions.
+</span></p>
+</section>
+<section id="bernouilli-trials">
+<h2><span class="section-number">21.8. </span>Bernouilli trials<a class="headerlink" href="#bernouilli-trials" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">Throw dices simultaneously and register the outcomes as <span class="math notranslate nohighlight">\((𝑥,𝑦)\)</span>. What is <span class="math notranslate nohighlight">\(𝑝\)</span> in the associated Bernouilli distribution if <span class="math notranslate nohighlight">\(𝑝\)</span> is <strong>the probabiity of</strong> <span class="math notranslate nohighlight">\(\text{𝑚𝑎𝑥}(𝑥,𝑦)\)</span> <strong>is even</strong>?
+</span>
+<br><br>
 <span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
 \Omega = \begin{matrix}
@@ -487,323 +675,37 @@ Firstly, the sample space <span class="math notranslate nohighlight">\(\Omega\)<
 </span>
 <br></br>
 <span style="color:#347fc9">
-Thus, we have the sample spaces for the random variables <span class="math notranslate nohighlight">\(X=\{|x-y|:(x,y)\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{x/y:(x,y)\}\)</span>:
-<br></br>
-</span>
-<span style="color:#347fc9">
 <span class="math notranslate nohighlight">\(
-\Omega_{X} = \begin{matrix}
-0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
-1 &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4\\
-2 &amp; 1 &amp; 0 &amp; 1 &amp; 2 &amp; 3\\ 
-3 &amp; 2 &amp; 1 &amp; 0 &amp; 1 &amp; 2\\
-4 &amp; 3 &amp; 2 &amp; 1 &amp; 0 &amp; 1\\
-5 &amp; 4 &amp; 3 &amp; 2 &amp; 1 &amp; 0\\
+\Omega_{max} = \begin{matrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6\\
+2 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6\\
+3 &amp; 3 &amp; 3 &amp; 4 &amp; 5 &amp; 6\\ 
+4 &amp; 4 &amp; 4 &amp; 4 &amp; 5 &amp; 6\\
+5 &amp; 5 &amp; 5 &amp; 5 &amp; 5 &amp; 6\\
+6 &amp; 6 &amp; 6 &amp; 6 &amp; 6 &amp; 6\\
 \end{matrix}
 \)</span>
 </span>
 <br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\Omega_{Y} = \begin{matrix}
-1 &amp; \frac{1}{2} &amp; \frac{1}{3} &amp; \frac{1}{4} &amp; \frac{1}{5} &amp; \frac{1}{6}\\
-2 &amp; 1 &amp; \frac{2}{3} &amp; \frac{2}{4} &amp; \frac{2}{5} &amp; \frac{2}{6}\\
-3 &amp; \frac{3}{2} &amp; 1 &amp; \frac{3}{4} &amp; \frac{3}{5} &amp; \frac{3}{6}\\
-4 &amp; 2 &amp; \frac{4}{3} &amp; 1 &amp; \frac{4}{5} &amp; \frac{4}{6}\\
-5 &amp; \frac{5}{2} &amp; \frac{5}{3} &amp; \frac{5}{4} &amp; 1 &amp; \frac{5}{6}\\
-6 &amp; 3 &amp; 2 &amp; \frac{6}{4} &amp; \frac{6}{5} &amp; 1\\
-\end{matrix}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-<strong>a)</strong>  For <span class="math notranslate nohighlight">\(\Omega_{X}\)</span> we have a symmetric matrix with zeros in the diagonal. Therefore we have <span class="math notranslate nohighlight">\(6\)</span> cases <strong>not included</strong> in the definition <span class="math notranslate nohighlight">\(|x-y|&gt;0\)</span>: the ones in the diagonal, where <span class="math notranslate nohighlight">\(x=y\)</span>. Then, we proceed to count the <strong>odd entries</strong> per row:
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{align}
-\text{Row 1}&amp;=3\;\;\text{odd entries}\\
-\text{Row 2}&amp;=3\;\;\text{odd entries}\\
-\text{Row 3}&amp;=3\;\;\text{odd entries}\\
-\text{Row 4}&amp;=3\;\;\text{odd entries}\\
-\text{Row 5}&amp;=3\;\;\text{odd entries}\\
-\text{Row 6}&amp;=3\;\;\text{odd entries}\\
-\end{align}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-This is not surprising since in each row we have a <span class="math notranslate nohighlight">\(0\)</span> entry, <span class="math notranslate nohighlight">\(3\)</span> odd entries and only <span class="math notranslate nohighlight">\(2\)</span> even entries. This results in <span class="math notranslate nohighlight">\(p = \frac{2\cdot 6}{36}=\frac{12}{36}=\frac{1}{3}\)</span>, i.e. only one-third of the dice throws satisfy the condition “<span class="math notranslate nohighlight">\(|x-y|&gt;0\; \text{is odd}\)</span>”.
-<br></br>
-As a result
-<br></br>
-</span>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{align}
-&amp;\;E(X_{even}) = 1\cdot p + 0\cdot q = p = \frac{1}{3}\;.\\
-&amp; Var(X_{even}) = E(X_{even}^2) - E(X_{even})^2 = p - p^2 = p(1-p) = pq = \frac{1}{3}\cdot\frac{2}{3} = \frac{2}{9}\:.
-\end{align}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-<strong>b)</strong>  For <span class="math notranslate nohighlight">\(\Omega_{Y}\)</span> we have an asymmetric matrix with ones in the diagonal. Therefore we have at least <span class="math notranslate nohighlight">\(6\)</span> cases <strong>included</strong> in the definition “<span class="math notranslate nohighlight">\(\frac{x}{y}\;\text{is integer}\)</span>”: the ones in the diagonal, where <span class="math notranslate nohighlight">\(x=y\)</span>.
-<br></br>
-In addition, the first column has all its entries integer. Then, we add <span class="math notranslate nohighlight">\(6\)</span> more favorable cases.
-<br></br>
-For the rest of the matrix, we have only <span class="math notranslate nohighlight">\(3\)</span> more cases of integer divisions: <span class="math notranslate nohighlight">\(\frac{4}{2}=2,\frac{6}{2}=3\)</span> and <span class="math notranslate nohighlight">\(\frac{6}{3}=2\)</span>.<br />
-<br></br>
-As a result, <span class="math notranslate nohighlight">\(p=\frac{6+5+3}{36}=\frac{14}{36}=\frac{7}{18}=0.39\)</span>.
-<br></br>
-</span>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{align}
-&amp;\;E(Y_{integer}) = 1\cdot p + 0\cdot q = p = \frac{7}{18}=0.39\;.\\
-&amp; Var(Y_{integer}) = E(Y_{integer}^2) - E(Y_{integer})^2 = p - p^2 = p(1-p) = pq = 0.39\cdot 0.61 = 0.2379\:.
-\end{align}
-\)</span>
-</span>
-<br></br></p>
+<span style="color:#347fc9">In <span class="math notranslate nohighlight">\(\Omega_{max}\)</span> we have <span class="math notranslate nohighlight">\(36\)</span> cases where <span class="math notranslate nohighlight">\(21\)</span> are even. This results in <span class="math notranslate nohighlight">\(p=21/36=\mathbf{0.5833}\)</span>.
+</span></p>
 </section>
-<section id="random-walks-on-graphs">
-<h2><span class="section-number">19.3. </span>Random Walks on Graphs<a class="headerlink" href="#random-walks-on-graphs" title="Permalink to this heading">#</a></h2>
-<p><span style="color:#347fc9"><strong>Exercise</strong>.  Given the <strong>escape room</strong> in the In <a class="reference internal" href="#triangle"><span class="std std-numref">Fig. 19.1</span></a> we plot a triangular mesh where the outputs (border nodes or absorbing states) are marked as <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(0\)</span> indicating respectively “success” and “failure”. What are the probabilities that random walks launched from the interior nodes  <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>, succeed?. Set the system and perform <span class="math notranslate nohighlight">\(3\)</span> iterations starting from <span class="math notranslate nohighlight">\(\mathbf{x}^0=[1\;1\;1]^T\)</span>. Explain the results.
+<section id="random-walks-1d">
+<h2><span class="section-number">21.9. </span>Random walks (1D)<a class="headerlink" href="#random-walks-1d" title="Permalink to this heading">#</a></h2>
+<p><span style="color:#347fc9">Consider the following 1D random walk: starts at <span class="math notranslate nohighlight">\(x=0\)</span>, toss a coin (fair) and go to <span class="math notranslate nohighlight">\(x+2\)</span> if Head or to <span class="math notranslate nohighlight">\(x-1\)</span> otherwise.
+<strong>What is the Expectation of the corresponding Bernouilli variable?</strong>
+</span>
+<br></br>
+<span style="color:#347fc9">
+<strong>Sol</strong>. We assume that events <span class="math notranslate nohighlight">\(x\in X\)</span> are <span class="math notranslate nohighlight">\(+1\)</span> and <span class="math notranslate nohighlight">\(-2\)</span>. Therefore, since <span class="math notranslate nohighlight">\(E(X)=\sum_{x\in X}x\cdot p(X=x)\)</span>, we have (for an unbiased coin with <span class="math notranslate nohighlight">\(p=1/2\)</span>):
+</span>
+<br><br>
+<span style="color:#347fc9">
+<span class="math notranslate nohighlight">\(
+E(X)=\sum_{x\in X}x\cdot p(X=x) = (-1)\cdot p + (+2)\cdot p = p = \mathbf{1/2}. 
+\)</span>
 </span>
 <br></br></p>
-<figure class="align-center" id="triangle">
-<a class="reference internal image-reference" href="_images/Triangle.png"><img alt="_images/Triangle.png" src="_images/Triangle.png" style="width: 450px; height: 480px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 19.1 </span><span class="caption-text">Triangular mesh with interior nodes <span class="math notranslate nohighlight">\(x_1\)</span>,<span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>.</span><a class="headerlink" href="#triangle" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><br></br>
-<span style="color:#347fc9">
-Let us formulate the matrices <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> (probabilities between interior nodes) and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> (probabilities between interior and absorbing nodes). From <span class="math notranslate nohighlight">\(n_B = 2\)</span> and <span class="math notranslate nohighlight">\(n_I = 3\)</span>, we have<br />
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\mathbf{Q}_{3} = 
-\begin{bmatrix}
-0 &amp; \frac{1}{2} &amp;  0 \\
-\frac{1}{4} &amp; 0 &amp;  \frac{1}{4} \\
-0 &amp; \frac{1}{2} &amp;   0 \\
-\end{bmatrix}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\mathbf{R}_{3\times 2} = 
-\begin{bmatrix}
-\frac{1}{2} &amp;  0 \\
-\frac{1}{4} &amp;  \frac{1}{4} \\
-0           &amp; \frac{1}{2}\\
-\end{bmatrix}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-Then, from <span class="math notranslate nohighlight">\(f_B = [1\;0]^T\)</span> and <span class="math notranslate nohighlight">\(f_D = [x_1\;x_2\;x_3]^T\)</span> we set the system
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\underbrace{(\mathbf{I}_{3}-\mathbf{Q})}_{\mathbf{A}}\underbrace{f_D}_{\mathbf{x}} = \underbrace{\mathbf{R}f_B}_{\mathbf{b}}\;
-\)</span>
-</span>
-<span style="color:#347fc9">
-as follows
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{bmatrix}
-1 &amp; -\frac{1}{2} &amp;  0\\
--\frac{1}{4} &amp; 1 &amp; -\frac{1}{4} \\
-0 &amp; -\frac{1}{2} &amp;  1\\
-\end{bmatrix}
-\begin{bmatrix}
-x_1\\
-x_2\\
-x_3\\
-\end{bmatrix} =
-\begin{bmatrix}
-\frac{1}{2} &amp;  0 \\
-\frac{1}{4} &amp;   \frac{1}{4} \\
-0           &amp; \frac{1}{2}\\
-\end{bmatrix}
-\begin{bmatrix}
-1\\
-0\\
-\end{bmatrix}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-i.e.
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{bmatrix}
-1 &amp; -\frac{1}{2} &amp;  0\\
--\frac{1}{4} &amp; 1 &amp; -\frac{1}{4} \\
-0 &amp; -\frac{1}{2} &amp;  1\\
-\end{bmatrix}
-\begin{bmatrix}
-x_1\\
-x_2\\
-x_3\\
-\end{bmatrix} =
-\begin{bmatrix}
-\frac{1}{2}\\
-\frac{1}{4}\\
-0          \\
-\end{bmatrix}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-Let us now set and solve the <strong>iterative</strong> system via <strong>Jacobi</strong> for this problem:
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\mathbf{x}^{t+1} = \mathbf{b} - (\mathbf{L} + \mathbf{U})\mathbf{x}^{t}\;.
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{bmatrix}
-\mathbf{x}_1^{t+1}\\
-\mathbf{x}_2^{t+1}\\
-\mathbf{x}_3^{t+1}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{1}{2}\\
-\frac{1}{4}\\
-0\\
-\end{bmatrix}-
-\begin{bmatrix}
-0 &amp; -\frac{1}{2} &amp;  0  \\
--\frac{1}{4} &amp; 0 &amp; -\frac{1}{4}\\
-0 &amp; -\frac{1}{2} &amp;  0\\
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{x}_1^{t}\\
-\mathbf{x}_2^{t}\\
-\mathbf{x}_3^{t}\\
-\end{bmatrix}
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-Thus, setting <span class="math notranslate nohighlight">\(\mathbf{x}_0 = [1\;1\;1]^T\)</span> we have the first iteration:
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{bmatrix}
-\mathbf{x}_1^{1}\\
-\mathbf{x}_2^{1}\\
-\mathbf{x}_3^{1}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{1}{2}\\
-\frac{1}{4}\\
-0\\
-\end{bmatrix}-
-\begin{bmatrix}
-0 &amp; -\frac{1}{2} &amp;  0  \\
--\frac{1}{4} &amp; 0 &amp; -\frac{1}{4}\\
-0 &amp; -\frac{1}{2} &amp;  0\\
-\end{bmatrix}
-\begin{bmatrix}
-1\\
-1\\
-1\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{1}{2}\\
-\frac{1}{4}\\
-0\\
-\end{bmatrix}-
-\begin{bmatrix}
--\frac{1}{2}\\
--\frac{2}{4}\\
--\frac{1}{2}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-1\\
-\frac{3}{4}\\
-\frac{1}{2}\\
-\end{bmatrix}\;.
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-Then the second:
-</span>
-<br></br>
-<span style="color:#347fc9">
-<span class="math notranslate nohighlight">\(
-\begin{bmatrix}
-\mathbf{x}_1^{2}\\
-\mathbf{x}_2^{2}\\
-\mathbf{x}_3^{2}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{1}{2}\\
-\frac{1}{4}\\
-0\\
-\end{bmatrix}-
-\begin{bmatrix}
-0 &amp; -\frac{1}{2} &amp;  0  \\
--\frac{1}{4} &amp; 0 &amp; -\frac{1}{4}\\
-0 &amp; -\frac{1}{2} &amp;  0\\
-\end{bmatrix}
-\begin{bmatrix}
-1\\
-\frac{3}{4}\\
-\frac{1}{2}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{1}{2}\\
-\frac{1}{4}\\
-0\\
-\end{bmatrix}-
-\begin{bmatrix}
--\frac{3}{8}\\
--\frac{3}{8} \\
--\frac{3}{8}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{7}{8}=0.875\\
-\frac{5}{8}=0.625\\
-\frac{3}{8}=0.375\\
-\end{bmatrix}\;.
-\)</span>
-</span>
-<br></br>
-<span style="color:#347fc9">
-The solution up to only two iterations is quite representative of the final solution since we have: <span class="math notranslate nohighlight">\(x_2\)</span> half-way between the two external nodes, <span class="math notranslate nohighlight">\(x_1\)</span> closer to the top one and <span class="math notranslate nohighlight">\(x_3\)</span> closer to the bottom one (see <a class="reference internal" href="#trianglesol"><span class="std std-numref">Fig. 19.2</span></a>).
-</span>
-<br></br>
-<span style="color:#347fc9">
-Finally, if we add an edge between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>, all we do is to make them equally distant from the two external nodes. In addition, their probabilities of reaching <span class="math notranslate nohighlight">\(x_2\)</span> become <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> instead of <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>, getting closer to the respective probabilities of reaching the external nodes from <span class="math notranslate nohighlight">\(x_2\)</span>, which are <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span>. As a result, we have <span class="math notranslate nohighlight">\(x_1\approx x_2\approx x_3\)</span> where <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> are a bit larger (closer to the top).
-</span>
-<br></br></p>
-<figure class="align-center" id="trianglesol">
-<a class="reference internal image-reference" href="_images/TriangleSol.png"><img alt="_images/TriangleSol.png" src="_images/TriangleSol.png" style="width: 450px; height: 480px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 19.2 </span><span class="caption-text">Solution for Triangular mesh with interior nodes <span class="math notranslate nohighlight">\(x_1\)</span>,<span class="math notranslate nohighlight">\(x_2\)</span> and <span class="math notranslate nohighlight">\(x_3\)</span>.</span><a class="headerlink" href="#trianglesol" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 </section>
 
@@ -838,22 +740,13 @@ Finally, if we add an edge between <span class="math notranslate nohighlight">\(
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ExamJune24.html"
+       href="ExamJune25.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Assignment 06/24</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="ExamJune25.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">20. </span>Assignment 06/25</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -871,9 +764,15 @@ Finally, if we add an edge between <span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-groups">19.1. Counting groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">19.2. Bernouilli trials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-on-graphs">19.3. Random Walks on Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinatorics">21.1. Combinatorics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pascal-s-triangle">21.2. Pascal’s Triangle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variables">21.3. Gaussian variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-paths-pei">21.4. Counting paths (PEI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-and-sum-principle">21.5. Permutations and Sum principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multichoose">21.6. Multichoose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">21.7. Conditional probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernouilli-trials">21.8. Bernouilli trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-1d">21.9. Random walks (1D)</a></li>
 </ul>
   </nav></div>
 
